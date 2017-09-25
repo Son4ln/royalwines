@@ -1,9 +1,14 @@
 <?php include $GLOBALS['ROOT'].'public/template/admin/sidebar.php'; ?>
 <?php include $GLOBALS['ROOT'].'public/template/admin/header.php'; ?>
-<?php 
-  $contactInfo = new ContactInfo();
-  $resultContactInfo = $contactInfo -> getContactInfo();
-?>
+<style type="text/css">
+  tr {
+    cursor: pointer;
+  }
+
+  #review-img {
+    cursor: pointer;
+  }
+</style>
 	<div class="content">
 	  <div class="container-fluid">
 	    <div class="row">
@@ -136,6 +141,10 @@
 	  </div>
 	</div>
 
+<?php include $GLOBALS['ROOT'].'public/template/admin/footer.php'; ?>  
+<?php include $GLOBALS['ROOT'].'public/template/admin/sidebar-right.php'; ?>
+<?php include $GLOBALS['ROOT'].'public/template/admin/scripts.php'; ?>
+
     <script type="text/javascript">
         // lấy giá trị gốc trong input
         let dataImg = document.querySelector('[name="current-img"]').value;
@@ -242,6 +251,5 @@
         },500);
 
     </script>
-<?php include $GLOBALS['ROOT'].'public/template/admin/footer.php'; ?>  
-<?php include $GLOBALS['ROOT'].'public/template/admin/sidebar-right.php'; ?>
 <?php include $GLOBALS['ROOT'].'public/template/admin/searchbox.php'; ?>
+<?php include $GLOBALS['ROOT'].'public/template/admin/endpage.php'; ?>

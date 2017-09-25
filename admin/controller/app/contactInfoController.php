@@ -6,6 +6,8 @@
     {	
     	function showContactInfo()
     	{
+        $contactInfo = new ContactInfo();
+        $resultContactInfo = $contactInfo -> getContactInfo();
     		include '../view/contact/contactInfo.php';
     	}
 
