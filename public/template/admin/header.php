@@ -16,7 +16,7 @@
           <div class="pull-center hidden-md hidden-lg">
             <div class="header-inner">
               <div class="brand inline">
-                <img src="../../public/assets/img/logo.png" alt="logo" data-src="../../public/assets/img/logo.png" data-src-retina="../../public/assets/img/logo_2x.png" width="78" height="22">
+                <img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120">
               </div>
             </div>
           </div>
@@ -35,9 +35,9 @@
         <div class=" pull-left sm-table hidden-xs hidden-sm">
           <div class="header-inner">
             <div class="brand inline">
-              <img src="../../public/assets/img/logo.png" alt="logo" data-src="../../public/assets/img/logo.png" data-src-retina="../../public/assets/img/logo_2x.png" width="78" height="22">
+              <img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120">
             </div>
-            <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a> </div>
+          </div>
         </div>
         <div class=" pull-right">
           <div class="header-inner">
@@ -58,10 +58,6 @@
               </button>
               <ul class="dropdown-menu profile-dropdown" role="menu">
                 <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
-                </li>
-                <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
-                </li>
-                <li><a href="#"><i class="pg-signals"></i> Help</a>
                 </li>
                 <li class="bg-master-lighter">
                   <a href="#" class="clearfix">
