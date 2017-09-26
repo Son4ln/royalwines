@@ -43,10 +43,10 @@
 
       	  //tạo quan hệ giữa product và images
       	  try {
-			$imagesToProduct = "Alter table products 
+			$imagesToProduct = "Alter table images 
 							   Add constraint	image_product
-							   Foreign key (image_id)
-							   References images (image_id);
+							   Foreign key (product_id)
+							   References products (product_id);
 							  ";
 			$this->db->exec($imagesToProduct);
 		  }

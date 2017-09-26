@@ -20,7 +20,7 @@
         array_push($arr, $json);
       }
       $data = json_encode($arr);
-      sleep(1);
+      usleep(500000);
       die($data);
     } 
   }

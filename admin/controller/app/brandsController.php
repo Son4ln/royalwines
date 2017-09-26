@@ -11,6 +11,18 @@
 	  // thêm nhãn hiệu
 	  function addBrandsAction() {
 	  	$name = $_POST['brandname'];
+      $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
+      $expensions= array("jpeg","jpg","png");
+
+      if(in_array($file_ext,$expensions) === false || $_FILES['brandlogo']['error'] > 0){
+        $mess = 'Hình ảnh chỉ hỗ trợ jpg, jpeg, png và kích thước < 5mb';
+        $action = "listBrands";
+        $lv = 'danger';
+        BasicLibs::setAlert($mess, $lv);
+        BasicLibs::redirect($action);
+        die();
+      }
+
 	  	$logo = time().'-'.$_FILES['brandlogo']['name'];
 	  	$public = $_POST['status'];
 	  	$brands = new Brands();
@@ -18,11 +30,11 @@
 
 	  	if(!empty($checkName['brand_id'])) {
 	  	  $mess = 'Đã có nhãn hiệu này';
-      	  $action = "listBrands";
-      	  $lv = 'danger';
-      	  BasicLibs::setAlert($mess, $lv);
-      	  BasicLibs::redirect($action);
-      	  die();
+    	  $action = "listBrands";
+    	  $lv = 'danger';
+    	  BasicLibs::setAlert($mess, $lv);
+    	  BasicLibs::redirect($action);
+    	  die();
 	  	}
 
 	  	try {
@@ -76,6 +88,13 @@
 	  	if(empty($_FILES['ebrandlogo']['name'])) {
 	  	  $logo = $_POST['eoldImg'];
 	  	} else {
+  			$file_ext=strtolower(end(explode('.',$_FILES['ebrandlogo']['name'])));
+        $expensions= array("jpeg","jpg","png");
+
+        if(in_array($file_ext,$expensions) === false || $_FILES['ebrandlogo']['error'] > 0){
+          die('file_not_valid');
+        }
+
 	  	  $logo = time().'-'.$_FILES['ebrandlogo']['name'];
 	  	}
 	  	
@@ -96,10 +115,6 @@
       	  BasicLibs::deleteFile($currImg,$path);
       	}
 
-      	$mess = 'Sửa nhãn hiệu thành công';
-	  	  $lv = 'success';
-	  	  BasicLibs::setAlert($mess, $lv);
-
       	die('success');
 	  }
 
@@ -109,7 +124,6 @@
 	  	$public = $_POST['public'];
 	  	$brands = new Brands();
 	  	$brands -> changeStatus($brandId, $public);
-	  	die('mợ rầu');
 	  }
 	}
 ?>

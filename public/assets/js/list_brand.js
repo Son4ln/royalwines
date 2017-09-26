@@ -4,21 +4,8 @@ $(document).ready(function() {
   validateEditForm();
   reviewImg();
   ereviewImg();
+  cancelImg();
 
-  let status = document.querySelectorAll('.public');
-  for (let statusId of status) {
-    statusId.addEventListener('click', (e) => {
-      let target = e.target;
-      if (!e.target.getAttribute('class')) {
-        target = e.target.parentElement;
-      }
-      let dataPublic = target.getAttribute('data-public');
-      let showPosition = target.getAttribute('data-show');
-      let dataShow = target.getAttribute('data-brand');
-      let table = target.getAttribute('data-table');
-      showBrandPublic(dataPublic, showPosition, dataShow, table);
-    });
-  };
 
   $('#review-img').click(() => {
     $('#brand-logo').click();
@@ -27,59 +14,73 @@ $(document).ready(function() {
   $('#ereview-img').click(() => {
     $('#ebrand-logo').click();
   });
+
+  // show brand wait khi bấm vào tab public
+  $('#tab-wait').click(() => {
+    showWait();
+  });
+
+  // show brand đã public khi bấm vào tab public
+  $('#tab-public').click(() => {
+    showPublic();
+  });
+
+  // show brand unpublic khi bấm vào tab public
+  $('#tab-unpublic').click(() => {
+    showUnpublic();
+  });
 });
 
+/*hàm tạo datatable của template với tham số WhatTable 
+để xác định table nào khi sử dụng trong hàm showPublic() và showUnpublic()*/
 function dataTable(whatTable) {
-  var responsiveHelper = undefined;
-  var breakpointDefinition = {
+  let responsiveHelper = undefined;
+  let breakpointDefinition = {
       tablet: 1024,
       phone: 480
   };
 
   // Initialize datatable showing a search box at the top right corner
-  var initTableWithSearch = function() {
-      let tb = `#${whatTable}`;
-      var table = $(tb);
+  let initTableWithSearch = function() {
+    let tb = `#${whatTable}`;
+    let table = $(tb);
 
-      var settings = {
-          "sDom": "<'table-responsive't><'row'<p i>>",
-          "destroy": true,
-          "scrollCollapse": true,
-          "oLanguage": {
-              "sLengthMenu": "_MENU_ ",
-              "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
-          },
-          "iDisplayLength": 5
-      };
+    let settings = {
+      "sDom": "<'table-responsive't><'row'<p i>>",
+      "destroy": true,
+      "scrollCollapse": true,
+      "oLanguage": {
+          "sLengthMenu": "_MENU_ ",
+          "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
+      },
+      "iDisplayLength": 5
+    };
 
-      table.dataTable(settings);
+    table.dataTable(settings);
 
-      // search box for table
-      $('#search-table').keyup(function() {
-          table.fnFilter($(this).val());
-      });
+    // search box for table
+    $('#search-table').keyup(function() {
+        table.fnFilter($(this).val());
+    });
   }
 
   initTableWithSearch();
 }
 
-function showBrandPublic (public, target, dataShow, table) {
-  let showing = target;
-  let status = public;
-  let tbody = document.getElementById(showing);
-  tbody.innerHTML = `
-    <center><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-    <span class="sr-only">Loading...</span></center>
-  `;
+//hàm lấy danh sách các nhãn hiệu đang chờ phê duyệt
+function showWait () {
+  let table = 'table-wait';
+  let body = document.getElementById('brands-wait');
+  $('#wait-loading').removeClass('hidden');
   $.ajax({
     url: '../api/urls.php?url=getBrandByPublic',
     type: 'get',
     dataType: 'json',
     data: {
-      public: status,
+      public: 3,
     },
     success: function(data) {
-      tbody.innerHTML = `
+      body.innerHTML = `
         <table class="table table-hover demo-table-search" id="${table}">
           <thead>
             <tr>
@@ -90,13 +91,13 @@ function showBrandPublic (public, target, dataShow, table) {
               <th>Hành động</th>
             </tr>
           </thead>
-          <tbody id="${dataShow}">
+          <tbody id="show-wait">
             
           </tbody>
         </table>
       `;
-
-      let show = document.getElementById(dataShow);
+      // lấy id của tbody ngay phía trên
+      let show = document.getElementById('show-wait');
       let html = [];
       for (let key of data) {
         let item = JSON.parse(key);
@@ -112,7 +113,7 @@ function showBrandPublic (public, target, dataShow, table) {
               <img src="../../upload/brands/${item.logo}" width="50px"/>
             </td>
             <td class="v-align-middle">
-              <a class="change-status" data-id="${item.id}" data-status="${status}">Thay đổi</a>
+              <a class="change-status" data-id="${item.id}" data-status="3">Thay đổi</a>
             </td>
             <td class="v-align-middle">
               <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
@@ -126,7 +127,174 @@ function showBrandPublic (public, target, dataShow, table) {
 
         html.push(content);
       }
-      show.innerHTML = html;
+      
+      let inner = '';
+      for (let item of html) {
+        inner += item;
+      }
+      
+      show.innerHTML = inner;
+      $('#wait-loading').addClass('hidden');
+      dataTable(table);
+      changeStatus();
+      delBrand();
+      showBrand();
+    },
+    error: function(data) {
+      tbody.innerHTML = 'Lỗi kết nối';
+    }
+  });
+}
+
+// hàm lấy danh sác các brands public
+function showPublic () {
+  let table = 'table-public';
+  let body = document.getElementById('brands-public');
+  $('#public-loading').removeClass('hidden');
+  $.ajax({
+    url: '../api/urls.php?url=getBrandByPublic',
+    type: 'get',
+    dataType: 'json',
+    data: {
+      public: 2,
+    },
+    success: function(data) {
+      body.innerHTML = `
+        <table class="table table-hover demo-table-search" id="${table}">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tên nhãn hiệu</th>
+              <th>Logo</th>
+              <th>Public/ Unpublic</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="show-public-brand">
+            
+          </tbody>
+        </table>
+      `;
+      // lấy id của tbody ngay phía trên
+      let show = document.getElementById('show-public-brand');
+      let html = [];
+      for (let key of data) {
+        let item = JSON.parse(key);
+        let content = `
+          <tr>
+            <td class="v-align-middle semi-bold">
+              <p>${item.id}</p>
+            </td>
+            <td class="v-align-middle">
+              <p>${item.name}</p>
+            </td>
+            <td class="v-align-middle">
+              <img src="../../upload/brands/${item.logo}" width="50px"/>
+            </td>
+            <td class="v-align-middle">
+              <a class="change-status" data-id="${item.id}" data-status="2">Thay đổi</a>
+            </td>
+            <td class="v-align-middle">
+              <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
+              data-id="${item.id}" data-img="${item.logo}" data-name="${item.name}">
+                <i class="fa fa-pencil-square-o"></i> Sửa 
+              </a>
+              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand"><i class="fa fa-trash"></i> Xóa</a>
+            </td>
+          </tr>
+        `;
+
+        html.push(content);
+      }
+      
+      let inner = '';
+      for (let item of html) {
+        inner += item;
+      }
+      
+      show.innerHTML = inner;
+      $('#public-loading').addClass('hidden');
+      dataTable(table);
+      changeStatus();
+      delBrand();
+      showBrand();
+    },
+    error: function(data) {
+      tbody.innerHTML = 'Lỗi kết nối';
+    }
+  });
+}
+
+// hàm lấy danh sác các brands unpublic
+function showUnpublic () {
+  let table = 'table-unpublic';
+  let body = document.getElementById('brands-unpublic');
+  $('#unpublic-loading').removeClass('hidden');
+  $.ajax({
+    url: '../api/urls.php?url=getBrandByPublic',
+    type: 'get',
+    dataType: 'json',
+    data: {
+      public: 1,
+    },
+    success: function(data) {
+      body.innerHTML = `
+        <table class="table table-hover demo-table-search" id="${table}">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tên nhãn hiệu</th>
+              <th>Logo</th>
+              <th>Public/ Unpublic</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="show-unpublic-brand">
+            
+          </tbody>
+        </table>
+      `;
+
+      // lấy id của tbody ngay phía trên
+      let show = document.getElementById('show-unpublic-brand');
+      let html = [];
+      for (let key of data) {
+        let item = JSON.parse(key);
+        let content = `
+          <tr>
+            <td class="v-align-middle semi-bold">
+              <p>${item.id}</p>
+            </td>
+            <td class="v-align-middle">
+              <p>${item.name}</p>
+            </td>
+            <td class="v-align-middle">
+              <img src="../../upload/brands/${item.logo}" width="50px"/>
+            </td>
+            <td class="v-align-middle">
+              <a class="change-status" data-id="${item.id}" data-status="1">Thay đổi</a>
+            </td>
+            <td class="v-align-middle">
+              <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
+              data-id="${item.id}" data-img="${item.logo}" data-name="${item.name}">
+                <i class="fa fa-pencil-square-o"></i> Sửa 
+              </a>
+              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand"><i class="fa fa-trash"></i> Xóa</a>
+            </td>
+          </tr>
+        `;
+
+        html.push(content);
+      }
+
+      let inner = '';
+      for (let item of html) {
+        inner += item;
+      }
+
+      show.innerHTML = inner;
+
+      $('#unpublic-loading').addClass('hidden');
       dataTable(table);
       changeStatus();
       delBrand();
@@ -144,9 +312,12 @@ function changeStatus () {
     item.addEventListener('click', (e) => {
       let ancestor = e.target.parentElement.parentElement;
       let status = e.target.getAttribute('data-status');
+      console.log(status);
       let publicStt = 2;
       if (status === '2') {
         publicStt = 1;
+      } else if (status === '3') {
+        publicStt = 2;
       };
 
       let id = e.target.getAttribute('data-id');
@@ -159,14 +330,15 @@ function changeStatus () {
           public: publicStt
         },
         success: function(result) {
-          ancestor.classList.add('hidden');
           let mess = 'Nhãn hiệu đã ngưng hiển thị';
-          if (status === '1') {
+          if (status === '1' || status === '3') {
             mess = 'Nhãn hiệu đã được hiển thị';
           };
-
+          showPublic();
+          showUnpublic();
           let lv = 'success';
-          notification(mess, lv)
+          notification(mess, lv);
+          ancestor.remove();
         },
         error: function() {
           let mess = 'Không thể kết nối đến server';
@@ -182,39 +354,57 @@ function delBrand() {
   let del = document.querySelectorAll('.del-brand');
   for (let delItem of del) {
     delItem.addEventListener('click', (e) => {
-      let brand = e.target;
-      if (e.target.getAttribute('class') != 'del-brand') {
-        brand = e.target.parentElement;
-      }
 
-      let id = brand.getAttribute('data-id');
-      let img = brand.getAttribute('data-img');
+      $.confirm({
+        title: 'XÓA NHÃN HIỆU',
+        content: 'Bạn có chắc muốn xóa nhãn hiệu này',
+        type: 'orange',
+        typeAnimated: true,
+        buttons: {
+          confirm: {
+            text: 'Xóa',
+            btnClass: 'btn-orange',
+            action: function(){
+              let brand = e.target;
+              if (e.target.getAttribute('class') != 'del-brand') {
+                brand = e.target.parentElement;
+              }
 
-      let ancestor =  brand.parentElement.parentElement;
+              let id = brand.getAttribute('data-id');
+              let img = brand.getAttribute('data-img');
 
-      $.ajax({
-        url: '?action=deleteBrands',
-        type: 'post',
-        dataType: 'text',
-        data: {
-          id: id,
-          img: img
-        },
-        success: function(result) {
-          let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
-            hoặc ngừng hiển thị`;
-          let lv = 'warning';
-          if (result != 'fail') {
-            ancestor.classList.add('hidden');
-            mess = 'Đã xóa nhãn hiệu';
-            lv = 'success';
+              let ancestor =  brand.parentElement.parentElement;
+
+              $.ajax({
+                url: '?action=deleteBrands',
+                type: 'post',
+                dataType: 'text',
+                data: {
+                  id: id,
+                  img: img
+                },
+                success: function(result) {
+                  let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
+                    hoặc ngừng hiển thị`;
+                  let lv = 'warning';
+                  if (result != 'fail') {
+                    ancestor.classList.add('hidden');
+                    mess = 'Đã xóa nhãn hiệu';
+                    lv = 'success';
+                  }
+                  notification(mess, lv);
+                },
+                error: function() {
+                  let mess = 'Không thể kết nối đến server';
+                  let lv = 'danger';
+                  notification(mess, lv);
+                }
+              });
+            }
+          },
+          close: {
+            text: 'Đóng'
           }
-          notification(mess, lv);
-        },
-        error: function() {
-          let mess = 'Không thể kết nối đến server';
-          let lv = 'danger';
-          notification(mess, lv);
         }
       });
     });
@@ -240,6 +430,7 @@ function showBrand() {
       name.value = target.getAttribute('data-name');
       let review = document.getElementById('ereview-img');
       review.src = `../../upload/brands/${target.getAttribute('data-img')}`;
+      ecancelImg();
     });
   };
 }
@@ -267,19 +458,31 @@ function editBrand() {
     processData: false,
     data: form_data,
     success: function(result) {
-      if (result == 'unique') {
+      if (result === 'unique') {
         alertAdd.classList.remove('hidden');
         addBtn.disabled = false;
         alertAdd.textContent = 'Nhãn hiệu đã được sử dụng';
-      } else if (result == 'fail') {
+      } else if (result === 'fail') {
         alertAdd.classList.remove('hidden');
         addBtn.disabled = false;
         alertAdd.textContent = 'Lỗi kết nối cơ sở dữ liệu';
+      } else if (result === 'file_not_valid') {
+        alertAdd.classList.remove('hidden');
+        addBtn.disabled = false;
+        alertAdd.textContent = 'Hình ảnh chỉ hỗ trợ jpg, jpeg, png và kích thước < 5mb';
       } else {
-        location.reload();
+        showUnpublic();
+        showPublic();
+        showWait();
+        addBtn.disabled = false;
+        $('#close-edit').click();
+        let mess = 'Cập nhập nhãn hiệu thành công';
+        let lv = 'success';
+        notification(mess, lv);
       }
     },
     error: function() {
+      addBtn.disabled = false;
       let mess = 'Không thể kết nối đến server';
       let lv = 'danger';
       notification(mess, lv);
@@ -299,6 +502,7 @@ function reviewImg() {
       review.src = e.target.result;
     }
     reader.readAsDataURL(file);
+    $('#cancel-img').removeClass('hidden');
   });
 }
 
@@ -313,6 +517,7 @@ function ereviewImg() {
       review.src = e.target.result;
     }
     reader.readAsDataURL(file);
+    $('#ecancel-img').removeClass('hidden');
   });
 }
 
@@ -340,5 +545,25 @@ function validateEditForm() {
     submitHandler: function(form) {
       editBrand();
     }
+  });
+}
+
+function cancelImg() {
+  let btn = $('#cancel-img');
+  let old = $('#review-img').attr('src');
+  btn.click(() => {
+    $('#review-img').attr('src', old);
+    $('#cancel-img').addClass('hidden');
+    $('#brand-logo').val('');
+  });
+}
+
+function ecancelImg() {
+  let btn = $('#ecancel-img');
+  let old = $('#ereview-img').attr('src');
+  btn.click(() => {
+    $('#ereview-img').attr('src', old);
+    $('#ecancel-img').addClass('hidden');
+    $('#ebrand-logo').val('');
   });
 }

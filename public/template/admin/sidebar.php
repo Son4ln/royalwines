@@ -28,6 +28,7 @@
     <link href="../../public/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="../../public/pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="../../public/assets/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" type="text/css" media="screen" />
     <!--[if lte IE 9]>
 	<link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
 	<![endif]-->
@@ -55,6 +56,7 @@
             </a>
             <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
           </li>
+
           <li class="">
             <a href="?action=listBrands" class="detailed">
               <span class="title">Nhãn Hiệu</span>
@@ -62,6 +64,7 @@
             </a>
             <span class="icon-thumbnail"><i class="fa fa-circle"></i></span>
           </li>
+
           <li class="">
             <a href="email.html" class="detailed">
               <span class="title">Email</span>
@@ -69,25 +72,12 @@
             </a>
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
+
           <li class="">
-            <a href="?action=listBrands"><span class="title">Brands</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
+            <a href="?action=contactInfo"><span class="title">Thông tin</span></a>
+            <span class="icon-thumbnail"><i class="fa fa-info"></i></span>
           </li>
-          <li>
-            <a href="javascript:;"><span class="title">Contact</span>
-            <span class=" arrow"></span></a>
-            <span class="icon-thumbnail"><i class="pg-calender"></i></span>
-            <ul class="sub-menu">
-              <li class="">
-                <a href="?action=contactInfo">Contact Info</a>
-                <span class="icon-thumbnail">C</span>
-              </li>
-              <li class="">
-                <a href="calendar_lang.html">Contact List</a>
-                <span class="icon-thumbnail">CL</span>
-              </li>
-            </ul>
-          </li>
+        
         </ul>
         <div class="clearfix"></div>
       </div>
