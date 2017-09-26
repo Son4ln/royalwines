@@ -18,7 +18,6 @@
 							   product_status	tinyint(1)				Not null,
 							   brand_id		int(11)					Not null,
 							   category_id		int(11)					Not null,
-							   image_id		int(11)					Not null,
 							   user_id		int(11)					Not null,
 							   Primary key (product_id)
 							   );

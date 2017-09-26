@@ -37,6 +37,7 @@
     <script type="../../public/text/javascript" src="assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
     <script type="../../public/text/javascript" src="assets/plugins/datatables-responsive/js/lodash.min.js"></script>
     <script src="../../public/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../public/assets/plugins/jquery-confirm/jquery-confirm.min.js" type="text/javascript"></script>
 
     <!-- END VENDOR JS -->
     <!-- BEGIN CORE TEMPLATE JS -->
