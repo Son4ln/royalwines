@@ -62,11 +62,11 @@
             <div class="form-group form-group-default">
               <label>Password</label>
               <div class="controls">
-                <input type="password" class="form-control" name="password" placeholder="Credentials" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
               </div>
             </div>
             <!-- END Form Control-->
-            <button class="btn btn-primary btn-cons m-t-10" type="submit">Log in</button>
+            <button class="btn btn-primary btn-cons m-t-10 login-btn" type="submit">Log in</button>
           </form>
           <!--END Login Form-->
         </div>
@@ -96,11 +96,36 @@
     <script>
     $(function()
     {
-      $('#form-login').validate();
-    })
+      $('#form-login').validate({
+        rules: {
+          email: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true,
+            minlength: 6
+          }
+        },
+        messages: {
+          password: {
+            required: "Vui lòng nhập mật khẩu",
+            minlength: "Mật khẩu ít nhất là 6 ký tự"
+          },
+          email: {
+            required: "Vui lòng nhập đúng cú pháp Email",
+            email: 'Vui lòng nhập đúng cú pháp email'
+          } 
+        },
+        submitHandler: function() {
+          login();
+          return false;
+        }
+      });
+    });
 
-    $('#form-login').submit((e) => {
-      e.preventDefault();
+    function login() {
+      $('.login-btn').attr('disabled', 'disabled');
       let email = $('[name="email"]').val();
       let pass = $('[name="password"]').val();
       $.ajax({
@@ -118,17 +143,23 @@
           } else if (result == 'account_locked') {
             $('.login-alert').removeClass('hidden');
             $('.login-alert').html('Tài khoản của bạn đã bị khóa, vui lòng liên hệ quản trị viên để biết thêm chi tiết');
+          } else if (result == 'valid_permission') {
+            $('.login-alert').removeClass('hidden');
+            $('.login-alert').html('Bạn không có quyền hạn để truy cập Admin page, liên hệ quản trị viên để biết thêm chi tiết');
           } else {
             window.location.href = '?action=home';
           }
+
+          $('.login-btn').removeAttr('disabled');
         },
         error: function() {
           let mess = 'Lỗi kết nối';
           let lv = 'danger';
           notification(mess, lv);
+          $('.login-btn').removeAttr('disabled');
         }
       });
-    });
+    }
     </script>
   </body>
 </html>

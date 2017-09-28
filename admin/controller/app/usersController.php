@@ -35,6 +35,12 @@
 
     function login() {
       if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+        if ($_SESSION["royalwines_permission_ok"] == 5) {
+          include '../../../public/template/404.html';
+          session_destroy();
+          exit();
+        }
+
         $action = 'home';
         BasicLibs::redirect($action);
         exit();
@@ -49,7 +55,12 @@
           if ($result['is_active'] == 2) {
             $_SESSION["royalwines_user_login_ok"] = $email;
             $_SESSION["royalwines_pass_login_ok"] = $pass;
-            $_SESSION["royalwines_permission_ok"] = $result['permission'];
+            if ($result['permission'] == 5) {
+              session_destroy();
+              exit('valid_permission');
+            } else {
+              $_SESSION["royalwines_permission_ok"] = $result['permission'];
+            }
           } else {
             session_destroy();
             exit('account_locked');

@@ -11,7 +11,7 @@
 	  // thêm nhãn hiệu
 	  function addBrandsAction() {
       usleep(500000);
-	  	$name = $_POST['brandname'];
+	  $name = $_POST['brandname'];
       $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
       $expensions= array("jpeg","jpg","png");
 
