@@ -47,7 +47,7 @@
               <center><i>Nhấp vào ảnh để chọn ảnh mới</i></center>
               <center><input type="file" class="form-control hidden" name="logo" id="logo"></center>
               <input type="hidden" name="currImg" id="oldImg" value="<?php echo $resultContactInfo['logo']; ?>">
-              <center><button type="button" id="cancel-img" class="btn btn-primary hidden"><i class="fa fa-times"></i></button></center>
+              <center><button type="button" id="cancel-img" class="btn btn-success hidden"><i class="fa fa-times"></i></button></center>
             </div>
 
             <div class="col-md-6">

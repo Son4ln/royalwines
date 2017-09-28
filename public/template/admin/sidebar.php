@@ -38,7 +38,7 @@
     <nav class="page-sidebar" data-pages="sidebar">
       <!-- BEGIN SIDEBAR MENU HEADER-->
       <div class="sidebar-header">
-        <img src="../../public/assets/img/logo_white.png" alt="logo" class="brand" data-src="../../public/assets/img/logo_white.png" data-src-retina="../../public/assets/img/logo_white_2x.png" width="78" height="22">
+        <img src="../../public/assets/img/logo3.png" alt="logo" class="brand" data-src="../../public/assets/img/logo3.png" data-src-retina="../../public/assets/img/logo3.png" width="120">
         <div class="sidebar-header-controls">
           <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
           </button>
@@ -51,8 +51,7 @@
         <ul class="menu-items">
           <li class="m-t-30">
             <a href="?action=home" class="detailed">
-              <span class="title">Dashboard</span>
-              <span class="details">12 New Updates</span>
+              <span class="title">Trang Chủ</span>
             </a>
             <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
           </li>
@@ -60,15 +59,13 @@
           <li class="">
             <a href="?action=listBrands" class="detailed">
               <span class="title">Nhãn Hiệu</span>
-              <span class="details">22 items</span>
             </a>
-            <span class="icon-thumbnail"><i class="fa fa-circle"></i></span>
+            <span class="icon-thumbnail">N</i></span>
           </li>
 
           <li class="">
             <a href="email.html" class="detailed">
               <span class="title">Email</span>
-              <span class="details">234 New Emails</span>
             </a>
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
