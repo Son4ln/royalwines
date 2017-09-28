@@ -57,6 +57,14 @@
           </li>
 
           <li class="">
+            <a href="?action=listUsers" class="detailed">
+              <span class="title">Users</span>
+              <span class="details">22 items</span>
+            </a>
+            <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
+          </li>
+
+          <li class="">
             <a href="?action=listBrands" class="detailed">
               <span class="title">Nhãn Hiệu</span>
             </a>

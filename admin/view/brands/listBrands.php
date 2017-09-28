@@ -67,7 +67,8 @@
                 <!-- START PANEL -->
                 <div class="panel panel-transparent">
                   <div class="panel-body">
-                    <form id="form-addBrand" method="post" enctype="multipart/form-data" action="?action=addBrandsAction">
+                    <form id="form-addBrand" method="post" enctype="multipart/form-data" action="">
+                      <div class="alert alert-danger hidden" id="add-alert"></div>
                       <div class="row">
                         <div class="col-md-6">
                           <center><img src="../../upload/brands/logo.png" width="250" id="review-img"></center>
@@ -94,7 +95,7 @@
                           </div>
 
                           <div class="clearfix"></div>
-                          <button class="btn btn-success" type="submit">Thêm nhãn hiệu</button>
+                          <button class="btn btn-success" id="add-brands" type="submit">Thêm nhãn hiệu</button>
                         </div>
                       </div>                                          
                     </form>

@@ -10,17 +10,13 @@
 
 	  // thêm nhãn hiệu
 	  function addBrandsAction() {
+      usleep(500000);
 	  	$name = $_POST['brandname'];
       $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
       $expensions= array("jpeg","jpg","png");
 
       if(in_array($file_ext,$expensions) === false || $_FILES['brandlogo']['error'] > 0){
-        $mess = 'Hình ảnh chỉ hỗ trợ jpg, jpeg, png và kích thước < 5mb';
-        $action = "listBrands";
-        $lv = 'danger';
-        BasicLibs::setAlert($mess, $lv);
-        BasicLibs::redirect($action);
-        die();
+        die('file_error');
       }
 
 	  	$logo = time().'-'.$_FILES['brandlogo']['name'];
@@ -29,23 +25,13 @@
 	  	$checkName = $brands -> checkBrandName($name);
 
 	  	if(!empty($checkName['brand_id'])) {
-	  	  $mess = 'Đã có nhãn hiệu này';
-    	  $action = "listBrands";
-    	  $lv = 'danger';
-    	  BasicLibs::setAlert($mess, $lv);
-    	  BasicLibs::redirect($action);
-    	  die();
+    	  die('unique');
 	  	}
 
 	  	try {
 	  	  $brands -> addBrands($name, $logo, $public);
 	  	} catch(PDOException $e) {
-          $mess = 'Thêm nhãn hiệu thất bại';
-	  	  $action = 'listBrands';
-	  	  $lv = 'danger';
-	  	  BasicLibs::setAlert($mess, $lv);
-	  	  BasicLibs::redirect($action);
-	  	  die();
+	  	  die('fail');
       	}
 
 	  	  $source = $_FILES['brandlogo']['tmp_name'];
@@ -53,11 +39,7 @@
 	  	  $target = $path.$logo;
 	  	  move_uploaded_file($source, $target);
 
-	  	  $mess = 'Thêm nhãn hiệu thành công';
-	  	  $action = 'listBrands';
-	  	  $lv = 'success';
-	  	  BasicLibs::setAlert($mess, $lv);
-	  	  BasicLibs::redirect($action);
+	  	  die('success');
 	  }
 
 	  // xóa nhãn hiệu

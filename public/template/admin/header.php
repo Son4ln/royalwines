@@ -60,8 +60,8 @@
                 <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
                 </li>
                 <li class="bg-master-lighter">
-                  <a href="#" class="clearfix">
-                    <span class="pull-left">Logout</span>
+                  <a href="?action=logout" class="clearfix">
+                    <span class="pull-left">Đăng xuất</span>
                     <span class="pull-right"><i class="pg-power"></i></span>
                   </a>
                 </li>

@@ -13,6 +13,7 @@
 						  password		varchar(255)				Not null,
 						  avatar			text					Not null,
 						  permission		tinyint(1)				Not null,
+						  is_active		tinyint(1)				Not null,
 						  Primary key (user_id)
 						 );
 						";

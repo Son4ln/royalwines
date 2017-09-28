@@ -11,9 +11,11 @@
   //thêm các modul
   include '../model/contactInfoModel.php';
   include '../model/brandsModel.php';
+  include '../model/usersModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
   include 'app/brandsController.php';
+  include 'app/usersController.php';
  
 ?>

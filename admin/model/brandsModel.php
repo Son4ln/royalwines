@@ -50,7 +50,7 @@
 
     //lấy danh sách brands theo trạng thái
     function getBrandsByPublic($public) {
-      $query = "select * from brands where brand_public = '$public'";
+      $query = "SELECT * from brands where brand_public = '$public'";
       $result = parent::getList($query);
       return $result;
     }
