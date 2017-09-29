@@ -6,7 +6,6 @@ $(document).ready(function() {
   ereviewImg();
   cancelImg();
 
-
   $('#review-img').click(() => {
     $('#brand-logo').click();
   });
@@ -67,6 +66,62 @@ function dataTable(whatTable) {
   initTableWithSearch();
 }
 
+//hàm thêm nhãn hiệu mới.
+function addBrand() {
+  let addBtn = $('#add-brands');
+  addBtn.attr('disabled','disabled');
+  addBtn.html('Loading...');
+  let brandlogo = $('#brand-logo').prop('files')[0];
+  let brandName = $('[name="brandname"]').val();
+  let status = $('[name="status"]').val();
+  let form_data = new FormData();
+  form_data.append('brandname', brandName);
+  form_data.append('brandlogo', brandlogo);
+  form_data.append('status', status);
+
+  $.ajax({
+    url: '?action=addBrandsAction',
+    type: 'post',
+    dataType: 'text',
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    success: function(result) {
+      if (result === 'file_error') {
+        $('#add-alert').removeClass('hidden');
+        $('#add-alert').html('Ảnh chỉ hỗ trợ định dạng jpg, jpeg, png và kích thước < 5mb');
+      } else if (result === 'unique') {
+        $('#add-alert').removeClass('hidden');
+        $('#add-alert').html('Nhãn hiệu đã tồn tại');
+      } else if (result === 'fail') {
+        $('#add-alert').removeClass('hidden');
+        $('#add-alert').html('Lỗi kết nối cơ sở dữ liệu');
+      } else {
+        let mess = `Đã thêm nhãn hiệu ${brandName} thành công`;
+        let lv = 'success';
+        notification(mess, lv);
+        if (status === '1') {
+          $('#tab-unpublic').click();
+        } else if (status === '2') {
+          $('#tab-public').click();
+        }
+
+        $('#add-alert').addClass('hidden');
+      }
+
+      addBtn.removeAttr('disabled');
+      addBtn.html('Thêm nhãn hiệu');
+    },
+    error: function() {
+      let mess = 'Lỗi kết nôi';
+      let lv = 'warning';
+      notification(mess, lv);
+    }
+  });
+  return false;
+}
+
 //hàm lấy danh sách các nhãn hiệu đang chờ phê duyệt
 function showWait () {
   let table = 'table-wait';
@@ -84,7 +139,6 @@ function showWait () {
         <table class="table table-hover demo-table-search" id="${table}">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Tên nhãn hiệu</th>
               <th>Logo</th>
               <th>Public/ Unpublic</th>
@@ -103,9 +157,6 @@ function showWait () {
         let item = JSON.parse(key);
         let content = `
           <tr>
-            <td class="v-align-middle semi-bold">
-              <p>${item.id}</p>
-            </td>
             <td class="v-align-middle">
               <p>${item.name}</p>
             </td>
@@ -113,14 +164,16 @@ function showWait () {
               <img src="../../upload/brands/${item.logo}" width="50px"/>
             </td>
             <td class="v-align-middle">
-              <a class="change-status" data-id="${item.id}" data-status="3">Thay đổi</a>
+              <a class="change-status btn btn-success" data-id="${item.id}" data-status="3">Chấp nhận</a>
             </td>
             <td class="v-align-middle">
-              <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
+              <button data-toggle="modal" data-target="#modalSlideUp" class="edit-brand btn btn-primary"
               data-id="${item.id}" data-img="${item.logo}" data-name="${item.name}">
-                <i class="fa fa-pencil-square-o"></i> Sửa 
-              </a>
-              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand"><i class="fa fa-trash"></i> Xóa</a>
+                <i class="fa fa-pencil-square-o"></i>
+              </button>
+              <button data-id="${item.id}" data-img="${item.logo}" class="del-brand btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
             </td>
           </tr>
         `;
@@ -163,7 +216,6 @@ function showPublic () {
         <table class="table table-hover demo-table-search" id="${table}">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Tên nhãn hiệu</th>
               <th>Logo</th>
               <th>Public/ Unpublic</th>
@@ -182,9 +234,6 @@ function showPublic () {
         let item = JSON.parse(key);
         let content = `
           <tr>
-            <td class="v-align-middle semi-bold">
-              <p>${item.id}</p>
-            </td>
             <td class="v-align-middle">
               <p>${item.name}</p>
             </td>
@@ -192,14 +241,16 @@ function showPublic () {
               <img src="../../upload/brands/${item.logo}" width="50px"/>
             </td>
             <td class="v-align-middle">
-              <a class="change-status" data-id="${item.id}" data-status="2">Thay đổi</a>
+              <a class="change-status btn btn-success" data-id="${item.id}" data-status="2">Unpublic</a>
             </td>
             <td class="v-align-middle">
-              <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
+              <button data-toggle="modal" data-target="#modalSlideUp" class="edit-brand btn btn-primary"
               data-id="${item.id}" data-img="${item.logo}" data-name="${item.name}">
-                <i class="fa fa-pencil-square-o"></i> Sửa 
-              </a>
-              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand"><i class="fa fa-trash"></i> Xóa</a>
+                <i class="fa fa-pencil-square-o"></i> 
+              </button>
+              <button data-id="${item.id}" data-img="${item.logo}" class="del-brand btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
             </td>
           </tr>
         `;
@@ -242,7 +293,6 @@ function showUnpublic () {
         <table class="table table-hover demo-table-search" id="${table}">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Tên nhãn hiệu</th>
               <th>Logo</th>
               <th>Public/ Unpublic</th>
@@ -262,9 +312,6 @@ function showUnpublic () {
         let item = JSON.parse(key);
         let content = `
           <tr>
-            <td class="v-align-middle semi-bold">
-              <p>${item.id}</p>
-            </td>
             <td class="v-align-middle">
               <p>${item.name}</p>
             </td>
@@ -272,14 +319,16 @@ function showUnpublic () {
               <img src="../../upload/brands/${item.logo}" width="50px"/>
             </td>
             <td class="v-align-middle">
-              <a class="change-status" data-id="${item.id}" data-status="1">Thay đổi</a>
+              <a class="change-status btn btn-success" data-id="${item.id}" data-status="1">Public</a>
             </td>
             <td class="v-align-middle">
-              <a data-toggle="modal" data-target="#modalSlideUp" class="edit-brand"
+              <button data-toggle="modal" data-target="#modalSlideUp" class="edit-brand btn btn-primary"
               data-id="${item.id}" data-img="${item.logo}" data-name="${item.name}">
-                <i class="fa fa-pencil-square-o"></i> Sửa 
+                <i class="fa fa-pencil-square-o"></i> 
+              </button>
+              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand btn btn-danger">
+                <i class="fa fa-trash"></i>
               </a>
-              <a data-id="${item.id}" data-img="${item.logo}" class="del-brand"><i class="fa fa-trash"></i> Xóa</a>
             </td>
           </tr>
         `;
@@ -312,7 +361,6 @@ function changeStatus () {
     item.addEventListener('click', (e) => {
       let ancestor = e.target.parentElement.parentElement;
       let status = e.target.getAttribute('data-status');
-      console.log(status);
       let publicStt = 2;
       if (status === '2') {
         publicStt = 1;
@@ -346,69 +394,69 @@ function changeStatus () {
           notification(mess, lv)
         }
       });
-    });
+    }, false);
   }
 }
 
 function delBrand() {
-  let del = document.querySelectorAll('.del-brand');
-  for (let delItem of del) {
-    delItem.addEventListener('click', (e) => {
-
-      $.confirm({
-        title: 'XÓA NHÃN HIỆU',
-        content: 'Bạn có chắc muốn xóa nhãn hiệu này',
-        type: 'orange',
-        typeAnimated: true,
-        buttons: {
-          confirm: {
-            text: 'Xóa',
-            btnClass: 'btn-orange',
-            action: function(){
-              let brand = e.target;
-              if (e.target.getAttribute('class') != 'del-brand') {
-                brand = e.target.parentElement;
-              }
-
-              let id = brand.getAttribute('data-id');
-              let img = brand.getAttribute('data-img');
-
-              let ancestor =  brand.parentElement.parentElement;
-
-              $.ajax({
-                url: '?action=deleteBrands',
-                type: 'post',
-                dataType: 'text',
-                data: {
-                  id: id,
-                  img: img
-                },
-                success: function(result) {
-                  let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
-                    hoặc ngừng hiển thị`;
-                  let lv = 'warning';
-                  if (result != 'fail') {
-                    ancestor.classList.add('hidden');
-                    mess = 'Đã xóa nhãn hiệu';
-                    lv = 'success';
-                  }
-                  notification(mess, lv);
-                },
-                error: function() {
-                  let mess = 'Không thể kết nối đến server';
-                  let lv = 'danger';
-                  notification(mess, lv);
-                }
-              });
+  let del = $('.del-brand');
+  del.unbind().on('click', (e) => {
+    $.confirm({
+      title: 'XÓA NHÃN HIỆU',
+      content: 'Bạn có chắc muốn xóa nhãn hiệu này',
+      type: 'orange',
+      typeAnimated: true,
+      buttons: {
+        confirm: {
+          text: 'Xóa',
+          btnClass: 'btn-orange',
+          action: function(){
+            let brand = e.target;
+            if (e.target.getAttribute('data-id') === null) {
+              brand = e.target.parentElement;
             }
-          },
-          close: {
-            text: 'Đóng'
+
+            let id = brand.getAttribute('data-id');
+            let img = brand.getAttribute('data-img');
+
+            let ancestor =  brand.parentElement.parentElement;
+
+            $.ajax({
+              url: '?action=deleteBrands',
+              type: 'post',
+              dataType: 'text',
+              data: {
+                id: id,
+                img: img
+              },
+              success: function(result) {
+                let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
+                  hoặc ngừng hiển thị`;
+                let lv = 'warning';
+                if (result != 'fail') {
+                  ancestor.classList.add('hidden');
+                  mess = 'Đã xóa nhãn hiệu';
+                  lv = 'success';
+                }
+                notification(mess, lv);
+                showPublic();
+                showUnpublic();
+                showWait();
+              },
+              error: function() {
+                let mess = 'Không thể kết nối đến server';
+                let lv = 'danger';
+                notification(mess, lv);
+              }
+            });
           }
+        },
+        close: {
+          text: 'Đóng'
         }
-      });
+      }
     });
-  }
+  });
 }
 
 function showBrand() {
@@ -530,6 +578,9 @@ function validateAddForm() {
     messages: {
       brandlogo: 'Vui lòng chọn logo',
       brandname: 'Vui lòng nhập tên nhãn hiệu'
+    },
+    submitHandler: function(form) {
+      addBrand();
     }
   });
 }

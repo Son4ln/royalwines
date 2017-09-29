@@ -10,14 +10,17 @@
   //gọi function bằng cú pháp <Tên Trait>::<Tên function> thay thế cho phương thức extends
 
   // lấy action
-  if(isset($_GET["action"])){
-    $action=$_GET["action"]; }
-  elseif (isset($_POST['action']))
-  {
-    $action=$_POST["action"];
-  }
-  else{
-    $action="home";
+  $action = 'login';
+  if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+    if(isset($_GET["action"])){
+      $action=$_GET["action"]; }
+    elseif (isset($_POST['action']))
+    {
+      $action=$_POST["action"];
+    }
+    else{
+      $action="home";
+    }
   }
   
   //khởi tạo action
@@ -60,6 +63,37 @@
     case 'changeStatus':
       $brands = new BrandsController();
       $brands -> changeStatus();
+      break;
+
+    case 'listUsers':
+      $users = new UsersController();
+      $users -> listUsers();
+      break;
+
+    case 'usersActive':
+      $users = new UsersController();
+      $users -> usersByActive();
+      break;
+
+    case 'usersSetActive':
+      $users = new UsersController();
+      $users -> userSetActive();
+      break;
+
+    case 'permisUser':
+      $users = new UsersController();
+      $users -> userPermission();
+      break;
+
+    case 'login':
+      $users = new UsersController();
+      $users -> login();
+      break;
+
+    case 'logout':
+      session_destroy();
+      $action = 'login';
+      BasicLibs::redirect($action);
       break;
 
     default:
