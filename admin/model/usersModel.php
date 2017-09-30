@@ -6,13 +6,13 @@
       return $result;
     }
 
-    function setActive($id, $active) {
-      $query = "UPDATE users SET is_active = '$active' WHERE user_id = '$id'";
+    function setActive($uid, $active) {
+      $query = "UPDATE users SET is_active = '$active' WHERE uid = '$uid'";
       parent::exec($query);
     }
 
-    function setPermis($id, $permis) {
-      $query = "UPDATE users SET permission = '$permis' WHERE user_id = '$id'";
+    function setPermis($uid, $permis) {
+      $query = "UPDATE users SET permission = '$permis' WHERE uid = '$uid'";
       parent::exec($query);
     }
 

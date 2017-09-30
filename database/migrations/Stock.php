@@ -6,6 +6,7 @@
 		  	parent::setConnect();
 			$createStock = "Create table stock (
 							stock_id		int(11)		Auto_increment	Not null,
+							uid 				text 					Not Null,
 							input_date		date					Not null,
 							quantity_input	tinyint(4)				Not null,
 							price_input		int(11)					Not null,

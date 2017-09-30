@@ -122,14 +122,14 @@ function setActive(target) {
         text: 'Ok',
         btnClass: 'btn-orange',
         action: function(){
-          let user_id = target.attr('data-id');
+          let user_uid = target.attr('data-id');
           let user_active = parseInt(target.attr('data-active'));
           $.ajax({
             url: '?action=usersSetActive',
             type: 'post',
             dataType: 'text',
             data: {
-              user_id: user_id,
+              user_uid: user_uid,
               active: user_active
             },
             success: function(result) {
@@ -176,14 +176,14 @@ function permis(target) {
           $('#active-users-loading').removeClass('hidden');
           // lấy toàn bộ dự liêu form = serializeArray();
           let data = target.serializeArray();
-          let user_id = data[0].value;
+          let user_uid = data[0].value;
           let user_permis = data[1].value;
           $.ajax({
             url: '?action=permisUser',
             type: 'post',
             dataType: 'text',
             data: {
-              user_id: user_id,
+              user_uid: user_uid,
               permis: user_permis,
             },
             success: function(result) {

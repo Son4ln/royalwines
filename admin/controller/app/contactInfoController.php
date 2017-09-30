@@ -6,6 +6,7 @@
     {	
     	function showContactInfo()
     	{
+        Permission::isSuperUser();
         $contactInfo = new ContactInfo();
         $resultContactInfo = $contactInfo -> getContactInfo();
     		include '../view/contact/contactInfo.php';
@@ -13,6 +14,7 @@
 
     	function updateContactInfo()
     	{
+        Permission::isSuperUser();
         sleep(1);
     		$path = $GLOBALS['UPLOADIMG'];
     		$address = $_POST['address'];

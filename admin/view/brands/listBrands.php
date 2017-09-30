@@ -56,10 +56,15 @@
               <li>
                 <a data-toggle="tab" data-public="1" data-table="table-unpublic" data-brand="show-brand-unpublic" data-show="brands-unpublic" class="public" id="tab-unpublic" href="#unpublic"><span>Unpublic</span></a>
               </li>
-
-              <li>
-                <a data-toggle="tab" data-public="1" data-table="table-unpublic" data-brand="show-brand-unpublic" data-show="brands-unpublic" class="public" id="tab-wait" href="#wait"><span>Chờ phê duyệt</span></a>
-              </li>
+              <?php 
+                if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+              ?>
+                <li>
+                  <a data-toggle="tab" data-public="1" data-table="table-unpublic" data-brand="show-brand-unpublic" data-show="brands-unpublic" class="public" id="tab-wait" href="#wait"><span>Chờ phê duyệt</span></a>
+                </li>
+              <?php
+                }
+              ?>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -108,7 +113,7 @@
                 <div class="panel panel-transparent">
                   <div class="panel-heading">
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm đang hiển thị
-                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden" id="public-loading" style="font-size: 16px;"></i>
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
                     <div class="pull-right">
                       <div class="col-xs-12">
@@ -128,7 +133,7 @@
                 <div class="panel panel-transparent">
                   <div class="panel-heading">
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm chưa hiển thị 
-                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden" id="unpublic-loading" style="font-size: 16px;"></i>
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
                     <div class="pull-right">
                       <div class="col-xs-12">
@@ -144,11 +149,14 @@
                 </div>
               </div>
 
+              <?php 
+                if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+              ?>
               <div class="tab-pane slide-left" id="wait">
                 <div class="panel panel-transparent">
                   <div class="panel-heading">
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm đang chờ phê duyệt
-                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden" id="wait-loading" style="font-size: 16px;"></i>
+                      <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
                     <div class="pull-right">
                       <div class="col-xs-12">
@@ -163,6 +171,7 @@
                   </div>
                 </div>
               </div>
+              <?php } ?>
             </div>
           </div>
         </div>
@@ -184,7 +193,7 @@
           <h5>Sửa <span class="semi-bold">nhãn hiệu</span></h5>
         </div>
         <div class="modal-body">
-          <form id="form-editBrand" method="post" enctype="multipart/form-data">
+          <form id="form-editBrand" method="" enctype="multipart/form-data">
             <div class="alert alert-danger hidden" id="alert-add"></div>
             <input type="text" name="brand-id" id="ebrand-id" class="hidden">
             <input type="text" name="old-img" id="eold-img" class="hidden">

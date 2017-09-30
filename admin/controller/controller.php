@@ -45,6 +45,11 @@
       $brands -> showBrands();
       break;
 
+    case 'getPublic':
+      $brands = new BrandsController();
+      $brands -> getPublic();
+      break;
+
     case 'addBrandsAction':
       $brands = new BrandsController();
       $brands -> addBrandsAction();
