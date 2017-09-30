@@ -1,10 +1,12 @@
 <?php
   class UsersController {
     function listUsers() {
+      Permission::isManager();
       include '../view/users/list_users.php';
     }
 
     function usersByActive() {
+      Permission::isManager();
       $active = $_GET['active'];
       $tableName = 'users-active';
       if ($active == 1) {
@@ -12,23 +14,30 @@
       }
       $users = new UsersModel();
       $data = $users -> getUsersByActive($active);
+
+      //kiểm tra user;
+      $user_uid = $_SESSION["royalwines_user_uid_ok"];
+      $permis = $_SESSION["royalwines_permission_ok"];
+
       include '../view/users/users_active.php';
       usleep(500000);
     }
 
     function userSetActive() {
-      $id = $_POST['user_id'];
+      Permission::isManager();
+      $uid = $_POST['user_uid'];
       $active = $_POST['active'];
       $users = new UsersModel();
-      $users -> setActive($id, $active);
+      $users -> setActive($uid, $active);
       exit('success');
     }
 
     function userPermission() {
-      $id = $_POST['user_id'];
+      Permission::isManager();
+      $uid = $_POST['user_uid'];
       $permis = $_POST['permis'];
       $users = new UsersModel();
-      $users -> setPermis($id, $permis);
+      $users -> setPermis($uid, $permis);
       usleep(500000);
       exit('success');
     }
@@ -60,6 +69,7 @@
               exit('valid_permission');
             } else {
               $_SESSION["royalwines_permission_ok"] = $result['permission'];
+              $_SESSION["royalwines_user_uid_ok"] = $result['uid'];
             }
           } else {
             session_destroy();

@@ -56,13 +56,20 @@
             <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
           </li>
 
+          <?php 
+            if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+              if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+          ?>
           <li class="">
             <a href="?action=listUsers" class="detailed">
               <span class="title">Users</span>
-              <span class="details">22 items</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
           </li>
+          <?php 
+              }
+            }
+          ?>
 
           <li class="">
             <a href="?action=listBrands" class="detailed">
@@ -78,10 +85,18 @@
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
 
+          <?php 
+            if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+              if ($_SESSION["royalwines_permission_ok"] == 1) {
+          ?>
           <li class="">
             <a href="?action=contactInfo"><span class="title">Thông tin</span></a>
             <span class="icon-thumbnail"><i class="fa fa-info"></i></span>
           </li>
+          <?php 
+              }
+            }
+          ?>
         
         </ul>
         <div class="clearfix"></div>

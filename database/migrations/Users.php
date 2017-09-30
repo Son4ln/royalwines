@@ -6,6 +6,7 @@
 		  	parent::setConnect();
 			$createUsers = "Create table users (
 	 					  user_id		int(11)		Auto_increment	Not null,
+	 					  uid 				text 					Not Null,
 						  full_name		varchar(255)				Not null,
 						  email			varchar(128)				Not null,
 						  address		text					Null,

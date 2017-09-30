@@ -6,8 +6,10 @@
 		  	
 			$createCategories = "Create table categories (
 								 category_id		int(11)		Auto_increment	Not null,
+								 uid 				text 					Not Null,
 								 category_name	varchar(255)				Not null,
 								 category_public	tinyint(1)				Not null,
+								 user_id		int(11)					Not null,
 								 Primary key (category_id)
 								 );
 								";

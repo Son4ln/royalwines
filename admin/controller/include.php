@@ -8,6 +8,9 @@
   //nhúng thư viện
   include $ROOT.'system/libs/basic_libs.php';
 
+   // thêm class phân quyền
+  include 'is_manager.php';
+
   //thêm các modul
   include '../model/contactInfoModel.php';
   include '../model/brandsModel.php';
@@ -17,5 +20,4 @@
   include 'app/contactInfoController.php';
   include 'app/brandsController.php';
   include 'app/usersController.php';
- 
 ?>

@@ -5,11 +5,15 @@
 	class BrandsController
 	{
 	  function showBrands() {
+	  	//thực hiện phân quyền
+	  	Permission::isSeller();
 	  	include '../view/brands/listBrands.php';
 	  }
 
 	  // thêm nhãn hiệu
 	  function addBrandsAction() {
+	  //thực hiện phân quyền
+	  Permission::isSeller();
       usleep(500000);
 	  $name = $_POST['brandname'];
       $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
@@ -23,13 +27,18 @@
 	  	$public = $_POST['status'];
 	  	$brands = new Brands();
 	  	$checkName = $brands -> checkBrandName($name);
+      //lấy id user
+      $checkUser = new UsersModel();
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $user = $checkUser -> checkUser($email, $pass);
 
 	  	if(!empty($checkName['brand_id'])) {
     	  die('unique');
 	  	}
 
 	  	try {
-	  	  $brands -> addBrands($name, $logo, $public);
+	  	  $brands -> addBrands($name, $logo, $public, $user['user_id']);
 	  	} catch(PDOException $e) {
 	  	  die('fail');
       	}
@@ -44,12 +53,15 @@
 
 	  // xóa nhãn hiệu
 	  function deleteBrands() {
+	  	//thực hiện phân quyền
+	  	Permission::isSeller();
+
 	  	$brands = new Brands();
-	  	$id = $_POST['id'];
+	  	$uid = $_POST['uid'];
 	  	$img = $_POST['img'];
 	  	$path = $GLOBALS['UPLOADBRANDSLOGO'];
 	  	try {
-	  		$brands -> deleteBrands($id);
+	  		$brands -> deleteBrands($uid);
 	  	} catch(PDOException $e) {
 	  		die('fail');
 	  	}
@@ -58,12 +70,14 @@
 
 	  // sữa nhãn hiệu
 	  function updateBrandsAction () {
+	  	//thực hiện phân quyền
+	  	Permission::isSeller();
 	  	$brands = new Brands();
-	  	$brandId = $_POST['ebrandId'];
+	  	$brandUId = $_POST['ebrandUId'];
 	  	$name = $_POST['ebrandname'];
 	  	$checkName = $brands -> checkBrandName($name);
 
-	  	if(!empty($checkName['brand_id']) && $checkName['brand_id'] != $brandId) {
+	  	if(!empty($checkName['uid']) && $checkName['uid'] != $brandUId) {
       	die('unique');
 	  	}
 
@@ -81,18 +95,18 @@
 	  	}
 	  	
 	 	try {
-	  	  $brands -> updateBrands($brandId, $name, $logo);
+	  	  $brands -> updateBrands($brandUId, $name, $logo);
 	  	} catch(PDOException $e) {
 	  	  die('fail');
       	}
 
-      	//upload ảnh mới và xóa ảnh cũ
-      	$source = $_FILES['ebrandlogo']['tmp_name'];
-	  	  $path = $GLOBALS['UPLOADBRANDSLOGO'];
-	  	  $target = $path.$logo;
-	  	  move_uploaded_file($source, $target);
-
       	if (!empty($_FILES['ebrandlogo']['name'])) {
+          //upload ảnh mới và xóa ảnh cũ
+          $source = $_FILES['ebrandlogo']['tmp_name'];
+          $path = $GLOBALS['UPLOADBRANDSLOGO'];
+          $target = $path.$logo;
+          move_uploaded_file($source, $target);
+
       		$currImg = $_POST['eoldImg'];
       	  BasicLibs::deleteFile($currImg,$path);
       	}
@@ -102,10 +116,43 @@
 
 	  // thay đổi trạng thái nhãn hiệu
 	  function changeStatus() {
-	  	$brandId = $_POST['id'];
+	  	//thực hiện phân quyền
+	  	Permission::isSeller();
+	  	$brandUid = $_POST['uid'];
 	  	$public = $_POST['public'];
 	  	$brands = new Brands();
-	  	$brands -> changeStatus($brandId, $public);
+	  	$brands -> changeStatus($brandUid, $public);
+	  }
+
+	  function getPublic() {
+	  	//thực hiện phân quyền
+	  	Permission::isSeller();
+	  	$public = $_GET['public'];
+
+	  	$table = 'table-unpublic';
+	  	if ($public == 2) {
+	  		$table = 'table-public';
+	  	} else if ($public == 3) {
+        $table = 'table-wait';
+      }
+
+    	$brands = new Brands();
+      if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+        $result = $brands -> getBrandsByPublic($public);
+      } else {
+        if ($public == 3) {
+          die('wrong_permission');
+        }
+
+        $checkUser = new UsersModel();
+        $email = $_SESSION["royalwines_user_login_ok"];
+        $pass = $_SESSION["royalwines_pass_login_ok"];
+        $user = $checkUser -> checkUser($email, $pass);
+        $result = $brands -> getBrandsByPublicAndUser($public, $user['user_id']);
+      }
+    	
+      usleep(500000);
+    	include '../view/brands/view_brand.php';
 	  }
 	}
 ?>

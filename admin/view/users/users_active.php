@@ -12,6 +12,13 @@
   <tbody id="show-users-active">
     <?php
       foreach ($data as $key) {
+        if ($key['uid'] == $user_uid) {
+          continue;
+        }
+
+        if ($key['permission'] == $permis) {
+          continue;
+        }
     ?>
     <tr>
       <td class="v-align-middle">
@@ -30,10 +37,10 @@
       <td class="v-align-middle">
         <?php 
           if($key['is_active'] == 2) {
-            echo '<button class="btn btn-warning lock-user" data-id="'.$key['user_id'].'" data-active="1" 
+            echo '<button class="btn btn-warning lock-user" data-id="'.$key['uid'].'" data-active="1" 
             id="lock-user"><i class="fa fa-lock"></i></button>';
           } else {
-            echo '<button class="btn btn-warning lock-user" data-id="'.$key['user_id'].'" data-active="2" 
+            echo '<button class="btn btn-warning lock-user" data-id="'.$key['uid'].'" data-active="2" 
             id="lock-user"><i class="fa fa-unlock-alt"></i></button>';
           }
         ?>
@@ -47,7 +54,7 @@
           } else {
         ?>
         <form class="permis-form">
-          <input type="hidden" name="user-id" value="<?php echo $key['user_id'] ?>">
+          <input type="hidden" name="user-id" value="<?php echo $key['uid'] ?>">
           <div class="form-group">
             <div class="input-group">
               <div class="form-group has-feedback has-clear">

@@ -18,7 +18,9 @@
   include 'migrations/WishList.php';
 
   //thêm dữ liệu mẫu
+  include 'seeds/UsersSeeder.php';
   include 'seeds/BrandsSeeder.php';
+  include 'seeds/CateSeeder.php';
   include 'seeds/ContactInfoSeeder.php';
 
   // thêm quan hệ

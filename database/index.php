@@ -6,7 +6,7 @@
     function createDataBase(){
       try {
 
-        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "123", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
         $deldb = "drop database IF EXISTS $this->database";
@@ -21,7 +21,7 @@
     }
 
     function setConnect () {
-      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "123" );
+      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "" );
       $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
       //Error Handling
     }
@@ -53,8 +53,10 @@
   $rela = new Relationship();
 
   //khai báo seeder
+  $usersSeeder = new UsersSeeder();
   $brandsSeeder = new BrandsSeeder();
   $contactInfoSeeder = new ContactInfoSeeder();
+  $catesSeeder = new CatesSeeder();
 
   //sử dụng phương thức của lớp con
   //sử dụng migrate
@@ -76,8 +78,10 @@
   $rela -> createRelationship();
 
   //sử dụng seeder
+  $usersSeeder -> createUsersSeeder();
   $brandsSeeder -> createBrandsSeeder();
   $contactInfoSeeder -> createContactInfoSeeder();
+  $catesSeeder -> createCatesSeeder();
 
   echo "Created Database";
 ?>
