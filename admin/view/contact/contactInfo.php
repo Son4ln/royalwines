@@ -109,5 +109,4 @@
 <!-- START SCRIPT BLOCK -->
 <script src="../../public/assets/js/contact.js" type="text/javascript"></script>
 <!-- END SCRIPT BLOCK -->
-<?php include $GLOBALS['ROOT'].'public/template/admin/searchbox.php'; ?>
 <?php include $GLOBALS['ROOT'].'public/template/admin/endpage.php'; ?>
