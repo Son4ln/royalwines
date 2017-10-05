@@ -79,9 +79,12 @@ function checkUserActive() {
           if (results === 'deactive_user') {
             $.confirm({
               title: 'THÔNG BÁO',
-              content: 'Tài khoản của bạn đã bị khóa, vui lòng liên hệ quản trị viên để biết thêm chi tiết',
+              content: `Tài khoản của bạn đã bị khóa,
+              vui lòng liên hệ quản trị viên để biết thêm chi tiết.
+              Bạn sẽ đăng xuất trong vòng 10 giây`,
               type: 'red',
               typeAnimated: true,
+              autoClose: 'ok|10000',
               buttons: {
                 ok: {
                   text: 'OK',
@@ -115,6 +118,7 @@ function checkPermission() {
               title: 'THÔNG BÁO',
               content: 'Quyền hạn của bạn đã bị thay đổi. Bấm "OK" để thay đổi',
               type: 'orange',
+              autoClose: 'ok|10000',
               typeAnimated: true,
               buttons: {
                 ok: {
