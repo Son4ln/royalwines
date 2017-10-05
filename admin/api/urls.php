@@ -14,14 +14,14 @@
   if ($verb == 'GET') {
     //tạo link api với phương thức get
     switch ($url) {
-      case 'getBrandByPublic':
-        $brand = new BrandApi();
-        $brand -> get();
+      case 'activeUser':
+        $user = new CheckUserActive();
+        $user -> get();
         break;
 
-      case 'brandByName':
-        $brand = new BrandByName();
-        $brand -> get();
+      case 'checkPermission':
+        $permis = new checkPermission();
+        $permis -> put();
         break;
 
       default:
@@ -44,8 +44,8 @@
   } elseif ($verb == 'PUT') {
       //tạo link api với phương thức Put
       switch ($url) {
-        case 'brand':
-           echo "put";
+        case '':
+           
         break;
 
         default:
