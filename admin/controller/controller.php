@@ -101,6 +101,21 @@
       BasicLibs::redirect($action);
       break;
 
+    case 'listMessManage':
+      $manage = new ManageUsersController();
+      $manage -> getMess();
+      break;
+
+    case 'seenMessManage':
+      $manage = new ManageUsersController();
+      $manage -> seenMess();
+      break;
+
+    case 'viewAll':
+      $manage = new ManageUsersController();
+      $manage -> viewAllMess();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';

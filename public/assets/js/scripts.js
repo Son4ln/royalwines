@@ -5,6 +5,9 @@
     $(document).ready(function() {
         checkUserActive();
         checkPermission();
+        getManageMess();
+
+        setInterval(getManageMess ,5000);
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with 
         // your logic to perform a search and display results
@@ -140,4 +143,43 @@ function checkPermission() {
       }
     });
   }, 3000);
+}
+
+function getManageMess() {
+  $.ajax({
+    url: '?action=listMessManage',
+    success: function(data) {
+      $('#show-mess-manage').html(data);
+      // đếm số lượng tin nhắn thông qua thẻ li.
+      let listMess = $('.alert-list');
+      // nếu chiều dài của mảng các phần tử li lớn hơn 0 tức là có tin nhắn. đặt css
+      if (listMess.length > 0) {
+        $('.seen-bell').css('color', 'red');
+      } else {
+        $('.seen-bell').css('color', 'black');
+      }
+
+      //sự kiện click sẽ thay đổi trạng thái sang seen
+      $('.seen-mess').unbind().click(function (e) {
+        let target = $(e.target);
+        if (target.is('.seen')) {
+          let id = target.attr('data-id');
+
+          $.ajax({
+            url: '?action=seenMessManage',
+            type: 'get',
+            dataType: 'text',
+            data: {
+              id: id
+            },
+            success: function(results) {
+              if (results === 'success') {
+                target.parents('li').fadeOut();
+              }
+            }
+          });
+        }
+      });
+    }
+  });
 }
