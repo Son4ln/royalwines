@@ -6,6 +6,8 @@
 			$createManageUsers = "Create table manage_user (
 								  notify_id		int(11)		Auto_increment	Not null,
 								  content		text					Not null,
+								  date_input	datetime					Not null,
+								  status       	tinyint(1)				Not null,
 								  user_id		int(11)					Not null,
 								  Primary key (notify_id)
 								  );"

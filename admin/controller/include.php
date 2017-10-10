@@ -15,9 +15,11 @@
   include '../model/contactInfoModel.php';
   include '../model/brandsModel.php';
   include '../model/usersModel.php';
+  include '../model/manageUsersModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
   include 'app/brandsController.php';
   include 'app/usersController.php';
+  include 'app/manageUsersController.php';
 ?>

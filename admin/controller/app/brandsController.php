@@ -48,6 +48,8 @@
 	  	  $target = $path.$logo;
 	  	  move_uploaded_file($source, $target);
 
+	  	  $content = 'Thêm nhãn hiệu "'.$name.'"';
+	  	  BasicLibs::addMess($content);
 	  	  die('success');
 	  }
 
@@ -60,11 +62,13 @@
 	  	$uid = $_POST['uid'];
 	  	$img = $_POST['img'];
 	  	$path = $GLOBALS['UPLOADBRANDSLOGO'];
+
 	  	try {
 	  		$brands -> deleteBrands($uid);
 	  	} catch(PDOException $e) {
 	  		die('fail');
 	  	}
+
 	  	BasicLibs::deleteFile($img,$path);
 	  }
 
@@ -111,6 +115,8 @@
       	  BasicLibs::deleteFile($currImg,$path);
       	}
 
+      	$content = 'Chỉnh sửa nhãn hiệu "'.$name.'"';
+	  	BasicLibs::addMess($content);
       	die('success');
 	  }
 
