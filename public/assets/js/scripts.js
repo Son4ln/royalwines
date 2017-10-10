@@ -103,9 +103,7 @@ function checkUserActive() {
           }
         }
       },
-      error: function() {
-
-      }
+      error: function() {}
     });
   }, 3000);
 }
@@ -138,9 +136,7 @@ function checkPermission() {
           }
         }
       },
-      error: function() {
-
-      }
+      error: function() {}
     });
   }, 3000);
 }

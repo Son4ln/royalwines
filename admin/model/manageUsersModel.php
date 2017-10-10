@@ -1,9 +1,5 @@
 <?php 
   class ManageUsersModel extends DataBase {
-    function addManage() {
-
-    }
-
     function getManageByStatus() {
       $query = 'SELECT * FROM manage_user WHERE status = 1 ORDER BY notify_id DESC';
       $result = parent::getList($query);

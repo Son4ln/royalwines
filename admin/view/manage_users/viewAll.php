@@ -29,11 +29,13 @@
           <div class="panel-title">Xem những gì người dùng đã thao tác
             <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
           </div>
+
           <div class="pull-right">
             <div class="col-xs-12">
               <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
             </div>
           </div>
+          
           <div class="clearfix"></div>
         </div>
 
