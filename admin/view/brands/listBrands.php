@@ -115,6 +115,7 @@
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm đang hiển thị
                       <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
+
                     <div class="pull-right">
                       <div class="col-xs-12">
                         <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
@@ -135,11 +136,13 @@
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm chưa hiển thị 
                       <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
+
                     <div class="pull-right">
                       <div class="col-xs-12">
                         <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
                       </div>
                     </div>
+
                     <div class="clearfix"></div>
                   </div>
 
@@ -158,11 +161,13 @@
                     <div class="panel-title">Thao tác với nhãn hiệu sản phẩm đang chờ phê duyệt
                       <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
                     </div>
+
                     <div class="pull-right">
                       <div class="col-xs-12">
                         <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
                       </div>
                     </div>
+
                     <div class="clearfix"></div>
                   </div>
 
@@ -192,6 +197,7 @@
           </button>
           <h5>Sửa <span class="semi-bold">nhãn hiệu</span></h5>
         </div>
+        
         <div class="modal-body">
           <form id="form-editBrand" method="" enctype="multipart/form-data">
             <div class="alert alert-danger hidden" id="alert-add"></div>
