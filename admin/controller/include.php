@@ -16,10 +16,12 @@
   include '../model/brandsModel.php';
   include '../model/usersModel.php';
   include '../model/manageUsersModel.php';
+  include '../model/contactModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
   include 'app/brandsController.php';
   include 'app/usersController.php';
   include 'app/manageUsersController.php';
+  include 'app/contactController.php';
 ?>

@@ -79,8 +79,8 @@
           </li>
 
           <li class="">
-            <a href="email.html" class="detailed">
-              <span class="title">Email</span>
+            <a href="?action=viewAllContact" class="detailed">
+              <span class="title">Liên hệ</span>
             </a>
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
