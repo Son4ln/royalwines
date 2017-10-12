@@ -247,6 +247,7 @@ function delBrand() {
                 img: img
               },
               success: function(result) {
+                console.log(result);
                 let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
                   hoặc ngừng hiển thị`;
                 let lv = 'warning';

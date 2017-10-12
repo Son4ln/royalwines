@@ -25,7 +25,7 @@
             <!-- START ACTION BAR -->
             <div class="header-inner">
               <a href="#" class="btn-link visible-sm-inline-block visible-xs-inline-block" data-toggle="quickview" data-toggle-element="#quickview">
-                <span class="fa fa-bell seen-bell" style="font-size: 20px;"></span>
+                <span class="fa fa-tasks seen-bell" style="font-size: 20px;"></span>
               </a>
             </div>
             <!-- END ACTION BAR -->
@@ -41,7 +41,7 @@
         </div>
         <div class=" pull-right">
           <div class="header-inner">
-            <a href="#" class="btn-link fa fa-bell m-l-20 sm-no-margin hidden-sm hidden-xs seen-bell" data-toggle="quickview" data-toggle-element="#quickview" style="font-size: 20px;"></a>
+            <a href="#" class="btn-link fa fa-tasks m-l-20 sm-no-margin hidden-sm hidden-xs seen-bell" data-toggle="quickview" data-toggle-element="#quickview" style="font-size: 20px;"></a>
           </div>
         </div>
         <div class=" pull-right">

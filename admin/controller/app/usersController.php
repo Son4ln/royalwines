@@ -29,6 +29,17 @@
       $active = $_POST['active'];
       $users = new UsersModel();
       $users -> setActive($uid, $active);
+
+      //lấy thông tin của user
+      $status = 'Active';
+      if ($active == 1) {
+        $status = 'De-Active';
+      }
+
+      $user = $users -> getUserByUid($uid);
+      $userEmail = $user['email'];
+      $content = "Đã $status $userEmail";
+      BasicLibs::addMess($content);
       exit('success');
     }
 
@@ -36,8 +47,27 @@
       Permission::isManager();
       $uid = $_POST['user_uid'];
       $permis = $_POST['permis'];
+
+      if ($permis == 1) {
+        die('wrong_permission');
+      }
+
       $users = new UsersModel();
       $users -> setPermis($uid, $permis);
+
+      $status = 'Admin';
+      if ($permis == 3) {
+        $status = 'Seller';
+      } else if ($permis == 4) {
+        $status = 'Bloger';
+      } else if ($permis == 5) {
+        $status = 'Normal User';
+      }
+
+      $user = $users -> getUserByUid($uid);
+      $userEmail = $user['email'];
+      $content = "Đã phân quyền $userEmail thành $status";
+      BasicLibs::addMess($content);
       usleep(500000);
       exit('success');
     }

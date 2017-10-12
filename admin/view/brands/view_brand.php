@@ -34,9 +34,12 @@
           data-id="<?php echo $key['uid']; ?>" data-img="<?php echo $key['brand_logo']; ?>" data-name="<?php echo $key['brand_name']; ?>">
             <i class="fa fa-pencil-square-o"></i>
           </button>
+
+          <?php if ($_SESSION["royalwines_permission_ok"] == 1) { ?>
           <button data-id="<?php echo $key['uid']; ?>" data-img="<?php echo $key['brand_logo']; ?>" class="del-brand btn btn-danger">
             <i class="fa fa-trash"></i>
           </button>
+          <?php } ?>
         </td>
       </tr>
     <?php

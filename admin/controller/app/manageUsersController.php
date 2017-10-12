@@ -2,15 +2,8 @@
 	class ManageUsersController {
 		function getMess() {
 			$manage = new ManageUsersModel();
-			$result = $manage -> getManageByStatus();
+			$result = $manage -> getManageUser();
 			include '../view/manage_users/listMess.php';
-		}
-
-		function seenMess() {
-			$manage = new ManageUsersModel();
-			$id = $_GET['id'];
-			$manage -> seenStatus($id);
-			exit('success');
 		}
 
 		function viewAllMess() {
