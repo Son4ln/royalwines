@@ -189,9 +189,12 @@ function permis(target) {
             success: function(result) {
               let mess = 'Lỗi: Không thể thực hiện hành động này, vui lòng thử lại';
               let lv = 'warning';
-              if (result == 'success') {
+              if (result === 'success') {
                 mess = 'Phân quyền thành công';
                 lv = 'success';
+              } else if (result === 'wrong_permission') {
+                mess = 'Bạn không thể ủy quyền superuser';
+                lv = 'warning';
               }
 
               notification(mess, lv);

@@ -56,7 +56,7 @@
     // xóa nhãn hiệu
     function deleteBrands() {
       //thực hiện phân quyền
-      Permission::isSeller();
+      Permission::isSuperUser();
 
       $brands = new Brands();
       $uid = $_POST['uid'];
@@ -64,12 +64,17 @@
       $path = $GLOBALS['UPLOADBRANDSLOGO'];
 
       try {
+        $brand = $brands -> getBrandById($uid);
         $brands -> deleteBrands($uid);
       } catch(PDOException $e) {
         die('fail');
       }
 
       BasicLibs::deleteFile($img,$path);
+
+      $brandName = $brand['brand_name'];
+      $content = "Đã xóa nhãn hiệu $brandName";
+      BasicLibs::addMess($content);
     }
 
     // sữa nhãn hiệu
@@ -98,26 +103,27 @@
         $logo = time().'-'.$_FILES['ebrandlogo']['name'];
       }
       
-    try {
+      try {
         $brands -> updateBrands($brandUId, $name, $logo);
       } catch(PDOException $e) {
         die('fail');
-        }
+      }
 
-        if (!empty($_FILES['ebrandlogo']['name'])) {
-          //upload ảnh mới và xóa ảnh cũ
-          $source = $_FILES['ebrandlogo']['tmp_name'];
-          $path = $GLOBALS['UPLOADBRANDSLOGO'];
-          $target = $path.$logo;
-          move_uploaded_file($source, $target);
+      if (!empty($_FILES['ebrandlogo']['name'])) {
+        //upload ảnh mới và xóa ảnh cũ
+        $source = $_FILES['ebrandlogo']['tmp_name'];
+        $path = $GLOBALS['UPLOADBRANDSLOGO'];
+        $target = $path.$logo;
+        move_uploaded_file($source, $target);
 
-          $currImg = $_POST['eoldImg'];
-          BasicLibs::deleteFile($currImg,$path);
-        }
+        $currImg = $_POST['eoldImg'];
+        BasicLibs::deleteFile($currImg,$path);
+      }
 
-        $content = 'Chỉnh sửa nhãn hiệu "'.$name.'"';
+      //thêm tin nhắn quản lý
+      $content = 'Chỉnh sửa nhãn hiệu "'.$name.'"';
       BasicLibs::addMess($content);
-        die('success');
+      die('success');
     }
 
     // thay đổi trạng thái nhãn hiệu
@@ -128,6 +134,17 @@
       $public = $_POST['public'];
       $brands = new Brands();
       $brands -> changeStatus($brandUid, $public);
+      //lấy brand để sử dụng cho tin nhắn người dùng
+      $brand = $brands -> getBrandById($brandUid);
+      $brandName = $brand['brand_name'];
+
+      $status = 'public';
+      if ($public == 1) {
+        $status = 'unpublic';
+      }
+
+      $content = "Đã thay đổi trạng thái của nhãn hiệu $brandName thành $status";
+      BasicLibs::addMess($content);
     }
 
     function getPublic() {

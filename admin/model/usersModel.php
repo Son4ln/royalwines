@@ -27,6 +27,12 @@
       $result = parent::getInstance($query);
       return $result;
     }
+
+    function getUserByUid($uid) {
+      $query = "SELECT * FROM users WHERE uid = '$uid'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
   }
 
 ?>

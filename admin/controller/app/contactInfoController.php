@@ -54,6 +54,8 @@
             move_uploaded_file($source, $target);
     	  	}
 
+          $content = 'Đã thay đổi thông tin của cửa hàng';
+          BasicLibs::addMess($content);
           die('success');
     	}
     }  

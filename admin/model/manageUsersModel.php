@@ -1,7 +1,7 @@
 <?php 
   class ManageUsersModel extends DataBase {
-    function getManageByStatus() {
-      $query = 'SELECT * FROM manage_user WHERE status = 1 ORDER BY notify_id DESC';
+    function getManageUser() {
+      $query = 'SELECT * FROM manage_user ORDER BY notify_id DESC LIMIT 10';
       $result = parent::getList($query);
       return $result;
     }
@@ -24,7 +24,7 @@
       $getUser = $user -> checkUser($email, $pass);
       $userId = $getUser['user_id'];
       $date = date("Y-m-d H:i:s");
-      $query = "INSERT INTO manage_user VALUES('', '$content', '$date', 1, '$userId')";
+      $query = "INSERT INTO manage_user VALUES('', '$content', '$date', '$userId')";
       parent::exec($query);
     }
   }

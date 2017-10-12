@@ -106,11 +106,6 @@
       $manage -> getMess();
       break;
 
-    case 'seenMessManage':
-      $manage = new ManageUsersController();
-      $manage -> seenMess();
-      break;
-
     case 'viewAll':
       $manage = new ManageUsersController();
       $manage -> viewAllMess();

@@ -30,7 +30,7 @@
   	}
 
     function getBrandById ($uid) {
-      $query = "select * from brands where uid = $uid";
+      $query = "select * from brands where uid = '$uid'";
       $result = parent::getInstance($query);
       return $result;
     }
