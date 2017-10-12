@@ -111,6 +111,21 @@
       $manage -> viewAllMess();
       break;
 
+    case 'viewAllContact':
+      $contact = new ContactController();
+      $contact -> getAllContact();
+      break;
+
+    case 'viewContactDetail':
+      $contact = new ContactController();
+      $contact -> getContactById();
+      break;
+
+    case 'delContactForm':
+      $contact = new ContactController();
+      $contact -> delContact();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';
