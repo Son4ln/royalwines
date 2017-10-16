@@ -126,6 +126,26 @@
       $contact -> delContact();
       break;
 
+    case 'viewAllOrder':
+      $order = new OrderController();
+      $order -> getAllOrder();
+      break;
+
+    case 'viewOrderDetail':
+      $order = new OrderController();
+      $order -> getOrderById();
+      break;
+
+    case 'changeStatusOrder':
+      $order = new OrderController();
+      $order -> changeStatusOrder();
+      break;
+
+    case 'showAllOrder':
+      $order = new OrderController();
+      $order -> showAllOrder();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';

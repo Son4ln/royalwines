@@ -17,6 +17,7 @@
   include '../model/usersModel.php';
   include '../model/manageUsersModel.php';
   include '../model/contactModel.php';
+  include '../model/orders_model.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
@@ -24,4 +25,5 @@
   include 'app/usersController.php';
   include 'app/manageUsersController.php';
   include 'app/contactController.php';
+  include 'app/orders_controller.php';
 ?>

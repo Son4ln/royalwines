@@ -80,14 +80,14 @@
         	echo $e->getMessage();
       	  }
 
-      	  //tạo quan hệ giữa order và user
+      	  //tạo quan hệ giữa order và client
       	  try {
-			$userToOrder = "Alter table orders 
-							Add constraint	user_orders
-							Foreign key (user_id)
-							References users (user_id);
+			$clientToOrder = "Alter table orders 
+							Add constraint	client_orders
+							Foreign key (client_id)
+							References clients (client_id);
 							";
-			$this->db->exec($userToOrder);
+			$this->db->exec($clientToOrder);
 		  }
 		  catch(PDOException $e) {
         	echo $e->getMessage();
