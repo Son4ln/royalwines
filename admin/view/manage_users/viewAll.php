@@ -96,6 +96,7 @@
         "sDom": "<'table-responsive't><'row'<p i>>",
         "destroy": true,
         "scrollCollapse": true,
+        "bFilter": true,
         "oLanguage": {
             "sLengthMenu": "_MENU_ ",
             "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"

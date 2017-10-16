@@ -7,7 +7,7 @@
     }
 
     function getAllManagment() {
-      $query = 'SELECT * FROM manage_user';
+      $query = 'SELECT * FROM manage_user ORDER BY date_input DESC';
       $result = parent::getList($query);
       return $result;
     }
