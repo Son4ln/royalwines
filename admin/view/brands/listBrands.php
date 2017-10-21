@@ -90,7 +90,7 @@
                             <input type="text" class="form-control" name="brandname">
                           </div>
                    
-                    
+                          <?php if ($_SESSION["royalwines_permission_ok"] < 3) { ?> 
                           <div class="form-group form-group-default">
                             <label>Trạng thái</label>
                             <select name="status" class="form-control">
@@ -98,7 +98,7 @@
                               <option value="2">Public</option>
                             </select>
                           </div>
-
+                          <?php } ?>
                           <div class="clearfix"></div>
                           <button class="btn btn-success" id="add-brands" type="submit">Thêm nhãn hiệu</button>
                         </div>
@@ -118,7 +118,7 @@
 
                     <div class="pull-right">
                       <div class="col-xs-12">
-                        <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+                        <input type="text" id="search-table-public" class="form-control pull-right" placeholder="Search">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -139,7 +139,7 @@
 
                     <div class="pull-right">
                       <div class="col-xs-12">
-                        <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+                        <input type="text" id="search-table-unpublic" class="form-control pull-right" placeholder="Search">
                       </div>
                     </div>
 
@@ -164,7 +164,7 @@
 
                     <div class="pull-right">
                       <div class="col-xs-12">
-                        <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+                        <input type="text" id="search-table-wait" class="form-control pull-right" placeholder="Search">
                       </div>
                     </div>
 

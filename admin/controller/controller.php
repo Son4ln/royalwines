@@ -146,6 +146,36 @@
       $order -> showAllOrder();
       break;
 
+    case 'getCate':
+      $cate = new CateController();
+      $cate -> viewCate();
+      break;
+
+    case 'getCateByStatus':
+      $cate = new CateController();
+      $cate -> getCateByPubic();
+      break;
+
+    case 'changeCateStatus':
+      $cate = new CateController();
+      $cate -> changeStatus();
+      break;
+
+    case 'delCate':
+      $cate = new CateController();
+      $cate -> delCate();
+      break;
+
+    case 'updateCate':
+      $cate = new CateController();
+      $cate -> updateCate();
+      break;
+
+    case 'addCate':
+      $cate = new CateController();
+      $cate -> addCate();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';

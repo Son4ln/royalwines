@@ -61,7 +61,7 @@
           ?>
           <li class="">
             <a href="?action=listUsers" class="detailed">
-              <span class="title">Users</span>
+              <span class="title">Thành Viên</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
           </li>
@@ -74,6 +74,13 @@
               <span class="title">Nhãn Hiệu</span>
             </a>
             <span class="icon-thumbnail">N</span>
+          </li>
+
+          <li class="">
+            <a href="?action=getCate" class="detailed">
+              <span class="title">Loại Hàng</span>
+            </a>
+            <span class="icon-thumbnail">L</i></span>
           </li>
 
           <?php 
@@ -90,12 +97,18 @@
             }
           ?>
 
+          <?php 
+            if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+          ?>
           <li class="">
             <a href="?action=viewAllContact" class="detailed">
               <span class="title">Liên hệ</span>
             </a>
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
+          <?php
+            }
+          ?>
 
           <?php 
             if ($_SESSION["royalwines_permission_ok"] == 1) {

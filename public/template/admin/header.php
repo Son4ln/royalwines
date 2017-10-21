@@ -61,7 +61,7 @@
             <div class="dropdown pull-right">
               <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                <img src="../../upload/users/<?php echo $result['avatar']; ?>" alt="" data-src="../../upload/users/<?php echo $result ['avatar']; ?>" data-src-retina="../../upload/users/<?php echo $result['avatar']; ?>" width="32" height="32">
+                <img src="../../upload/users/<?php $result['avatar'] ? print $result['avatar'] : print 'logo.png'; ?>" alt="" data-src="../../upload/users/<?php $result['avatar'] ? print $result['avatar'] : print 'logo.png'; ?>" data-src-retina="../../upload/users/<?php $result['avatar'] ? print $result['avatar'] : print 'logo.png'; ?>" width="32" height="32">
             </span>
               </button>
               <ul class="dropdown-menu profile-dropdown" role="menu">

@@ -18,6 +18,7 @@
   include '../model/manageUsersModel.php';
   include '../model/contactModel.php';
   include '../model/orders_model.php';
+  include '../model/categoriesModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
@@ -26,4 +27,5 @@
   include 'app/manageUsersController.php';
   include 'app/contactController.php';
   include 'app/orders_controller.php';
+  include 'app/cateController.php';
 ?>
