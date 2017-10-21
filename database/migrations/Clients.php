@@ -1,10 +1,10 @@
 <?php
-	class Users extends ConnectMySql{
+	class Clients extends ConnectMySql{
 		function createClients (){
 		  parent::setConnect();	
 		  try {
 		  	parent::setConnect();
-			$createUsers = "Create table clients (
+			$createClients = "Create table clients (
 	 					  client_id		int(11)		Auto_increment	Not null,
 						  full_name		varchar(255)				Not null,
 						  email			varchar(128)				Null,

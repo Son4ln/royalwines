@@ -3,7 +3,7 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#quickview-alerts" data-toggle="tab" style="text-align: center;">Quản lý thao tác mới</a>
+          <a href="#quickview-alerts" data-toggle="tab" style="text-align: center;">Quản lý thao tác</a>
         </li>
       </ul>
       <a class="btn-link quickview-toggle" data-toggle-element="#quickview" data-toggle="quickview"><i class="pg-close"></i></a>

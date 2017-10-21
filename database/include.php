@@ -9,6 +9,7 @@
   include 'migrations/Images.php';
   include 'migrations/ManageUsers.php';
   include 'migrations/News.php';
+  include 'migrations/Clients.php';
   include 'migrations/OrderDetail.php';
   include 'migrations/Orders.php';
   include 'migrations/Products.php';

@@ -24,7 +24,13 @@
       }
 
       $logo = time().'-'.$_FILES['brandlogo']['name'];
-      $public = $_POST['status'];
+
+      if ($_SESSION["royalwines_permission_ok"] == 3) {
+        $public = 3;
+      } else {
+          $public = $_POST['status'];
+      }
+
       $brands = new Brands();
       $checkName = $brands -> checkBrandName($name);
       //lấy id user

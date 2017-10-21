@@ -6,7 +6,7 @@
     function createDataBase(){
       try {
 
-        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "123", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
         $deldb = "drop database IF EXISTS $this->database";
@@ -21,7 +21,7 @@
     }
 
     function setConnect () {
-      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "123" );
+      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "" );
       $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
       //Error Handling
     }
@@ -43,6 +43,7 @@
   $eval = new Evaluation();
   $img = new Images();
   $news = new News();
+  $client = new Clients();
   $orderDetail = new OrderDetail();
   $orders = new Orders();
   $products = new Products();
@@ -74,6 +75,7 @@
   $slideShow -> createSlideShow();
   $stock -> createStock();
   $users -> createUsers();
+  $client -> createClients();
   $wishList -> createWishList();
   $rela -> createRelationship();
 

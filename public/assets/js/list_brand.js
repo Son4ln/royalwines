@@ -1,5 +1,6 @@
 let brand_state = {
-    status: 0
+    status: 0,
+    oldImg: ''
   };
 
 $(document).ready(function() {
@@ -8,6 +9,9 @@ $(document).ready(function() {
   reviewImg();
   ereviewImg();
   cancelImg();
+
+  let olImg = $('#review-img').attr('src');
+  brand_state.oldImg = olImg;
 
   $('#review-img').click(() => {
     $('#brand-logo').click();
@@ -38,39 +42,40 @@ $(document).ready(function() {
 
 /*hàm tạo datatable của template với tham số WhatTable 
 để xác định table nào khi sử dụng trong hàm showPublic() và showUnpublic()*/
-function dataTable(whatTable) {
-  let responsiveHelper = undefined;
-  let breakpointDefinition = {
-      tablet: 1024,
-      phone: 480
-  };
-
-  // Initialize datatable showing a search box at the top right corner
-  let initTableWithSearch = function() {
-    let tb = `#${whatTable}`;
-    let table = $(tb);
-
-    let settings = {
-      "sDom": "<'table-responsive't><'row'<p i>>",
-      "destroy": true,
-      "scrollCollapse": true,
-      "oLanguage": {
-          "sLengthMenu": "_MENU_ ",
-          "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
-      },
-      "iDisplayLength": 5
+function dataTable(whatTable, whatSearch) {
+    let responsiveHelper = undefined;
+    let breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
     };
 
-    table.dataTable(settings);
+  // Initialize datatable showing a search box at the top right corner
+    let initTableWithSearch = function() {
+      let tb = `#${whatTable}`;
+      let search = `#${whatSearch}`;
+      let table = $(tb);
 
-    // search box for table
-    $('#search-table').keyup(function() {
-        table.fnFilter($(this).val());
-    });
+      let settings = {
+        "sDom": "<'table-responsive't><'row'<p i>>",
+        "destroy": true,
+        "scrollCollapse": true,
+        "oLanguage": {
+            "sLengthMenu": "_MENU_ ",
+            "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
+        },
+        "iDisplayLength": 5
+      };
+
+      table.dataTable(settings);
+
+      // search box for table
+      $(search).keyup(function() {
+          table.fnFilter($(this).val());
+      });
+    }
+
+    initTableWithSearch();
   }
-
-  initTableWithSearch();
-}
 
 //hàm thêm nhãn hiệu mới.
 function addBrand() {
@@ -79,7 +84,12 @@ function addBrand() {
   addBtn.html('Loading...');
   let brandlogo = $('#brand-logo').prop('files')[0];
   let brandName = $('[name="brandname"]').val();
-  let status = $('[name="status"]').val();
+
+  let status = 3;
+  if ($('[name="status"]')) {
+    status = $('[name="status"]').val();
+  }
+
   let form_data = new FormData();
   form_data.append('brandname', brandName);
   form_data.append('brandlogo', brandlogo);
@@ -104,9 +114,10 @@ function addBrand() {
         $('#add-alert').removeClass('hidden');
         $('#add-alert').html('Lỗi kết nối cơ sở dữ liệu');
       } else {
-        let mess = `Đã thêm nhãn hiệu ${brandName} thành công`;
+        let mess = `Đã thêm nhãn hiệu ${brandName} thành công. Nếu là seller hãy chờ admin phê duyệt`;
         let lv = 'success';
         notification(mess, lv);
+
         if (status === '1') {
           $('#tab-unpublic').click();
         } else if (status === '2') {
@@ -114,6 +125,10 @@ function addBrand() {
         }
 
         $('#add-alert').addClass('hidden');
+        $('#form-addBrand')[0].reset();
+        $('#review-img').attr('src', brand_state.oldImg);
+        $('#cancel-img').addClass('hidden');
+        $('#brand-logo').val('');
       }
 
       addBtn.removeAttr('disabled');
@@ -132,12 +147,15 @@ function addBrand() {
 function showPublic (status) {
   let panel = 'brands-unpublic';
   let table = 'table-unpublic';
+  let search = 'search-table-unpublic';
   if (parseInt(status) === 2) {
     panel = 'brands-public';
     table = 'table-public';
+    search = 'search-table-public';
   } else if (parseInt(status) === 3) {
     panel = 'brands-wait';
     table = 'table-wait';
+    search = 'search-table-wait';
   }
 
   let panelBody = `#${panel}`;
@@ -158,7 +176,7 @@ function showPublic (status) {
       $(panelBody).html(data);
       $('.loading').addClass('hidden');
 
-      dataTable(table);
+      dataTable(table, search);
 
       $('.change-status').click((e) => {
         changeStatus(e);
