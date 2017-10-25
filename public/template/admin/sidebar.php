@@ -65,6 +65,13 @@
             </a>
             <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
           </li>
+
+          <li class="">
+            <a href="?action=listBanner#banner" class="detailed">
+              <span class="title">Banner</span>
+            </a>
+            <span class="icon-thumbnail">B</span>
+          </li>
           <?php
             }
           ?>

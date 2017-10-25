@@ -19,6 +19,7 @@
   include '../model/contactModel.php';
   include '../model/orders_model.php';
   include '../model/categoriesModel.php';
+  include '../model/sliderModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
@@ -28,4 +29,5 @@
   include 'app/contactController.php';
   include 'app/orders_controller.php';
   include 'app/cateController.php';
+  include 'app/slideController.php';
 ?>

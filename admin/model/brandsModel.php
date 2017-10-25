@@ -6,7 +6,7 @@
   {
     // lấy dữ liệu brands
   	function getBrands() {
-      $query = "select * from brands";
+      $query = "select * from brands order by brand_id desc";
       $result = parent::getList($query);
       return $result;
   	}
@@ -50,14 +50,14 @@
 
     //lấy danh sách brands theo trạng thái
     function getBrandsByPublic($public) {
-      $query = "SELECT * from brands where brand_public = '$public'";
+      $query = "SELECT * from brands where brand_public = '$public' order by brand_id desc";
       $result = parent::getList($query);
       return $result;
     }
 
     //lấy danh sách brands theo trạng thái
     function getBrandsByPublicAndUser($public, $user) {
-      $query = "SELECT * from brands where brand_public = '$public' AND user_id = '$user'";
+      $query = "SELECT * from brands where brand_public = '$public' AND user_id = '$user' order by brand_id desc";
       $result = parent::getList($query);
       return $result;
     }

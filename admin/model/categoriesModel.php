@@ -1,13 +1,13 @@
 <?php
   class CategoriesModel extends DataBase {
     function getCateByPublic ($public) {
-      $query = "SELECT * FROM categories WHERE category_public = '$public'";
+      $query = "SELECT * FROM categories WHERE category_public = '$public' ORDER BY category_id DESC";
       $result = parent::getList($query);
       return $result;
     }
 
     function getCateByPublicAndUser($public, $user) {
-      $query = "SELECT * FROM categories WHERE category_public = '$public' and user_id ='$user'";
+      $query = "SELECT * FROM categories WHERE category_public = '$public' and user_id ='$user' ORDER BY category_id DESC";
       $result = parent::getList($query);
       return $result;
     }

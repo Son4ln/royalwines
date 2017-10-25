@@ -244,6 +244,7 @@
         "sDom": "<'table-responsive't><'row'<p i>>",
         "destroy": true,
         "scrollCollapse": true,
+        "ordering": false,
         "oLanguage": {
             "sLengthMenu": "_MENU_ ",
             "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"

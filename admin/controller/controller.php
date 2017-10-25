@@ -176,6 +176,31 @@
       $cate -> addCate();
       break;
 
+    case 'listBanner':
+      $banner = new SliderController();
+      $banner -> showBanner();
+      break;
+
+     case 'getAllBanner':
+      $banner = new SliderController();
+      $banner -> getBanner();
+      break;
+
+    case 'delBanner':
+      $banner = new SliderController();
+      $banner -> delBanner();
+      break;
+
+    case 'editBanner':
+      $banner = new SliderController();
+      $banner -> editBanner();
+      break;
+
+    case 'addBanner':
+      $banner = new SliderController();
+      $banner -> addBanner();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';
