@@ -5,9 +5,8 @@
 		  try {
 			$createImages = "Create table images (
 							 image_id		int(11)		Auto_increment	Not null,
-							 image1		text					Null, 
-							 image2		text					Null,
-							 image3		text					Null, 
+							 image		text							Null, 
+							 product_id		int(11)						Not null,
 							 Primary key (image_id)
 						     );
 							";

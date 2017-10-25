@@ -3,8 +3,9 @@
 		function createBrandsSeeder (){
 		  parent::setConnect();	
 		  try {
-			$createBrandsSeeder = "INSERT INTO brands VALUES ('', 'Wine 1', 'wine1.jpg', 0),
-															  ('', 'Wine 2', 'wine2.jpg', 0)";
+			$createBrandsSeeder = "INSERT INTO brands VALUES ('', UUID(), 'Wine 1', '1.jpg', 1, 1),
+															  ('', UUID(), 'Wine 2', '2.jpg', 2, 1),
+															  ('', UUID(), 'Wine 2', '3.jpg', 3, 1)";
 			$this->db->exec($createBrandsSeeder);
 		  }
 		  catch(PDOException $e) {

@@ -15,6 +15,32 @@
         	echo $e->getMessage();
       	  }
 
+      	  //tao quan hệ giữa user và categories
+      	  try {
+			$userToCate = "Alter table categories
+							 Add constraint	user_to_cate
+							 Foreign key (user_id)
+							 References users (user_id);
+							";
+			$this->db->exec($userToCate);
+		  }
+		  catch(PDOException $e) {
+        	echo $e->getMessage();
+      	  }
+
+          //tao quan hệ giữa user và brand
+          try {
+            $userToBrand = "Alter table brands
+                             Add constraint user_to_brand
+                             Foreign key (user_id)
+                             References users (user_id);
+                            ";
+            $this->db->exec($userToBrand);
+          }
+          catch(PDOException $e) {
+            echo $e->getMessage();
+          }
+
       	  //Tạo quan hệ giữa product và user
       	  try {
 			$userToProduct = "Alter table products
@@ -43,10 +69,10 @@
 
       	  //tạo quan hệ giữa product và images
       	  try {
-			$imagesToProduct = "Alter table products 
+			$imagesToProduct = "Alter table images 
 							   Add constraint	image_product
-							   Foreign key (image_id)
-							   References images (image_id);
+							   Foreign key (product_id)
+							   References products (product_id);
 							  ";
 			$this->db->exec($imagesToProduct);
 		  }
@@ -54,14 +80,14 @@
         	echo $e->getMessage();
       	  }
 
-      	  //tạo quan hệ giữa order và user
+      	  //tạo quan hệ giữa order và client
       	  try {
-			$userToOrder = "Alter table orders 
-							Add constraint	user_orders
-							Foreign key (user_id)
-							References users (user_id);
+			$clientToOrder = "Alter table orders 
+							Add constraint	client_orders
+							Foreign key (client_id)
+							References clients (client_id);
 							";
-			$this->db->exec($userToOrder);
+			$this->db->exec($clientToOrder);
 		  }
 		  catch(PDOException $e) {
         	echo $e->getMessage();

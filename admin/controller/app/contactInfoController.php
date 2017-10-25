@@ -6,17 +6,29 @@
     {	
     	function showContactInfo()
     	{
+        Permission::isSuperUser();
+        $contactInfo = new ContactInfo();
+        $resultContactInfo = $contactInfo -> getContactInfo();
     		include '../view/contact/contactInfo.php';
     	}
 
     	function updateContactInfo()
     	{
+        Permission::isSuperUser();
+        sleep(1);
     		$path = $GLOBALS['UPLOADIMG'];
     		$address = $_POST['address'];
 
     		if(empty($_FILES['logo']['name'])){
-    		  $logoName = $_POST['current-img'];
+    		  $logoName = $_POST['oldImg'];
     		} else {
+          $file_ext=strtolower(end(explode('.',$_FILES['logo']['name'])));
+          $expensions= array("jpeg","jpg","png");
+
+          if(in_array($file_ext,$expensions) === false || $_FILES['logo']['error'] > 0){
+            die('file_not_valid');
+          }
+
     		  $logoName = time().'-'.$_FILES['logo']['name'];
     		}
 
@@ -30,26 +42,21 @@
       		try {
       		  $update -> updateContactInfo($address, $branch, $phone, $email, $intro, $logoName, $slogan);
       		} catch(PDOException $e) {
-        	  $mess = "Sửa thất bại";
-      		  $action = 'contactInfo';
-      		  $lv = 'danger';
-      		  BasicLibs::setAlert($mess, $lv);
-      		  BasicLibs::redirect($action);
-            die();
-      	  	}
+            die('fail');
+      	  }
 
     	  	if(!empty($_FILES['logo']['name'])) {
-    	  	  $currentImg = $_POST['current-img'];
+    	  	  $currentImg = $_POST['oldImg'];
   		      BasicLibs::deleteFile($currentImg,$path);
             $fileLogo = $_FILES['logo'];
-            BasicLibs::uploadFile($fileLogo, $path);
+            $source = $_FILES['logo']['tmp_name'];
+            $target = $path.$logoName;
+            move_uploaded_file($source, $target);
     	  	}
 
-    	  	$mess = "Sửa thành công";
-      		$action = 'contactInfo';
-      		$lv = 'success';
-      		BasicLibs::setAlert($mess, $lv);
-      		BasicLibs::redirect($action);
+          $content = 'Đã thay đổi thông tin của cửa hàng';
+          BasicLibs::addMess($content);
+          die('success');
     	}
     }  
 ?>

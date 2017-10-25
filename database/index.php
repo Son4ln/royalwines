@@ -43,6 +43,7 @@
   $eval = new Evaluation();
   $img = new Images();
   $news = new News();
+  $client = new Clients();
   $orderDetail = new OrderDetail();
   $orders = new Orders();
   $products = new Products();
@@ -53,8 +54,10 @@
   $rela = new Relationship();
 
   //khai báo seeder
+  $usersSeeder = new UsersSeeder();
   $brandsSeeder = new BrandsSeeder();
   $contactInfoSeeder = new ContactInfoSeeder();
+  $catesSeeder = new CatesSeeder();
 
   //sử dụng phương thức của lớp con
   //sử dụng migrate
@@ -72,12 +75,15 @@
   $slideShow -> createSlideShow();
   $stock -> createStock();
   $users -> createUsers();
+  $client -> createClients();
   $wishList -> createWishList();
   $rela -> createRelationship();
 
   //sử dụng seeder
+  $usersSeeder -> createUsersSeeder();
   $brandsSeeder -> createBrandsSeeder();
   $contactInfoSeeder -> createContactInfoSeeder();
+  $catesSeeder -> createCatesSeeder();
 
   echo "Created Database";
 ?>

@@ -6,31 +6,31 @@
   {
     // lấy dữ liệu brands
   	function getBrands() {
-      $query = "select * from brands";
+      $query = "select * from brands order by brand_id desc";
       $result = parent::getList($query);
       return $result;
   	}
 
     // thêm dữ liệu brands
-  	function addBrands($brandName, $brandLogo, $brandPublic) {
-      $query = "insert into brands values('', '$brandName', '$brandLogo', '$brandPublic')";
+  	function addBrands($brandName, $brandLogo, $brandPublic, $user) {
+      $query = "insert into brands values('', UUID(), '$brandName', '$brandLogo', '$brandPublic', '$user')";
       parent::exec($query);
   	}
 
     // update dữ liệu brands
-  	function updateBrands($brandId, $brandName, $brandLogo) {
-      $query = "update brands set brand_name = '$brandName', brand_logo = '$brandLogo' where brand_id = '$brandId'";
+  	function updateBrands($brandUId, $brandName, $brandLogo) {
+      $query = "update brands set brand_name = '$brandName', brand_logo = '$brandLogo' where uid = '$brandUId'";
       parent::exec($query);
   	}
 
     // xóa dữ liệu brands
-  	function deleteBrands($id) {
-  		$query = "delete from brands where brand_id = $id";
+  	function deleteBrands($uid) {
+  		$query = "delete from brands where uid = '$uid'";
       parent::exec($query);
   	}
 
-    function getBrandById ($id) {
-      $query = "select * from brands where brand_id = $id";
+    function getBrandById ($uid) {
+      $query = "select * from brands where uid = '$uid'";
       $result = parent::getInstance($query);
       return $result;
     }
@@ -43,14 +43,21 @@
     }
 
     //update status
-    function changeStatus($brandId, $status) {
-      $query = "update brands set brand_public = $status where brand_id = '$brandId'";
+    function changeStatus($uid, $status) {
+      $query = "update brands set brand_public = $status where uid = '$uid'";
       parent::exec($query);
     }
 
     //lấy danh sách brands theo trạng thái
     function getBrandsByPublic($public) {
-      $query = "select * from brands where brand_public = '$public'";
+      $query = "SELECT * from brands where brand_public = '$public' order by brand_id desc";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    //lấy danh sách brands theo trạng thái
+    function getBrandsByPublicAndUser($public, $user) {
+      $query = "SELECT * from brands where brand_public = '$public' AND user_id = '$user' order by brand_id desc";
       $result = parent::getList($query);
       return $result;
     }

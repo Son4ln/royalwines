@@ -36,5 +36,10 @@
         }
     }
 
+    function addMess($content) {
+      $manage = new ManageUsersModel();
+      $manage -> addMessManager($content);
+    }
+
   }
 ?>

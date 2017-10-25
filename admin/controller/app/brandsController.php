@@ -1,115 +1,187 @@
 <?php
-	/**
-	* 
-	*/
-	class BrandsController
-	{
-	  function showBrands() {
-	  	include '../view/brands/listBrands.php';
-	  }
+  /**
+  * 
+  */
+  class BrandsController
+  {
+    function showBrands() {
+      //thực hiện phân quyền
+      Permission::isSeller();
+      include '../view/brands/listBrands.php';
+    }
 
-	  // thêm nhãn hiệu
-	  function addBrandsAction() {
-	  	$name = $_POST['brandname'];
-	  	$logo = time().'-'.$_FILES['brandlogo']['name'];
-	  	$public = $_POST['status'];
-	  	$brands = new Brands();
-	  	$checkName = $brands -> checkBrandName($name);
+    // thêm nhãn hiệu
+    function addBrandsAction() {
+    //thực hiện phân quyền
+    Permission::isSeller();
+      usleep(500000);
+      $name = $_POST['brandname'];
+      $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
+      $expensions= array("jpeg","jpg","png");
 
-	  	if(!empty($checkName['brand_id'])) {
-	  	  $mess = 'Đã có nhãn hiệu này';
-      	  $action = "listBrands";
-      	  $lv = 'danger';
-      	  BasicLibs::setAlert($mess, $lv);
-      	  BasicLibs::redirect($action);
-      	  die();
-	  	}
+      if(in_array($file_ext,$expensions) === false || $_FILES['brandlogo']['error'] > 0){
+        die('file_error');
+      }
 
-	  	try {
-	  	  $brands -> addBrands($name, $logo, $public);
-	  	} catch(PDOException $e) {
-          $mess = 'Thêm nhãn hiệu thất bại';
-	  	  $action = 'listBrands';
-	  	  $lv = 'danger';
-	  	  BasicLibs::setAlert($mess, $lv);
-	  	  BasicLibs::redirect($action);
-	  	  die();
-      	}
+      $logo = time().'-'.$_FILES['brandlogo']['name'];
 
-	  	  $source = $_FILES['brandlogo']['tmp_name'];
-	  	  $path = $GLOBALS['UPLOADBRANDSLOGO'];
-	  	  $target = $path.$logo;
-	  	  move_uploaded_file($source, $target);
+      if ($_SESSION["royalwines_permission_ok"] == 3) {
+        $public = 3;
+      } else {
+          $public = $_POST['status'];
+      }
 
-	  	  $mess = 'Thêm nhãn hiệu thành công';
-	  	  $action = 'listBrands';
-	  	  $lv = 'success';
-	  	  BasicLibs::setAlert($mess, $lv);
-	  	  BasicLibs::redirect($action);
-	  }
+      $brands = new Brands();
+      $checkName = $brands -> checkBrandName($name);
+      //lấy id user
+      $checkUser = new UsersModel();
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $user = $checkUser -> checkUser($email, $pass);
 
-	  // xóa nhãn hiệu
-	  function deleteBrands() {
-	  	$brands = new Brands();
-	  	$id = $_POST['id'];
-	  	$img = $_POST['img'];
-	  	$path = $GLOBALS['UPLOADBRANDSLOGO'];
-	  	try {
-	  		$brands -> deleteBrands($id);
-	  	} catch(PDOException $e) {
-	  		die('fail');
-	  	}
-	  	BasicLibs::deleteFile($img,$path);
-	  }
+      if(!empty($checkName['brand_id'])) {
+        die('unique');
+      }
 
-	  // sữa nhãn hiệu
-	  function updateBrandsAction () {
-	  	$brands = new Brands();
-	  	$brandId = $_POST['ebrandId'];
-	  	$name = $_POST['ebrandname'];
-	  	$checkName = $brands -> checkBrandName($name);
+      try {
+        $brands -> addBrands($name, $logo, $public, $user['user_id']);
+      } catch(PDOException $e) {
+        die('fail');
+        }
 
-	  	if(!empty($checkName['brand_id']) && $checkName['brand_id'] != $brandId) {
-      	die('unique');
-	  	}
+        $source = $_FILES['brandlogo']['tmp_name'];
+        $path = $GLOBALS['UPLOADBRANDSLOGO'];
+        $target = $path.$logo;
+        move_uploaded_file($source, $target);
 
-	  	if(empty($_FILES['ebrandlogo']['name'])) {
-	  	  $logo = $_POST['eoldImg'];
-	  	} else {
-	  	  $logo = time().'-'.$_FILES['ebrandlogo']['name'];
-	  	}
-	  	
-	 	try {
-	  	  $brands -> updateBrands($brandId, $name, $logo);
-	  	} catch(PDOException $e) {
-	  	  die('fail');
-      	}
+        $content = 'Thêm nhãn hiệu "'.$name.'"';
+        BasicLibs::addMess($content);
+        die('success');
+    }
 
-      	//upload ảnh mới và xóa ảnh cũ
-      	$source = $_FILES['ebrandlogo']['tmp_name'];
-	  	  $path = $GLOBALS['UPLOADBRANDSLOGO'];
-	  	  $target = $path.$logo;
-	  	  move_uploaded_file($source, $target);
+    // xóa nhãn hiệu
+    function deleteBrands() {
+      //thực hiện phân quyền
+      Permission::isSuperUser();
 
-      	if (!empty($_FILES['ebrandlogo']['name'])) {
-      		$currImg = $_POST['eoldImg'];
-      	  BasicLibs::deleteFile($currImg,$path);
-      	}
+      $brands = new Brands();
+      $uid = $_POST['uid'];
+      $img = $_POST['img'];
+      $path = $GLOBALS['UPLOADBRANDSLOGO'];
 
-      	$mess = 'Sửa nhãn hiệu thành công';
-	  	  $lv = 'success';
-	  	  BasicLibs::setAlert($mess, $lv);
+      try {
+        $brand = $brands -> getBrandById($uid);
+        $brands -> deleteBrands($uid);
+      } catch(PDOException $e) {
+        die('fail');
+      }
 
-      	die('success');
-	  }
+      BasicLibs::deleteFile($img,$path);
 
-	  // thay đổi trạng thái nhãn hiệu
-	  function changeStatus() {
-	  	$brandId = $_POST['id'];
-	  	$public = $_POST['public'];
-	  	$brands = new Brands();
-	  	$brands -> changeStatus($brandId, $public);
-	  	die('mợ rầu');
-	  }
-	}
+      $brandName = $brand['brand_name'];
+      $content = "Đã xóa nhãn hiệu $brandName";
+      BasicLibs::addMess($content);
+    }
+
+    // sữa nhãn hiệu
+    function updateBrandsAction () {
+      //thực hiện phân quyền
+      Permission::isSeller();
+      $brands = new Brands();
+      $brandUId = $_POST['ebrandUId'];
+      $name = $_POST['ebrandname'];
+      $checkName = $brands -> checkBrandName($name);
+
+      if(!empty($checkName['uid']) && $checkName['uid'] != $brandUId) {
+        die('unique');
+      }
+
+      if(empty($_FILES['ebrandlogo']['name'])) {
+        $logo = $_POST['eoldImg'];
+      } else {
+        $file_ext=strtolower(end(explode('.',$_FILES['ebrandlogo']['name'])));
+        $expensions= array("jpeg","jpg","png");
+
+        if(in_array($file_ext,$expensions) === false || $_FILES['ebrandlogo']['error'] > 0){
+          die('file_not_valid');
+        }
+
+        $logo = time().'-'.$_FILES['ebrandlogo']['name'];
+      }
+      
+      try {
+        $brands -> updateBrands($brandUId, $name, $logo);
+      } catch(PDOException $e) {
+        die('fail');
+      }
+
+      if (!empty($_FILES['ebrandlogo']['name'])) {
+        //upload ảnh mới và xóa ảnh cũ
+        $source = $_FILES['ebrandlogo']['tmp_name'];
+        $path = $GLOBALS['UPLOADBRANDSLOGO'];
+        $target = $path.$logo;
+        move_uploaded_file($source, $target);
+
+        $currImg = $_POST['eoldImg'];
+        BasicLibs::deleteFile($currImg,$path);
+      }
+
+      //thêm tin nhắn quản lý
+      $content = 'Chỉnh sửa nhãn hiệu "'.$name.'"';
+      BasicLibs::addMess($content);
+      die('success');
+    }
+
+    // thay đổi trạng thái nhãn hiệu
+    function changeStatus() {
+      //thực hiện phân quyền
+      Permission::isSeller();
+      $brandUid = $_POST['uid'];
+      $public = $_POST['public'];
+      $brands = new Brands();
+      $brands -> changeStatus($brandUid, $public);
+      //lấy brand để sử dụng cho tin nhắn người dùng
+      $brand = $brands -> getBrandById($brandUid);
+      $brandName = $brand['brand_name'];
+
+      $status = 'public';
+      if ($public == 1) {
+        $status = 'unpublic';
+      }
+
+      $content = "Đã thay đổi trạng thái của nhãn hiệu $brandName thành $status";
+      BasicLibs::addMess($content);
+    }
+
+    function getPublic() {
+      //thực hiện phân quyền
+      Permission::isSeller();
+      $public = $_GET['public'];
+
+      $table = 'table-unpublic';
+      if ($public == 2) {
+        $table = 'table-public';
+      } else if ($public == 3) {
+        $table = 'table-wait';
+      }
+
+      $brands = new Brands();
+      if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
+        $result = $brands -> getBrandsByPublic($public);
+      } else {
+        if ($public == 3) {
+          die('wrong_permission');
+        }
+
+        $checkUser = new UsersModel();
+        $email = $_SESSION["royalwines_user_login_ok"];
+        $pass = $_SESSION["royalwines_pass_login_ok"];
+        $user = $checkUser -> checkUser($email, $pass);
+        $result = $brands -> getBrandsByPublicAndUser($public, $user['user_id']);
+      }
+      
+      usleep(500000);
+      include '../view/brands/view_brand.php';
+    }
+  }
 ?>

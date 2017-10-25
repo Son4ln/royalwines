@@ -3,6 +3,14 @@
     'use strict';
 
     $(document).ready(function() {
+        checkUserActive();
+        checkPermission();
+
+        $('.seen-bell').click(() => {
+          getManageMess();
+        });
+
+        setInterval(getManageMess, 1000);
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with 
         // your logic to perform a search and display results
@@ -66,4 +74,82 @@ function notification(mess, lv) {
     timeout: 7000,
     type: lv
   }).show();
+}
+
+function checkUserActive() {
+  let checkUser = setInterval(() => {
+    $.ajax({
+      url: '../../admin/api/urls.php?url=activeUser',
+      success: function(results) {
+        if (results) {
+          if (results === 'deactive_user') {
+            $.confirm({
+              title: 'THÔNG BÁO',
+              content: `Tài khoản của bạn đã bị khóa,
+              vui lòng liên hệ quản trị viên để biết thêm chi tiết.
+              Bạn sẽ đăng xuất trong vòng 10 giây`,
+              type: 'red',
+              typeAnimated: true,
+              autoClose: 'ok|10000',
+              buttons: {
+                ok: {
+                  text: 'OK',
+                  btnClass: 'btn-red',
+                  action: function(){
+                    window.location.href = '?action=logout';
+                  }
+                }
+              }
+            });
+
+            window.clearInterval(checkUser);
+          }
+        }
+      },
+      error: function() {}
+    });
+  }, 3000);
+}
+
+function checkPermission() {
+  let checkPermission = setInterval(() => {
+    $.ajax({
+      url: '../../admin/api/urls.php?url=checkPermission',
+      success: function(results) {
+        if (results) {
+          if (results === 'permission_change') {
+            $.confirm({
+              title: 'THÔNG BÁO',
+              content: 'Quyền hạn của bạn đã bị thay đổi. Bấm "OK" để thay đổi',
+              type: 'orange',
+              autoClose: 'ok|10000',
+              typeAnimated: true,
+              buttons: {
+                ok: {
+                  text: 'OK',
+                  btnClass: 'btn-orange',
+                  action: function(){
+                    window.location.href = '?action=home';
+                  }
+                }
+              }
+            });
+
+            window.clearInterval(checkPermission);
+          }
+        }
+      },
+      error: function() {}
+    });
+  }, 3000);
+}
+
+function getManageMess() {
+  $.ajax({
+    url: '?action=listMessManage',
+    success: function(data) {
+      $('#show-mess-manage').html(data);
+      // đếm số lượng tin nhắn thông qua thẻ li.
+    }
+  });
 }
