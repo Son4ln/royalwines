@@ -17,10 +17,12 @@ class HomePage extends React.Component {
       <Router basename="/">
         <div>
           <Menu />
-          <AsideHeader />
-          <Aside />
-          <Contents />
-          <a href="#" id="toTop"><i className="fa fa-angle-up"></i></a>
+          <div id="ct-js-wrapper" className="ct-pageWrapper">
+            <AsideHeader />
+            <Aside />
+            <Contents />
+            <a href="#" id="toTop"><i className="fa fa-angle-up"></i></a>
+          </div>
         </div>
       </Router>
     );

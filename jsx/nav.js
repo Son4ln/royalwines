@@ -16,8 +16,8 @@ class Menu extends React.Component {
       <div className="ct-mainNav ct-js-background" data-bg="/public/assets/site/images/menu-pattern.jpg">
         <div className="ct-mainNav-inner">
           <nav>
-            <a className="ct-mainNav-logo" href="index.html">
-              <img src="/public/assets/site/images/content/logo.png" site={logo_style}/>
+            <a className="ct-mainNav-logo" href="/">
+              <img src="/public/assets/site/images/content/logo.png" style={logo_style} />
             </a>
             <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr1.png" />
             <ul className="ct-mainNav-nav text-uppercase animated" data-fx="fadeIn">
