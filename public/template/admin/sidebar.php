@@ -76,6 +76,10 @@
             }
           ?>
 
+          <?php 
+            if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
+              || $_SESSION["royalwines_permission_ok"] == 3) {
+          ?>
           <li class="">
             <a href="?action=listBrands" class="detailed">
               <span class="title">Nhãn Hiệu</span>
@@ -89,17 +93,28 @@
             </a>
             <span class="icon-thumbnail">L</i></span>
           </li>
-
-          <?php 
-            if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
-              || $_SESSION["royalwines_permission_ok"] == 3) {
-          ?>
+          
           <li class="">
             <a href="?action=viewAllOrder" class="detailed">
               <span class="title">Hóa Đơn</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-shopping-cart"></i></span>
           </li>
+          <?php
+            }
+          ?>
+
+          <?php 
+            if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
+              || $_SESSION["royalwines_permission_ok"] == 4) {
+          ?>
+          <li class="">
+            <a href="?action=listBlog#public" class="detailed">
+              <span class="title">Tin Tức</span>
+            </a>
+            <span class="icon-thumbnail">T</span>
+          </li>
+
           <?php
             }
           ?>

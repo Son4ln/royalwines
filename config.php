@@ -9,5 +9,6 @@
  	$ROOT = $_SERVER['DOCUMENT_ROOT']."/";
  	$UPLOADIMG = $ROOT.'upload/';
     $UPLOADBRANDSLOGO = $ROOT.'upload/brands/';
+    $UPLOADBLOG = $ROOT.'upload/blog/';
 
 ?>
