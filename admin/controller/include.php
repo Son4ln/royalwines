@@ -20,6 +20,7 @@
   include '../model/orders_model.php';
   include '../model/categoriesModel.php';
   include '../model/sliderModel.php';
+  include '../model/blogModel.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
@@ -30,4 +31,5 @@
   include 'app/orders_controller.php';
   include 'app/cateController.php';
   include 'app/slideController.php';
+  include 'app/blogController.php';
 ?>
