@@ -544,6 +544,9 @@
   }
 
   function addCate() {
+    $('#add-brands').attr('disabled', true);
+    $('#add-brands').html('Đang thực hiện...');
+
     let name = $('[name="catename"]').val();
     let status = 3;
     if ($('[name="status"]')) {
@@ -576,6 +579,8 @@
         notification(mess, lv);
         $('#form-addCate')[0].reset();
         $('#add-alert').addClass('hidden');
+        $('#add-brands').attr('disabled', false);
+        $('#add-brands').html('Thêm loại sản phẩm');
       }
     });
     return false;

@@ -1,0 +1,196 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class HomeContents extends React.Component {
+  constructor() {
+    super();
+  }
+
+  componentWillMount() {
+    
+  }
+
+  render() {
+    return(
+      <section className="ct-content">
+        <div className="row ct-js-masonry">
+          <div className="col-sm-6 ct-js-masonryItem">
+          </div>
+
+          <div className="col-sm-12 ct-js-masonryItem">
+            <div className="ct-imageBox hidden-xs animated" data-fx="pulse">
+              <a href="#">
+                <img src="/public/assets/site/images/content/promo1.png" alt="Breakfast menu" />
+                <article className="ct-imageBox-inner">
+                  <div className="ct-imageBox-innerAlign">
+                    <div className="row">
+                      <div className="col-sm-6 col-sm-offset-6 text-center">
+                        <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+                        <h5 className="ct-u-colorMotive ct-u-font3 text-uppercase">cơ sở cung cấp rượu</h5>
+                        <h3 className="ct-u-font2 text-uppercase">uy tín nhất</h3>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>  
+          </div>
+          <div className="col-sm-6 col-xs-12 ct-js-masonryItem ct-u-marginBottom30">
+            <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
+              <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop50 text-center">sản phẩm giảm giá</h3>
+              <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+              <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
+              data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
+                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
+                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
+                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+              <img src="/public/assets/site/images/content/brand1.png" />           
+            </section>
+          </div>
+
+          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+              <img src="/public/assets/site/images/content/brand1.png" />           
+            </section>
+          </div>
+
+          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+              <img src="/public/assets/site/images/content/brand1.png" />           
+            </section>
+          </div>
+
+          <div className="col-xs-12 ct-js-masonryItem">
+            <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box4 animated" data-fx="pulse" data-bg="/public/assets/site/images/content/header-index-bg.png">
+              <div className="ct-u-absoluteCenter ct-box4-child">
+                <div className="row">
+                  <div className="col-sm-12 text-center">
+                    <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+                    <h3 className="ct-u-font2 text-uppercase ct-u-colorWhite">sản phẩm mới</h3>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div className="col-xs-12 ct-js-masonryItem ct-u-clearBoth animated" data-fx="pulse">
+            <section className="ct-frame-nopadding ct-frame--motive ct-box4 ct-u-backgroundWhite ct-u-marginBottom30 animated" data-fx="pulse">
+              <div className="ct-box4-child">
+                <div className="row">
+                  <div className="col-xs-12">
+                    <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
+                    data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
+                              <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className="col-sm-12 ct-js-masonryItem ct-u-clearBoth">
+            <section className="ct-frame ct-frame--white animated" data-fx="pulse">
+              <h3 className="ct-u-font1 text-uppercase text-center">bài viết mới</h3>
+              <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+              <article className="ct-blogItem ct-formatPhoto ct-u-paddingBottom20">
+                <a href="#" className="ct-frame-image" title="The Space"><img src="/public/assets/site/images/content/layer.jpg" width="170" /></a>
+                <div className="ct-innerMargin">
+                  <div className="ct-entryMeta">
+                     <div className="ct-entryDateFirst">Oct 22, 2014</div>
+                  </div>
+                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">Standard Post Format with Preview Image</a></h3>
+                <p className="ct-entryDescription">
+                  Etiam nunc tortur, ultrices quis turpis, tempor lacinia ligula. Sed at odio vel est lobortis eleifend ac vitae enim. Maecenas mattis nibg.
+                  Nulla sagittis ex et mauris ultrices, ut convallis nulla molestie. Ut efficitur cursus ipsum eget semper.
+                </p>
+                <div className="clearfix"></div>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+export default HomeContents

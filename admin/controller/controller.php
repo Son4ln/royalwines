@@ -201,6 +201,41 @@
       $banner -> addBanner();
       break;
 
+    case 'listBlog':
+      $blog = new BlogController();
+      $blog -> blogList();
+      break;
+
+    case 'publicBlog':
+      $blog = new BlogController();
+      $blog -> showBlogByPublic();
+      break;
+
+    case 'delBlog':
+      $blog = new BlogController();
+      $blog -> delBlog();
+      break;
+
+    case 'getBlogById':
+      $blog = new BlogController();
+      $blog -> getBlogById();
+      break;
+
+    case 'updateBlog':
+      $blog = new BlogController();
+      $blog -> updateBlog();
+      break;
+
+    case 'updateStatusBlog':
+      $blog = new BlogController();
+      $blog -> updateStatus();
+      break;
+
+    case 'addBlog':
+      $blog = new BlogController();
+      $blog -> addBlog();
+      break;
+
     default:
       //include lỗi 404 vào đây
     include $GLOBALS['ROOT'].'public/template/404.html';
