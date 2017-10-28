@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="public/assets/site/images/fav.ico" type="image/x-icon">
   <title>RoyalWines - Enjoy the taste of royalty</title>
   <link rel="stylesheet" type="text/css" href="/public/assets/site/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/public/assets/site/css/style.css">

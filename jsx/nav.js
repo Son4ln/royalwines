@@ -40,7 +40,7 @@ class Menu extends React.Component {
                 <a href="#">Liên Hệ</a>
               </li>
               <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr1.png" />
-              <li className="ct-u-paddingTop10">
+              <li className="ct-u-paddingTop5">
                 <a href="#">Đăng Nhập</a>
               </li>
               <li className="dropdown ct-profile">
@@ -54,18 +54,6 @@ class Menu extends React.Component {
             </ul>
             
           </nav>
-          <div className="ct-mainNav-sidebar">
-            <ul className="list-unstyled list-inline ct-socials">
-              <li>
-                <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <i className="fa fa-fw fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="#" data-toggle="tooltip" data-placement="top" title="Google +">
-                <i className="fa fa-fw fa-google-plus"></i></a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     );
