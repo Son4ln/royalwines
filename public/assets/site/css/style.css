@@ -176,14 +176,14 @@ Last change:	24 February 2015
   width: 100%;
   background-color: #ffffff;
 }
-.ct-mainNav-sidebar {
+/*.ct-mainNav-sidebar {
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
   right: 0;
   padding: 20px;
-}
+}*/
 .snapjs-right {
   overflow: hidden !important;
   height: 100%;
@@ -487,9 +487,9 @@ Last change:	24 February 2015
     z-index: 1000;
     font-size: 14px;
   }
-  .ct-mainNav-sidebar {
+/*  .ct-mainNav-sidebar {
     position: relative;
-  }
+  }*/
   .ct-mainNav {
     width: 266px;
     overflow: scroll;
@@ -505,12 +505,12 @@ Last change:	24 February 2015
   }
 }
 @media (max-height: 767px) {
-  .ct-mainNav-sidebar {
+/*  .ct-mainNav-sidebar {
     display: none;
-  }
+  }*/
 }
 @media (max-height: 830px) {
-  .ct-mainNav-sidebar {
+/*  .ct-mainNav-sidebar {
     padding: 0 20px 0 20px;
   }
   .ct-mainNav-sidebar .ct-contactInfo h5 {
@@ -528,7 +528,7 @@ Last change:	24 February 2015
   }
   .ct-mainNav-sidebar ul {
     margin-bottom: 20px;
-  }
+  }*/
 }
 .ct-CategoriesTitle {
   color: #ab9178;
@@ -674,6 +674,20 @@ Last change:	24 February 2015
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+}
+.ct-u-hoverIcon:hover {
+  color: #ffffff;
+  background: #000000;
+  transition: all .3s;
+}
+.btn-item {
+  min-width: 50px;
+  width: 50%;
+  color: white;
+  margin-top: 10px;
+}
+.btn-item:before {
+  padding-top: 5px;
 }
 /* ============================================== End Homepage Content ========================================== */
 ul.ct-buttonList li {
