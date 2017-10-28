@@ -1,5 +1,5 @@
 /*@import "../js/jQueryShopLocator/src/style/css/pluginStyle.css";*/
-@import url('https://fonts.googleapis.com/css?family=Chonburi|Oswald:400,700&subset=vietnamese');
+@import url('https://fonts.googleapis.com/css?family=Chonburi|Muli|Oswald&subset=vietnamese');
 @import "../plugins/owl/owl.carousel.css";
 @import "../plugins/owl/owl.theme.css";
 @import "../plugins/owl/owl.transitions.css";
@@ -256,6 +256,13 @@ Last change:	24 February 2015
 }
 .navbar-brand {
   float: right;
+}
+.ct-profile {
+  display: block;
+}
+.ct-profile-img {
+  max-width: 40px;
+  border-radius: 50%;
 }
 @media (max-width: 992px) {
   .ct-mainNav {
@@ -580,9 +587,8 @@ Last change:	24 February 2015
 /* ============================================== End Sidebar =================================================== */
 /* ============================================== Homepage Content ============================================== */
 .ct-box2 {
-  min-height: 400px;
-  background-size: cover;
-  background-position: center;
+  min-height: 600px;
+  background: #ffffff;
 }
 .ct-box3 {
   display: flex;
@@ -615,8 +621,59 @@ Last change:	24 February 2015
 .ct-itemPrice {
   color: #ab9178;
 }
-.ct-u-item-hover {
-  
+.ct-u-hoverBox {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.ct-u-hoverBox img {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ct-u-hoverBox .ct-u-hoverItem {
+  background: #ab9178;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding: 0 15px;
+  visibility: hidden;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ct-u-hoverBox:hover img {
+  opacity: 0;
+  -webkit-transform: scale(5);
+  -moz-transform: scale(5);
+  -ms-transform: scale(5);
+  -o-transform: scale(5);
+  transform: scale(5);
+}
+.ct-u-hoverBox:hover .ct-u-hoverItem {
+  visibility: visible;
+  opacity: 1;
+}
+.ct-u-hoverIcon {
+  color: #ab9178;
+  width: 30px;
+  height: 30px;
+  display: block;
+  line-height: 30px;
+  text-align: center;
+  background-color: #ffffff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 /* ============================================== End Homepage Content ========================================== */
 ul.ct-buttonList li {

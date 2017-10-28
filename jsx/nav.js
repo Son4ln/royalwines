@@ -43,6 +43,14 @@ class Menu extends React.Component {
               <li className="ct-u-paddingTop10">
                 <a href="#">Đăng Nhập</a>
               </li>
+              <li className="dropdown ct-profile">
+                  <img src="/public/assets/site/images/profile.png" className="ct-profile-img"/>
+                  <p className="ct-u-colorMotive">Nguyện Hựu Thiện</p>
+                  <ul className="dropdown-menu">
+                      <li><a href="#">chỉnh sửa</a></li>
+                      <li><a href="#">đăng xuất</a></li>
+                  </ul>
+              </li>
             </ul>
             
           </nav>
