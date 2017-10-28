@@ -35,12 +35,70 @@ class HomeContents extends React.Component {
               </a>
             </div>  
           </div>
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem text-center ct-u-marginBottom30">
-            <a href="#">
-              <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box2 animated" 
-              data-bg="/public/assets/site/images/content/daniels.jpg" data-fx="pulse">
-              </section>
-            </a>
+          <div className="col-sm-6 col-xs-12 ct-js-masonryItem ct-u-marginBottom30">
+            <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
+              <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop40 text-center">sản phẩm giảm giá</h3>
+              <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+              <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
+              data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
+                  <div className="ct-u-item-hover">
+                    <div className="ct-u-hoverBox ct-item-border">
+                      <img src="/public/assets/site/images/content/item.png" />
+                      <div className="ct-u-hoverItem">
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                        <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                        <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                      </div>
+                      <div className="ct-u-item-info ct-u-marginHorizon10">
+                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
           <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
             <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse">
@@ -87,66 +145,101 @@ class HomeContents extends React.Component {
               <div className="ct-box4-child">
                 <div className="row">
                   <div className="col-xs-12">
-                    <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
-                      <div className="item ct-u-padding10 ">
-                        <a href="" className="ct-u-item-hover">
-                        <div className="ct-item-border">                      
-                          <img src="/public/assets/site/images/content/item.png" />                       
-                          <div className="overlay"></div>
+                    <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
+                    data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="ct-u-item-info">
-                          <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                          <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                        </div>
-                      </a>
                       </div>
-                      <div className="item ct-u-padding10 ">
-                        <a href="" className="ct-u-item-hover">
-                        <div className="ct-item-border">                      
-                          <img src="/public/assets/site/images/content/item.png" />
-                          <div className="overlay"></div>
+
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="ct-u-item-info">
-                          <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                          <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                        </div>
-                      </a>
                       </div>
-                      <div className="item ct-u-padding10 ">
-                        <a href="" className="ct-u-item-hover">
-                        <div className="ct-item-border">                      
-                          <img src="/public/assets/site/images/content/item.png" />
-                          <div className="overlay"></div>
+
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="ct-u-item-info">
-                          <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                          <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                        </div>
-                      </a>
                       </div>
-                      <div className="item ct-u-padding10 ">
-                        <a href="" className="ct-u-item-hover">
-                        <div className="ct-item-border">                      
-                          <img src="/public/assets/site/images/content/item.png" />                       
-                          <div className="overlay"></div>
+
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="ct-u-item-info">
-                          <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                          <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                        </div>
-                      </a>
                       </div>
-                      <div className="item ct-u-padding10 ">
-                        <a href="" className="ct-u-item-hover">
-                        <div className="ct-item-border">                      
-                          <img src="/public/assets/site/images/content/item.png" />                       
-                          <div className="overlay"></div>
+
+                      <div className="item ct-u-padding10">
+                        <div className="ct-u-item-hover">
+                          <div className="ct-u-hoverBox ct-item-border">
+                            <img src="/public/assets/site/images/content/item.png" />
+                            <div className="ct-u-hoverItem">
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
+                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
+                              <a href="#" className="ct-u-hoverIcon pull-left"><i className="fa fa-shopping-cart"></i></a>
+                              <a href="#" className="ct-u-hoverIcon pull-left ct-u-marginLeft10"><i className="fa fa-heart-o"></i></a>
+                            </div>
+                            <div className="ct-u-item-info ct-u-marginHorizon10">
+                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
+                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
+                            </div>
+                          </div>
                         </div>
-                        <div className="ct-u-item-info">
-                          <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                          <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                        </div>
-                      </a>
                       </div>
                     </div>
                   </div>

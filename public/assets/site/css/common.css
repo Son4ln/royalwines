@@ -276,12 +276,36 @@ ul.ct-defaultColorList li {
 .ct-u-paddingBottom150 {
   padding-bottom: 150px;
 }
+.ct-u-paddingHorizon20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.ct-u-paddingHorizon30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.ct-u-paddingHorizon40 {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.ct-u-paddingHorizon50 {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 .ct-u-margin0 {
   margin: 0;
 }
 .ct-u-marginBoth10 {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.ct-u-marginHorizon10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.ct-u-marginHorizon20 {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .ct-u-marginTop5 {
   margin-top: 5px;
@@ -436,6 +460,9 @@ ul.ct-defaultColorList li {
 .ct-u-colorIngredients {
   color: #666666;
 }
+.ct-u-colorBlack {
+  color: #000000;
+}
 .ct-u-backgroundWhite {
   background-color: #ffffff;
 }
@@ -447,7 +474,7 @@ ul.ct-defaultColorList li {
   font-family: 'Oswald', sans-serif;
 }
 .ct-u-font3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Muli', sans-serif;
 }
 .btn {
   font-family: 'Oswald', sans-serif;
