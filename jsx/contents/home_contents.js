@@ -4,19 +4,26 @@ import ReactDOM from 'react-dom';
 import ProductNewItem from './components/product_new_item';
 import ProductDiscount from './components/products_discount';
 
+import {renderMainScript} from '../utils'
+
 class HomeContents extends React.Component {
   constructor() {
     super();
 
     this.state = {
       new_product: [],
-      products_discount: []
+      products_discount: [],
+      blog: {},
+      blogImg: '',
+      brand: [],
     }
   }
 
   componentWillMount() {
     axios.get('/site/controller/controller.php?action=getNewProducts').then(res => this.newProducts(res.data));
     axios.get('/site/controller/controller.php?action=getProductsDiscountLimit').then(res => this.productsDiscount(res.data));
+    axios.get('/site/controller/controller.php?action=getRandomBrand').then(res => this.randomBrand(res.data));
+    axios.get('/site/controller/controller.php?action=getOneBlog').then(res => this.getOneBlog(res.data));
   }
 
   componentDidMount() {
@@ -46,6 +53,47 @@ class HomeContents extends React.Component {
     this.setState({
       products_discount: productArr
     });
+  }
+
+  getOneBlog(data) {
+    this.setState({
+      blog: data,
+      blogImg: `/upload/blog/${data.news_image}`
+    });
+  }
+
+  randomBrand(data) {
+    let brandArr = [];
+    for (let item of data) {
+      let brand = JSON.parse(item);
+      brandArr.push(brand);
+    }
+
+    this.setState({
+      brand: brandArr
+    });
+  }
+
+  renderBrands() {
+    let data = this.state.brand;
+    let brandArr = [];
+    for (let item of data) {
+      let img_url = `/upload/brands/${item.brand_logo}`;
+
+      let content = (
+        <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
+          <a href="#">
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+              <img src={img_url} />           
+            </section>
+          </a>
+        </div>
+      );
+
+      brandArr.push(content);
+    }
+
+    return brandArr;
   }
 
   renderScript() {
@@ -96,23 +144,7 @@ class HomeContents extends React.Component {
             </section>
           </div>
 
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
-
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
-
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
+          {this.renderBrands()}
 
           <div className="col-xs-12 ct-js-masonryItem">
             <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box4 animated" data-fx="pulse" data-bg="/public/assets/site/images/content/header-index-bg.png">
@@ -151,15 +183,14 @@ class HomeContents extends React.Component {
               <h3 className="ct-u-font1 text-uppercase text-center">bài viết mới</h3>
               <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
               <article className="ct-blogItem ct-formatPhoto ct-u-paddingBottom20">
-                <a href="#" className="ct-frame-image" title="The Space"><img src="/public/assets/site/images/content/layer.jpg" width="170" /></a>
+                <a href="#" className="ct-frame-image" title="The Space"><img src={this.state.blogImg} width="170" /></a>
                 <div className="ct-innerMargin">
                   <div className="ct-entryMeta">
-                     <div className="ct-entryDateFirst">Oct 22, 2014</div>
+                     <div className="ct-entryDateFirst">{this.state.blog.news_date}</div>
                   </div>
-                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">Standard Post Format with Preview Image</a></h3>
+                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">{this.state.blog.news_title}</a></h3>
                 <p className="ct-entryDescription">
-                  Etiam nunc tortur, ultrices quis turpis, tempor lacinia ligula. Sed at odio vel est lobortis eleifend ac vitae enim. Maecenas mattis nibg.
-                  Nulla sagittis ex et mauris ultrices, ut convallis nulla molestie. Ut efficitur cursus ipsum eget semper.
+                  {this.state.blog.short_desc}
                 </p>
                 <div className="clearfix"></div>
                 </div>

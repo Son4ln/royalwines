@@ -5,6 +5,14 @@ import { formatCurrency } from '../../utils'
 class ProductNewItem extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      img_url: ''
+    }
+  }
+
+  componentDidMount() {
+    this.setState({img_url: `/upload/${this.props.featured_img}`})
   }
 
   render() {
@@ -12,14 +20,13 @@ class ProductNewItem extends React.Component {
       <div className="item ct-u-padding10">
         <div className="ct-u-item-hover">
           <div className="ct-u-hoverBox ct-item-border">
-            <img src="/public/assets/site/images/content/item.png" />
+            <img src={this.state.img_url} />
             <div className="ct-u-hoverItem">
               <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">{this.props.product_name}</h4>
               <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">{formatCurrency(this.props.price)}vnđ</h4>
-              <p className="ct-u-colorWhite">lorem hihihihihih</p>
               <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
               <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-              <a href="#" class="btn btn-sm btn-default btn-item" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+              <a href="#" className="btn btn-sm btn-default btn-item" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
             </div>
             <div className="ct-u-item-info ct-u-marginHorizon10">
               <h4 className="text-uppercase ct-u-font2 ct-itemName">{this.props.product_name}</h4>

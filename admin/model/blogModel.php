@@ -25,7 +25,7 @@
 
     function UpdateBlog($id, $date, $title, $short_desc, $img, $detail) {
       $query = "UPDATE news SET news_date = '$date', news_title = '$title',
-      short_desc = '$short_desc',news_image = '$img', news_detail = '$detail' WHERE news_id = '$id'";
+      short_desc = '$short_desc', news_image = '$img', news_detail = '$detail' WHERE news_id = '$id'";
       parent::exec($query);
     }
 
@@ -35,7 +35,7 @@
       $pass = $_SESSION["royalwines_pass_login_ok"];
       $getUser = $user -> checkUser($email, $pass);
       $userId = $getUser['user_id'];
-      $query = "INSERT INTO news VALUES('', '$date', '$title', '$short_desc', '$img', '$detail' , 1, '$userId')";
+      $query = "INSERT INTO news VALUES('', '$date', '$title', '$short_desc', '$img', '$detail', 1, '$userId')";
       parent::exec($query);
     }
 
