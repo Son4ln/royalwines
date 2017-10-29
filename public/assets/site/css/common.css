@@ -459,6 +459,9 @@ ul.ct-defaultColorList li {
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
+.ct-u-center {
+  vertical-align: middle;
+}
 .ct-u-clearBoth {
   clear: both;
 }

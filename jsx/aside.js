@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import HomeAside from './aside/home_aside';
+import CartAside from './aside/cart_aside';
 import BrandsAside from './aside/brands_aside';
 import ProductsAside from './aside/products_aside';
 
@@ -11,14 +12,43 @@ class Aside extends React.Component {
     super();
   }
 
+  // componentDidMount() {
+  //   function appear() {
+  //     $('.cssAnimate .animated').appear(function () {
+  //       var $this = $(this);
+
+  //       $this.each(function () {
+  //         if ($this.data('time') != undefined) {
+  //           setTimeout(function () {
+  //             $this.addClass('activate');
+  //             $this.addClass($this.data('fx'));
+  //         }, $this.data('time'));
+  //         } else {
+  //           $this.addClass('activate');
+  //           $this.addClass($this.data('fx'));
+  //         }
+  //       });
+  //     }, {accX: 50, accY: -50});
+  //   }
+
+  //   if ($().appear) {
+  //     if (device.mobile() || device.tablet()) {
+  //       $("body").removeClass("cssAnimate");
+  //     } else {
+  //       appear();
+  //     }
+  //   }
+  // }
+
   render() {
     return(
-       <section className="ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
+       <section className="sidebar ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
       data-bg="/public/assets/site/images/content/demo2.jpg" data-bgrepeat="no-repeat">
         <Switch>
           <Route exact path='/' render={() => <HomeAside />}/>
+          <Route exact path='/gio-hang' render={() => <CartAside />}/>
           <Route exact path='/nhan-hieu' render={() => <BrandsAside />}/>
-          <Route exact path='/san-pham' render={() => <ProductsAside />}/>
+          <Route exact path='/san-pham' render={() => <ProductsAside />}/>          
         </Switch>
       </section>
     );
