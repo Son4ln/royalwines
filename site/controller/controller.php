@@ -27,6 +27,21 @@
       $action -> getProductsDiscountLimit();
       break;
 
+    case 'getBanner':
+      $action = new MainController();
+      $action -> getBanner();
+      break;
+
+    case 'getOneBlog':
+      $action = new MainController();
+      $action -> getOneBlog();
+      break;
+
+    case 'getRandomBrand':
+      $action = new MainController();
+      $action -> getRandomBrand();
+      break;
+
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

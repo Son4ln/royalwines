@@ -167,9 +167,6 @@
     oldimg: ''
   }
   $(document).ready(() => {
-    //tích họp editor
-    CKEDITOR.replace('content-blog');
-    //
     $('#tab-public').click(() => {
       location.hash = 'public';
     });
@@ -198,6 +195,7 @@
     });
 
     reviewImg();
+    CKEDITOR.replace('content-blog');
 
     $('#form-addBlog').validate({
       rules: {
@@ -216,6 +214,7 @@
     });
 
     state_blog.oldimg = $('#review-img').attr('src');
+
   });
 
    function dataTable(whatTable, whatSearch) {
@@ -347,7 +346,7 @@
     let curImg = $('#curImg').val().trim();
     let title = $('[name="eblogTitle"]').val().trim();
     let short_desc = $('[name="eshortDesc"]').val().trim();
-    let content = $('[name="eblogDetail"]').val();
+    let content = CKEDITOR.instances['eblogDetail'].getData();
     let data = new FormData();
     data.append('eblogImg', blogImg);
     data.append('curImg', curImg);
@@ -462,12 +461,12 @@
   }
 
   function addBlog() {
-    $('#insert-blog').attr('disabled', true);
+    // $('#insert-blog').attr('disabled', true);
     $('#insert-blog').html('Đang thêm...');
     let img = $('#blogImg').prop('files')[0];
     let title = $('[name="blogTitle"]').val().trim();
     let short_desc = $('[name="shortDesc"]').val().trim();
-    let desc = $('[name="blogDetail"]').val();
+    let desc = CKEDITOR.instances['content-blog'].getData();
     let data = new FormData();
     data.append('blogImg', img);
     data.append('title', title);
