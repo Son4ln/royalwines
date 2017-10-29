@@ -1,13 +1,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ProductNewItem from './components/product_new_item';
+import ProductDiscount from './components/products_discount';
+
 class HomeContents extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      new_product: [],
+      products_discount: []
+    }
   }
 
   componentWillMount() {
-    
+    axios.get('/site/controller/controller.php?action=getNewProducts').then(res => this.newProducts(res.data));
+    axios.get('/site/controller/controller.php?action=getProductsDiscountLimit').then(res => this.productsDiscount(res.data));
+  }
+
+  componentDidMount() {
+    //khai báo script đẻ sử dụng slider
+    this.renderScript();
+  }
+
+  newProducts(data) {
+    let productArr = [];
+    for(let item of data) {
+      let product = JSON.parse(item);
+      productArr.push(product);
+    }
+
+    this.setState({
+      new_product: productArr
+    }); 
+  }
+
+  productsDiscount(data) {
+    let productArr = [];
+    for(let item of data) {
+      let product = JSON.parse(item);
+      productArr.push(product);
+    }
+
+    this.setState({
+      products_discount: productArr
+    });
+  }
+
+  renderScript() {
+    let scriptBlog = document.getElementById('home-script-block');
+    const script = document.createElement('script');
+    script.src = '/public/assets/site/plugins/owl/init.js';
+    scriptBlog.appendChild(script);
   }
 
   render() {
@@ -35,74 +80,22 @@ class HomeContents extends React.Component {
               </a>
             </div>  
           </div>
+
           <div className="col-sm-6 col-xs-12 ct-js-masonryItem ct-u-marginBottom30">
             <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
               <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop50 text-center">sản phẩm giảm giá</h3>
               <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
               <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
               data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {this.state.products_discount.map((e, i) => <ProductDiscount key={i}
+                  uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
+                )}
 
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
           </div>
+
           <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
             <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
               <img src="/public/assets/site/images/content/brand1.png" />           
@@ -141,25 +134,10 @@ class HomeContents extends React.Component {
                   <div className="col-xs-12">
                     <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
                     data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
-                      <div className="item ct-u-padding10">
-                        <div className="ct-u-item-hover">
-                          <div className="ct-u-hoverBox ct-item-border">
-                            <img src="/public/assets/site/images/content/item.png" />
-                            <div className="ct-u-hoverItem">
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                              <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                              <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                              <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                            </div>
-                            <div className="ct-u-item-info ct-u-marginHorizon10">
-                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+
+                      {this.state.new_product.map((e, i) => <ProductNewItem key={i}
+                        uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price}/>
+                      )}
 
                     </div>
                   </div>
@@ -167,6 +145,7 @@ class HomeContents extends React.Component {
               </div>
             </section>
           </div>
+
           <div className="col-sm-12 ct-js-masonryItem ct-u-clearBoth">
             <section className="ct-frame ct-frame--white animated" data-fx="pulse">
               <h3 className="ct-u-font1 text-uppercase text-center">bài viết mới</h3>
@@ -188,6 +167,8 @@ class HomeContents extends React.Component {
             </section>
           </div>
         </div>
+
+        <div id="home-script-block"></div>
       </section>
     );
   }

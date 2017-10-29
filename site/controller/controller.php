@@ -15,16 +15,16 @@
   {
     $action=$_POST["action"];
   }
-  else{
-    $action="home";
-  }
   //khởi tạo action
   switch ($action) {
-    case 'home':
-      $brands = new BrandsController();
-      $brands -> getBrands();
-      include '../view/home.php';
-      var_dump(http_response_code());
+    case 'getNewProducts':
+      $action = new MainController();
+      $action -> getNewProducts();
+      break;
+
+    case 'getProductsDiscountLimit':
+      $action = new MainController();
+      $action -> getProductsDiscountLimit();
       break;
 
     default:

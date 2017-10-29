@@ -14,7 +14,8 @@
   <div id="rw-wrapper">
     
   </div>
-  <script src="/public/js/homepage.js"></script>
+  <script src="/public/assets/site/js/axios.min.js"></script>
+  
   <script src="/public/assets/site/js/jquery.min.js"></script>
   <script src="/public/assets/site/bootstrap/js/bootstrap.min.js"></script>
   <script src="/public/assets/site/js/jquery.placeholder.min.js"></script>
@@ -23,18 +24,15 @@
   <script src="/public/assets/site/js/jquery.browser.min.js"></script>
   <script src="/public/assets/site/js/snap.min.js"></script>
   <script src="/public/assets/site/js/jquery.appear.js"></script>
-  
+  <script src="/public/js/homepage.js"></script>
   <script src="/public/assets/site/js/masonry.min.js"></script>
-
-
   <script src="/public/assets/site/plugins/owl/owl.carousel.min.js"></script>
-  <script src="/public/assets/site/plugins/owl/init.js"></script>
-
+  <!-- <script src="/public/assets/site/plugins/owl/init.js"></script> -->
   <script src="/public/assets/site/js/portfolio/imagesloaded.js"></script>
   <script src="/public/assets/site/js/image-box/init.js"></script>
-
   <script src="/public/assets/site/js/retina.js"></script>
-  <script src="/public/assets/site/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>\
+  <script src="/public/assets/site/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
   <script src="/public/assets/site/js/main.js"></script>
+
 </body>
 </html>

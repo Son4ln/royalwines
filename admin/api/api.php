@@ -31,6 +31,9 @@
 
       if ($result['permission'] != $_SESSION["royalwines_permission_ok"]) {
         $_SESSION["royalwines_permission_ok"] = $result['permission'];
+        if ($_SESSION["royalwines_permission_ok"] == 5) {
+          die('logout');
+        }
         die('permission_change');
       }
     }

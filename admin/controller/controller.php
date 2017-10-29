@@ -22,7 +22,7 @@
       $action="home";
     }
   }
-  
+
   //khởi tạo action
   switch ($action) {
     case 'home':
