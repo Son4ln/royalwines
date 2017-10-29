@@ -136,9 +136,9 @@ function checkPermission() {
             });
 
             window.clearInterval(checkPermission);
+          } else {
+            window.location.href = '?action=logout';    
           }
-        } else {
-          window.location.href = '?action=logout';    
         }
       },
       error: function() {}

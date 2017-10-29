@@ -45,6 +45,10 @@ h6,
   border: none;
   background-position: center;
 }
+.format-background {
+  background-size: cover;
+  background-position: center;
+}
 ul {
   padding: 0;
   margin: 0;
@@ -292,6 +296,10 @@ ul.ct-defaultColorList li {
   padding-left: 50px;
   padding-right: 50px;
 }
+.ct-u-paddingHorizon60 {
+  padding-left: 60px;
+  padding-right: 60px;
+}
 .ct-u-margin0 {
   margin: 0;
 }
@@ -331,6 +339,9 @@ ul.ct-defaultColorList li {
 }
 .ct-u-marginBottom20 {
   margin-bottom: 20px;
+}
+.ct-u-marginBottom25 {
+  margin-bottom: 25px;
 }
 .ct-u-marginBoth30 {
   margin-top: 30px;
@@ -424,6 +435,9 @@ ul.ct-defaultColorList li {
 }
 .ct-u-marginLeft10 {
   margin-left: 10px;
+}
+.ct-u-marginLeft40 {
+  margin-left: 40px;
 }
 .ct-u-marginHorizon0 {
   margin-left: 0;

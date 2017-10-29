@@ -45,6 +45,7 @@
       $id = $_GET['id'];
       $date = date("Y-m-d");
       $title = $_POST['title'];
+      $short_desc = $_POST['shortdesc'];
 
       if(empty($_FILES['eblogImg']['name'])) {
         $img = $_POST['curImg'];
@@ -61,7 +62,7 @@
 
       $detail = $_POST['detail'];
       $blog = new BlogModel();
-      $blog -> UpdateBlog($id, $date, $title, $img, $detail);
+      $blog -> UpdateBlog($id, $date, $title, $short_desc, $img, $detail);
 
       if (!empty($_FILES['eblogImg']['name'])) {
         //upload ảnh mới và xóa ảnh cũ
@@ -97,11 +98,12 @@
       }
 
       $title = $_POST['title'];
+      $short_desc = $_POST['shortdesc'];
       $img = time().'-'.$_FILES['blogImg']['name'];
       $detail = $_POST['detail'];
 
       $blog = new BlogModel();
-      $blog -> addBlog($date, $title, $img, $detail);
+      $blog -> addBlog($date, $title, $short_desc, $img, $detail);
 
       $source = $_FILES['blogImg']['tmp_name'];
       $path = $GLOBALS['UPLOADBLOG'];

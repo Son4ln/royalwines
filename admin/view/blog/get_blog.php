@@ -20,6 +20,11 @@
       </div>
 
       <div class="form-group form-group-default required">
+        <label>Mô tả ngắn</label>
+        <textarea class="form-control" name="eshortDesc" id="eshortDesc"><?php echo $item['short_desc']; ?></textarea>
+      </div>
+
+      <div class="form-group form-group-default required">
         <label>Nội dung</label>
         <textarea class="form-control" name="eblogDetail" id="eblogDetail"><?php echo $item['news_detail']; ?></textarea>
       </div>
