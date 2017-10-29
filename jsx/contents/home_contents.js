@@ -87,9 +87,11 @@ class HomeContents extends React.Component {
               <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
               <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
               data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
+
                 {this.state.products_discount.map((e, i) => <ProductDiscount key={i}
                   uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
                 )}
+
               </div>
             </section>
           </div>
@@ -132,9 +134,11 @@ class HomeContents extends React.Component {
                   <div className="col-xs-12">
                     <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
                     data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
+
                       {this.state.new_product.map((e, i) => <ProductNewItem key={i}
                         uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price}/>
                       )}
+
                     </div>
                   </div>
                 </div>
