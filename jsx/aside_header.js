@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
 class AsideHeader extends React.Component {
   constructor() {
     super();
+  }
+
+  componentDidMount() {
   }
 
   render() {
@@ -115,7 +119,7 @@ class AsideHeader extends React.Component {
                   <h3 className="ct-u-marginBottom30">Tổng Cộng:</h3>
                   <h3>10.000.000 vnđ</h3>
                   <hr/>
-                  <a href="#" className="btn btn-lg btn-button--white ct-u-marginBottom10 ct-u-marginTop5 cart-btn">đến giỏ hàng</a>
+                  <Link to="/gio-hang" className="btn btn-lg btn-button--white ct-u-marginBottom10 ct-u-marginTop5 cart-btn">đến giỏ hàng</Link>
                   <a href="#" className="btn btn-lg btn-button--white ct-u-marginBottom10 cart-btn">thanh toán</a>
                 </div>
               </div>
@@ -130,7 +134,7 @@ class AsideHeader extends React.Component {
             <li className="wishlist pull-left hidden-lg ct-u-marginHorizon5">|
             </li>
             <li className="wishlist pull-left">
-              <a href="#" className="hidden-lg" type="button">giỏ hàng <i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
+              <Link to="/gio-hang" className="hidden-lg" type="button">giỏ hàng <i className="fa fa-shopping-cart" aria-hidden="true"></i></Link>
             </li>
           </ul>    
         </div>

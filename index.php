@@ -15,7 +15,6 @@
     
   </div>
   <script src="/public/assets/site/js/axios.min.js"></script>
-  
   <script src="/public/assets/site/js/jquery.min.js"></script>
   <script src="/public/assets/site/bootstrap/js/bootstrap.min.js"></script>
   <script src="/public/assets/site/js/jquery.placeholder.min.js"></script>

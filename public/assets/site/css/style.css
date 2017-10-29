@@ -286,7 +286,7 @@ Last change:	24 February 2015
   min-height: 400px;
   float: left;
   position: fixed;
-  width: 55%;
+  width: 45%;
   overflow: hidden;
   height: 100%;
   text-align: center;
@@ -422,7 +422,7 @@ Last change:	24 February 2015
 .ct-sidebar p {
   margin-bottom: 30px;
 }
-.ct-sidebar .flexslider,
+/*.ct-sidebar .flexslider,
 .ct-sidebar .flex-viewport,
 .ct-sidebar .flexslider .slides {
   height: 100%;
@@ -434,7 +434,7 @@ Last change:	24 February 2015
   display: table-cell !important;
   vertical-align: middle;
   float: none !important;
-}
+}*/
 .ct--pageVariation .ct-sidebar {
   width: 70%;
 }
@@ -551,7 +551,7 @@ Last change:	24 February 2015
 .ct-sidebar + .ct-content {
   padding-left: 30px;
   padding-right: 30px;
-  width: 45%;
+  width: 55%;
 }
 .ct--pageVariation .ct-sidebar + .ct-content {
   width: 30%;
@@ -690,6 +690,48 @@ Last change:	24 February 2015
   padding-top: 5px;
 }
 /* ============================================== End Homepage Content ========================================== */
+/* ============================================== Cart Content ========================================== */
+
+.ct-cart-table {
+  border: solid 3px #ffffff;
+  width: 100%;
+}
+.ct-cart-table td, th {
+  border: solid 3px #ffffff;
+  text-align: center;
+}
+.ct-head-table th{
+  color: #000000;
+  padding: 5px 0;
+}
+.ct-cart-img {
+  max-width: 80px;
+  margin: 10px 30px 10px 40px;
+}
+.ct-cart-quantity {
+  padding: 0;
+  border: none;
+}
+.ct-number {
+  width: 25px;
+}
+.ct-number::-webkit-outer-spin-button, .ct-number::-webkit-inner-spin-button {
+  display: none;
+}
+.js-form-number-dec, .js-form-number-inc {
+  color: #ffffff;
+  border: solid 2px #ab9178;
+  background: #ab9178;
+  outline: none;
+  width: 20px
+}
+.ct-cart-body-btn {
+  border: solid 3px #ffffff;
+  padding: 5px 25px;
+  margin: 10px 10px;
+  background: none;
+}
+/* ============================================== End Cart Content ========================================== */
 ul.ct-buttonList li {
   padding: 7px;
 }
