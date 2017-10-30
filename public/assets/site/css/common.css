@@ -49,6 +49,9 @@ h6,
   background-size: cover;
   background-position: center;
 }
+.bold {
+  font-weight: 600;
+}
 ul {
   padding: 0;
   margin: 0;
@@ -124,6 +127,16 @@ ul.ct-defaultColorList li {
 }
 .ct-u-size20 {
   font-size: 20px;
+}
+@media (max-width: 991px) {
+  .ct-u-size20 {
+    font-size: 17px;
+  }
+}
+@media (max-width: 767px) {
+  .ct-u-size20 {
+    font-size: 14px;
+  }
 }
 .ct-u-padding0 {
   padding: 0;
@@ -303,6 +316,15 @@ ul.ct-defaultColorList li {
 .ct-u-margin0 {
   margin: 0;
 }
+.ct-u-marginRight20 {
+  margin-right: 20px;
+}
+.ct-u-marginRight10 {
+  margin-right: 10px;
+}
+.ct-u-marginBottom20 {
+  margin-bottom: 20px;
+}
 .ct-u-marginBoth10 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -336,6 +358,9 @@ ul.ct-defaultColorList li {
 }
 .ct-u-marginTop20 {
   margin-top: 20px;
+}
+.ct-u-paddingTop20per {
+  margin-top: 20%;
 }
 .ct-u-marginBottom20 {
   margin-bottom: 20px;
