@@ -19,7 +19,7 @@ class LoginContents extends React.Component {
           <div className="item">
             <hr className="hr-custom ct-js-background animated" data-fx="fadeInDown" 
             data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
-            <h2 className="ct-u-font2 text-uppercase animated " data-fx="flipInY">đăng ký</h2>
+            <h2 className="ct-u-font2 text-uppercase animated ct-u-paddingBottom15" data-fx="flipInY">đăng ký</h2>
             <form className="ct-login ct-u-colorDark ct-u-font2 ct-u-size18">
               <div class="form-group">
                 <input type="text" placeholder="Họ & tên:" className="ct-register-input" required />
