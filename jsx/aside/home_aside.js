@@ -71,6 +71,8 @@ class HomeAside extends React.Component {
     }
 
     return(
+      <section className="sidebar ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
+      data-bg="/public/assets/site/images/content/demo2.jpg" data-bgrepeat="no-repeat">
       <div className="ct-js-owl" data-animations="true" data-height="100%" data-snap-ignore="true">
         <div className="item">
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
@@ -84,12 +86,15 @@ class HomeAside extends React.Component {
             <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
           </p>
 
+          <a href="#" className="btn btn-lg btn-default animated" data-fx="fadeIn" data-hover="Hết hồn"><span>Hover zô!</span></a>
+          
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
           data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
         </div>
 
         {this.renderBanner()}
       </div>
+      </section>
     );
   }
 }

@@ -42,15 +42,13 @@ class Aside extends React.Component {
 
   render() {
     return(
-       <section className="sidebar ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
-      data-bg="/public/assets/site/images/content/demo2.jpg" data-bgrepeat="no-repeat">
+       
         <Switch>
           <Route exact path='/' render={() => <HomeAside />}/>
           <Route exact path='/gio-hang' render={() => <CartAside />}/>
           <Route exact path='/nhan-hieu' render={() => <BrandsAside />}/>
           <Route exact path='/san-pham' render={() => <ProductsAside />}/>          
         </Switch>
-      </section>
     );
   }
 }

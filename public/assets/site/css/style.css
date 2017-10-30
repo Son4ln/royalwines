@@ -691,10 +691,14 @@ Last change:	24 February 2015
 }
 /* ============================================== End Homepage Content ========================================== */
 /* ============================================== Cart Content ========================================== */
-
+.overflow-x {
+  overflow-x: auto;
+}
 .ct-cart-table {
   border: solid 3px #ffffff;
   width: 100%;
+  border-collapse: collapse;
+  left: 0px;
 }
 .ct-cart-table td, th {
   border: solid 3px #ffffff;
@@ -706,11 +710,16 @@ Last change:	24 February 2015
 }
 .ct-cart-img {
   max-width: 80px;
-  margin: 10px 30px 10px 40px;
+  margin: 0 auto;
+  padding: 5px;
+}
+.ct-cart-name {
+  min-width: 80px;
 }
 .ct-cart-quantity {
   padding: 0;
   border: none;
+  min-width: 70px;
 }
 .ct-number {
   width: 25px;
@@ -730,6 +739,26 @@ Last change:	24 February 2015
   padding: 5px 25px;
   margin: 10px 10px;
   background: none;
+}
+.ct-cart-table-checkout {
+  border: solid 3px #ffffff;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.ct-body-table-checkout td{
+  padding-left: 10px;
+}
+.ct-body-table-checkout td:last-child{
+  text-align: right;
+  padding-right: 10px;
+}
+.ct-body-table-checkout tr {
+  border: none;
+}
+.ct-cart-table-checkout tfoot {
+  text-align: right;
 }
 /* ============================================== End Cart Content ========================================== */
 ul.ct-buttonList li {
