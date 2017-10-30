@@ -8,6 +8,9 @@ class AsideHeader extends React.Component {
   }
 
   componentDidMount() {
+    $('.cart-popup, .wishlist-popup').click(function(e) {
+        e.stopPropagation();
+    });
   }
 
   render() {
@@ -17,7 +20,7 @@ class AsideHeader extends React.Component {
           <li className="dropdown wishlist pull-left">
             <a href="#" className="btn dropdown-toggle visible-lg hidden-md hidden-sm hidden-xs" type="button" data-toggle="dropdown">yêu thích</a>
             <div className="dropdown-menu wishlist-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn">
-              <div className="wishlist-border">
+              <div className="wishlist-border col-xs-8">
                 <div className="container-fluid">
                   <h3 className="ct-u-margin0 ct-u-marginBottom10">Sản Phẩm Yêu Thích:</h3>
                   <div className="row">
@@ -26,7 +29,6 @@ class AsideHeader extends React.Component {
                     </div>
                     <div className="col-xs-7">
                       <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                      <p className="ct-u-marginLeft10">Ham, green peppers, onions, on buttered croissant, with a mild chipotle sause</p>
                     </div>
                     <div className="col-xs-1">
                       <button className="x-btn"><i className="fa fa-times"></i></button>
@@ -39,7 +41,6 @@ class AsideHeader extends React.Component {
                     </div>
                     <div className="col-xs-7">
                       <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                      <p className="ct-u-marginLeft10">Ham, green peppers, onions, on buttered croissant, with a mild chipotle sause</p>
                     </div>
                     <div className="col-xs-1">
                       <button className="x-btn"><i className="fa fa-times"></i></button>
@@ -52,13 +53,17 @@ class AsideHeader extends React.Component {
                     </div>
                     <div className="col-xs-7">
                       <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                      <p className="ct-u-marginLeft10">Ham, green peppers, onions, on buttered croissant, with a mild chipotle sause</p>
                     </div>
                     <div className="col-xs-1">
                       <button className="x-btn"><i className="fa fa-times"></i></button>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="btn-wishlist col-xs-4 ct-u-colorWhite ct-js-background" 
+                data-bg="/public/assets/site/images/menu-pattern.jpg">
+                <Link to="/yeu-thich" className="btn btn-sm btn-button--white ct-u-marginBottom10 ct-u-marginTop5 wishlist-btn">xem toàn bộ</Link>
               </div>
             </div>
           </li>
@@ -129,7 +134,7 @@ class AsideHeader extends React.Component {
         <div className="ct-wishlist-title-media ct-u-font2 ct-u-size18 text-uppercase list-inline">
           <ul>
             <li className="wishlist pull-left">
-              <a href="#" className="hidden-lg" type="button">yêu thích</a>
+              <Link to="/yeu-thich" className="hidden-lg" type="button">yêu thích</Link>
             </li>
             <li className="wishlist pull-left hidden-lg ct-u-marginHorizon5">|
             </li>
