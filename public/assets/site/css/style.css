@@ -348,9 +348,11 @@ Last change:	24 February 2015
   color: #ab9178;
 }
 .wishlist-popup {
-  min-width: 300px;
+  min-width: 440px;
   max-height: 220px;
   overflow-y: scroll;
+  position: relative;
+  overflow-x: hidden;
 }
 .wishlist-border {
   margin: -11px -6px;
@@ -367,6 +369,13 @@ Last change:	24 February 2015
 }
 .wishlist-popup::-webkit-scrollbar-thumb{
   background-color: #ab9178;
+}
+.btn-wishlist {
+  left: 537px;
+  top: 46px;
+  position: fixed;
+  width: 140px;
+  min-height: 210px;
 }
 .cart-popup {
   min-width: 500px;
@@ -412,6 +421,11 @@ Last change:	24 February 2015
 }
 .cart-btn {
   min-width: 155px;
+}
+.wishlist-btn {
+  width: 100%;
+  padding: 8px 15px 8px 15px;
+  margin-top: 70%;
 }
 .ct-sidebar h2 {
   margin-top: 50px;
@@ -690,7 +704,7 @@ Last change:	24 February 2015
   padding-top: 5px;
 }
 /* ============================================== End Homepage Content ========================================== */
-/* ============================================== Cart Content ========================================== */
+/* ============================================== Cart/Wishlist Content ========================================== */
 .overflow-x {
   overflow-x: auto;
 }
@@ -760,7 +774,7 @@ Last change:	24 February 2015
 .ct-cart-table-checkout tfoot {
   text-align: right;
 }
-/* ============================================== End Cart Content ========================================== */
+/* ============================================== End Cart/Wishlist Content ========================================== */
 ul.ct-buttonList li {
   padding: 7px;
 }
