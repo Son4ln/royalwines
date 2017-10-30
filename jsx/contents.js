@@ -7,6 +7,7 @@ import CartContents from './contents/cart_contents';
 import WishlistContents from './contents/wishlist_contents';
 import BrandsContents from './contents/brands_contents';
 import ProductsContents from './contents/products_contents';
+import LoginContents from './contents/login_contents';
 
 class Contents extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ class Contents extends React.Component {
         <Route exact path='/yeu-thich' render={() => <WishlistContents />}/> 
         <Route exact path='/nhan-hieu' render={() => <BrandsContents />}/>
         <Route exact path='/san-pham' render={() => <ProductsContents />}/>
+        <Route exact path='/dang-nhap' render={() => <LoginContents />}/>
       </Switch>
     );
   }

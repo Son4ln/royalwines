@@ -7,6 +7,7 @@ import CartAside from './aside/cart_aside';
 import WishlistAside from './aside/wishlist_aside';
 import BrandsAside from './aside/brands_aside';
 import ProductsAside from './aside/products_aside';
+import LoginAside from './aside/login_aside';
 
 class Aside extends React.Component {
   constructor() {
@@ -25,6 +26,7 @@ class Aside extends React.Component {
           <Route exact path='/yeu-thich' render={() => <WishlistAside />}/> 
           <Route exact path='/nhan-hieu' render={() => <BrandsAside />}/>
           <Route exact path='/san-pham' render={() => <ProductsAside />}/>
+          <Route exact path='/dang-nhap' render={() => <LoginAside />}/>
         </Switch>
     );
   }

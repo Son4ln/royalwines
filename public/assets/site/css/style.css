@@ -775,6 +775,59 @@ Last change:	24 February 2015
   text-align: right;
 }
 /* ============================================== End Cart/Wishlist Content ========================================== */
+/* ============================================== Login/Register Content ============================================= */
+.ct-login-input {
+  padding: 10px;
+  min-width: 200px;
+  width: 270px;
+  outline-color: #ab9178;
+}
+.ct-register {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.ct-register-input {
+  padding: 10px;
+  min-width: 200px;
+  width: 80%;
+  outline: none;
+  background: none;
+  border: solid 3px #ffffff;
+  transition: all .3s;
+}
+.ct-register-input:focus {
+  border: solid 3px #ab9178;
+}
+.ct-register-phone {
+  float: left;
+  width: 30%;
+  min-width: 70px;
+  margin-left: 10%;
+}
+.ct-register-address {
+  float: left;
+  margin-left: 1%;
+  min-width: 70px;
+  width: 49%;
+}
+.ct-register-pass {
+  float: left;
+  width: 39.5%;
+  min-width: 100px;
+  margin-left: 10%;
+}
+.ct-register-repass {
+  float: left;
+  width: 39.5%;
+  min-width: 100px;
+  margin-left: 1%;
+}
+.btn-register:hover {
+  color: #ab9178;
+  transition: .3s;
+}
+/* ============================================== End Login/Register Content ========================================= */
 ul.ct-buttonList li {
   padding: 7px;
 }
