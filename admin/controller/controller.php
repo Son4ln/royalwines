@@ -234,6 +234,35 @@
     case 'addBlog':
       $blog = new BlogController();
       $blog -> addBlog();
+
+    case 'listProducts':
+      $products = new ProductsController();
+      $products -> showProducts();
+      break;
+
+    case 'getPublicProduct':
+      $products = new ProductsController();
+      $products -> getPublic();
+      break;
+
+    case 'addProductsAction':
+      $products = new ProductsController();
+      $products -> addProductsAction();
+      break;
+
+    case 'deleteProducts':
+      $products = new ProductsController();
+      $products -> deleteProducts();
+      break;
+
+    case 'updateProductsAction':
+      $products = new ProductsController();
+      $products -> updateProductsAction();
+      break;
+
+    case 'changeStatusProducts':
+      $products = new ProductsController();
+      $products -> changeStatus();
       break;
 
     default:

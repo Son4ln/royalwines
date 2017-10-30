@@ -41,7 +41,6 @@
   $cate = new Categories();
   $contactForm = new ContactForm();
   $eval = new Evaluation();
-  $img = new Images();
   $news = new News();
   $client = new Clients();
   $orderDetail = new OrderDetail();
@@ -67,7 +66,6 @@
   $cate -> createCategories();
   $contactForm -> createContactForm();
   $eval -> createEvaluation();
-  $img -> createImages();
   $news -> createNews();
   $orderDetail -> createOrderDetail();
   $orders -> createOrders();

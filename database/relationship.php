@@ -67,19 +67,6 @@
         	echo $e->getMessage();
       	  }
 
-      	  //tạo quan hệ giữa product và images
-      	  try {
-			$imagesToProduct = "Alter table images 
-							   Add constraint	image_product
-							   Foreign key (product_id)
-							   References products (product_id);
-							  ";
-			$this->db->exec($imagesToProduct);
-		  }
-		  catch(PDOException $e) {
-        	echo $e->getMessage();
-      	  }
-
       	  //tạo quan hệ giữa order và client
       	  try {
 			$clientToOrder = "Alter table orders 
@@ -153,32 +140,6 @@
 							   References products (product_id);
 							";
 			$this->db->exec($wishToProducts);
-		  }
-		  catch(PDOException $e) {
-        	echo $e->getMessage();
-      	  }
-
-      	  //stock với user 
-      	  try {
-			$stockToUser = "Alter table stock
-							Add constraint	user_stock
-							Foreign key (user_id)
-							References users (user_id);
-							";
-			$this->db->exec($stockToUser);
-		  }
-		  catch(PDOException $e) {
-        	echo $e->getMessage();
-      	  }
-
-      	  //stock vs products
-      	  try {
-			$stockToProduct = "Alter table stock
-							   Add constraint	product_stock
-							   Foreign key (product_id)
-							   References products (product_id);
-							";
-			$this->db->exec($stockToProduct);
 		  }
 		  catch(PDOException $e) {
         	echo $e->getMessage();

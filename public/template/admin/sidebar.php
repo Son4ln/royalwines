@@ -123,6 +123,13 @@
             if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) {
           ?>
           <li class="">
+            <a href="?action=listProducts" class="detailed">
+              <span class="title">Sản Phẩm</span>
+            </a>
+            <span class="icon-thumbnail">S</i></span>
+          </li>
+
+          <li class="">
             <a href="?action=viewAllContact" class="detailed">
               <span class="title">Liên hệ</span>
             </a>

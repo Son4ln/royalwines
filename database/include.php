@@ -6,7 +6,6 @@
   include 'migrations/ContactForm.php';
   include 'migrations/ContactInfo.php';
   include 'migrations/Evaluation.php';
-  include 'migrations/Images.php';
   include 'migrations/ManageUsers.php';
   include 'migrations/News.php';
   include 'migrations/Clients.php';
