@@ -21,20 +21,20 @@ class LoginContents extends React.Component {
             data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
             <h2 className="ct-u-font2 text-uppercase animated ct-u-paddingBottom15" data-fx="flipInY">đăng ký</h2>
             <form className="ct-login ct-u-colorDark ct-u-font2 ct-u-size18">
-              <div class="form-group">
+              <div className="form-group">
                 <input type="text" placeholder="Họ & tên:" className="ct-register-input" required />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input type="text" placeholder="Tên đăng nhập:" className="ct-register-input" required />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input type="text" placeholder="SĐT:" className="ct-register-input ct-register-phone" required />
                 <input type="text" placeholder="Địa chỉ:" className="ct-register-input ct-register-address" required />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input type="email" placeholder="Email:" className="ct-register-input ct-u-marginTop15" required />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input type="password" placeholder="Mật khẩu:" className="ct-register-input ct-register-pass" required />
                 <input type="password" placeholder="Nhập lại mật khẩu:" className="ct-register-input ct-register-repass" required />
               </div>
@@ -44,6 +44,7 @@ class LoginContents extends React.Component {
             data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
           </div>
         </div>
+        
         <div id="login-script-blog"></div>
       </section>
     );

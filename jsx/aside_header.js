@@ -125,7 +125,7 @@ class AsideHeader extends React.Component {
                   <h3>10.000.000 vnđ</h3>
                   <hr/>
                   <Link to="/gio-hang" className="btn btn-lg btn-button--white ct-u-marginBottom10 ct-u-marginTop5 cart-btn">đến giỏ hàng</Link>
-                  <a href="#" className="btn btn-lg btn-button--white ct-u-marginBottom10 cart-btn">thanh toán</a>
+                  <Link to="/thanh-toan" className="btn btn-lg btn-button--white ct-u-marginBottom10 cart-btn">thanh toán</Link>
                 </div>
               </div>
             </div>
