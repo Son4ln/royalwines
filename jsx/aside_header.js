@@ -78,44 +78,7 @@ class AsideHeader extends React.Component {
                   <div className="cart-item-border">
                     <div className="container-fluid">
                       <h3 className="ct-u-margin0 ct-u-marginBottom10">Giỏ hàng:</h3>
-                      <div className="row">
-                        <div className="col-xs-3">
-                          <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                        </div>
-                        <div className="col-xs-7">
-                          <h4 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h4>
-                          <p className="ct-u-marginLeft10">2.000.000 vnđ x 2</p>
-                        </div>
-                        <div className="col-xs-1">
-                          <button className="x-btn"><i className="fa fa-times"></i></button>
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-xs-3">
-                          <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                        </div>
-                        <div className="col-xs-7">
-                          <h4 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h4>
-                          <p className="ct-u-marginLeft10">2.000.000 vnđ x 2</p>
-                        </div>
-                        <div className="col-xs-1">
-                          <button className="x-btn"><i className="fa fa-times"></i></button>
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-xs-3">
-                          <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                        </div>
-                        <div className="col-xs-7">
-                          <h4 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h4>
-                          <p className="ct-u-marginLeft10">2.000.000 vnđ x 2</p>
-                        </div>
-                        <div className="col-xs-1">
-                          <button className="x-btn"><i className="fa fa-times"></i></button>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>

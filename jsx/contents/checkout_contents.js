@@ -24,9 +24,15 @@ class CheckoutContents extends React.Component {
                 <input type="text" placeholder="Họ và tên:" className="ct-register-input ct-register-pass" required />
                 <input type="number" placeholder="SĐT:" className="ct-register-input ct-register-repass ct-u-numberHide" required />
               </div>
+
               <div className="form-group">
                 <input type="text" placeholder="Địa chỉ:" className="ct-register-input ct-u-marginTop10" required />
               </div>
+
+              <div className="form-group">
+                <input type="email" placeholder="Email:" className="ct-register-input" required />
+              </div>
+
               <div className="form-group">
                 <textarea className="ct-checkout-area" placeholder="Ghi chú:"></textarea>
                 <table className="ct-checkout-btnGroup ct-u-font2 text-uppercase ct-u-size18">
