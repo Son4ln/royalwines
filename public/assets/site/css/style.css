@@ -828,6 +828,96 @@ Last change:	24 February 2015
   transition: .3s;
 }
 /* ============================================== End Login/Register Content ========================================= */
+/* ============================================== Checkout Content =================================================== */
+.ct-checkout {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.ct-checkout-input {
+  padding: 10px;
+  min-width: 200px;
+  width: 80%;
+  outline: none;
+  background: none;
+  border: solid 3px #000000;
+  transition: all .3s;
+}
+.ct-checkout-area {
+  width: 39.5%;
+  margin-left: 10%;
+  outline: none;
+  background: none;
+  border: solid 3px #ffffff;
+  transition: all .3s;
+  resize: none;
+  min-height: 250px;
+  padding: 10px;
+  overflow-y: auto;
+  float: left;
+}
+.ct-checkout-area:focus {
+  border: solid 3px #ab9178;
+  transition: all .3s;
+}
+.ct-checkout-area::-webkit-scrollbar{
+  width: 5px;
+  background-color: #f5f5f5;
+}
+.ct-checkout-area::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #f5f5f5;
+}
+.ct-checkout-area::-webkit-scrollbar-thumb{
+  background-color: #ab9178;
+}
+.ct-checkout-btnGroup {
+  width: 39.5%;
+  min-width: 100px;
+  margin-left: 1%;
+  border: solid 3px #ffffff;
+  min-height: 250px;
+  float: left;
+}
+.ct-checkout-title td{
+  border: solid 3px #ffffff;
+  padding: 5px 0;
+}
+.ct-checkout-content td:first-child {
+  text-align: left;
+  padding-left: 10px;
+}
+.ct-checkout-content td:last-child {
+  text-align: right;
+  padding-right: 10px;
+}
+.hr-checkout {
+  border-bottom: solid .3px #999999;
+  margin: 10px 10px 0 10px;
+}
+@media (max-width: 767px) {
+  .ct-checkout-area {
+    width: 80%;
+    margin-left: 0;
+    outline: none;
+    background: none;
+    border: solid 3px #ffffff;
+    transition: all .3s;
+    resize: none;
+    min-height: 150px;
+    overflow-y: auto;
+    float: none;
+  }
+  .ct-checkout-btnGroup {
+    width: 80%;
+    margin-left: 10%;
+    border: solid 3px #ffffff;
+    margin-top: 20px;
+    float: none;
+    font-size: 17px;
+  }
+}
+/* ============================================== End Checkout Content =============================================== */
 ul.ct-buttonList li {
   padding: 7px;
 }
