@@ -349,12 +349,14 @@ Last change:	24 February 2015
 }
 .wishlist-popup {
   min-width: 440px;
-  max-height: 220px;
+  min-height: 200px;
+  height: 220px;
   overflow-y: scroll;
   position: relative;
   overflow-x: hidden;
 }
 .wishlist-border {
+  min-height: 220px;
   margin: -11px -6px;
   border: solid #ab9178 2px;
   padding: 10px 10px 10px 5px;
@@ -379,13 +381,15 @@ Last change:	24 February 2015
 }
 .cart-popup {
   min-width: 500px;
-  max-height: 250px;
+  height: 250px;
+  min-height: 240px;
   margin-left: -103.5px;
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 .cart-item-border {
+  min-height: 250px;
   margin: -11px -6px;
   border: solid #ab9178 2px;
   padding: 10px 5px 10px 0;
