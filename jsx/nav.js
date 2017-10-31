@@ -31,7 +31,7 @@ class Menu extends React.Component {
                 <Link to="/san-pham">Sản Phẩm</Link>
               </li>
               <li>
-                <a href="#">Blog</a>
+                <Link to="/bai-viet">Bài Viết</Link>
               </li>
               <li>
                 <a href="#">Giới Thiệu</a>
