@@ -39,7 +39,7 @@ class ProductsAside extends React.Component {
           <h2 className="ct-u-font2 text-uppercase animated " data-fx="flipInY">sản phẩm</h2>
           <section className="widget">
             <div className="widget-inner">
-              <h4 className="widget-title ct-u-font1 ct-u-paddingBottom10">chủng loại</h4>
+              <h4 className="widget-title ct-u-font1 ct-u-paddingBottom10">xuất xứ</h4>
               <ul className="ct-u-font2 text-center">
                 <li><a href="#">champagne</a></li>
                 <li><a href="#">wine</a></li>
