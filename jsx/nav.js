@@ -31,7 +31,7 @@ class Menu extends React.Component {
                 <Link to="/san-pham">Sản Phẩm</Link>
               </li>
               <li>
-                <a href="#">Blog</a>
+                <Link to="/bai-viet">Bài Viết</Link>
               </li>
               <li>
                 <a href="#">Giới Thiệu</a>
@@ -41,7 +41,7 @@ class Menu extends React.Component {
               </li>
               <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr1.png" />
               <li className="ct-u-paddingTop5">
-                <a href="#">Đăng Nhập</a>
+                <Link to="/dang-nhap">Đăng Nhập</Link>
               </li>
               <li className="dropdown ct-profile">
                   <img src="/public/assets/site/images/profile.png" className="ct-profile-img"/>

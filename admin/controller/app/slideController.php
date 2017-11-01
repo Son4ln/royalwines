@@ -44,3 +44,5 @@
       BasicLibs::addMess($content);
     }
   }
+
+?>

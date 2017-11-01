@@ -49,6 +49,12 @@ h6,
   background-size: cover;
   background-position: center;
 }
+.bold {
+  font-weight: 600;
+}
+.ct-full-height {
+  min-height: 100vh;
+}
 ul {
   padding: 0;
   margin: 0;
@@ -125,6 +131,31 @@ ul.ct-defaultColorList li {
 .ct-u-size20 {
   font-size: 20px;
 }
+.ct-u-size28 {
+  font-size: 28px
+}
+@media (max-width: 991px) {
+  .ct-u-size18 {
+    font-size: 15px;
+  }
+  .ct-u-size20 {
+    font-size: 17px;
+  }
+  .ct-u-size28 {
+    font-size: 24px
+  }
+}
+@media (max-width: 767px) {
+  .ct-u-size18 {
+    font-size: 12px;
+  }
+  .ct-u-size20 {
+    font-size: 14px;
+  }
+  .ct-u-size28 {
+    font-size: 21px
+  }
+}
 .ct-u-padding0 {
   padding: 0;
 }
@@ -140,6 +171,9 @@ ul.ct-defaultColorList li {
 .ct-u-paddingBoth10 {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.ct-u-paddingTop0 {
+  padding-top: 0px;
 }
 .ct-u-paddingTop5 {
   padding-top: 5px;
@@ -303,6 +337,15 @@ ul.ct-defaultColorList li {
 .ct-u-margin0 {
   margin: 0;
 }
+.ct-u-marginRight20 {
+  margin-right: 20px;
+}
+.ct-u-marginRight10 {
+  margin-right: 10px;
+}
+.ct-u-marginBottom20 {
+  margin-bottom: 20px;
+}
 .ct-u-marginBoth10 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -336,6 +379,9 @@ ul.ct-defaultColorList li {
 }
 .ct-u-marginTop20 {
   margin-top: 20px;
+}
+.ct-u-paddingTop20per {
+  margin-top: 20%;
 }
 .ct-u-marginBottom20 {
   margin-bottom: 20px;
@@ -450,6 +496,9 @@ ul.ct-defaultColorList li {
 .ct-u-marginHorizon10 {
   margin-left: 10px;
   margin-right: 10px;
+}
+.ct-u-numberHide::-webkit-outer-spin-button, .ct-u-numberHide::-webkit-inner-spin-button {
+  display: none;
 }
 .ct-u-absoluteCenter {
   width: 50%;
