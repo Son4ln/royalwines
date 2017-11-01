@@ -1,36 +1,10 @@
 /*@import "../js/jQueryShopLocator/src/style/css/pluginStyle.css";*/
 @import url('https://fonts.googleapis.com/css?family=Chonburi|Muli|Oswald&subset=vietnamese');
 @import "../plugins/owl/owl.carousel.css";
-@import "../plugins/owl/owl.theme.css";
 @import "../plugins/owl/owl.transitions.css";
 @import "../css/custom-animation.css";
 @import "../css/common.css";
 @import "../css/font-awesome.css";
-/*------------------------------------------------------------------
-Project:	Charlotte HTML Templare
-Version:	1.0
-Last change:	24 February 2015
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[Table of contents]
-
-1. Snap mobile
-2. Sidebar
-3. Content
-4. Frame box
-5. Image box
-6. Contact
-7. Popup
-8. Sliders
-9. Animations
-10. Food box
-11. To Top button
-12. Navigations blog
-13. Blog section
-14. Comments
-15. Google Map
-
--------------------------------------------------------------------*/
 @charset "UTF-8";
 
 /* =================================================== Navbar =======================================================*/
