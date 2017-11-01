@@ -241,7 +241,7 @@
                 <div class="col-xs-height col-top">
                   <div class="panel-heading top-left top-right">
                     <div class="panel-title text-black hint-text">
-                      <span class="font-montserrat fs-11 all-caps">Loại Sản Phẩm
+                      <span class="font-montserrat fs-11 all-caps">Xuất xứ
                         <i class="fa fa-chevron-right"></i>
                       </span>
                     </div>

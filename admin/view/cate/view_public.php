@@ -1,7 +1,7 @@
 <table class="table table-hover demo-table-search" id="<?php echo $table; ?>">
   <thead>
     <tr>
-      <th>Tên loại sản phẩm</th>
+      <th>Xuất xứ sản phẩm</th>
       <th>Public/ Unpublic</th>
       <th>Hành động</th>
     </tr>
