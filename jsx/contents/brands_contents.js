@@ -16,7 +16,7 @@ class BrandsContents extends React.Component {
     return(
       <section className="ct-content">
         <div className="row">
-          <div className="col-sm-4 col-xs-6">
+          <div className="col-sm-4 col-xs-6 animated" data-fx="flipInY">
             <div className="item ct-u-padding10">
               <div className="ct-u-item-hover">
                 <div className="ct-u-hoverBox ct-item-border ct-imgHeigh40per">
@@ -37,7 +37,7 @@ class BrandsContents extends React.Component {
             </div>
           </div>
 
-           <div className="col-sm-4 col-xs-6">
+          <div className="col-sm-4 col-xs-6 animated" data-fx="flipInY">
             <div className="item ct-u-padding10">
               <div className="ct-u-item-hover">
                 <div className="ct-u-hoverBox ct-item-border ct-imgHeigh40per">
@@ -58,7 +58,7 @@ class BrandsContents extends React.Component {
             </div>
           </div>
 
-           <div className="col-sm-4 col-xs-6">
+          <div className="col-sm-4 col-xs-6 animated" data-fx="flipInY">
             <div className="item ct-u-padding10">
               <div className="ct-u-item-hover">
                 <div className="ct-u-hoverBox ct-item-border ct-imgHeigh40per">
@@ -79,7 +79,7 @@ class BrandsContents extends React.Component {
             </div>
           </div>
 
-           <div className="col-sm-4 col-xs-6">
+           <div className="col-sm-4 col-xs-6 animated" data-fx="flipInY">
             <div className="item ct-u-padding10">
               <div className="ct-u-item-hover">
                 <div className="ct-u-hoverBox ct-item-border ct-imgHeigh40per">

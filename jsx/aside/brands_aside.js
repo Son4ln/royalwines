@@ -20,7 +20,7 @@ class BrandsAside extends React.Component {
     return(
       <section className="ct-sidebar ct-brands-aside ct-js-sidebar ct-js-background ct-u-hideAnimateBg" data-bg="/public/assets/site/images/content/demo2.jpg">
         <div className="ct-brands-item">
-          <div className="item">
+          <div className="item animated" data-fx="pulse">
             <a href="#">
               <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3" >
                 <img src="/public/assets/site/images/content/brand1.png" />           
@@ -28,7 +28,7 @@ class BrandsAside extends React.Component {
             </a>
           </div>
 
-          <div className="item">
+          <div className="item animated" data-fx="pulse">
             <a href="#">
               <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3" >
                 <img src="/public/assets/site/images/content/brand1.png" />           
@@ -36,7 +36,7 @@ class BrandsAside extends React.Component {
             </a>
           </div>
 
-          <div className="item">
+          <div className="item animated" data-fx="pulse">
             <a href="#">
               <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3" >
                 <img src="/public/assets/site/images/content/brand1.png" />           
@@ -44,7 +44,15 @@ class BrandsAside extends React.Component {
             </a>
           </div>
 
-          <div className="item">
+          <div className="item animated" data-fx="pulse">
+            <a href="#">
+              <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3" >
+                <img src="/public/assets/site/images/content/brand1.png" />           
+              </section>
+            </a>
+          </div>
+
+          <div className="item animated" data-fx="pulse">
             <a href="#">
               <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3" >
                 <img src="/public/assets/site/images/content/brand1.png" />           
