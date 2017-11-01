@@ -240,6 +240,16 @@
       $products -> showProducts();
       break;
 
+    case 'showAllBrands':
+      $products = new ProductsController();
+      $products -> showAllBrands();
+      break;
+
+    case 'showAllCategories':
+      $products = new ProductsController();
+      $products -> showAllCategories();
+      break;
+
     case 'getPublicProduct':
       $products = new ProductsController();
       $products -> getPublic();
@@ -250,9 +260,9 @@
       $products -> addProductsAction();
       break;
 
-    case 'deleteProducts':
+    case 'deleteProduct':
       $products = new ProductsController();
-      $products -> deleteProducts();
+      $products -> deleteProduct();
       break;
 
     case 'updateProductsAction':

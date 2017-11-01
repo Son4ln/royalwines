@@ -1,8 +1,9 @@
 <table class="table table-hover demo-table-search" id="<?php echo $table; ?>">
   <thead>
     <tr>
-      <th>Tên nhãn hiệu</th>
-      <th>Logo</th>
+      <th>Tên sản phẩm</th>
+      <th width="60px">Hình ảnh</th>
+      <th>Giá</th>
       <th>Public/ Unpublic</th>
       <th>Hành động</th>
     </tr>
@@ -13,10 +14,13 @@
     ?>
       <tr>
         <td class="v-align-middle">
-          <p><?php echo $key['brand_name']; ?></p>
+          <p><?php echo $key['product_name']; ?></p>
+        </td>
+        <td class="v-align-middle" width="60px">
+          <img src="../../upload/products/<?php echo $key['featured_img']; ?>" width="50px"/>
         </td>
         <td class="v-align-middle">
-          <img src="../../upload/brands/<?php echo $key['brand_logo']; ?>" width="50px"/>
+          <p><?php echo number_format($key['price']).'đ'; ?></p>
         </td>
         <td class="v-align-middle">
           <?php 
@@ -30,13 +34,24 @@
           ?>
         </td>
         <td class="v-align-middle">
-          <button data-toggle="modal" data-target="#modalSlideUp" class="edit-brand btn btn-primary"
-          data-id="<?php echo $key['uid']; ?>" data-img="<?php echo $key['brand_logo']; ?>" data-name="<?php echo $key['brand_name']; ?>">
+          <button data-toggle="modal" data-target="#modalSlideUp" class="edit-product btn btn-primary"
+            data-id="<?php echo $key['uid']; ?>"
+            data-img="<?php echo $key['featured_img']; ?>"
+            data-name="<?php echo $key['product_name']; ?>"
+            data-price="<?php echo $key['price']; ?>"
+            data-discount="<?php echo $key['discount']; ?>"
+            data-stock="<?php echo $key['in_stock']; ?>"
+            data-volume="<?php echo $key['product_volume']; ?>"
+            data-detail="<?php echo $key['product_detail']; ?>"
+            data-create="<?php echo $key['create_date']; ?>"
+            data-update="<?php echo $key['update_date']; ?>"
+            data-brand="<?php echo $key['brand_id']; ?>"
+            data-category="<?php echo $key['category_id']; ?>">
             <i class="fa fa-pencil-square-o"></i>
           </button>
 
           <?php if ($_SESSION["royalwines_permission_ok"] == 1) { ?>
-          <button data-id="<?php echo $key['uid']; ?>" data-img="<?php echo $key['brand_logo']; ?>" class="del-brand btn btn-danger">
+          <button data-id="<?php echo $key['uid']; ?>" data-img="<?php echo $key['featured_img']; ?>" class="del-product btn btn-danger">
             <i class="fa fa-trash"></i>
           </button>
           <?php } ?>

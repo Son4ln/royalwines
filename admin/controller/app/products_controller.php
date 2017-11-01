@@ -10,16 +10,30 @@
       include '../view/products/list_products.php';
     }
 
+    function showAllBrands() {
+      Permission::isSeller();
+      $products = new Products();
+      $brands = $products -> showBrands();
+      include '../view/products/show_all_brands.php';
+    }
+
+    function showAllCategories() {
+      Permission::isSeller();
+      $products = new Products();
+      $categories = $products -> showCategories();
+      include '../view/products/show_all_categories.php';
+    }
+
     // thêm sản phẩm
     function addProductsAction() {
     //thực hiện phân quyền
-    Permission::isSeller();
+      Permission::isSeller();
       usleep(500000);
       $name = $_POST['productName'];
       $file_ext=strtolower(end(explode('.',$_FILES['productImg']['name'])));
       $expensions= array("jpeg","jpg","png");
 
-      if (in_array($file_ext,$expensions) === false || $_FILES['productImg']['error'] > 0){
+      if(in_array($file_ext,$expensions) === false || $_FILES['productImg']['error'] > 0){
         die('file_error');
       }
 
@@ -31,15 +45,15 @@
       }
 
       $inStock = $_POST['inStock'];
-      $time = $_POST['time'];
+      $volume = $_POST['volume'];
       $detail = $_POST['detail'];
       $create = date('Y-m-d');
-      $public = 1;
+      $public = 3;
       $brandId = $_POST['brandId'];
       $categoryId = $_POST['categoryId'];
 
       $products = new Products();
-      $checkName = $products -> checkProductName($name, $time, $brandId, $categoryId);
+      $checkName = $products -> checkProductName($name, $volume, $brandId, $categoryId);
       //lấy id user
       $checkUser = new UsersModel();
       $email = $_SESSION["royalwines_user_login_ok"];
@@ -51,20 +65,20 @@
       }
 
       try {
-        $products -> addProducts($name, $img, $price, $discount, $inStock, $time, $detail, $create, $public,
+        $products -> addProducts($name, $img, $price, $discount, $inStock, $volume, $detail, $create, $public,
           $brandId, $categoryId, $user['user_id']);
       } catch(PDOException $e) {
         die('fail');
-        }
+      }
 
-        $source = $_FILES['productImg']['tmp_name'];
-        $path = $GLOBALS['UPLOADPRODUCTSLOGO'];
-        $target = $path.$logo;
-        move_uploaded_file($source, $target);
+      $source = $_FILES['productImg']['tmp_name'];
+      $path = $GLOBALS['UPLOADPRODUCTSIMG'];
+      $target = $path.$img;
+      move_uploaded_file($source, $target);
 
-        $content = 'Thêm sản phẩm "'.$name.'"';
-        BasicLibs::addMess($content);
-        die('success');
+      $content = 'Thêm sản phẩm "'.$name.'"';
+      BasicLibs::addMess($content);
+      die('success');
     }
 
     // xóa nhãn hiệu
@@ -75,7 +89,7 @@
       $products = new Products();
       $uid = $_POST['uid'];
       $img = $_POST['img'];
-      $path = $GLOBALS['UPLOADPRODUCTSLOGO'];
+      $path = $GLOBALS['UPLOADPRODUCTSIMG'];
 
       try {
         $product = $products -> getProductById($uid);
@@ -96,50 +110,53 @@
       //thực hiện phân quyền
       Permission::isSeller();
       $products = new Products();
-      $uid = $_POST['eProductUid'];
-      $name = $_POST['eProductName'];
-      $inStock = $_POST['eInStock'];
-      $time = $_POST['eTime'];
-      $detail = $_POST['eDetail'];
+      $uid = $_POST['eproductId'];
+      $name = $_POST['eproductName'];
+      $price = $_POST['eprice'];
+      $discount = $_POST['ediscount'];
+      $inStock = $_POST['einStock'];
+      $volume = $_POST['evolume'];
+      $detail = $_POST['edetail'];
       $update = date('Y-m-d');
-      $public = $_POST['ePublic'];
-      $brandId = $_POST['eBrandId'];
-      $categoryId = $_POST['eCategoryId'];
+      $brandId = $_POST['ebrandId'];
+      $categoryId = $_POST['ecategoryId'];
 
-      $checkName = $products -> checkProductName($name, $time, $brandId, $categoryId);
+      $checkName = $products -> checkProductName($name, $volume, $brandId, $categoryId);
 
       if(!empty($checkName['uid']) && $checkName['uid'] != $uid) {
         die('unique');
       }
 
-      if(empty($_FILES['eProductImg']['name'])) {
-        $img = $_POST['eOldImg'];
+      if(empty($_FILES['eproductImg']['name'])) {
+        $img = $_POST['eoldImg'];
       } else {
-        $file_ext=strtolower(end(explode('.',$_FILES['eProductImg']['name'])));
+        $file_ext=strtolower(end(explode('.',$_FILES['productImg']['name'])));
         $expensions= array("jpeg","jpg","png");
 
-        if(in_array($file_ext,$expensions) === false || $_FILES['eProductImg']['error'] > 0){
+        if(in_array($file_ext,$expensions) === false || $_FILES['productImg']['error'] > 0){
           die('file_not_valid');
         }
 
-        $img = time().'-'.$_FILES['eProductImg']['name'];
+        $img = time().'-'.$_FILES['eproductImg']['name'];
       }
+
+      print($img);
       
       try {
-        $products -> updateProducts($uid, $name, $img, $price, $discount, $inStock, $time, $detail, $update, $public,
+        $products -> updateProducts($uid, $name, $img, $price, $discount, $inStock, $volume, $detail, $update,
           $brandId, $categoryId);
       } catch(PDOException $e) {
         die('fail');
       }
 
-      if (!empty($_FILES['eProductImg']['name'])) {
+      if (!empty($_FILES['eproductImg']['name'])) {
         //upload ảnh mới và xóa ảnh cũ
-        $source = $_FILES['eProductImg']['tmp_name'];
-        $path = $GLOBALS['UPLOADPRODUCTSLOGO'];
-        $target = $path.$logo;
+        $source = $_FILES['eproductImg']['tmp_name'];
+        $path = $GLOBALS['UPLOADPRODUCTSIMG'];
+        $target = $path.$img;
         move_uploaded_file($source, $target);
 
-        $currImg = $_POST['eOldImg'];
+        $currImg = $_POST['eoldImg'];
         BasicLibs::deleteFile($currImg,$path);
       }
 
@@ -155,6 +172,7 @@
       Permission::isSeller();
       $uid = $_POST['uid'];
       $public = $_POST['public'];
+      echo $public;
       $products = new Products();
       $products -> changeStatus($uid, $public);
       //lấy product để sử dụng cho tin nhắn người dùng
@@ -162,7 +180,7 @@
       $productName = $product['product_name'];
 
       $status = 'public';
-      if ($public == 1) {
+      if ($public == 2) {
         $status = 'unpublic';
       }
 

@@ -1,4 +1,4 @@
-let brand_state = {
+let product_state = {
     status: 0,
     oldImg: ''
   };
@@ -11,32 +11,32 @@ $(document).ready(function() {
   cancelImg();
 
   let olImg = $('#review-img').attr('src');
-  brand_state.oldImg = olImg;
+  product_state.oldImg = olImg;
 
   $('#review-img').click(() => {
-    $('#brand-logo').click();
+    $('#product-img').click();
   });
 
   $('#ereview-img').click(() => {
-    $('#ebrand-logo').click();
+    $('#eproduct-img').click();
   });
 
-  // show brand wait khi bấm vào tab public
+  // show product wait khi bấm vào tab public
   $('#tab-wait').click(() => {
     showPublic(3);
-    brand_state.status = 3;
+    product_state.status = 3;
   });
 
-  // show brand đã public khi bấm vào tab public
+  // show product đã public khi bấm vào tab public
   $('#tab-public').click(() => {
     showPublic(2);
-    brand_state.status = 2;
+    product_state.status = 2;
   });
 
-  // show brand unpublic khi bấm vào tab public
+  // show product unpublic khi bấm vào tab public
   $('#tab-unpublic').click(() => {
     showPublic(1);
-    brand_state.status = 1;
+    product_state.status = 1;
   });
 });
 
@@ -79,25 +79,42 @@ function dataTable(whatTable, whatSearch) {
   }
 
 //hàm thêm nhãn hiệu mới.
-function addBrand() {
+function addProduct() {
   let addBtn = $('#add-products');
-  addBtn.attr('disabled','disabled');
+  addBtn.attr('disabled', 'disabled');
   addBtn.html('Loading...');
-  let brandlogo = $('#brand-logo').prop('files')[0];
-  let brandName = $('[name="brandname"]').val();
+  let productImg = $('#product-img').prop('files')[0];
+  let productName = $('[name="productName"]').val();
+  let price = $('[name="price"]').val();
+  let discount = $('[name="discount"]').val();
+  if (discount == 0 || discount == '') {
+    discount = null;
+  }
+  let inStock = $('[name="inStock"]').val();
+  let volume = $('[name="volume"]').val();
+  let detail = CKEDITOR.instances['product-detail'].getData();
+  let brandId = $('[name="brandId"]').val();
+  let categoryId = $('[name="categoryId"]').val();
 
   let status = 3;
-  if ($('[name="status"]')) {
+  if ($('[name="public"]')) {
     status = $('[name="status"]').val();
   }
 
   let form_data = new FormData();
-  form_data.append('brandname', brandName);
-  form_data.append('brandlogo', brandlogo);
+  form_data.append('productName', productName);
+  form_data.append('productImg', productImg);
+  form_data.append('price', price);
+  form_data.append('discount', discount);
+  form_data.append('inStock', inStock);
+  form_data.append('volume', volume);
+  form_data.append('detail', detail);
   form_data.append('status', status);
+  form_data.append('brandId', brandId);
+  form_data.append('categoryId', categoryId);
 
   $.ajax({
-    url: '?action=addBrandsAction',
+    url: '?action=addProductsAction',
     type: 'post',
     dataType: 'text',
     cache: false,
@@ -105,17 +122,18 @@ function addBrand() {
     processData: false,
     data: form_data,
     success: function(result) {
+      console.log(result);
       if (result === 'file_error') {
         $('#add-alert').removeClass('hidden');
         $('#add-alert').html('Ảnh chỉ hỗ trợ định dạng jpg, jpeg, png và kích thước < 5mb');
       } else if (result === 'unique') {
         $('#add-alert').removeClass('hidden');
-        $('#add-alert').html('Nhãn hiệu đã tồn tại');
+        $('#add-alert').html('Sản phẩm đã tồn tại');
       } else if (result === 'fail') {
         $('#add-alert').removeClass('hidden');
         $('#add-alert').html('Lỗi kết nối cơ sở dữ liệu');
       } else {
-        let mess = `Đã thêm nhãn hiệu ${brandName} thành công. Nếu là seller hãy chờ admin phê duyệt`;
+        let mess = `Đã thêm sản phẩm ${productName} thành công. Nếu là seller hãy chờ admin phê duyệt`;
         let lv = 'success';
         notification(mess, lv);
 
@@ -126,14 +144,14 @@ function addBrand() {
         }
 
         $('#add-alert').addClass('hidden');
-        $('#form-addBrand')[0].reset();
-        $('#review-img').attr('src', brand_state.oldImg);
+        $('#form-addproduct')[0].reset();
+        $('#review-img').attr('src', product_state.oldImg);
         $('#cancel-img').addClass('hidden');
-        $('#brand-logo').val('');
+        $('#product-img').val('');
       }
 
       addBtn.removeAttr('disabled');
-      addBtn.html('Thêm nhãn hiệu');
+      addBtn.html('Thêm sản phẩm');
     },
     error: function() {
       let mess = 'Lỗi kết nôi';
@@ -144,17 +162,17 @@ function addBrand() {
   return false;
 }
 
-// hàm lấy danh sác các brands public
+// hàm lấy danh sác các products public
 function showPublic (status) {
-  let panel = 'brands-unpublic';
+  let panel = 'products-unpublic';
   let table = 'table-unpublic';
   let search = 'search-table-unpublic';
   if (parseInt(status) === 2) {
-    panel = 'brands-public';
+    panel = 'products-public';
     table = 'table-public';
     search = 'search-table-public';
   } else if (parseInt(status) === 3) {
-    panel = 'brands-wait';
+    panel = 'products-wait';
     table = 'table-wait';
     search = 'search-table-wait';
   }
@@ -162,7 +180,7 @@ function showPublic (status) {
   let panelBody = `#${panel}`;
   $('.loading').removeClass('hidden');
   $.ajax({
-    url: '?action=getPublic',
+    url: '?action=getPublicProduct',
     type: 'get',
     dataType: 'text',
     data: {
@@ -183,10 +201,10 @@ function showPublic (status) {
         changeStatus(e);
       });
       
-      delBrand();
+      delproduct();
 
-      $('.edit-brand').click((e) => {
-        showBrand(e);
+      $('.edit-product').click((e) => {
+        showproduct(e);
       });
     },
     error: function(data) {
@@ -205,13 +223,11 @@ function changeStatus (e) {
   let publicStt = 2;
   if (status === '2') {
     publicStt = 1;
-  } else if (status === '3') {
-    publicStt = 2;
-  };
+  }
 
   let uid = target.attr('data-id');
   $.ajax({
-    url: '?action=changeStatus',
+    url: '?action=changeStatusProducts',
     type: 'post',
     dataType: 'text',
     data: {
@@ -236,12 +252,12 @@ function changeStatus (e) {
   });
 }
 
-function delBrand() {
-  let del = $('.del-brand');
+function delproduct() {
+  let del = $('.del-product');
   del.unbind().on('click', (e) => {
     $.confirm({
-      title: 'XÓA NHÃN HIỆU',
-      content: 'Bạn có chắc muốn xóa nhãn hiệu này',
+      title: 'XÓA SẢN PHẨM',
+      content: 'Bạn có chắc muốn xóa sản phẩm này',
       type: 'orange',
       typeAnimated: true,
       buttons: {
@@ -249,16 +265,16 @@ function delBrand() {
           text: 'Xóa',
           btnClass: 'btn-orange',
           action: function(){
-            let brand = $(e.target);
-            if (brand.is('i')) {
-              brand = $(e.target).parent();
+            let product = $(e.target);
+            if (product.is('i')) {
+              product = $(e.target).parent();
             }
 
-            let uid = brand.attr('data-id');
-            let img = brand.attr('data-img');
+            let uid = product.attr('data-id');
+            let img = product.attr('data-img');
 
             $.ajax({
-              url: '?action=deleteBrands',
+              url: '?action=deleteProduct',
               type: 'post',
               dataType: 'text',
               data: {
@@ -267,16 +283,15 @@ function delBrand() {
               },
               success: function(result) {
                 console.log(result);
-                let mess = `Không thể xóa nhãn hiệu này do đã có sản phẩm liên kết, vui lòng xóa toàn bộ sản phẩm liên quan
-                  hoặc ngừng hiển thị`;
+                let mess = `Không thể xóa sản phẩm này do đã có liên kết với hóa đơn liên kết, vui lòng ngừng hiển thị`;
                 let lv = 'warning';
                 if (result != 'fail') {
-                  brand.parents('tr').fadeOut();
-                  mess = 'Đã xóa nhãn hiệu';
+                  product.parents('tr').fadeOut();
+                  mess = 'Đã xóa sản phẩm';
                   lv = 'success';
                 }
                 notification(mess, lv);
-                showPublic(brand_state.status);
+                showPublic(product_state.status);
               },
               error: function() {
                 let mess = 'Không thể kết nối đến server';
@@ -294,7 +309,7 @@ function delBrand() {
   });
 }
 
-function showBrand(e) {
+function showproduct(e) {
   let target = $(e.target);
   if (target.is('i')) {
     target = $(e.target).parent();
@@ -302,33 +317,96 @@ function showBrand(e) {
 
   let alertAdd = document.getElementById('alert-add');
   alertAdd.classList.add('hidden');
-  let uid = document.querySelector('[name="brand-id"]');
+
+  let uid = document.querySelector('[name="productId"]');
   uid.value = target.attr('data-id');
-  let oldImg = document.querySelector('[name="old-img"]');
+  let oldImg = document.querySelector('[name="oldImg"]');
   oldImg.value = target.attr('data-img');
-  let name = document.querySelector('[name="ebrandname"]');
+  let name = document.querySelector('[name="eproductName"]');
   name.value = target.attr('data-name');
+  let eprice = document.querySelector('[name="eprice"]');
+  eprice.value = target.attr('data-price');
+  let ediscount = document.querySelector('[name="ediscount"]');
+  if (target.attr('data-discount') == null || target.attr('data-discount') == '') {
+    ediscount.value = 0;
+  } else {
+    ediscount.value = target.attr('data-discount');
+  }
+  
+  let einStock = document.querySelector('[name="einStock"]');
+  einStock.value = target.attr('data-stock');
+  let evolume = document.querySelector('[name="evolume"]');
+  evolume.value = target.attr('data-volume');
+  CKEDITOR.instances['eproduct-detail'].setData(target.attr('data-detail'));
+  let date = document.getElementById('date');
+  let dateVal = '';
+  if (target.attr('data-update') == null || target.attr('data-update') == '') {
+    dateVal = new Date(target.attr('data-create'));
+  } else {
+    dateVal = new Date(target.attr('data-update'));
+  }
+
+  date.textContent = dateVal.toLocaleDateString("vi");
+
+  $.ajax({
+    url: '?action=showAllBrands',
+    success: function(result) {
+      $('#show-brands').html(result);
+      $('#show-brands option').each(function() {
+        if($(this).val() == target.attr('data-brand')) {
+          $(this).prop("selected", true);
+        }
+      });
+    }
+  });
+
+  $.ajax({
+    url: '?action=showAllCategories',
+    success: function(result) {
+      $('#show-categories').html(result);
+      $('#show-categories option').each(function() {
+        if($(this).val() == target.attr('data-category')) {
+          $(this).prop("selected", true);
+        }
+      });
+    }
+  });
+
   let review = document.getElementById('ereview-img');
-  review.src = `../../upload/brands/${target.attr('data-img')}`;
+  review.src = `../../upload/products/${target.attr('data-img')}`;
   ecancelImg();
 }
 
-function editBrand() {
+function editProduct() {
   let addBtn = document.getElementById('add-btn');
   let alertAdd = document.getElementById('alert-add');
-  let fileData = $('#ebrand-logo').prop('files')[0];
-  let brandUId = $('#ebrand-id').val();
-  let brandName = $('#ebrandname').val();
-  let oldimg = $('#eold-img').val();
+  let fileData = $('#eproduct-img').prop('files')[0];
+  let productId = $('#eproduct-id').val();
+  let productName = $('#eproduct-name').val().trim();;
+  let oldImg = $('#eold-img').val();
+  let price = $('#eprice').val();
+  let discount = $('#ediscount').val();
+  let inStock = $('#ein-stock').val();
+  let volume = $('#evolume').val();
+  let detail = CKEDITOR.instances['eproduct-detail'].getData();
+  console.log(detail);
+  let brandId = $('#show-brands').val();
+  let categoryId = $('#show-categories').val();
   var form_data = new FormData();
   addBtn.disabled = true;
-  form_data.append('ebrandlogo', fileData);
-  form_data.append('ebrandUId', brandUId);
-  form_data.append('ebrandname', brandName);
-  form_data.append('eoldImg', oldimg);
-
+  form_data.append('eproductImg', fileData);
+  form_data.append('eproductId', productId);
+  form_data.append('eproductName', productName);
+  form_data.append('eoldImg', oldImg);
+  form_data.append('eprice', price);
+  form_data.append('ediscount', discount);
+  form_data.append('einStock', inStock);
+  form_data.append('evolume', volume);
+  form_data.append('edetail', detail);
+  form_data.append('ebrandId', brandId);
+  form_data.append('ecategoryId', categoryId);
   $.ajax({
-    url: '?action=updateBrandsAction',
+    url: '?action=updateProductsAction',
     type: 'post',
     dataType: 'text',
     cache: false,
@@ -339,7 +417,7 @@ function editBrand() {
       if (result === 'unique') {
         alertAdd.classList.remove('hidden');
         addBtn.disabled = false;
-        alertAdd.textContent = 'Nhãn hiệu đã được sử dụng';
+        alertAdd.textContent = 'Sản phẩm đã được sử dụng';
       } else if (result === 'fail') {
         alertAdd.classList.remove('hidden');
         addBtn.disabled = false;
@@ -349,10 +427,10 @@ function editBrand() {
         addBtn.disabled = false;
         alertAdd.textContent = 'Hình ảnh chỉ hỗ trợ jpg, jpeg, png và kích thước < 5mb';
       } else {
-        showPublic(brand_state.status);
+        showPublic(product_state.status);
         addBtn.disabled = false;
         $('#close-edit').click();
-        let mess = 'Cập nhập nhãn hiệu thành công';
+        let mess = 'Cập nhập sản phẩm thành công';
         let lv = 'success';
         notification(mess, lv);
       }
@@ -364,14 +442,15 @@ function editBrand() {
       notification(mess, lv);
     }
   });
+
   return false;
 }
 
 function reviewImg() {
-  let uploadImg = document.querySelector('[name="brandlogo"]');
+  let uploadImg = document.querySelector('[name="productImg"]');
   uploadImg.addEventListener('change', () => {
     let review = document.getElementById('review-img');
-    let input = document.querySelector('[name="brandlogo"]');
+    let input = document.querySelector('[name="productImg"]');
     let file = input.files[0];
     let reader = new FileReader();
     reader.onload = (e) => {
@@ -383,10 +462,10 @@ function reviewImg() {
 }
 
 function ereviewImg() {
-  let uploadImg = document.querySelector('[name="ebrandlogo"]');
+  let uploadImg = document.querySelector('[name="eproductImg"]');
   uploadImg.addEventListener('change', () => {
     let review = document.getElementById('ereview-img');
-    let input = document.querySelector('[name="ebrandlogo"]');
+    let input = document.querySelector('[name="eproductImg"]');
     let file = input.files[0];
     let reader = new FileReader();
     reader.onload = (e) => {
@@ -398,31 +477,51 @@ function ereviewImg() {
 }
 
 function validateAddForm() {
-  $('#form-addBrand').validate({
+  $('#form-addproduct').validate({
     rules: {
-      brandlogo: 'required',
-      brandname: 'required',
+      productImg: 'required',
+      productName: 'required',
+      price: 'required',
+      inStock: 'required',
+      volume: 'required',
+      brandId: 'required',
+      categoryId: 'required'
     },
     messages: {
-      brandlogo: 'Vui lòng chọn logo',
-      brandname: 'Vui lòng nhập tên nhãn hiệu'
+      productImg: 'Vui lòng chọn ảnh đại diện',
+      productName: 'Vui lòng nhập tên sản phẩm',
+      price: 'Vui lòng nhập giá',
+      inStock: 'Vui lòng nhập số lượng sản phẩm hiện có',
+      volume: 'vui lòng nhập thể tích sản phẩm',
+      brandId: 'Vui lòng chọn thương hiệu',
+      categoryId: 'Vui lòng chọn loại sản phẩm'
     },
     submitHandler: function(form) {
-      addBrand();
+      addProduct();
     }
   });
 }
 
 function validateEditForm() {
-  $('#form-editBrand').validate({
+  $('#form-editproduct').validate({
     rules: {
-      ebrandname: 'required',
+      eproductName: 'required',
+      eprice: 'required',
+      evolume: 'required',
+      einStock: 'required',
+      ebrandId: 'required',
+      ecategoryId: 'required'
     },
     messages: {
-      ebrandname: 'Vui lòng nhập tên nhãn hiệu'
+      eproductName: 'Vui lòng nhập tên sản phẩm',
+      eprice: 'Vui lòng nhập giá',
+      einStock: 'Vui lòng nhập số lượng sản phẩm hiện có',
+      evolume: 'vui lòng nhập năm sản phẩm',
+      ebrandId: 'Vui lòng chọn thương hiệu',
+      ecategoryId: 'Vui lòng chọn loại sản phẩm'
     },
     submitHandler: function(form) {
-      editBrand();
+      editProduct();
     }
   });
 }
@@ -433,7 +532,7 @@ function cancelImg() {
   btn.click(() => {
     $('#review-img').attr('src', old);
     $('#cancel-img').addClass('hidden');
-    $('#brand-logo').val('');
+    $('#product-img').val('');
   });
 }
 
@@ -443,6 +542,6 @@ function ecancelImg() {
   btn.click(() => {
     $('#ereview-img').attr('src', old);
     $('#ecancel-img').addClass('hidden');
-    $('#ebrand-logo').val('');
+    $('#eproduct-img').val('');
   });
 }

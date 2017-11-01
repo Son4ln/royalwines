@@ -93,32 +93,6 @@
         	echo $e->getMessage();
       	  }
 
-      	  //tạo quan hệ giữa evaluation và user
-      	  try {
-			$userToEval = "Alter table evaluation
-							Add constraint	user_evaluation
-							Foreign key (user_id)
-							References users (user_id);
-							";
-			$this->db->exec($userToEval);
-		  }
-		  catch(PDOException $e) {
-        	echo $e->getMessage();
-      	  }
-
-      	  //tạo quan hệ giữa evaluation và products
-      	  try {
-			$evalToProduct = "Alter table evaluation
-							  Add constraint	product_evaluation
-							  Foreign key (product_id)
-							  References products (product_id);
-							";
-			$this->db->exec($evalToProduct);
-		  }
-		  catch(PDOException $e) {
-        	echo $e->getMessage();
-      	  }
-
       	  //tạo quan hệ giữa wishlish và user
       	  try {
 			$userToWish = "Alter table wishlist

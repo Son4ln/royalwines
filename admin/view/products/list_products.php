@@ -72,15 +72,16 @@
                 <!-- START PANEL -->
                 <div class="panel panel-transparent">
                   <div class="panel-body">
-                    <form id="form-addproduct" method="post" enctype="multipart/form-data" action="">
+                    <form id="form-addproduct" method="post">
                       <div class="alert alert-danger hidden" id="add-alert"></div>
                       <div class="row">
                         <div class="col-md-6">
-                          <center><img src="../../upload/products/logo.png" width="250" id="review-img"></center>
+                          <center><img src="../../upload/products/logo.png" width="153" id="review-img"></center>
                           <center><i>Nhấp vào ảnh để chọn ảnh mới</i></center>
                           <center>
-                            <input type="file" class="form-control hidden" name="productImg" id="brand-logo">
-                            <button type="button" id="cancel-img" class="btn btn-success hidden"><i class="fa fa-times"></i></button>
+                            <input type="file" class="form-control hidden" name="productImg" id="product-img">
+                            <button type="button" id="cancel-img" class="btn btn-success hidden"><i class="fa fa-times"></i>
+                            </button>
                           </center><br/>
 
                           <div class="form-group form-group-default required">
@@ -90,59 +91,41 @@
 
                           <div class="form-group form-group-default required">
                             <label>Giá gốc</label>
-                            <input type="text" class="form-control" name="price">
+                            <input type="number" min="0" step="500" class="form-control" name="price">
                           </div>
 
                           <div class="form-group form-group-default">
                             <label>Giảm giá</label>
-                            <input type="text" class="form-control" name="discount">
+                            <input type="number" min="0" step="500" class="form-control" name="discount">
                           </div>
 
                           <div class="form-group form-group-default required">
-                            <label>Hàng trong kho</label>
-                            <input type="text" class="form-control" name="inStock">
+                            <label>Thể tích</label>
+                            <input type="number" min="0" class="form-control" name="volume">
                           </div>
 
-                          <div class="form-group form-group-default required">
-                            <label>Năm sản phẩm</label>
-                            <input type="text" class="form-control" name="time">
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
                           <div class="form-group form-group-default required">
                             <label>Thương hiệu</label>
-                            <select name="brandId" class="form-control">
-                              <?php
-                                foreach ($brand as $brands) {
-                              ?>
-                                <option value="<?php echo $brand['brand_id']; ?>">
-                                  <?php echo $brand['brand_name']; ?>
-                                </option>
-                              <?php
-                                }
-                              ?>
+                            <select name="brandId" id="show-all-brands" class="form-control">
                             </select>
                           </div>
 
                           <div class="form-group form-group-default required">
                             <label>Loại sản phẩm</label>
-                            <select name="categoryId" class="form-control">
-                              <?php
-                                foreach ($category as $categories) {
-                              ?>
-                                <option value="<?php echo $category['category_id']; ?>">
-                                  <?php echo $category['category_name']; ?>
-                                </option>
-                              <?php
-                                }
-                              ?>
+                            <select name="categoryId" id="show-all-categories" class="form-control">
                             </select>
                           </div>
+                        </div>
 
+                        <div class="col-md-6">
                           <div class="form-group form-group-default required">
+                            <label>Hàng trong kho</label>
+                            <input type="number" min="0" class="form-control" name="inStock">
+                          </div>
+
+                          <div class="form-group form-group-default">
                             <label>Chi tiết sản phẩm</label>
-                            <input type="text" class="form-control" name="detail">
+                            <textarea class="form-control" id="product-detail" name="detail"></textarea>
                           </div>
 
                           <div class="clearfix"></div>
@@ -234,41 +217,83 @@
 <!-- END PAGE CONTENT -->
 </div>
 
-<div class="modal fade slide-up disable-scroll" id="modalSlideUp" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal fade slide-up" id="modalSlideUp" tabindex="-1" role="dialog" aria-hidden="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content-wrapper">
       <div class="modal-content">
         <div class="modal-header clearfix text-left">
           <button type="button" id="close-edit" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
           </button>
-          <h5>Sửa <span class="semi-bold">nhãn hiệu</span></h5>
+          <h5>Sửa <span class="semi-bold">sản phẩm</span></h5>
         </div>
         
         <div class="modal-body">
           <form id="form-editproduct" method="" enctype="multipart/form-data">
             <div class="alert alert-danger hidden" id="alert-add"></div>
-            <input type="text" name="product-id" id="eproduct-id" class="hidden">
-            <input type="text" name="old-img" id="eold-img" class="hidden">
+            <input type="text" name="productId" id="eproduct-id" class="hidden">
+            <input type="text" name="oldImg" id="eold-img" class="hidden">
             <div class="row">
               <div class="col-md-6">
-                <center><img src="../../upload/products/logo.png" width="250" id="ereview-img"></center>
+                <center><img src="../../upload/products/logo.png" width="135" id="ereview-img"></center>
                 <center><i>Nhấp vào ảnh để chọn ảnh mới</i></center>
                 <center>
-                  <input type="file" class="form-control hidden" name="eproductlogo" id="eproduct-logo">
-                  <button type="button" id="ecancel-img" class="btn btn-primary hidden"><i class="fa fa-times"></i></button>
-                </center>
+                  <input type="file" class="form-control hidden" name="eproductImg" id="eproduct-img">
+                  <button type="button" id="ecancel-img" class="btn btn-success hidden"><i class="fa fa-times"></i>
+                  </button>
+                </center><br/>
+
+                <div class="form-group form-group-default required">
+                  <label>Tên sản phẩm</label>
+                  <input type="text" class="form-control" name="eproductName" id="eproduct-name">
+                </div>
+
+                <div class="form-group form-group-default required">
+                  <label>Giá gốc</label>
+                  <input type="number" min="0" step="500" class="form-control" name="eprice" id="eprice">
+                </div>
+
+                <div class="form-group form-group-default">
+                  <label>Giảm giá</label>
+                  <input type="number" min="0" step="500" class="form-control" name="ediscount"  id="ediscount">
+                </div>
+
+                <div class="form-group form-group-default required">
+                  <label>Thể tích</label>
+                  <input type="number" min="0" class="form-control" name="evolume" id="evolume">
+                </div>
+
+                <div class="form-group form-group-default required">
+                  <label>Hàng trong kho</label>
+                  <input type="number" min="0" class="form-control" name="einStock" id="ein-stock">
+                </div>
+
+                <div class="form-group form-group-default required">
+                  <label>Thương hiệu</label>
+                  <select name="ebrandId" id="show-brands" class="form-control">
+                  </select>
+                </div>
+
+                <div class="form-group form-group-default required">
+                  <label>Loại sản phẩm</label>
+                  <select name="ecategoryId" id="show-categories" class="form-control">
+                  </select>
+                </div>
               </div>
 
               <div class="col-md-6">
-                <div class="form-group form-group-default required">
-                  <label>Tên nhãn hiệu</label>
-                  <input type="text" class="form-control" name="eproductname" id="eproductname">
+                <div class="form-group form-group-default">
+                  <label>Chi tiết sản phẩm</label>
+                  <textarea class="form-control" id="eproduct-detail" name="edetail"></textarea>
                 </div>
 
+                <div class="form-group form-group-default required">
+                  <label>Cập nhật ngày</label>
+                  <p id="date"></p>
+                </div>
                 <div class="clearfix"></div>
-                <button class="btn btn-success" id="add-btn" type="submit">Sửa nhãn hiệu</button>
+                <button class="btn btn-success" id="add-btn" type="submit">Sửa sản phẩm</button>
               </div>
-            </div>                                          
+            </div>                                         
           </form>
         </div>
       </div>
@@ -280,6 +305,36 @@
 <?php include $GLOBALS['ROOT'].'public/template/admin/footer.php'; ?>  
 <?php include $GLOBALS['ROOT'].'public/template/admin/sidebar-right.php'; ?>
 <?php include $GLOBALS['ROOT'].'public/template/admin/scripts.php'; ?>
+<script type="text/javascript" src="/public/plugin/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/public/plugin/ckfinder/ckfinder.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(() => {
+    CKEDITOR.replace('product-detail');
+    CKEDITOR.replace('eproduct-detail');
+    showAllBrands();
+    showAllCategories();
+  });
+
+  function showAllBrands() {
+    $.ajax({
+      url: '?action=showAllBrands',
+      success: function(result) {
+        $('#show-all-brands').html(result);
+      }
+    })
+  }
+
+  function showAllCategories() {
+    $.ajax({
+      url: '?action=showAllCategories',
+      success: function(result) {
+        $('#show-all-categories').html(result);
+      }
+    })
+  }
+</script>
+
 <!-- START SCRIPT BLOCK -->
 <script src="../../public/assets/js/list_product.js" type="text/javascript"></script>
 <!-- END SCRIPT BLOCK -->

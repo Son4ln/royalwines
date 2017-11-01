@@ -13,7 +13,7 @@
             <li>
               <a href="?action=home">Pages</a>
             </li>
-            <li><a href="#" class="active">Loại sản phẩm</a>
+            <li><a href="#" class="active">Xuất xứ sản phẩm</a>
             </li>
           </ul>
           <!-- END BREADCRUMB -->
@@ -22,7 +22,7 @@
     </div>
 
     <div class="container-fluid container-fixed-lg">
-      <h5>LOẠI SẢN PHẨM</h5>
+      <h5>XUẤT XỨ SẢN PHẨM</h5>
       <br>
       <br>
       <?php
@@ -30,7 +30,7 @@
       ?>
       <ul class="nav nav-tabs nav-tabs-fillup" data-init-reponsive-tabs="dropdownfx">
         <li class="active">
-          <a data-toggle="tab" id="tab-add" href="#add"><span>Thêm loại sản phẩm</span></a>
+          <a data-toggle="tab" id="tab-add" href="#add"><span>Thêm xuất xứ</span></a>
         </li>
 
         <li>
@@ -62,7 +62,7 @@
 
                   <div class="col-md-6">
                     <div class="form-group form-group-default required">
-                      <label>Tên loại sản phẩm</label>
+                      <label>Xuất xứ  sản phẩm</label>
                       <input type="text" class="form-control" name="catename">
                     </div>
              
@@ -76,7 +76,7 @@
                     </div>
                     <?php } ?>
                     <div class="clearfix"></div>
-                    <button class="btn btn-success" id="add-brands" type="submit">Thêm loại sản phẩm</button>
+                    <button class="btn btn-success" id="add-brands" type="submit">Thêm xuất xứ</button>
                   </div>
                 </div>                                          
               </form>
@@ -88,7 +88,7 @@
         <div class="tab-pane slide-left" id="public">
           <div class="panel panel-transparent">
             <div class="panel-heading">
-              <div class="panel-title">Thao tác loại sản phẩm đang hiển thị
+              <div class="panel-title">Thao tác xuất xứ sản phẩm đang hiển thị
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
               </div>
 
@@ -109,7 +109,7 @@
         <div class="tab-pane slide-left" id="unpublic">
           <div class="panel panel-transparent">
             <div class="panel-heading">
-              <div class="panel-title">Thao tác loại sản phẩm đã ngưng hiển thị
+              <div class="panel-title">Thao tác xuất xứ sản phẩm đã ngưng hiển thị
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
               </div>
 
@@ -130,7 +130,7 @@
         <div class="tab-pane slide-left" id="wait">
           <div class="panel panel-transparent">
             <div class="panel-heading">
-              <div class="panel-title">Thao tác loại sản phẩm đang chờ phê duyệt
+              <div class="panel-title">Thao tác xuất xứ sản phẩm đang chờ phê duyệt
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw hidden loading" style="font-size: 16px;"></i>
               </div>
 
@@ -160,7 +160,7 @@
         <div class="modal-header clearfix text-left">
           <button type="button" id="close-edit" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
           </button>
-          <h5>Sửa <span class="semi-bold">nhãn hiệu</span></h5>
+          <h5>Sửa <span class="semi-bold">xuất xứ</span></h5>
         </div>
         
         <div class="modal-body">
@@ -170,7 +170,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group form-group-default required">
-                  <label>Tên loại sản phẩm</label>
+                  <label>Xuất xứ sản phẩm</label>
                   <input type="text" class="form-control" name="ecateName" id="ecateName">
                 </div>
 
