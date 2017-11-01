@@ -42,6 +42,11 @@
       $action -> getRandomBrand();
       break;
 
+    case 'getProductById':
+      $action = new MainController();
+      $action -> getProductById();
+      break;
+
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

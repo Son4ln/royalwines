@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMainScript } from '../utils';
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux';
+import { renderMainScript, formatCurrency } from '../utils';
+import * as actions from '../store/actions'
+import CartItems from './components/cart_items';
 
 class CartContents extends React.Component {
   constructor() {
     super();
+
+    this.deleteCartItem = this.deleteCartItem.bind(this);
+    this.updateQty = this.updateQty.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +43,43 @@ class CartContents extends React.Component {
     });
   }
 
+  deleteCartItem(index) {
+    let delete_cart = this.props.onDeleteCartItem;
+    delete_cart(index);
+  }
+
+  updateQty(index, qty) {
+    let onUpdate = this.props.onUpdateQty;
+    onUpdate(index, qty);
+  }
+
+  renderCart() {
+    let cart = this.props.rw_cart;
+    let content = (
+      <div className="text-center"><h1>CHƯA CÓ SẢN PHẨM!</h1></div>
+    );
+
+    if (cart.length > 0) {
+      content = (
+        this.props.rw_cart.map((e, i) => <CartItems key={i} index={i}
+        product={this.props.rw_cart[i]} onDelete={this.deleteCartItem} updateQty={this.updateQty} />)
+      );
+    }
+
+    return content;
+  }
+
+  getTotalCart() {
+    let cart = this.props.rw_cart;
+    let total = 0;
+    for (let item of cart) {
+      let sub_total = item.qty * item.price;
+      total += sub_total;
+    }
+
+    return total;
+  }
+
   render() {
     return(
       <section className="ct-content">
@@ -55,85 +99,12 @@ class CartContents extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr className="ct-body-table ct-u-colorMotive">
-                  <td><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></td>
-                  <td className="ct-cart-name">chivas regal 25</td>
-                  <td>
-                    <div className="ct-cart-quantity">
-                     <button className="js-form-number-dec"><span>-</span></button>
-                     <input id="number" name="number" type="number" value="0" min="0" max="100" readonly className="ct-number"/>
-                     <button className="js-form-number-inc"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>1.000.000VNĐ</td>
-                  <td>1.000.000VNĐ</td>
-                  <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                </tr>
-
-                <tr className="ct-body-table ct-u-colorMotive">
-                  <td><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></td>
-                  <td className="ct-cart-name">chivas regal 25</td>
-                  <td>
-                    <div className="ct-cart-quantity">
-                     <button className="js-form-number-dec"><span>-</span></button>
-                     <input id="number" name="number" type="number" value="0" min="0" max="100" readonly className="ct-number"/>
-                     <button className="js-form-number-inc"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>1.000.000VNĐ</td>
-                  <td>1.000.000VNĐ</td>
-                  <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                </tr>
-
-                <tr className="ct-body-table ct-u-colorMotive">
-                  <td><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></td>
-                  <td className="ct-cart-name">chivas regal 25</td>
-                  <td>
-                    <div className="ct-cart-quantity">
-                     <button className="js-form-number-dec"><span>-</span></button>
-                     <input id="number" name="number" type="number" value="0" min="0" max="100" readonly className="ct-number"/>
-                     <button className="js-form-number-inc"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>1.000.000VNĐ</td>
-                  <td>1.000.000VNĐ</td>
-                  <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                </tr>
-
-                <tr className="ct-body-table ct-u-colorMotive">
-                  <td><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></td>
-                  <td className="ct-cart-name">chivas regal 25</td>
-                  <td>
-                    <div className="ct-cart-quantity">
-                     <button className="js-form-number-dec"><span>-</span></button>
-                     <input id="number" name="number" type="number" value="0" min="0" max="100" readonly className="ct-number"/>
-                     <button className="js-form-number-inc"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>1.000.000VNĐ</td>
-                  <td>1.000.000VNĐ</td>
-                  <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                </tr>
-
-                <tr className="ct-body-table ct-u-colorMotive">
-                  <td><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></td>
-                  <td className="ct-cart-name">chivas regal 25</td>
-                  <td>
-                    <div className="ct-cart-quantity">
-                     <button className="js-form-number-dec"><span>-</span></button>
-                     <input id="number" name="number" type="number" value="0" min="0" max="100" readonly className="ct-number"/>
-                     <button className="js-form-number-inc"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>1.000.000VNĐ</td>
-                  <td>1.000.000VNĐ</td>
-                  <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                </tr>
+                
+                {this.renderCart()}
 
                 <tr className="ct-body-table ct-u-colorDark">
                   <td colspan="6">
-                    <button className="ct-cart-body-btn">continue shopping</button>
-                    <button className="ct-cart-body-btn">update shopping cart</button>
+                    <Link to="/san-pham"><button className="ct-cart-body-btn">TIẾP TỤC MUA SẮM</button></Link>
                   </td>
                 </tr>
               </tbody>
@@ -141,7 +112,7 @@ class CartContents extends React.Component {
           </div>
         </div>
 
-        <div className="col-sm-6 col-md-5 col-xs-12 pull-right ct-u-padding0">
+        <div className="col-sm-7 col-md-6 col-xs-12 pull-right ct-u-padding0">
           <table className="ct-cart-table-checkout ct-u-font2 text-uppercase ct-u-size20" align="right">
             <thead className="ct-head-table">
               <tr>
@@ -151,17 +122,17 @@ class CartContents extends React.Component {
             <tbody className="ct-body-table-checkout ct-u-colorDark">
               <tr>
                 <td>Tổng phụ:</td>
-                <td>1.000.000VNĐ</td>
+                <td>{formatCurrency(this.getTotalCart())}VNĐ</td>
               </tr>
 
               <tr>
-                <td>phí vận cuyển:</td>
-                <td>0VNĐ</td>
+                <td>phí vận chuyển:</td>
+                <td>FREE</td>
               </tr>
 
               <tr>
                 <td>Tổng cộng:</td>
-                <td className="bold">1.000.000VNĐ</td>
+                <td className="bold">{formatCurrency(this.getTotalCart())}VNĐ</td>
               </tr>
 
               
@@ -183,4 +154,17 @@ class CartContents extends React.Component {
   }
 }
 
-export default CartContents
+const mapStateToProps = (state) => {
+  return {
+    rw_cart: state.rw_cart
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteCartItem: (index) => {dispatch(actions.remove_item_cart(index))},
+    onUpdateQty: (index, qty) => {dispatch(actions.update_cart(index, qty))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContents)

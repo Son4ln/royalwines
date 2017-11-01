@@ -1,6 +1,7 @@
 /*@import "../js/jQueryShopLocator/src/style/css/pluginStyle.css";*/
 @import url('https://fonts.googleapis.com/css?family=Chonburi|Muli|Oswald&subset=vietnamese');
 @import "../plugins/owl/owl.carousel.css";
+@import "../plugins/owl/owl.theme.css";
 @import "../plugins/owl/owl.transitions.css";
 @import "../css/custom-animation.css";
 @import "../css/common.css";

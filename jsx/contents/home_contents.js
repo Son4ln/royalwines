@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 
 import ProductNewItem from './components/product_new_item';
 import ProductDiscount from './components/products_discount';
-
+import * as actions from '../store/actions';
 import {renderMainScript} from '../utils'
 
 class HomeContents extends React.Component {
@@ -17,12 +18,14 @@ class HomeContents extends React.Component {
       blogImg: '',
       brand: [],
     }
+
+    this.onAddCart = this.onAddCart.bind(this);
   }
 
   componentWillMount() {
-    axios.get('/site/controller/controller.php?action=getNewProducts').then(res => this.newProducts(res.data));
     axios.get('/site/controller/controller.php?action=getProductsDiscountLimit').then(res => this.productsDiscount(res.data));
     axios.get('/site/controller/controller.php?action=getRandomBrand').then(res => this.randomBrand(res.data));
+    axios.get('/site/controller/controller.php?action=getNewProducts').then(res => this.newProducts(res.data));
     axios.get('/site/controller/controller.php?action=getOneBlog').then(res => this.getOneBlog(res.data));
   }
 
@@ -103,6 +106,27 @@ class HomeContents extends React.Component {
     scriptBlog.appendChild(script);
   }
 
+  onAddCart(uid) {
+    let addCart = this.props.onAddCart;
+    axios.get(`/site/controller/controller.php?action=getProductById&uid=${uid}`)
+    .then(function(res) {
+      let price = res.data.price;
+      if (res.data.discount > 0) {
+        price = res.data.discount;
+      }
+
+      let item = {
+        uid: res.data.uid,
+        product_name: res.data.product_name,
+        featured_img: res.data.featured_img,
+        price: price,
+        qty: 1
+      }
+      
+      addCart(item);
+    });
+  }
+
   render() {
     return(
       <section className="ct-content">
@@ -136,7 +160,7 @@ class HomeContents extends React.Component {
               <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
               data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
 
-                {this.state.products_discount.map((e, i) => <ProductDiscount key={i}
+                {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart}
                   uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
                 )}
 
@@ -168,7 +192,7 @@ class HomeContents extends React.Component {
                     data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
 
                       {this.state.new_product.map((e, i) => <ProductNewItem key={i}
-                        uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price}/>
+                        uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} onAddCart={this.onAddCart}/>
                       )}
 
                     </div>
@@ -205,4 +229,16 @@ class HomeContents extends React.Component {
   }
 }
 
-export default HomeContents
+const mapStateToProps = (state) => {
+  return {
+    rw_cart: state.rw_cart
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddCart: (cart_item) => {dispatch(actions.add_cart(cart_item))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContents);

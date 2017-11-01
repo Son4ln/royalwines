@@ -85,8 +85,6 @@ class HomeAside extends React.Component {
             Vivamus iaculis placerat diam, laoreet posuere
             <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
           </p>
-
-          <a href="#" className="btn btn-lg btn-default animated" data-fx="fadeIn" data-hover="Hết hồn"><span>Hover zô!</span></a>
           
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
           data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
