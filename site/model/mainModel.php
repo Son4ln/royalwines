@@ -32,5 +32,13 @@
       return $result;
     }
 
+    function getProductByUid($uid) {
+      $query = "SELECT * FROM products WHERE uid = '$uid'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
     // end homepage
   }
+
+  ?>

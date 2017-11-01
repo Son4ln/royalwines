@@ -97,5 +97,26 @@
       die($data_return);
     }
 
+    function getProductById() {
+      $uid = $_GET['uid'];
+      $model = new MainModel();
+      $product = $model -> getProductByUid($uid);
+
+      $data = json_encode(array(
+        'uid' => $product['uid'],
+        'product_name' => $product['product_name'],
+        'featured_img' => $product['featured_img'],
+        'price' => $product['price'],
+        'discount' => $product['discount'],
+        'in_stock' => $product['in_stock'],
+        'product_time' => $product['product_time'],
+        'product_detail' => $product['product_detail']
+      ));
+
+      die($data);
+    }
+
     // end homepage
   }
+
+?>

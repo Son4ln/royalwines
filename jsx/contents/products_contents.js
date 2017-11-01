@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderMainScript } from '../utils';
+import {connect} from 'react-redux';
 
 class ProductsContents extends React.Component {
   constructor() {
@@ -107,4 +108,10 @@ class ProductsContents extends React.Component {
   }
 }
 
-export default ProductsContents
+const mapStateToProps = (state) => {
+  return {
+    rw_cart: state.cart_item
+  }
+}
+
+export default connect(mapStateToProps)(ProductsContents);
