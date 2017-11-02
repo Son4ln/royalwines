@@ -9,9 +9,9 @@
   include $ROOT.'system/libs/basic_libs.php';
 
   //thêm các modul
-  include '../model/brandsModel.php';
+  include '../model/mainModel.php';
 
   //thêm controller
-  include 'app/brandsController.php';
+  include 'app/mainController.php';
  
 ?>

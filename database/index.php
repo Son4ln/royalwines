@@ -6,7 +6,7 @@
     function createDataBase(){
       try {
 
-        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        $this->db = new PDO("mysql:dbname=;host=localhost", "root", "123", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
 
         $deldb = "drop database IF EXISTS $this->database";
@@ -21,7 +21,7 @@
     }
 
     function setConnect () {
-      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "" );
+      $this->db = new PDO("mysql:dbname=$this->database;host=localhost", "root", "123" );
       $this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
       //Error Handling
     }
@@ -41,14 +41,12 @@
   $cate = new Categories();
   $contactForm = new ContactForm();
   $eval = new Evaluation();
-  $img = new Images();
   $news = new News();
   $client = new Clients();
   $orderDetail = new OrderDetail();
   $orders = new Orders();
   $products = new Products();
   $slideShow = new SlideShow();
-  $stock = new Stock();
   $users = new Users();
   $wishList = new WishList();
   $rela = new Relationship();
@@ -58,6 +56,7 @@
   $brandsSeeder = new BrandsSeeder();
   $contactInfoSeeder = new ContactInfoSeeder();
   $catesSeeder = new CatesSeeder();
+  $productsSeeder = new ProductsSeeder();
 
   //sử dụng phương thức của lớp con
   //sử dụng migrate
@@ -67,13 +66,11 @@
   $cate -> createCategories();
   $contactForm -> createContactForm();
   $eval -> createEvaluation();
-  $img -> createImages();
   $news -> createNews();
   $orderDetail -> createOrderDetail();
   $orders -> createOrders();
   $products -> createProducts();
   $slideShow -> createSlideShow();
-  $stock -> createStock();
   $users -> createUsers();
   $client -> createClients();
   $wishList -> createWishList();
@@ -84,6 +81,7 @@
   $brandsSeeder -> createBrandsSeeder();
   $contactInfoSeeder -> createContactInfoSeeder();
   $catesSeeder -> createCatesSeeder();
+  $productsSeeder -> createProductsSeeder();
 
   echo "Created Database";
 ?>

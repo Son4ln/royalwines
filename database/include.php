@@ -6,7 +6,6 @@
   include 'migrations/ContactForm.php';
   include 'migrations/ContactInfo.php';
   include 'migrations/Evaluation.php';
-  include 'migrations/Images.php';
   include 'migrations/ManageUsers.php';
   include 'migrations/News.php';
   include 'migrations/Clients.php';
@@ -14,7 +13,6 @@
   include 'migrations/Orders.php';
   include 'migrations/Products.php';
   include 'migrations/SlideShow.php';
-  include 'migrations/Stock.php';
   include 'migrations/Users.php';
   include 'migrations/WishList.php';
 
@@ -22,6 +20,7 @@
   include 'seeds/UsersSeeder.php';
   include 'seeds/BrandsSeeder.php';
   include 'seeds/CateSeeder.php';
+  include 'seeds/ProductsSeeder.php';
   include 'seeds/ContactInfoSeeder.php';
 
   // thêm quan hệ

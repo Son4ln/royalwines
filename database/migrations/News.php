@@ -8,6 +8,7 @@
 						   news_id		int(11)		Auto_increment	Not null, 
 						   news_date		date					Not null,
 						   news_title		varchar(255)				Not null,
+						   short_desc		text					Not null,
 						   news_image		text					Not null,
 						   news_detail		text					Not null,
 						   news_public		tinyint(1)				Not null,

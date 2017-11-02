@@ -15,16 +15,51 @@
   {
     $action=$_POST["action"];
   }
-  else{
-    $action="home";
-  }
   //khởi tạo action
   switch ($action) {
-    case 'home':
-      $brands = new BrandsController();
-      $brands -> getBrands();
-      include '../view/home.php';
-      var_dump(http_response_code());
+    case 'getNewProducts':
+      $action = new MainController();
+      $action -> getNewProducts();
+      break;
+
+    case 'getProductsDiscountLimit':
+      $action = new MainController();
+      $action -> getProductsDiscountLimit();
+      break;
+
+    case 'getBanner':
+      $action = new MainController();
+      $action -> getBanner();
+      break;
+
+    case 'getOneBlog':
+      $action = new MainController();
+      $action -> getOneBlog();
+      break;
+
+    case 'getRandomBrand':
+      $action = new MainController();
+      $action -> getRandomBrand();
+      break;
+
+    case 'getProductById':
+      $action = new MainController();
+      $action -> getProductById();
+      break;
+
+    case 'login':
+      $action = new MainController();
+      $action -> login();
+      break;
+
+    case 'logout':
+      session_destroy();
+      header('location:/');
+      break;
+
+    case 'checkLogin':
+      $action = new MainController();
+      $action -> checkLogin();
       break;
 
     default:

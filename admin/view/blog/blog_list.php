@@ -121,6 +121,11 @@
                                 <input type="text" class="form-control" name="blogTitle">
                               </div>
 
+                              <div class="form-group form-group-default required">
+                                <label>Mô tả ngắn</label>
+                                <textarea class="form-control" name="shortDesc" id="shortDesc"></textarea>
+                              </div>
+
                               <div class="form-group form-group-default">
                                 <label>Nội dung</label>
                                 <textarea class="form-control" id="content-blog" name="blogDetail"></textarea>
@@ -162,9 +167,6 @@
     oldimg: ''
   }
   $(document).ready(() => {
-    //tích họp editor
-    CKEDITOR.replace('content-blog');
-    //
     $('#tab-public').click(() => {
       location.hash = 'public';
     });
@@ -193,15 +195,18 @@
     });
 
     reviewImg();
+    CKEDITOR.replace('content-blog');
 
     $('#form-addBlog').validate({
       rules: {
         blogImg: 'required',
         blogTitle: 'required',
+        shortDesc: 'required'
       },
       messages: {
         blogImg: 'Vui lòng chọn hình ảnh',
         blogTitle: 'Vui lòng nhập tiêu đề',
+        shortDesc: 'Vui lòng nhập mô tả ngắn'
       },
       submitHandler: function(form) {
         addBlog();
@@ -209,6 +214,7 @@
     });
 
     state_blog.oldimg = $('#review-img').attr('src');
+
   });
 
    function dataTable(whatTable, whatSearch) {
@@ -308,10 +314,12 @@
         ereviewImg();
         $('#form-editBlog').validate({
           rules: {
-            eblogTitle: 'required'
+            eblogTitle: 'required',
+            eshortDesc: 'required'
           },
           messages: {
-            eblogTitle: 'Vui lòng nhập tiêu đề'
+            eblogTitle: 'Vui lòng nhập tiêu đề',
+            eshortDesc: 'Vui lòng nhập mô tả ngắn'
           },
           submitHandler: function(form) {
             updateBlog(id);
@@ -337,11 +345,13 @@
     let blogImg = $('#eblogImg').prop('files')[0];
     let curImg = $('#curImg').val().trim();
     let title = $('[name="eblogTitle"]').val().trim();
-    let content = $('[name="eblogDetail"]').val();
+    let short_desc = $('[name="eshortDesc"]').val().trim();
+    let content = CKEDITOR.instances['eblogDetail'].getData();
     let data = new FormData();
     data.append('eblogImg', blogImg);
     data.append('curImg', curImg);
     data.append('title', title);
+    data.append('shortdesc', short_desc);
     data.append('detail', content);
 
     $.ajax({
@@ -451,14 +461,16 @@
   }
 
   function addBlog() {
-    $('#insert-blog').attr('disabled', true);
+    // $('#insert-blog').attr('disabled', true);
     $('#insert-blog').html('Đang thêm...');
     let img = $('#blogImg').prop('files')[0];
-    let title = $('[name="blogTitle"]').val();
-    let desc = $('[name="blogDetail"]').val();
+    let title = $('[name="blogTitle"]').val().trim();
+    let short_desc = $('[name="shortDesc"]').val().trim();
+    let desc = CKEDITOR.instances['content-blog'].getData();
     let data = new FormData();
     data.append('blogImg', img);
     data.append('title', title);
+    data.append('shortdesc', short_desc);
     data.append('detail', desc);
     $.ajax({
       url: '?action=addBlog',

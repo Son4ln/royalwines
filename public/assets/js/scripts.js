@@ -136,6 +136,8 @@ function checkPermission() {
             });
 
             window.clearInterval(checkPermission);
+          } else {
+            window.location.href = '?action=logout';    
           }
         }
       },

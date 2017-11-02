@@ -3,24 +3,35 @@ import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import HomeAside from './aside/home_aside';
+import CartAside from './aside/cart_aside';
+import WishlistAside from './aside/wishlist_aside';
+import CheckoutAside from './aside/checkout_aside';
 import BrandsAside from './aside/brands_aside';
 import ProductsAside from './aside/products_aside';
+import BlogsAside from './aside/blogs_aside';
+import LoginAside from './aside/login_aside';
 
 class Aside extends React.Component {
   constructor() {
     super();
   }
 
+  componentDidMount() {
+  }
+
   render() {
     return(
-       <section className="ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
-      data-bg="/public/assets/site/images/content/demo2.jpg" data-bgrepeat="no-repeat">
+       
         <Switch>
           <Route exact path='/' render={() => <HomeAside />}/>
+          <Route exact path='/gio-hang' render={() => <CartAside />}/>
+          <Route exact path='/yeu-thich' render={() => <WishlistAside />}/>
+          <Route exact path='/thanh-toan' render={() => <CheckoutAside />}/>
           <Route exact path='/nhan-hieu' render={() => <BrandsAside />}/>
           <Route exact path='/san-pham' render={() => <ProductsAside />}/>
+          <Route exact path='/bai-viet' render={() => <BlogsAside />}/>
+          <Route exact path='/dang-nhap' render={() => <LoginAside />}/>
         </Switch>
-      </section>
     );
   }
 }

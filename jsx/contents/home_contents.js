@@ -1,13 +1,129 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+
+import ProductNewItem from './components/product_new_item';
+import ProductDiscount from './components/products_discount';
+import * as actions from '../store/actions';
 
 class HomeContents extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      new_product: [],
+      products_discount: [],
+      blog: {},
+      blogImg: '',
+      brand: [],
+    }
+
+    this.onAddCart = this.onAddCart.bind(this);
   }
 
   componentWillMount() {
-    
+    axios.get('/site/controller/controller.php?action=getProductsDiscountLimit').then(res => this.productsDiscount(res.data));
+    axios.get('/site/controller/controller.php?action=getRandomBrand').then(res => this.randomBrand(res.data));
+    axios.get('/site/controller/controller.php?action=getNewProducts').then(res => this.newProducts(res.data));
+    axios.get('/site/controller/controller.php?action=getOneBlog').then(res => this.getOneBlog(res.data));
+  }
+
+  componentDidMount() {
+    //khai báo script đẻ sử dụng slider
+    this.renderScript();
+  }
+
+  newProducts(data) {
+    let productArr = [];
+    for(let item of data) {
+      let product = JSON.parse(item);
+      productArr.push(product);
+    }
+
+    this.setState({
+      new_product: productArr
+    }); 
+  }
+
+  productsDiscount(data) {
+    let productArr = [];
+    for(let item of data) {
+      let product = JSON.parse(item);
+      productArr.push(product);
+    }
+
+    this.setState({
+      products_discount: productArr
+    });
+  }
+
+  getOneBlog(data) {
+    this.setState({
+      blog: data,
+      blogImg: `/upload/blog/${data.news_image}`
+    });
+  }
+
+  randomBrand(data) {
+    let brandArr = [];
+    for (let item of data) {
+      let brand = JSON.parse(item);
+      brandArr.push(brand);
+    }
+
+    this.setState({
+      brand: brandArr
+    });
+  }
+
+  renderBrands() {
+    let data = this.state.brand;
+    let brandArr = [];
+    for (let item of data) {
+      let img_url = `/upload/brands/${item.brand_logo}`;
+
+      let content = (
+        <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
+          <a href="#">
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+              <img src={img_url} />           
+            </section>
+          </a>
+        </div>
+      );
+
+      brandArr.push(content);
+    }
+
+    return brandArr;
+  }
+
+  renderScript() {
+    let scriptBlog = document.getElementById('home-script-block');
+    const script = document.createElement('script');
+    script.src = '/public/assets/site/plugins/owl/init.js';
+    scriptBlog.appendChild(script);
+  }
+
+  onAddCart(uid) {
+    let addCart = this.props.onAddCart;
+    axios.get(`/site/controller/controller.php?action=getProductById&uid=${uid}`)
+    .then(function(res) {
+      let price = res.data.price;
+      if (res.data.discount > 0) {
+        price = res.data.discount;
+      }
+
+      let item = {
+        uid: res.data.uid,
+        product_name: res.data.product_name,
+        featured_img: res.data.featured_img,
+        price: price,
+        qty: 1
+      }
+      
+      addCart(item);
+    });
   }
 
   render() {
@@ -35,91 +151,23 @@ class HomeContents extends React.Component {
               </a>
             </div>  
           </div>
+
           <div className="col-sm-6 col-xs-12 ct-js-masonryItem ct-u-marginBottom30">
             <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
               <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop50 text-center">sản phẩm giảm giá</h3>
               <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
               <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
               data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart}
+                  uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
+                )}
 
-                <div className="item ct-u-padding10 ct-u-paddingHorizon50">
-                  <div className="ct-u-item-hover">
-                    <div className="ct-u-hoverBox ct-item-border">
-                      <img src="/public/assets/site/images/content/item.png" />
-                      <div className="ct-u-hoverItem">
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                        <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                        <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                        <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                        <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                      </div>
-                      <div className="ct-u-item-info ct-u-marginHorizon10">
-                        <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                        <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
           </div>
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
 
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
-
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src="/public/assets/site/images/content/brand1.png" />           
-            </section>
-          </div>
+          {this.renderBrands()}
 
           <div className="col-xs-12 ct-js-masonryItem">
             <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box4 animated" data-fx="pulse" data-bg="/public/assets/site/images/content/header-index-bg.png">
@@ -141,25 +189,10 @@ class HomeContents extends React.Component {
                   <div className="col-xs-12">
                     <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
                     data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
-                      <div className="item ct-u-padding10">
-                        <div className="ct-u-item-hover">
-                          <div className="ct-u-hoverBox ct-item-border">
-                            <img src="/public/assets/site/images/content/item.png" />
-                            <div className="ct-u-hoverItem">
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">Lorem ipsum dolor sit </h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1.000.000vnđ</h4>
-                              <p className="ct-u-colorWhite">lorem hihihihihih</p>
-                              <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                              <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                              <a href="#" class="btn btn-sm btn-default btn-item animated" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                            </div>
-                            <div className="ct-u-item-info ct-u-marginHorizon10">
-                              <h4 className="text-uppercase ct-u-font2 ct-itemName">Lorem ipsum dolor sit </h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1.000.000vnđ</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+
+                      {this.state.new_product.map((e, i) => <ProductNewItem key={i}
+                        uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} onAddCart={this.onAddCart}/>
+                      )}
 
                     </div>
                   </div>
@@ -167,20 +200,20 @@ class HomeContents extends React.Component {
               </div>
             </section>
           </div>
+
           <div className="col-sm-12 ct-js-masonryItem ct-u-clearBoth">
             <section className="ct-frame ct-frame--white animated" data-fx="pulse">
               <h3 className="ct-u-font1 text-uppercase text-center">bài viết mới</h3>
               <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
               <article className="ct-blogItem ct-formatPhoto ct-u-paddingBottom20">
-                <a href="#" className="ct-frame-image" title="The Space"><img src="/public/assets/site/images/content/layer.jpg" width="170" /></a>
+                <a href="#" className="ct-frame-image" title="The Space"><img src={this.state.blogImg} width="170" /></a>
                 <div className="ct-innerMargin">
                   <div className="ct-entryMeta">
-                     <div className="ct-entryDateFirst">Oct 22, 2014</div>
+                     <div className="ct-entryDateFirst">{this.state.blog.news_date}</div>
                   </div>
-                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">Standard Post Format with Preview Image</a></h3>
+                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">{this.state.blog.news_title}</a></h3>
                 <p className="ct-entryDescription">
-                  Etiam nunc tortur, ultrices quis turpis, tempor lacinia ligula. Sed at odio vel est lobortis eleifend ac vitae enim. Maecenas mattis nibg.
-                  Nulla sagittis ex et mauris ultrices, ut convallis nulla molestie. Ut efficitur cursus ipsum eget semper.
+                  {this.state.blog.short_desc}
                 </p>
                 <div className="clearfix"></div>
                 </div>
@@ -188,9 +221,23 @@ class HomeContents extends React.Component {
             </section>
           </div>
         </div>
+
+        <div id="home-script-block"></div>
       </section>
     );
   }
 }
 
-export default HomeContents
+const mapStateToProps = (state) => {
+  return {
+    rw_cart: state.rw_cart
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddCart: (cart_item) => {dispatch(actions.add_cart(cart_item))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContents);

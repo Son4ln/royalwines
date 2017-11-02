@@ -21,6 +21,7 @@
   include '../model/categoriesModel.php';
   include '../model/sliderModel.php';
   include '../model/blogModel.php';
+  include '../model/products_model.php';
 
   //thêm controller
   include 'app/contactInfoController.php';
@@ -32,4 +33,5 @@
   include 'app/cateController.php';
   include 'app/slideController.php';
   include 'app/blogController.php';
+  include 'app/products_controller.php';
 ?>

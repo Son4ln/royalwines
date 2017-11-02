@@ -80,7 +80,7 @@ function dataTable(whatTable, whatSearch) {
 
 //hàm thêm nhãn hiệu mới.
 function addBrand() {
-  let addBtn = $('#add-brands');
+  let addBtn = $('#add-products');
   addBtn.attr('disabled','disabled');
   addBtn.html('Loading...');
   let brandlogo = $('#brand-logo').prop('files')[0];

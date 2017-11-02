@@ -1,5 +1,23 @@
 <?php include $GLOBALS['ROOT'].'public/template/admin/sidebar.php'; ?>
-<?php include $GLOBALS['ROOT'].'public/template/admin/header.php'; ?>
+<?php 
+  include $GLOBALS['ROOT'].'public/template/admin/header.php';
+
+  $user = new UsersModel();
+  $email = $_SESSION["royalwines_user_login_ok"];
+  $pass = $_SESSION["royalwines_pass_login_ok"];
+  $getUser = $user -> checkUser($email, $pass);
+?>
+
+<style type="text/css">
+  .db-icon {
+    text-align: center;
+  }
+
+  .db-icon a {
+    font-size: 5rem;
+    color: white;
+  }
+</style>
 
 <!-- START PAGE CONTENT WRAPPER -->
 <div class="page-content-wrapper ">
@@ -7,147 +25,432 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-          <div class="col-md-4 m-b-10 m-t-20">
-            <!-- START WIDGET D3 widget_graphTileFlat-->
-            <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
-              <div class="container-xs-height full-height">
-                <div class="row-xs-height">
-                  <div class="col-xs-height col-top">
-                    <div class="panel-heading top-left top-right">
-                      <div class="panel-title text-black hint-text">
-                        <span class="font-montserrat fs-11 all-caps">Weekly Sales <i
-                            class="fa fa-chevron-right"></i>
-                                            </span>
-                      </div>
-                      <div class="panel-controls">
-                        <ul>
-                          <li>
-                            <a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i
-              class="portlet-icon portlet-icon-refresh"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row-xs-height">
-                  <div class="col-xs-height col-top relative">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="p-l-20">
-                          <h3 class="no-margin p-b-5 text-white">$14,000</h3>
-                          <p class="small hint-text m-t-5">
-                            <span class="label  font-montserrat m-r-5">60%</span>Higher
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                      </div>
-                    </div>
-                    <div class='widget-8-chart line-chart' data-line-color="black" data-points="true" data-point-color="success" data-stroke-width="2">
-                      <svg></svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- END WIDGET -->
-          </div>
-
-          <div class="col-md-4 m-b-10 m-t-20">
-            <!-- START WIDGET D3 widget_graphTileFlat-->
-            <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
-              <div class="container-xs-height full-height">
-                <div class="row-xs-height">
-                  <div class="col-xs-height col-top">
-                    <div class="panel-heading top-left top-right">
-                      <div class="panel-title text-black hint-text">
-                        <span class="font-montserrat fs-11 all-caps">Weekly Sales <i
-                            class="fa fa-chevron-right"></i>
-                                            </span>
-                      </div>
-                      <div class="panel-controls">
-                        <ul>
-                          <li>
-                            <a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i
-              class="portlet-icon portlet-icon-refresh"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row-xs-height ">
-                  <div class="col-xs-height col-top relative">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="p-l-20">
-                          <h3 class="no-margin p-b-5 text-white">$14,000</h3>
-                          <p class="small hint-text m-t-5">
-                            <span class="label  font-montserrat m-r-5">60%</span>Higher
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                      </div>
-                    </div>
-                    <div class='widget-8-chart line-chart' data-line-color="black" data-points="true" data-point-color="success" data-stroke-width="2">
-                      <svg></svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- END WIDGET -->
-          </div>
-
-          <div class="col-md-4 m-b-10 m-t-20">
-            <!-- START WIDGET D3 widget_graphTileFlat-->
-            <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
-              <div class="container-xs-height full-height">
-                <div class="row-xs-height">
-                  <div class="col-xs-height col-top">
-                    <div class="panel-heading top-left top-right">
-                      <div class="panel-title text-black hint-text">
-                        <span class="font-montserrat fs-11 all-caps">Weekly Sales <i
-                            class="fa fa-chevron-right"></i>
-                                            </span>
-                      </div>
-                      <div class="panel-controls">
-                        <ul>
-                          <li>
-                            <a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i
-              class="portlet-icon portlet-icon-refresh"></i></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row-xs-height ">
-                  <div class="col-xs-height col-top relative">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="p-l-20">
-                          <h3 class="no-margin p-b-5 text-white">$14,000</h3>
-                          <p class="small hint-text m-t-5">
-                            <span class="label  font-montserrat m-r-5">60%</span>Higher
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                      </div>
-                    </div>
-                    <div class='widget-8-chart line-chart' data-line-color="black" data-points="true" data-point-color="success" data-stroke-width="2">
-                      <svg></svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- END WIDGET -->
-          </div>
+        <div class="col-xs-12 text-center">
+          <h1><b>Chúc Một Ngày Tốt Lành <?php echo $getUser['full_name']; ?>!</b></h1>
         </div>
+      </div>
+      <?php  if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2) { ?>
+       <div class="row">
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Thành Viên 
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=listUsers"><i class="fa fa-users" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Liên Hệ
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=viewAllContact"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Banner
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=listBanner#banner"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+      </div>  
+      <?php } ?>
+
+      <?php 
+        if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
+          || $_SESSION["royalwines_permission_ok"] == 3) {
+      ?>
+      <div class="row">
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Hóa đơn
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=viewAllOrder"><i class="fa fa-gavel" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+    
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Nhãn Hiệu Sản Phẩm
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=listBrands"><i class="fa fa-database" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Xuất xứ
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=getCate"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+      </div>
+      <?php } ?>
+
+      <div class="row">
+      <?php 
+      if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
+        || $_SESSION["royalwines_permission_ok"] == 3) {
+      ?>
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Sản phẩm
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=viewAllOrder"><i class="fa fa-cubes" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Sản phẩm sắp hết hàng
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action="><i class="fa fa-battery-quarter" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+
+      <?php } ?>
+
+      <?php 
+      if ($_SESSION["royalwines_permission_ok"] == 1 || $_SESSION["royalwines_permission_ok"] == 2
+        || $_SESSION["royalwines_permission_ok"] == 4) {
+      ?>
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Tin Tức
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=listBlog#public"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+
+        <?php } ?>
+      </div>
+
+      <?php 
+      if ($_SESSION["royalwines_permission_ok"] == 1) {
+      ?>
+
+      <div class="row">
+        <div class="col-md-4 m-b-10 m-t-20">
+          <!-- START WIDGET D3 widget_graphTileFlat-->
+          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top">
+                  <div class="panel-heading top-left top-right">
+                    <div class="panel-title text-black hint-text">
+                      <span class="font-montserrat fs-11 all-caps">Thông tin cửa hàng
+                        <i class="fa fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row-xs-height">
+                <div class="col-xs-height col-top relative">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="p-l-20">
+                        <h3 class="no-margin p-b-5 text-white">$14,000</h3>
+                        <p class="small hint-text m-t-5">
+                          <span class="label  font-montserrat m-r-5">60%</span>Higher
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6 db-icon">
+                      <a href="?action=contactInfo"><i class="fa fa-info" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END WIDGET -->
+        </div>
+      </div>
+      <?php } ?>
     </div>    
   </div>
 </div>
