@@ -16,10 +16,6 @@ class HomeAside extends React.Component {
     axios.get('/site/controller/controller.php?action=getBanner').then(res => this.getBanner(res.data));
   }
 
-  componentDidMount() {
-    
-  }
-
   getBanner(data) {
     let bannerArr = [];
     for(let item of data) {

@@ -109,12 +109,55 @@
         'price' => $product['price'],
         'discount' => $product['discount'],
         'in_stock' => $product['in_stock'],
-        'product_time' => $product['product_time'],
+        'product_volume' => $product['product_volume'],
         'product_detail' => $product['product_detail']
       ));
 
       die($data);
     }
+
+    function login() {
+      $data = json_decode(file_get_contents("php://input"), true);
+      $email = $data['email'];
+      $pass = md5($data['pass']);
+      $users = new mainModel();
+      $result = $users -> checkUser($email, $pass);
+      if($result) {
+        if ($result['is_active'] == 2) {
+          $_SESSION["royalwines_user_login_ok"] = $email;
+          $_SESSION["royalwines_pass_login_ok"] = $pass;
+          $_SESSION["royalwines_permission_ok"] = $result['permission'];
+          $_SESSION["royalwines_user_uid_ok"] = $result['uid'];
+          die('login_success');
+        } else {
+          die('account_locked');
+        }
+      } else {
+        die('login_fail');
+      }
+    }
+
+  function checkLogin() {
+    if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $users = new mainModel();
+      $result = $users -> checkUser($email, $pass);
+      if($result) {
+        $data = json_encode(array(
+          'uid' => $result['uid'],
+          'full_name' => $result['full_name'],
+          'email' => $result['email'],
+          'address' => $result['address'],
+          'phone' => $result['phone'],
+          'avatar' => $result['avatar']
+        ));
+
+        die($data);
+      }
+    }
+    die('not_login');
+  }
 
     // end homepage
   }

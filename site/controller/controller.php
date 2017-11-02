@@ -47,6 +47,21 @@
       $action -> getProductById();
       break;
 
+    case 'login':
+      $action = new MainController();
+      $action -> login();
+      break;
+
+    case 'logout':
+      session_destroy();
+      header('location:/');
+      break;
+
+    case 'checkLogin':
+      $action = new MainController();
+      $action -> checkLogin();
+      break;
+
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

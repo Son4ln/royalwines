@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import ProductNewItem from './components/product_new_item';
 import ProductDiscount from './components/products_discount';
 import * as actions from '../store/actions';
-import {renderMainScript} from '../utils'
 
 class HomeContents extends React.Component {
   constructor() {

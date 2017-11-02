@@ -24,7 +24,7 @@ class ProductsAside extends React.Component {
       slide: function( event, ui ) {
       $( ".ct-slide-box" ).text(  "TỪ: " + ui.values[ 0 ] + "VNĐ - ĐẾN: "  + ui.values[ 1 ]+ "VNĐ " );                
       },
-    })
+    });
   }
 
   render() {

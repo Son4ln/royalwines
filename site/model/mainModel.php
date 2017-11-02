@@ -38,6 +38,12 @@
       return $result;
     }
 
+    function checkUser($email, $pass) {
+      $query = "SELECT * FROM users WHERE email = '$email' AND password = '$pass'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
     // end homepage
   }
 
