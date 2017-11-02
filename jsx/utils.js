@@ -8,4 +8,9 @@ function renderMainScript(scriptBlock) {
   scriptBlock.appendChild(script);
 }
 
-export {formatCurrency, renderMainScript};
+function isValidEmail(email) {
+  let regex = /^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$/;
+  return regex.test(email);
+}
+
+export {formatCurrency, renderMainScript, isValidEmail};

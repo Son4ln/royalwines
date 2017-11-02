@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { formatCurrency } from '../../utils';
 import * as actions from '../../store/actions';
@@ -14,6 +15,7 @@ class ProductDiscount extends React.Component {
 
     this.addCartItem = this.addCartItem.bind(this);
     this.changeButton = this.changeButton.bind(this);
+    this.changeLikeBtn = this.changeLikeBtn.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +51,23 @@ class ProductDiscount extends React.Component {
     return content;
   }
 
+  changeLikeBtn() {
+    let content = (
+      <Link to="/dang-nhap" className="ct-u-hoverIcon ct-u-marginLeft40">
+        <i className="fa fa-heart-o"></i>
+      </Link>
+    );
+    if (this.props.rw_user.uid !== undefined) {
+      content = (
+        <a href="javascript:void(0)" className="ct-u-hoverIcon ct-u-marginLeft40">
+          <i className="fa fa-heart-o"></i>
+        </a>
+      );
+    }
+
+    return content;
+  }
+
   render() {
     return(
       <div className="item ct-u-padding10 ct-u-paddingHorizon50">
@@ -60,7 +79,7 @@ class ProductDiscount extends React.Component {
               <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack origin-price">{formatCurrency(this.props.price)}vnđ</h4>
               <h3 className="text-uppercase ct-u-font2 ct-u-colorBlack">{formatCurrency(this.props.discount)}vnđ</h3>
               {this.changeButton()}
-              <a href="javascript:void(0)" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
+              {this.changeLikeBtn()}
               <a href="javascript:void(0)" className="btn btn-sm btn-default btn-item" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
             </div>
 
@@ -78,7 +97,8 @@ class ProductDiscount extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    rw_cart: state.rw_cart
+    rw_cart: state.rw_cart,
+    rw_user: state.rw_user
   }
 }
 
