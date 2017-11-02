@@ -40,7 +40,6 @@
   $brands = new Brands();
   $cate = new Categories();
   $contactForm = new ContactForm();
-  $eval = new Evaluation();
   $news = new News();
   $client = new Clients();
   $orderDetail = new OrderDetail();
@@ -65,7 +64,6 @@
   $brands -> createBrands();
   $cate -> createCategories();
   $contactForm -> createContactForm();
-  $eval -> createEvaluation();
   $news -> createNews();
   $orderDetail -> createOrderDetail();
   $orders -> createOrders();
