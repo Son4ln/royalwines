@@ -128,6 +128,9 @@ ul.ct-defaultColorList li {
 .ct-u-size14 {
   font-size: 14px;
 }
+.ct-u-size22 {
+  font-size: 22px;
+}
 .ct-u-size24 {
   font-size: 24px;
 }
@@ -135,7 +138,10 @@ ul.ct-defaultColorList li {
   font-size: 20px;
 }
 .ct-u-size28 {
-  font-size: 28px
+  font-size: 28px;
+}
+.ct-u-size30 {
+  font-size: 30px;
 }
 @media (max-width: 991px) {
   .ct-u-size18 {
@@ -143,6 +149,12 @@ ul.ct-defaultColorList li {
   }
   .ct-u-size20 {
     font-size: 17px;
+  }
+  .ct-u-size22 {
+    font-size: 19px;
+  }
+  .ct-u-size24 {
+    font-size: 21px;
   }
   .ct-u-size28 {
     font-size: 24px
@@ -155,9 +167,22 @@ ul.ct-defaultColorList li {
   .ct-u-size20 {
     font-size: 14px;
   }
+  .ct-u-size22 {
+    font-size: 17px;
+  }
+  .ct-u-size24 {
+    font-size: 18px;
+  }
   .ct-u-size28 {
     font-size: 21px
   }
+}
+.ct-u-backgroundWhite {
+  background: #ffffff;
+}
+.ct-u-paddingHorizon0 {
+  padding-left: 0;
+  padding-right: 0;
 }
 .ct-u-padding0 {
   padding: 0;
@@ -348,6 +373,9 @@ ul.ct-defaultColorList li {
 }
 .ct-u-marginBottom20 {
   margin-bottom: 20px;
+}
+.ct-u-marginBottom0 {
+  margin-bottom: 0;
 }
 .ct-u-marginBoth10 {
   margin-top: 10px;

@@ -106,7 +106,7 @@ class Menu extends React.Component {
                 <a href="#">Giới Thiệu</a>
               </li>
               <li>
-                <a href="#">Liên Hệ</a>
+                <Link to="/lien-he">Liên Hệ</Link>
               </li>
               <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr1.png" />
               
