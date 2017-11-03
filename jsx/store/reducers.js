@@ -46,9 +46,41 @@ const rw_user = (state = initUser, action) => {
   }
 }
 
+// end save user
+
+//save whish list
+let initWishList = [];
+
+const rw_wishList = (state = initWishList, action) => {
+  switch (action.type) {
+    case types.SHOW_WISH:
+      state = [...action.item];
+      return [...state]
+    case types.SAVE_WISH_ITEM:
+      axios.post('/site/controller/controller.php?action=addWish', {
+        uid: action.item.uid
+      });
+
+      state = [...state, action.item];
+      return [...state];
+
+    case types.DELETE_WISH_ITEM:
+      let new_state = state.filter((e, i) => i != action.index);
+      let product = state[action.index];
+      axios.post('/site/controller/controller.php?action=delWish', {
+         uid: product.uid
+      });
+      return new_state;
+
+    default:
+      return state;
+  }
+}
+
 const rw_reducers = combineReducers({
   rw_cart: rw_cart,
-  rw_user: rw_user
+  rw_user: rw_user,
+  rw_wish: rw_wishList
 });
 
 export default rw_reducers;

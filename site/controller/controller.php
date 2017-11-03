@@ -62,6 +62,21 @@
       $action -> checkLogin();
       break;
 
+    case 'addWish':
+      $action = new MainController();
+      $action -> addWish();
+      break;
+
+    case 'getWishList':
+      $action = new MainController();
+      $action -> getWishList();
+      break;
+
+    case 'delWish':
+      $action = new MainController();
+      $action -> delWish();
+      break;
+
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

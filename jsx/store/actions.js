@@ -28,3 +28,24 @@ export const save_user = (user) => {
     user: user
   }
 }
+
+export const save_wish_item = (item) => {
+  return {
+    type: types.SAVE_WISH_ITEM,
+    item: item
+  }
+}
+
+export const delete_wish_item = (index) => {
+  return {
+    type: types.DELETE_WISH_ITEM,
+    index: index
+  }
+}
+
+export const show_wish_item = (item) => {
+  return {
+    type: types.SHOW_WISH,
+    item: item
+  }
+}

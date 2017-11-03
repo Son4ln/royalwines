@@ -10,6 +10,7 @@ class AsideHeader extends React.Component {
     super();
     this.renderCartItem = this.renderCartItem.bind(this);
     this.onDeleteCartItem = this.onDeleteCartItem.bind(this);
+    this.onDeleteWishItem = this.onDeleteWishItem.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +21,65 @@ class AsideHeader extends React.Component {
     $('#cart-items').click((e) => {
       this.onDeleteCartItem(e);
     });
+
+    $('#wish-item').click((e) => {
+      this.onDeleteWishItem(e);
+    });
+  }
+
+  renderWishList() {
+    let renderList = [];
+    let content = null;
+    let count = 0;
+    if (this.props.rw_wish.length > 0) {
+      for (let item of this.props.rw_wish) {
+        let img_url = `/upload/products/${item.featured_img}`;
+        content = (
+          <div>
+            <div className="row">
+              <div className="col-xs-3">
+                <img className="img-responsive" src={img_url} />
+              </div>
+              <div className="col-xs-7">
+                <a href="#">
+                  <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10 ct-u-size18 ct-u-maxWidth150">{item.product_name}</h3>
+                </a>
+              </div>
+              <div className="col-xs-1">
+                <button className="x-btn" data-index={count}><i className="fa fa-times"></i></button>
+              </div>
+            </div>
+            <hr/>
+          </div>
+        );
+        count ++;
+        renderList.push(content);
+      }
+
+      return renderList;
+    } else {
+      content = (
+        <div><h3>CHƯA CÓ SẢN PHẨM!</h3></div>
+      );
+
+      return content;
+    }
+  }
+
+  onDeleteWishItem(e) {
+    let delWish = this.props.onDeleteWishItem;
+    let delegate = e.target;
+    let index = 0;
+    if (delegate.nodeName === 'BUTTON') {
+      index = delegate.getAttribute('data-index');
+    } else if (delegate.nodeName === 'I') {
+      index = delegate.parentNode.getAttribute('data-index');
+    } else {
+      return;
+    }
+
+    delWish(index);
+    
   }
 
   renderCartItem() {
@@ -28,7 +88,7 @@ class AsideHeader extends React.Component {
     let count = 0;
     if (this.props.rw_cart.length > 0) {
       for (let item of this.props.rw_cart) {
-        let img_url = `/upload/${item.featured_img}`;
+        let img_url = `/upload/products/${item.featured_img}`;
         content = (
           <div>
             <div className="row">
@@ -95,43 +155,11 @@ class AsideHeader extends React.Component {
             <a href="#" className="btn dropdown-toggle visible-lg hidden-md hidden-sm hidden-xs" type="button" data-toggle="dropdown">yêu thích</a>
             <div className="dropdown-menu wishlist-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn">
               <div className="wishlist-border col-xs-8">
-                <div className="container-fluid">
+                <div className="container-fluid" id="wish-item">
                   <h3 className="ct-u-margin0 ct-u-marginBottom10">Sản Phẩm Yêu Thích:</h3>
-                  <div className="row">
-                    <div className="col-xs-3">
-                      <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                    </div>
-                    <div className="col-xs-7">
-                      <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                    </div>
-                    <div className="col-xs-1">
-                      <button className="x-btn"><i className="fa fa-times"></i></button>
-                    </div>
-                  </div>
-                  <hr/>
-                  <div className="row">
-                    <div className="col-xs-3">
-                      <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                    </div>
-                    <div className="col-xs-7">
-                      <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                    </div>
-                    <div className="col-xs-1">
-                      <button className="x-btn"><i className="fa fa-times"></i></button>
-                    </div>
-                  </div>
-                  <hr/>
-                  <div className="row">
-                    <div className="col-xs-3">
-                      <img className="img-responsive" src="/public/assets/site/images/content/item.png" />
-                    </div>
-                    <div className="col-xs-7">
-                      <h3 className="ct-u-colorDark ct-u-margin0 ct-u-marginLeft10">bourbon whiskey</h3>
-                    </div>
-                    <div className="col-xs-1">
-                      <button className="x-btn"><i className="fa fa-times"></i></button>
-                    </div>
-                  </div>
+                  
+                  {this.renderWishList()}
+                  
                 </div>
               </div>
 
@@ -201,13 +229,15 @@ class AsideHeader extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    rw_cart: state.rw_cart
+    rw_cart: state.rw_cart,
+    rw_wish: state.rw_wish
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDeleteCartItem: (index) => {dispatch(actions.remove_item_cart(index))}
+    onDeleteCartItem: (index) => {dispatch(actions.remove_item_cart(index))},
+    onDeleteWishItem: (index) => {dispatch(actions.delete_wish_item(index))}
   }
 }
 
