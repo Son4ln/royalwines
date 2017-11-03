@@ -15,6 +15,28 @@ class Menu extends React.Component {
 
   componentWillMount() {
     axios.get('/site/controller/controller.php?action=checkLogin').then(res => this.checkUser(res.data));
+    axios.get('/site/controller/controller.php?action=getWishList').then(res => this.getWish(res.data));
+  }
+
+  componentDidMount() {
+    
+  }
+
+  getWish(data) {
+    let arr = [];
+    if (data != 'not_login') {
+      if (data.length > 0) {
+        for (let item of data) {
+        arr.push(JSON.parse(item));
+        }
+      this.setWish(arr);
+      }
+    }
+  }
+
+  setWish(arr) {
+    let addWish = this.props.onShowWish;
+    addWish(arr);
   }
 
   checkUser(data) {
@@ -106,7 +128,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSaveUser: (user) => {dispatch(actions.save_user(user))}
+    onSaveUser: (user) => {dispatch(actions.save_user(user))},
+    onShowWish: (item) => {dispatch(actions.show_wish_item(item))}
   }
 }
 

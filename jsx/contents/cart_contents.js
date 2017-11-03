@@ -56,7 +56,7 @@ class CartContents extends React.Component {
   renderCart() {
     let cart = this.props.rw_cart;
     let content = (
-      <div className="text-center"><h1>CHƯA CÓ SẢN PHẨM!</h1></div>
+      <tr><td colspan="6" className="text-center"><h1>CHƯA CÓ SẢN PHẨM!</h1></td></tr>
     );
 
     if (cart.length > 0) {

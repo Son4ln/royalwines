@@ -1,17 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { renderMainScript } from '../utils';
+import WishItem from './components/wish_item';
+import * as actions from '../store/actions'
 
 class WishlistContents extends React.Component {
   constructor() {
     super();
+
+    this.onDelWish = this.onDelWish.bind(this);
   }
 
   componentDidMount() {
     let scriptBlock = document.getElementById('wishlist-script-blog');
     renderMainScript(scriptBlock);
   }
+
+  onDelWish(index) {
+    let onDel = this.props.onDeleteWishItem;
+    onDel(index);
+  }
+
+  renderWishList() {
+    let list = this.props.rw_wish;
+    let content = (
+      <tr><td colspan="6" className="text-center"><h1>CHƯA CÓ SẢN PHẨM!</h1></td></tr>
+    );
+
+    if(list.length > 0) {
+      content = (
+        list.map((e, i) => <WishItem key={i} index={i} wishItem={list[i]} onDelWish={this.onDelWish}/>)
+      );
+    }
+
+    return content;
+  }
+
 
   render() {
     return(
@@ -30,29 +56,7 @@ class WishlistContents extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="ct-body-table ct-u-colorMotive">
-                    <td><Link to=""><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></Link></td>
-                    <td className="ct-cart-name">chivas regal 25</td>
-                    <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                  </tr>
-
-                  <tr className="ct-body-table ct-u-colorMotive">
-                    <td><Link to=""><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></Link></td>
-                    <td className="ct-cart-name">chivas regal 25</td>
-                    <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                  </tr>
-
-                  <tr className="ct-body-table ct-u-colorMotive">
-                    <td><Link to=""><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></Link></td>
-                    <td className="ct-cart-name">chivas regal 25</td>
-                    <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                  </tr>
-
-                  <tr className="ct-body-table ct-u-colorMotive">
-                    <td><Link to=""><img src="public/assets/site/images/content/chivas.png" className="ct-cart-img img-responsive"/></Link></td>
-                    <td className="ct-cart-name">chivas regal 25</td>
-                    <td><button className="x-btn"><i className="fa fa-times"></i></button></td>
-                  </tr>
+                  {this.renderWishList()}
                 </tbody>
               </table>
             </div>
@@ -65,4 +69,16 @@ class WishlistContents extends React.Component {
   }
 }
 
-export default WishlistContents
+const mapStateToProps = (state) => {
+  return {
+    rw_wish: state.rw_wish
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteWishItem: (index) => {dispatch(actions.delete_wish_item(index))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WishlistContents);

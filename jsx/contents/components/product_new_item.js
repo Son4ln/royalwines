@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { formatCurrency } from '../../utils';
+import * as actions from '../../store/actions'
 
 class ProductNewItem extends React.Component {
   constructor() {
@@ -15,10 +16,12 @@ class ProductNewItem extends React.Component {
     this.addCartItem = this.addCartItem.bind(this);
     this.changeButton = this.changeButton.bind(this);
     this.changeLikeBtn = this.changeLikeBtn.bind(this);
+    this.addWishItem = this.addWishItem.bind(this);
+    this.delWish = this.delWish.bind(this);
   }
 
   componentDidMount() {
-    this.setState({img_url: `/upload/${this.props.featured_img}`});
+    this.setState({img_url: `/upload/products/${this.props.featured_img}`});
     this.changeButton();
   }
 
@@ -53,18 +56,59 @@ class ProductNewItem extends React.Component {
     );
     if (this.props.rw_user.uid !== undefined) {
       content = (
-        <a href="javascript:void(0)" className="ct-u-hoverIcon ct-u-marginLeft40">
-          <i className="fa fa-heart-o"></i>
-        </a>
+        this.onChangeBtnWishLogin()
       );
     }
 
     return content;
   }
 
+  onChangeBtnWishLogin() {
+    let wish = this.props.rw_wish;
+    let uid = this.props.uid;
+    let content = (
+      <a href="javascript:void(0)" onClick={this.addWishItem} className="ct-u-hoverIcon ct-u-marginLeft40">
+        <i className="fa fa-heart-o"></i>
+      </a>
+    );
+
+    if (wish.length > 0) {
+      
+      let count = 0;
+      for (let item of wish) {
+        if (item.uid === uid) {
+          content = (
+            <a href="javascript:void(0)" onClick={this.delWish} data-index={count} className="ct-u-hoverIcon ct-u-marginLeft40">
+              <i className="fa fa-heart"></i>
+            </a>
+          );
+        }
+
+        count ++;
+      }
+    }
+
+    return content;
+  }
+
+  delWish(e) {
+    let target = $(e.target);
+    if (target.is('I')) {
+      target = $(e.target).parents('A');
+    }
+    let delWish = this.props.onDeleteWishItem;
+    let index = target.attr('data-index');
+    delWish(index);
+  }
+
   addCartItem() {
     let cart = this.props.onAddCart;
     cart(this.props.uid);
+  }
+
+  addWishItem() {
+    let wish = this.props.onAddWish;
+    wish(this.props.uid);
   }
 
   render() {
@@ -94,8 +138,15 @@ class ProductNewItem extends React.Component {
 const mapStateToProps = (state) => {
   return {
     rw_cart: state.rw_cart,
-    rw_user: state.rw_user
+    rw_user: state.rw_user,
+    rw_wish: state.rw_wish
   }
 }
 
-export default connect(mapStateToProps)(ProductNewItem);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteWishItem: (index) => {dispatch(actions.delete_wish_item(index))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductNewItem);

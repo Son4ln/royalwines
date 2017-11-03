@@ -137,27 +137,67 @@
       }
     }
 
-  function checkLogin() {
-    if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
-      $email = $_SESSION["royalwines_user_login_ok"];
-      $pass = $_SESSION["royalwines_pass_login_ok"];
-      $users = new mainModel();
-      $result = $users -> checkUser($email, $pass);
-      if($result) {
-        $data = json_encode(array(
-          'uid' => $result['uid'],
-          'full_name' => $result['full_name'],
-          'email' => $result['email'],
-          'address' => $result['address'],
-          'phone' => $result['phone'],
-          'avatar' => $result['avatar']
-        ));
+    function checkLogin() {
+      if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+        $email = $_SESSION["royalwines_user_login_ok"];
+        $pass = $_SESSION["royalwines_pass_login_ok"];
+        $users = new mainModel();
+        $result = $users -> checkUser($email, $pass);
+        if($result) {
+          $data = json_encode(array(
+            'uid' => $result['uid'],
+            'full_name' => $result['full_name'],
+            'email' => $result['email'],
+            'address' => $result['address'],
+            'phone' => $result['phone'],
+            'avatar' => $result['avatar']
+          ));
 
-        die($data);
+          die($data);
+        }
       }
+      die('not_login');
     }
-    die('not_login');
-  }
+
+    function addWish() {
+      $data = json_decode(file_get_contents("php://input"), true);
+      $product_uid = $data['uid'];
+      $model = new mainModel();
+      $model -> addWish($product_uid);
+    }
+
+    function getWishList() {
+      if(isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+        $model = new mainModel();
+        $result = $model -> getWishListByUser();
+        $get_data = array();
+        foreach ($result as $key) {
+          $product_id = $key['product_id'];
+          $data_product = $model -> getProductById($product_id);
+          $data = json_encode(array(
+            'uid' => $data_product['uid'],
+            'product_name' => $data_product['product_name'],
+            'featured_img' => $data_product['featured_img'] 
+          ));
+
+          array_push($get_data, $data);
+        }
+
+        $data_return = json_encode($get_data);
+
+        die($data_return);
+      } else {
+        die('not_login');
+      }
+      
+    }
+
+    function delWish() {
+      $data = json_decode(file_get_contents("php://input"), true);
+      $product_uid = $data['uid'];
+      $model = new mainModel();
+      $model -> delWish($product_uid);
+    }
 
     // end homepage
   }

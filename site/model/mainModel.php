@@ -32,6 +32,12 @@
       return $result;
     }
 
+    function getProductById($id) {
+      $query = "SELECT * FROM products WHERE product_id = '$id'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
     function getProductByUid($uid) {
       $query = "SELECT * FROM products WHERE uid = '$uid'";
       $result = parent::getInstance($query);
@@ -42,6 +48,39 @@
       $query = "SELECT * FROM users WHERE email = '$email' AND password = '$pass'";
       $result = parent::getInstance($query);
       return $result;
+    }
+
+    function addWish($uid) {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $result = $this -> checkUser($email, $pass);
+      $user = $result['user_id'];
+
+      $result = $this -> getProductByUid($uid);
+      $product_id = $result['product_id'];
+      $query = "INSERT INTO wishlist VALUES(' ','$user', '$product_id')";
+      parent::exec($query);
+    }
+
+    function getWishListByUser() {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $result = $this -> checkUser($email, $pass);
+      $user = $result['user_id'];
+      $query = "SELECT * FROM wishlist WHERE user_id = $user";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function delWish($prod_uid) {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $result = $this -> checkUser($email, $pass);
+      $user = $result['user_id'];
+      $result = $this -> getProductByUid($prod_uid);
+      $product_id = $result['product_id'];
+      $query = "DELETE FROM wishlist WHERE user_id = '$user' AND product_id = '$product_id'";
+      parent::exec($query);
     }
 
     // end homepage

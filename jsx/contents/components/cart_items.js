@@ -16,7 +16,7 @@ class CartItems extends React.Component {
 
   componentDidMount() {
     this.setState({
-      img_url: `/upload/${this.props.product.featured_img}`
+      img_url: `/upload/products/${this.props.product.featured_img}`
     });
   }
 

@@ -19,6 +19,7 @@ class HomeContents extends React.Component {
     }
 
     this.onAddCart = this.onAddCart.bind(this);
+    this.onAddWish = this.onAddWish.bind(this);
   }
 
   componentWillMount() {
@@ -126,6 +127,21 @@ class HomeContents extends React.Component {
     });
   }
 
+  onAddWish(uid) {
+    let addWish = this.props.onAddWish;
+
+    axios.get(`/site/controller/controller.php?action=getProductById&uid=${uid}`)
+    .then(function(res) {
+      let item = {
+        uid: res.data.uid,
+        product_name: res.data.product_name,
+        featured_img: res.data.featured_img
+      }
+      
+     addWish(item);
+    });
+  }
+
   render() {
     return(
       <section className="ct-content">
@@ -159,7 +175,7 @@ class HomeContents extends React.Component {
               <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
               data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
 
-                {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart}
+                {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart} onAddWish={this.onAddWish}
                   uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
                 )}
 
@@ -190,7 +206,7 @@ class HomeContents extends React.Component {
                     <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
                     data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
 
-                      {this.state.new_product.map((e, i) => <ProductNewItem key={i}
+                      {this.state.new_product.map((e, i) => <ProductNewItem key={i} onAddWish={this.onAddWish}
                         uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} onAddCart={this.onAddCart}/>
                       )}
 
@@ -236,7 +252,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddCart: (cart_item) => {dispatch(actions.add_cart(cart_item))}
+    onAddCart: (cart_item) => {dispatch(actions.add_cart(cart_item))},
+    onAddWish: (item) => {dispatch(actions.save_wish_item(item))}
   }
 }
 
