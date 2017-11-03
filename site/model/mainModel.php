@@ -83,7 +83,36 @@
       parent::exec($query);
     }
 
-    // end homepage
+    function getCate() {
+      $query = 'SELECT * FROM categories';
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getProductByCate($id, $limit) {
+      $query = "SELECT * FROM products WHERE category_id = '$id' LIMIT $limit";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getAllProductPublic($limit) {
+      $query = "SELECT * FROM products WHERE product_public = 2 LIMIT $limit";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getProductDiscount($limit) {
+      $query = "SELECT * FROM products WHERE discount > 0 LIMIT $limit";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function searchProducts($key, $limit) {
+      $query = "SELECT * FROM products WHERE product_name LIKE '%$key%' LIMIT $limit";
+      $result = parent::getList($query);
+      return $result;
+    }
+
   }
 
   ?>
