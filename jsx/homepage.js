@@ -12,6 +12,18 @@ import Contents from './contents';
 class HomePage extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      searchVal: ''
+    }
+
+    this.getSearch = this.getSearch.bind(this);
+  }
+
+  getSearch(text) {
+    this.setState({
+      searchVal: text
+    });
   }
 
   render() {
@@ -22,8 +34,8 @@ class HomePage extends React.Component {
             <Menu />
             <div id="ct-js-wrapper" className="ct-pageWrapper">
               <AsideHeader />
-              <Aside />
-              <Contents />
+              <Aside getSearch={this.getSearch}/>
+              <Contents searchVal={this.state.searchVal}/>
               <a href="#" id="toTop"><i className="fa fa-angle-up"></i></a>
             </div>
           </div>

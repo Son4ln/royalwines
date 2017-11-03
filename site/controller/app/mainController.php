@@ -200,6 +200,127 @@
     }
 
     // end homepage
+
+    //start product page
+    function getCate() {
+      $model = new mainModel();
+      $cates = $model -> getCate();
+      $data = array();
+
+      foreach ($cates as $item) {
+        $cate = json_encode(array(
+          'category_id' => $item['category_id'],
+          'uid' => $item['uid'],
+          'category_name' => $item['category_name']
+        ));
+
+        array_push($data, $cate);
+      }
+
+      $data_return = json_encode($data);
+      die($data_return);
+    }
+
+    function getAllProductPublic() {
+      $limit = $_GET['limit'];
+      $model = new mainModel();
+      $products = $model -> getAllProductPublic($limit);
+
+      $data = array();
+
+      foreach ($products as $item) {
+        $product = json_encode(array(
+          'uid' => $item['uid'],
+          'product_name' => $item['product_name'],
+          'featured_img' => $item['featured_img'],
+          'price' => $item['price'],
+          'discount' => $item['discount']
+        ));
+
+        array_push($data, $product);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function getProductByCate() {
+      $limit = $_GET['limit'];
+      $model = new mainModel();
+      $cate_id = $_GET['cate_id'];
+      $products = $model -> getProductByCate($cate_id, $limit);
+
+      $data = array();
+
+      foreach ($products as $item) {
+        $product = json_encode(array(
+          'uid' => $item['uid'],
+          'product_name' => $item['product_name'],
+          'featured_img' => $item['featured_img'],
+          'price' => $item['price'],
+          'discount' => $item['discount']
+        ));
+
+        array_push($data, $product);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function getProductDiscount() {
+      $limit = $_GET['limit'];
+      $model = new mainModel();
+      $products = $model -> getProductDiscount($limit);
+
+      $data = array();
+
+      foreach ($products as $item) {
+        $product = json_encode(array(
+          'uid' => $item['uid'],
+          'product_name' => $item['product_name'],
+          'featured_img' => $item['featured_img'],
+          'price' => $item['price'],
+          'discount' => $item['discount']
+        ));
+
+        array_push($data, $product);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function searchProducts() {
+      $model = new MainModel();
+      $limit = $_GET['limit'];
+      $key = $_GET['key'];
+      $products = $model -> searchProducts($key, $limit);
+
+      if($products) {
+        $data = array();
+
+        foreach ($products as $item) {
+          $product = json_encode(array(
+            'uid' => $item['uid'],
+            'product_name' => $item['product_name'],
+            'featured_img' => $item['featured_img'],
+            'price' => $item['price'],
+            'discount' => $item['discount']
+          ));
+
+          array_push($data, $product);
+        }
+
+        $data_return = json_encode($data);
+
+        die($data_return);
+      }
+    }
+    //end product page
   }
 
 ?>

@@ -77,6 +77,31 @@
       $action -> delWish();
       break;
 
+    case 'getCate':
+      $action = new MainController();
+      $action -> getCate();
+      break;
+
+    case 'getAllProductPublic':
+      $action = new MainController();
+      $action -> getAllProductPublic();
+      break;
+
+    case 'getProductByCate':
+      $action = new MainController();
+      $action -> getProductByCate();
+      break;
+
+    case 'getProductDiscount':
+      $action = new MainController();
+      $action -> getProductDiscount();
+      break;
+
+    case 'searchProducts':
+      $action = new MainController();
+      $action -> searchProducts();
+      break;
+
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;
