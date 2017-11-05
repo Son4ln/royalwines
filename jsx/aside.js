@@ -14,6 +14,7 @@ import BlogDetailAside from './aside/blog_detail_aside';
 import ContactAside from './aside/contact_aside';
 import LoginAside from './aside/login_aside';
 import EditProfileAside from './aside/edit_profile_aside';
+import AboutAside from './aside/about_aside';
 
 class Aside extends React.Component {
   constructor() {
@@ -48,6 +49,7 @@ class Aside extends React.Component {
         <Route exact path='/lien-he' render={() => <ContactAside />}/>
         <Route exact path='/dang-nhap' render={() => <LoginAside />}/>
         <Route exact path='/chinh-sua' render={() => <EditProfileAside />}/>
+        <Route exact path='/thong-tin' render={() => <AboutAside />}/>
       </Switch>
     );
   }
