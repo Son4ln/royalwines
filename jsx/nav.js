@@ -46,6 +46,8 @@ class Menu extends React.Component {
       </li>
     );
 
+    let admin_content = null;
+
     if (data !== 'not_login') {
       let user = this.props.onSaveUser;
       user(data);
@@ -59,11 +61,18 @@ class Menu extends React.Component {
         name = full_name.shift() + ' ' + full_name.pop();
       }
 
+      if (data.permission != 5) {
+        admin_content = (
+          <li><a href="/admin">Trang quản lý</a></li>
+        );
+      }
+
       content = (
         <li className="dropdown ct-profile">
           <img src={img_url} className="ct-profile-img"/>
           <p className="ct-u-colorMotive">{name}</p>
           <ul className="dropdown-menu">
+            {admin_content}
             <li><a href="#">chỉnh sửa</a></li>
             <li><a href="/site/controller/controller.php?action=logout">đăng xuất</a></li>
           </ul>
@@ -94,7 +103,7 @@ class Menu extends React.Component {
                 <a href="/">Trang Chủ</a>
               </li>
               <li>
-                <Link to="/nhan-hieu">Nhãn Hiệu</Link>
+                <Link to="/nhan-hieu/0">Nhãn Hiệu</Link>
               </li>
               <li>
                 <Link to="/san-pham/0">Sản Phẩm</Link>

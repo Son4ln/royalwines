@@ -27,7 +27,7 @@ class Contents extends React.Component {
         <Route exact path='/gio-hang' render={() => <CartContents />}/>
         <Route exact path='/yeu-thich' render={() => <WishlistContents />}/>
         <Route exact path='/thanh-toan' render={() => <CheckoutContents />}/> 
-        <Route exact path='/nhan-hieu' render={() => <BrandsContents />}/>
+        <Route exact path='/nhan-hieu/:brand_id' render={({match}) => <BrandsContents match={match}/>}/>
         <Route exact path='/san-pham/:cate_id' render={({match}) => <ProductsContents match={match}
         searchVal={this.props.searchVal} limit={9}/>}/>
         <Route exact path='/chi-tiet-san-pham' render={() => <ProductDetailContents />}/>

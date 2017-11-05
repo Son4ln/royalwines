@@ -84,7 +84,7 @@
     }
 
     function getCate() {
-      $query = 'SELECT * FROM categories';
+      $query = 'SELECT * FROM categories WHERE category_public = 2';
       $result = parent::getList($query);
       return $result;
     }
@@ -96,7 +96,7 @@
     }
 
     function getAllProductPublic($limit) {
-      $query = "SELECT * FROM products WHERE product_public = 2 LIMIT $limit";
+      $query = "SELECT * FROM products WHERE product_public = 2 ORDER BY product_id DESC LIMIT $limit";
       $result = parent::getList($query);
       return $result;
     }
@@ -127,6 +127,18 @@
 
     function searchNews($key, $limit) {
       $query = "SELECT * FROM news WHERE news_title LIKE '%$key%' AND news_public = 2 LIMIT $limit, 4";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getBrands() {
+      $query = "SELECT * FROM brands WHERE brand_public = 2";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getProductsByBrand($brand, $limit) {
+      $query = "SELECT * FROM products WHERE product_public = 2 AND brand_id = '$brand' ORDER BY product_id DESC LIMIT $limit";
       $result = parent::getList($query);
       return $result;
     }
