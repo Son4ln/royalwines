@@ -75,6 +75,11 @@ class ProductsContents extends React.Component {
   getProduct(data) {
     $('#view-more-product').html('Xem thêm');
     $('#view-more-product').attr('disabled', false);
+    
+    this.setState({
+      renderProducts: null
+    });
+
     let content = (
       <center><h2 className="ct-u-font2 text-uppercase animated  activate pulse">Không tìm thấy sản phẩm</h2></center>
     );
