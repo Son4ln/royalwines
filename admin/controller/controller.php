@@ -286,8 +286,7 @@
       break;
 
     default:
-      //include lỗi 404 vào đây
-    include $GLOBALS['ROOT'].'public/template/404.html';
+      header('location:../../404.html');
       break;
   }
 ?>

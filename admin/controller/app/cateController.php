@@ -5,6 +5,7 @@
     }
 
     function getCateByPubic() {
+      Permission::isSeller();
       $public = $_GET['public'];
       $table = 'table-unpublic';
       if ($public == 2) {
@@ -28,6 +29,7 @@
     }
 
     function changeStatus() {
+      Permission::isSeller();
       $status = $_GET['public'];
       $uid = $_GET['uid'];
       $public = 2;
@@ -47,6 +49,7 @@
     }
 
     function delCate() {
+      Permission::isSuperUser();
       $uid = $_GET['uid'];
       $cate = new CategoriesModel();
       $result = $cate -> getCateByUid($uid);
@@ -62,6 +65,7 @@
     }
 
     function updateCate() {
+      Permission::isSeller();
       $uid = $_POST['uid'];
       $name = $_POST['name'];
       $cate = new CategoriesModel();
@@ -77,6 +81,7 @@
     }
 
     function addCate() {
+      Permission::isSeller();
       $email = $_SESSION["royalwines_user_login_ok"];
       $pass = $_SESSION["royalwines_pass_login_ok"];
       $name = $_POST['name'];

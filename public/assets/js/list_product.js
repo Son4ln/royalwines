@@ -82,7 +82,7 @@ function dataTable(whatTable, whatSearch) {
 function addProduct() {
   let addBtn = $('#add-products');
   addBtn.attr('disabled', 'disabled');
-  addBtn.html('Loading...');
+  addBtn.html('Đang thêm...');
   let productImg = $('#product-img').prop('files')[0];
   let productName = $('[name="productName"]').val();
   let price = $('[name="price"]').val();
@@ -389,7 +389,6 @@ function editProduct() {
   let inStock = $('#ein-stock').val();
   let volume = $('#evolume').val();
   let detail = CKEDITOR.instances['eproduct-detail'].getData();
-  console.log(detail);
   let brandId = $('#show-brands').val();
   let categoryId = $('#show-categories').val();
   var form_data = new FormData();

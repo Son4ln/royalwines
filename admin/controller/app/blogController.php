@@ -51,7 +51,8 @@
       if(empty($_FILES['eblogImg']['name'])) {
         $img = $_POST['curImg'];
       } else {
-        $file_ext=strtolower(end(explode('.',$_FILES['eblogImg']['name'])));
+        $exploded = explode('.',$_FILES['eblogImg']['name']);
+        $file_ext=strtolower(end($exploded));
         $expensions= array("jpeg","jpg","png");
 
         if(in_array($file_ext,$expensions) === false || $_FILES['eblogImg']['error'] > 0){
@@ -91,7 +92,8 @@
       $blog = new BlogModel();
       $date = date("Y-m-d");
 
-      $file_ext=strtolower(end(explode('.',$_FILES['blogImg']['name'])));
+      $exploded = explode('.',$_FILES['blogImg']['name']);
+      $file_ext=strtolower(end($exploded));
       $expensions= array("jpeg","jpg","png");
 
       if(in_array($file_ext,$expensions) === false || $_FILES['blogImg']['error'] > 0){

@@ -82,7 +82,7 @@ function dataTable(whatTable, whatSearch) {
 function addBrand() {
   let addBtn = $('#add-products');
   addBtn.attr('disabled','disabled');
-  addBtn.html('Loading...');
+  addBtn.html('Đang thêm...');
   let brandlogo = $('#brand-logo').prop('files')[0];
   let brandName = $('[name="brandname"]').val();
 

@@ -26,8 +26,8 @@
       return $result;
     }
 
-    function changeStatusOrder($id, $status) {
-      $query = "UPDATE orders SET order_status = '$status' WHERE uid = '$id'";
+    function changeStatusOrder($id, $date, $status) {
+      $query = "UPDATE orders SET received_date = '$date', order_status = '$status' WHERE uid = '$id'";
       parent::exec($query);
     }
   }

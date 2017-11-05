@@ -137,7 +137,6 @@
       $action -> getProductDetail();
       break;
     default:
-      //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;
   }
 ?>

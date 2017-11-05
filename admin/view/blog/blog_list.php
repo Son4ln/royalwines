@@ -461,7 +461,7 @@
   }
 
   function addBlog() {
-    // $('#insert-blog').attr('disabled', true);
+    $('#insert-blog').attr('disabled', 'disabled');
     $('#insert-blog').html('Đang thêm...');
     let img = $('#blogImg').prop('files')[0];
     let title = $('[name="blogTitle"]').val().trim();
@@ -498,13 +498,14 @@
           $('#review-img').attr('src', state_blog.oldimg);
           $('#blogImg').val('');
 
-          $('#insert-blog').attr('disabled', false);
-          $('#insert-blog').html('Thêm');
         } else if (result === 'file_error') {
           let alertMess = 'Ảnh chỉ hỗ trợ png, jpg, jpeg. Dung lượng tối đa 5mb';
           $('#addblog-alert').html(alertMess);
           $('#addblog-alert').removeClass('hidden');
         }
+
+        $('#insert-blog').removeAttr('disabled');
+        $('#insert-blog').html('Thêm');
       }
 
     });

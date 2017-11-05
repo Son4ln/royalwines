@@ -16,7 +16,8 @@
     Permission::isSeller();
       usleep(500000);
       $name = $_POST['brandname'];
-      $file_ext=strtolower(end(explode('.',$_FILES['brandlogo']['name'])));
+      $exploded = explode('.',$_FILES['brandlogo']['name']);
+      $file_ext=strtolower(end($exploded));
       $expensions= array("jpeg","jpg","png");
 
       if(in_array($file_ext,$expensions) === false || $_FILES['brandlogo']['error'] > 0){
@@ -99,7 +100,8 @@
       if(empty($_FILES['ebrandlogo']['name'])) {
         $logo = $_POST['eoldImg'];
       } else {
-        $file_ext=strtolower(end(explode('.',$_FILES['ebrandlogo']['name'])));
+        $exploded = explode('.',$_FILES['ebrandlogo']['name']);
+        $file_ext=strtolower(end($exploded));
         $expensions= array("jpeg","jpg","png");
 
         if(in_array($file_ext,$expensions) === false || $_FILES['ebrandlogo']['error'] > 0){

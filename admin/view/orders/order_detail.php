@@ -21,7 +21,13 @@
             <b><?php echo date_format(date_create_from_format('Y-m-d', $data['order_date']), 'd/m/Y'); ?></b>
           </p>
           <p>Ngày giao: 
-            <b><?php echo date_format(date_create_from_format('Y-m-d', $data['received_date']), 'd/m/Y');?></b>
+            <b><?php
+              if (isset($data['received_date']) && $data['order_status'] != 1) {
+                echo date_format(date_create_from_format('Y-m-d', $data['received_date']), 'd/m/Y'); 
+              } else {
+                echo 'Đang chờ';
+              }
+              ?></b>
           </p>
           <p><?php if ($data['note'] != '') {
             echo 'Ghi chú: '.$data['note']; } ?>

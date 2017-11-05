@@ -27,12 +27,14 @@
       $orders = new orderModel();
       $data = $orders -> getOrderById($id);
       $val = $data['order_status'];
+      $date = null;
       $statusVal = 1;
       if ($val == 1) {
         $statusVal = 2;
+        $date = date('Y-m-d');
       }
 
-      $update = $orders -> changeStatusOrder($id, $statusVal);
+      $update = $orders -> changeStatusOrder($id, $date, $statusVal);
 
       $status = 'chưa nhận hàng';
       if ($statusVal == 2) {

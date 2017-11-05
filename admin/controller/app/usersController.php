@@ -152,7 +152,8 @@
         if(empty($_FILES['avatar']['name'])) {
           $avatar = $_POST['oldImg'];
         } else {
-          $file_ext=strtolower(end(explode('.',$_FILES['avatar']['name'])));
+          $exploded = explode('.',$_FILES['avatar']['name']);
+          $file_ext=strtolower(end($exploded));
           $expensions= array("jpeg","jpg","png");
 
           if(in_array($file_ext,$expensions) === false || $_FILES['avatar']['error'] > 0) {
