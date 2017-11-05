@@ -90,7 +90,7 @@
     }
 
     function getProductByCate($id, $limit) {
-      $query = "SELECT * FROM products WHERE category_id = '$id' LIMIT $limit";
+      $query = "SELECT * FROM products WHERE category_id = '$id' AND product_public = 2 LIMIT $limit";
       $result = parent::getList($query);
       return $result;
     }
@@ -102,17 +102,34 @@
     }
 
     function getProductDiscount($limit) {
-      $query = "SELECT * FROM products WHERE discount > 0 LIMIT $limit";
+      $query = "SELECT * FROM products WHERE discount > 0 AND product_public = 2 LIMIT $limit";
       $result = parent::getList($query);
       return $result;
     }
 
     function searchProducts($key, $limit) {
-      $query = "SELECT * FROM products WHERE product_name LIKE '%$key%' LIMIT $limit";
+      $query = "SELECT * FROM products WHERE product_name LIKE '%$key%' AND product_public = 2 LIMIT $limit";
       $result = parent::getList($query);
       return $result;
     }
 
+    function getRandomNews() {
+      $query = 'SELECT * FROM news WHERE news_public = 2 ORDER BY RAND() LIMIT 3';
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function getAllNewsPublic($records) {
+      $query = "SELECT * FROM news WHERE news_public = 2 ORDER BY news_id DESC LIMIT $records, 4";
+      $result = parent::getList($query);
+      return $result;
+    }
+
+    function searchNews($key, $limit) {
+      $query = "SELECT * FROM news WHERE news_title LIKE '%$key%' AND news_public = 2 LIMIT $limit, 4";
+      $result = parent::getList($query);
+      return $result;
+    }
   }
 
   ?>
