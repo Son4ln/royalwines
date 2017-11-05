@@ -130,10 +130,10 @@
       if(empty($_FILES['eproductImg']['name'])) {
         $img = $_POST['eoldImg'];
       } else {
-        $file_ext=strtolower(end(explode('.',$_FILES['productImg']['name'])));
+        $file_ext=strtolower(end(explode('.',$_FILES['eproductImg']['name'])));
         $expensions= array("jpeg","jpg","png");
 
-        if(in_array($file_ext,$expensions) === false || $_FILES['productImg']['error'] > 0){
+        if(in_array($file_ext,$expensions) === false || $_FILES['eproductImg']['error'] > 0){
           die('file_not_valid');
         }
 

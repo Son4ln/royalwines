@@ -48,25 +48,12 @@
               <center><input type="file" class="form-control hidden" name="logo" id="logo"></center>
               <input type="hidden" name="currImg" id="oldImg" value="<?php echo $resultContactInfo['logo']; ?>">
               <center><button type="button" id="cancel-img" class="btn btn-success hidden"><i class="fa fa-times"></i></button></center>
-            </div>
+              <br/>
 
-            <div class="col-md-6">
-              <div class="form-group form-group-default required">
+              <div class="form-group form-group-default required" style="margin-top: 11px;">
                 <label>Tên cửa hàng</label>
                 <input type="text" class="form-control" name="ctyName" 
                 value="<?php echo $resultContactInfo['store_name']; ?>" disabled>
-              </div>
-
-              <div class="form-group form-group-default required">
-                <label>Địa chỉ</label>
-                <input type="text" class="form-control" name="address" id="address"
-                value="<?php echo $resultContactInfo['address']; ?>">
-              </div>
-
-              <div class="form-group form-group-default">
-                <label>Chi nhánh</label>
-                <input type="text" class="form-control" name="branch" id="branch"
-                value="<?php echo $resultContactInfo['branch']; ?>">
               </div>
 
               <div class="form-group form-group-default required">
@@ -91,6 +78,30 @@
                 <label>Giới thiệu</label>
                 <textarea class="form-control" name="intro" id="intro"><?php echo $resultContactInfo['introduce']; ?></textarea>
               </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-group-default required">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="address" id="address"
+                value="<?php echo $resultContactInfo['address']; ?>">
+              </div>
+
+              <div class="form-group form-group-default">
+                <label>Chi nhánh</label>
+                <input type="text" class="form-control" name="branch" id="branch"
+                value="<?php echo $resultContactInfo['branch']; ?>">
+              </div>
+
+              <div class="form-group form-group-default required">
+                <label>Sự kiện</label>
+                <textarea class="form-control" name="event" id="event"><?php echo $resultContactInfo['event']; ?></textarea>
+              </div>
+
+              <div class="form-group form-group-default required">
+                <label>Điều khoản</label>
+                <textarea class="form-control" name="rules" id="rules"><?php echo $resultContactInfo['rules']; ?></textarea>
+              </div>
 
               <div class="clearfix"></div>
               <button class="btn btn-success" id="update" type="submit">Cập nhập</button>
@@ -107,6 +118,15 @@
 <?php include $GLOBALS['ROOT'].'public/template/admin/sidebar-right.php'; ?>
 <?php include $GLOBALS['ROOT'].'public/template/admin/scripts.php'; ?>
 <!-- START SCRIPT BLOCK -->
+<script type="text/javascript" src="/public/plugin/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/public/plugin/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+  $(document).ready(() => {
+    CKEDITOR.replace('intro');
+    CKEDITOR.replace('event');
+    CKEDITOR.replace('rules');
+  });
+</script>
 <script src="../../public/assets/js/contact.js" type="text/javascript"></script>
 <!-- END SCRIPT BLOCK -->
 <?php include $GLOBALS['ROOT'].'public/template/admin/endpage.php'; ?>

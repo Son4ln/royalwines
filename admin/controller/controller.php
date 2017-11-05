@@ -85,6 +85,16 @@
       $users -> userSetActive();
       break;
 
+    case 'settings':
+      $users = new UsersController();
+      $users -> settingShow();
+      break;
+
+    case 'settingAction':
+      $users = new UsersController();
+      $users -> settingAction();
+      break;
+
     case 'permisUser':
       $users = new UsersController();
       $users -> userPermission();
