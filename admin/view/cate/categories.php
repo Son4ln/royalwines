@@ -430,11 +430,11 @@
       },
       success: function(result) {
         target.parents('tr').fadeOut();
-        let mess = 'Loại sản phẩm đã được hiển thị';
+        let mess = 'Xuất xứ đã được hiển thị';
         if (status === '3') {
-          mess = 'Loại sản phẩm đã được phê duyệt';
+          mess = 'Xuất xứ đã được phê duyệt';
         } else if (status === '2') {
-          mess = 'Loại sản phẩm đã ngưng hiển thị';
+          mess = 'Xuất xứ đã ngưng hiển thị';
         }
         
         let lv = 'success';
@@ -454,8 +454,8 @@
   function delCate(target) {
     let uid = target.attr('data-id');
     $.confirm({
-      title: 'XÓA LOẠI SẢN PHẨM',
-      content: 'Bạn có chắc muốn xóa loại sản phẩm này',
+      title: 'XÓA XUẤT XỨ',
+      content: 'Bạn có chắc muốn xóa xuất xứ này',
       type: 'orange',
       typeAnimated: true,
       buttons: {
@@ -471,10 +471,10 @@
                 uid: uid
               },
               success: function(result) {
-                let mess = 'Đã xóa loại sản phẩm thành công';
+                let mess = 'Đã xóa xuất xứ thành công';
                 let lv = 'success';
                 if (result === 'fail') {
-                  mess = `Bạn không thể xóa loại sản phẩm này do có liên kết với sản phẩm.
+                  mess = `Bạn không thể xóa xuất xứ này do có liên kết với sản phẩm.
                   Vui lòng xóa hết sản phẩm hoặc ngừng hiển thị`;
                   lv = 'danger';
                 }
@@ -521,12 +521,12 @@
       },
       success: function(result) {
         if (result === 'unique') {
-          $('#alert-edit').html('Loại sản phẩm đã tồn tại');
+          $('#alert-edit').html('Xuất xứ đã tồn tại');
           $('#alert-edit').removeClass('hidden');
           return;
         }
 
-        let mess = 'Đã cập nhật loại sản phẩm thành công';
+        let mess = 'Đã cập nhật xuất xứ thành công';
         let lv = 'success';
         notification(mess, lv);
         $('#modalSlideUp').modal('hide');
@@ -563,7 +563,7 @@
       },
       success: function(result) {
         if (result == 'unique') {
-          $('#add-alert').html('Loại sản phẩm đã tồn tại');
+          $('#add-alert').html('Xuất xứ đã tồn tại');
           $('#add-alert').removeClass('hidden');
           return;
         }
@@ -574,13 +574,13 @@
           $('#tab-public').click();
         }
 
-        let mess = 'Đã thêm loại sản phẩm thành công, nếu là seller hãy đợi admin phê duyệt';
+        let mess = 'Đã thêm xuất xứ thành công, nếu là seller hãy đợi admin phê duyệt';
         let lv = 'success';
         notification(mess, lv);
         $('#form-addCate')[0].reset();
         $('#add-alert').addClass('hidden');
         $('#add-brands').attr('disabled', false);
-        $('#add-brands').html('Thêm loại sản phẩm');
+        $('#add-brands').html('Thêm xuất xứ');
       }
     });
     return false;
@@ -592,7 +592,7 @@
         catename: 'required',
       },
       messages: {
-        catename: 'Vui lòng nhập tên loại sản phẩm'
+        catename: 'Vui lòng nhập tên xuất xứ'
       },
       submitHandler: function(form) {
         addCate();
@@ -606,7 +606,7 @@
       ecateName: 'required',
     },
     messages: {
-      ecateName: 'Vui lòng nhập tên loại sản phẩm'
+      ecateName: 'Vui lòng nhập tên xuất xứ'
     },
     submitHandler: function(form) {
       updateCateAct();

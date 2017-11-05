@@ -6,7 +6,13 @@
       <?php echo date_format(date_create_from_format('Y-m-d', $key['order_date']), 'd/m/Y'); ?>
     </td>
     <td class="text-master">
-      <?php echo date_format(date_create_from_format('Y-m-d', $key['received_date']), 'd/m/Y'); ?>
+      <?php
+      if (isset($key['received_date']) && $key['order_status'] != 1) {
+        echo date_format(date_create_from_format('Y-m-d', $key['received_date']), 'd/m/Y'); 
+      } else {
+        echo 'Đang chờ';
+      }
+      ?>
     </td>
     <td class="text-master">
       <?php echo number_format($key['total']).'đ'; ?>

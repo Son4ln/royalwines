@@ -22,7 +22,8 @@
     		if(empty($_FILES['logo']['name'])){
     		  $logoName = $_POST['oldImg'];
     		} else {
-          $file_ext=strtolower(end(explode('.',$_FILES['logo']['name'])));
+          $exploded = explode('.',$_FILES['logo']['name']);
+          $file_ext=strtolower(end($exploded));
           $expensions= array("jpeg","jpg","png");
 
           if(in_array($file_ext,$expensions) === false || $_FILES['logo']['error'] > 0){

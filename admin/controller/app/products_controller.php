@@ -30,7 +30,8 @@
       Permission::isSeller();
       usleep(500000);
       $name = $_POST['productName'];
-      $file_ext=strtolower(end(explode('.',$_FILES['productImg']['name'])));
+      $exploded = explode('.',$_FILES['productImg']['name']);
+      $file_ext=strtolower(end($exploded));
       $expensions= array("jpeg","jpg","png");
 
       if(in_array($file_ext,$expensions) === false || $_FILES['productImg']['error'] > 0){
@@ -130,7 +131,8 @@
       if(empty($_FILES['eproductImg']['name'])) {
         $img = $_POST['eoldImg'];
       } else {
-        $file_ext=strtolower(end(explode('.',$_FILES['eproductImg']['name'])));
+        $exploded = explode('.',$_FILES['eproductImg']['name']);
+        $file_ext=strtolower(end($exploded));
         $expensions= array("jpeg","jpg","png");
 
         if(in_array($file_ext,$expensions) === false || $_FILES['eproductImg']['error'] > 0){
