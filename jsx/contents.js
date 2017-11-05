@@ -14,6 +14,7 @@ import BlogDetailContents from './contents/blog_detail_contents';
 import ContactContents from './contents/contact_contents';
 import LoginContents from './contents/login_contents';
 import EditProfileContents from './contents/edit_profile_contents';
+import AboutContents from './contents/about_contents';
 
 class Contents extends React.Component {
   constructor() {
@@ -36,6 +37,7 @@ class Contents extends React.Component {
         <Route exact path='/lien-he' render={() => <ContactContents />}/>
         <Route exact path='/dang-nhap' render={() => <LoginContents />}/>
         <Route exact path='/chinh-sua' render={() => <EditProfileContents />}/>
+        <Route exact path='/thong-tin' render={() => <AboutContents />}/>
       </Switch>
     );
   }
