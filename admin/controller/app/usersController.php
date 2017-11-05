@@ -112,5 +112,88 @@
         include '../view/login.php';
       }
     }
+
+    // sữa thông tin
+    function settingShow() {
+      if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+        if ($_SESSION["royalwines_permission_ok"] == 5) {
+          include '../../../public/template/404.html';
+          session_destroy();
+          exit();
+        }
+
+        $email = $_SESSION["royalwines_user_login_ok"];
+        $pass = $_SESSION["royalwines_pass_login_ok"];
+        $users = new UsersModel();
+        $data = $users -> checkUser($email, $pass);
+        $result = $users -> getUserByUid($data['uid']);
+        include '../view/users/edit_user.php';
+      }
+    }
+
+    function settingAction() {
+      if (isset($_SESSION["royalwines_user_login_ok"]) && isset($_SESSION["royalwines_pass_login_ok"])) {
+        if ($_SESSION["royalwines_permission_ok"] == 5) {
+          include '../../../public/template/404.html';
+          session_destroy();
+          exit();
+        }
+
+        $users = new UsersModel();
+        $userUID = $_POST['uid'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $oldPass = $_POST['oldPass'];
+        $newPass = $_POST['newPass'];
+        $rePass = $_POST['rePass'];
+        $passMD5 = md5($oldPass);
+
+        if(empty($_FILES['avatar']['name'])) {
+          $avatar = $_POST['oldImg'];
+        } else {
+          $file_ext=strtolower(end(explode('.',$_FILES['avatar']['name'])));
+          $expensions= array("jpeg","jpg","png");
+
+          if(in_array($file_ext,$expensions) === false || $_FILES['avatar']['error'] > 0) {
+            die('file_not_valid');
+          }
+
+          $avatar = time().'-'.$_FILES['avatar']['name'];
+        }
+
+        if (empty($newPass) && empty($oldPass)) {
+          $passMD5 = $_SESSION["royalwines_pass_login_ok"];
+        } else {
+          if ($passMD5 != $_SESSION["royalwines_pass_login_ok"]) {
+            die('pass_not_valid');
+          } else if ($newPass != $rePass) {
+            die('pass_not_match');
+          } else if ($newPass != $oldPass) {
+            $passMD5 = md5($newPass);
+          }
+        }
+        
+        try {
+          $users -> updateProfile($userUID, $name, $address, $phone, $passMD5, $avatar);
+          $_SESSION["royalwines_pass_login_ok"] = $passMD5;
+        } catch(PDOException $e) {
+          die('fail');
+        }
+
+        if (!empty($_FILES['avatar']['name'])) {
+          //upload ảnh mới và xóa ảnh cũ
+          $source = $_FILES['avatar']['tmp_name'];
+          $path = $GLOBALS['UPLOADUSER'];
+          $target = $path.$avatar;
+          move_uploaded_file($source, $target);
+
+          $currImg = $_POST['oldImg'];
+          BasicLibs::deleteFile($currImg,$path);
+        }
+
+        die('success');
+      }
+    }
   }
 ?>

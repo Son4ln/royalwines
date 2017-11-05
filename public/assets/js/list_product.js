@@ -382,7 +382,7 @@ function editProduct() {
   let alertAdd = document.getElementById('alert-add');
   let fileData = $('#eproduct-img').prop('files')[0];
   let productId = $('#eproduct-id').val();
-  let productName = $('#eproduct-name').val().trim();;
+  let productName = $('#eproduct-name').val().trim();
   let oldImg = $('#eold-img').val();
   let price = $('#eprice').val();
   let discount = $('#ediscount').val();
@@ -405,6 +405,7 @@ function editProduct() {
   form_data.append('edetail', detail);
   form_data.append('ebrandId', brandId);
   form_data.append('ecategoryId', categoryId);
+  console.log(fileData);
   $.ajax({
     url: '?action=updateProductsAction',
     type: 'post',

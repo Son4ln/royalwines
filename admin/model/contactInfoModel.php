@@ -14,10 +14,10 @@
   	}
 
   	//update contact info
-  	function updateContactInfo($address, $branch, $phone, $email, $intro, $logo, $slogan)
+  	function updateContactInfo($address, $branch, $phone, $email, $intro, $event, $rules, $logo, $slogan)
   	{
   	  $query = "update contact_info set address = '$address', branch = '$branch', phone = '$phone', 
-  	  email = '$email', introduce = '$intro', logo = '$logo', slogan = '$slogan' where info_id = 1";
+  	  email = '$email', introduce = '$intro', event = '$event', rules = '$rules', logo = '$logo', slogan = '$slogan' where info_id = 1";
   	  parent::exec($query);
   	}
 

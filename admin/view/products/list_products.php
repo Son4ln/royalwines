@@ -111,7 +111,7 @@
                           </div>
 
                           <div class="form-group form-group-default required">
-                            <label>Loại sản phẩm</label>
+                            <label>Xuất xứ</label>
                             <select name="categoryId" id="show-all-categories" class="form-control">
                             </select>
                           </div>
@@ -274,7 +274,7 @@
                 </div>
 
                 <div class="form-group form-group-default required">
-                  <label>Loại sản phẩm</label>
+                  <label>Xuất xứ</label>
                   <select name="ecategoryId" id="show-categories" class="form-control">
                   </select>
                 </div>

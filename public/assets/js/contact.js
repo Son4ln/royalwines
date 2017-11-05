@@ -33,7 +33,7 @@ function validInfo() {
         email: true
       },
       slogan: 'required',
-      intro: 'required',
+      intro: 'required'
     },
     messages: {
       address: 'Vui lòng nhập địa chỉ',
@@ -59,7 +59,9 @@ function updateInfo() {
   let phone = $('#sdt').val();
   let email = $('#email').val();
   let slogan = $('#slogan').val();
-  let intro = $('#intro').val();
+  let intro = CKEDITOR.instances['intro'].getData();
+  let event = CKEDITOR.instances['event'].getData();
+  let rules = CKEDITOR.instances['rules'].getData();
   let form_data = new FormData();
   form_data.append('address', address);
   form_data.append('oldImg', oldImg);
@@ -69,6 +71,8 @@ function updateInfo() {
   form_data.append('email', email);
   form_data.append('slogan', slogan);
   form_data.append('intro', intro);
+  form_data.append('event', event);
+  form_data.append('rules', rules);
 
   $.ajax({
     url: '?action=updateContactInfo',
@@ -79,7 +83,7 @@ function updateInfo() {
     processData: false,
     data: form_data,
     success: function(result) {
-      let mess = 'Cập nhập thông thành công';
+      let mess = 'Cập nhập thông tin thành công';
       let lv = 'success';
       if (result === 'file_not_valid') {
         mess = 'Hình ảnh chỉ hỗ trợ jpg, jpeg, png và kích thước < 5mb';

@@ -11,5 +11,6 @@
     $UPLOADBRANDSLOGO = $ROOT.'upload/brands/';
     $UPLOADBLOG = $ROOT.'upload/blog/';
     $UPLOADPRODUCTSIMG = $ROOT.'upload/products/';
+    $UPLOADUSER = $ROOT.'upload/users/';
 
 ?>

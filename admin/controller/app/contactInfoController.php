@@ -37,10 +37,12 @@
       		$email = $_POST['email'];
       		$slogan = $_POST['slogan'];
       		$intro = $_POST['intro'];
+          $event = $_POST['event'];
+          $rules = $_POST['rules'];
       		$update = new ContactInfo();
 
       		try {
-      		  $update -> updateContactInfo($address, $branch, $phone, $email, $intro, $logoName, $slogan);
+      		  $update -> updateContactInfo($address, $branch, $phone, $email, $intro, $event, $rules, $logoName, $slogan);
       		} catch(PDOException $e) {
             die('fail');
       	  }

@@ -91,7 +91,7 @@
             <a href="?action=getCate" class="detailed">
               <span class="title">Xuất xứ</span>
             </a>
-            <span class="icon-thumbnail">L</i></span>
+            <span class="icon-thumbnail">X</i></span>
           </li>
 
           <li class="">

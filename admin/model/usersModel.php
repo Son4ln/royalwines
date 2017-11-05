@@ -33,6 +33,12 @@
       $result = parent::getInstance($query);
       return $result;
     }
+
+    function updateProfile($uid, $name, $address, $phone, $pass, $avatar) {
+      $query = "UPDATE users SET full_name = '$name', address = '$address', phone = '$phone',
+        password = '$pass', avatar = '$avatar' WHERE uid = '$uid'";
+      parent::exec($query);
+    }
   }
 
 ?>
