@@ -20,10 +20,16 @@ class Aside extends React.Component {
     super();
 
     this.getSearch = this.getSearch.bind(this);
+    this.getSearchNews = this.getSearchNews.bind(this);
   }
 
   getSearch(text) {
     let search = this.props.getSearch;
+    search(text);
+  }
+
+  getSearchNews(text) {
+    let search = this.props.searchNewsVal;
     search(text);
   }
 
@@ -37,7 +43,7 @@ class Aside extends React.Component {
         <Route exact path='/nhan-hieu' render={() => <BrandsAside />}/>
         <Route exact path='/san-pham/:cate_id' render={({match}) => <ProductsAside getSearch={this.getSearch}  match={match}/>}/>
         <Route exact path='/chi-tiet-san-pham' render={() => <ProductDetailAside />}/>
-        <Route exact path='/bai-viet' render={() => <BlogsAside />}/>
+        <Route exact path='/bai-viet' render={() => <BlogsAside getSearchNews={this.getSearchNews} />}/>
         <Route exact path='/chi-tiet-bai-viet' render={() => <BlogDetailAside />}/>
         <Route exact path='/lien-he' render={() => <ContactAside />}/>
         <Route exact path='/dang-nhap' render={() => <LoginAside />}/>

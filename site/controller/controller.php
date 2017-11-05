@@ -102,6 +102,20 @@
       $action -> searchProducts();
       break;
 
+    case 'randomNews':
+      $action = new MainController();
+      $action -> randomNews();
+      break;
+
+    case 'getAllNews':
+      $action = new MainController();
+      $action -> getAllNews();
+      break;
+
+    case 'searchNews':
+      $action = new MainController();
+      $action -> searchNews();
+      break;
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

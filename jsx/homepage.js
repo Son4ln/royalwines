@@ -14,15 +14,23 @@ class HomePage extends React.Component {
     super();
 
     this.state = {
-      searchVal: ''
+      searchVal: '',
+      searchNewsVal: ''
     }
 
     this.getSearch = this.getSearch.bind(this);
+    this.getSearchNews = this.getSearchNews.bind(this);
   }
 
   getSearch(text) {
     this.setState({
       searchVal: text
+    });
+  }
+
+  getSearchNews(text) {
+    this.setState({
+      searchNewsVal: text
     });
   }
 
@@ -34,8 +42,8 @@ class HomePage extends React.Component {
             <Menu />
             <div id="ct-js-wrapper" className="ct-pageWrapper">
               <AsideHeader />
-              <Aside getSearch={this.getSearch}/>
-              <Contents searchVal={this.state.searchVal}/>
+              <Aside searchNewsVal={this.getSearchNews} getSearch={this.getSearch}/>
+              <Contents searchNewsVal={this.state.searchNewsVal} searchVal={this.state.searchVal}/>
               <a href="#" id="toTop"><i className="fa fa-angle-up"></i></a>
             </div>
           </div>

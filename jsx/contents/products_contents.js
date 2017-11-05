@@ -11,7 +11,8 @@ class ProductsContents extends React.Component {
 
     this.state = {
       renderProducts: null,
-      limit: 9
+      limit: 9,
+      curent_props: ''
     }
 
     this.onAddCart = this.onAddCart.bind(this);
@@ -19,8 +20,17 @@ class ProductsContents extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.state.curent_props !== nextProps.match.params.cate_id) {
+      this.setState({
+        limit: 9,
+        curent_props: nextProps.match.params.cate_id
+      });
+
+      this.getCateProductByCateId(nextProps);
+      return;
+    }
+
     this.getCateProductByCateId(nextProps);
-    
   }
 
   componentDidMount() {
@@ -65,15 +75,25 @@ class ProductsContents extends React.Component {
   getProduct(data) {
     $('#view-more-product').html('Xem thêm');
     $('#view-more-product').attr('disabled', false);
-    let arr = [];
-    for (let item of data) {
-      let item_encode = JSON.parse(item);
-      arr.push(item_encode);
-    }
-
+    $('.ct-navigation-blog').addClass('hidden');
     let content = (
-      arr.map((e, i) => <ProductItems key={i} index={i} product={e} onAddCart={this.onAddCart} onAddWish={this.onAddWish}/>)
+      <center><h2 className="ct-u-font2 text-uppercase animated  activate flipInY">Không tìm thấy sản phẩm</h2></center>
     );
+
+    if (data.length > 0) {
+      if (data.length === 9) {
+        $('.ct-navigation-blog').removeClass('hidden');
+      }
+      let arr = [];
+      for (let item of data) {
+        let item_encode = JSON.parse(item);
+        arr.push(item_encode);
+      }
+
+      content = (
+        arr.map((e, i) => <ProductItems key={i} index={i} product={e} onAddCart={this.onAddCart} onAddWish={this.onAddWish}/>)
+      );
+    }
 
     this.setState({
       renderProducts: content

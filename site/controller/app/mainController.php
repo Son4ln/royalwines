@@ -300,27 +300,95 @@
       $key = $_GET['key'];
       $products = $model -> searchProducts($key, $limit);
 
-      if($products) {
-        $data = array();
+      $data = array();
 
-        foreach ($products as $item) {
-          $product = json_encode(array(
-            'uid' => $item['uid'],
-            'product_name' => $item['product_name'],
-            'featured_img' => $item['featured_img'],
-            'price' => $item['price'],
-            'discount' => $item['discount']
-          ));
+      foreach ($products as $item) {
+        $product = json_encode(array(
+          'uid' => $item['uid'],
+          'product_name' => $item['product_name'],
+          'featured_img' => $item['featured_img'],
+          'price' => $item['price'],
+          'discount' => $item['discount']
+        ));
 
-          array_push($data, $product);
-        }
-
-        $data_return = json_encode($data);
-
-        die($data_return);
+        array_push($data, $product);
       }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
     }
-    //end product page
+
+    //start news
+    function randomNews() {
+      $model = new MainModel();
+      $news = $model -> getRandomNews();
+
+      $data = array();
+
+      foreach ($news as $item) {
+        $blog = json_encode(array(
+          'news_id' => $item['news_id'],
+          'news_date' => $item['news_date'],
+          'news_title' => $item['news_title']
+        ));
+
+        array_push($data, $blog);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function getAllNews() {
+      $limit = $_GET['limit'];
+      $model = new MainModel();
+      $news = $model -> getAllNewsPublic($limit);
+
+      $data = array();
+
+      foreach ($news as $item) {
+        $blog = json_encode(array(
+          'news_id' => $item['news_id'],
+          'news_date' => $item['news_date'],
+          'news_title' => $item['news_title'],
+          'short_desc' => $item['short_desc'],
+          'news_image' => $item['news_image']
+        ));
+
+        array_push($data, $blog);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function searchNews() {
+      $limit = $_GET['limit'];
+      $key = $_GET['key'];
+      $model = new MainModel();
+      $news = $model -> searchNews($key, $limit);
+
+      $data = array();
+
+      foreach ($news as $item) {
+        $blog = json_encode(array(
+          'news_id' => $item['news_id'],
+          'news_date' => $item['news_date'],
+          'news_title' => $item['news_title'],
+          'short_desc' => $item['short_desc'],
+          'news_image' => $item['news_image']
+        ));
+
+        array_push($data, $blog);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
   }
 
 ?>
