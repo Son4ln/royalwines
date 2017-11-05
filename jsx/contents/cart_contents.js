@@ -140,8 +140,8 @@ class CartContents extends React.Component {
             <tfoot className="ct-u-colorDark">
               <tr>
                 <td colspan="2">
-                  <a href="#" className="btn btn-lg btn-default animated ct-u-marginRight10 ct-u-marginBoth10" 
-                  data-fx="fadeIn" data-hover="Thanh toán"><span>Thanh toán</span></a>
+                  <Link to="/thanh-toan" className="btn btn-lg btn-default animated ct-u-marginRight10 ct-u-marginBoth10" 
+                  data-fx="fadeIn" data-hover="Thanh toán"><span>Thanh toán</span></Link>
                 </td>
               </tr>
             </tfoot>

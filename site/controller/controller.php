@@ -126,6 +126,11 @@
       $action = new MainController();
       $action -> getProductsByBrand();
       break;
+
+    case 'checkout':
+      $action = new MainController();
+      $action -> checkout();
+      break;
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

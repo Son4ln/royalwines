@@ -436,6 +436,34 @@
 
       die($data_return);
     }
+
+    function checkout() {
+      $data = json_decode(file_get_contents("php://input"), true);
+      $full_name = $data['full_name'];
+      $email = $data['email'];
+      $address = $data['addr'];
+      $phone = $data['phone'];
+      $note = $data['note'];
+      $date = date("Y-m-d");
+      $total = $data['total'];
+      $order_status = 1;
+      $model = new MainModel();
+      $model -> addClient($full_name, $email, $address, $phone, $note);
+      $curClient = $model -> getCurClient();
+      $model -> addOrder($date, $total, $order_status, $curClient['client_id']);
+      $curOrder = $model -> getCurOrder();
+
+      foreach ($data['listProduct'] as $key) {
+        $item = json_encode($key);
+        $item_decode = json_decode($item);
+        $uid = $item_decode -> uid;
+        $quantity = $item_decode -> qty;
+        $detail_total = $item_decode -> total;
+        $product = $model -> getProductByUid($uid);
+        $model -> addOrderDetail($curOrder['order_id'], $product['product_id'], $quantity, $detail_total);
+      }
+      die('success');
+    }
   }
 
 ?>
