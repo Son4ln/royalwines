@@ -110,7 +110,8 @@
         'discount' => $product['discount'],
         'in_stock' => $product['in_stock'],
         'product_volume' => $product['product_volume'],
-        'product_detail' => $product['product_detail']
+        'product_detail' => $product['product_detail'],
+        'category_id' => $product['category_id']
       ));
 
       die($data);
