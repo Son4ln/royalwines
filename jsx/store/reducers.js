@@ -27,6 +27,12 @@ const rw_cart = (state = initCart, action) => {
       localStorage.setItem('cart', JSON.stringify(state));
       return [...state];
 
+    case types.REMOVE_CART:
+      localStorage.removeItem('cart');
+      let remove_state = [];
+      state = [...remove_state];
+      return [...state];
+
     default: 
       return state;
   }

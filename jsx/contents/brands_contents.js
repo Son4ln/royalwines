@@ -70,7 +70,7 @@ class BrandsContents extends React.Component {
     $('#view-more-product').attr('disabled', false);
     let arr = [];
     let content = (
-      <center><h2 className="ct-u-font2 text-uppercase animated  activate flipInY">Không tìm thấy sản phẩm</h2></center>
+      <center><h2 className="ct-u-font2 text-uppercase animated  activate pulse">Không tìm thấy sản phẩm</h2></center>
     );
 
     if (data.length > 0) {

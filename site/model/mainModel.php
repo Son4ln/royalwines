@@ -142,6 +142,33 @@
       $result = parent::getList($query);
       return $result;
     }
+
+    function addClient($full_name, $email, $address, $phone, $note) {
+      $query = "INSERT INTO clients VALUES('', '$full_name', '$email', '$address', '$phone', '$note')";
+      parent::exec($query);
+    }
+
+    function getCurClient() {
+      $query = "SELECT * FROM clients ORDER BY client_id DESC LIMIT 1";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
+    function addOrder($date, $total, $order_status, $client_id) {
+      $query = "INSERT INTO orders (order_id, uid, order_date, total, order_status, client_id) VALUES('', UUID(), '$date', '$total', '$order_status', '$client_id')";
+      parent::exec($query);
+    }
+
+    function getCurOrder() {
+      $query = "SELECT * FROM orders ORDER BY order_id DESC LIMIT 1";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
+    function addOrderDetail($order_id, $product_id, $quantity, $detail_total) {
+      $query = "INSERT INTO order_detail VALUES('', '$order_id', '$product_id', '$quantity', '$detail_total')";
+      parent::exec($query);
+    }
   }
 
   ?>

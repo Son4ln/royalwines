@@ -22,6 +22,12 @@ export const update_cart = (index, qty) => {
   }
 }
 
+export const remove_cart = () => {
+  return {
+    type: types.REMOVE_CART
+  }
+}
+
 export const save_user = (user) => {
   return {
     type: types.SAVE_USER,
