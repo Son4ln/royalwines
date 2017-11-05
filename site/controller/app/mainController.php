@@ -150,7 +150,8 @@
             'email' => $result['email'],
             'address' => $result['address'],
             'phone' => $result['phone'],
-            'avatar' => $result['avatar']
+            'avatar' => $result['avatar'],
+            'permission' => $result['permission']
           ));
 
           die($data);
@@ -383,6 +384,52 @@
         ));
 
         array_push($data, $blog);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function getBrands() {
+      $model = new MainModel();
+      $brands = $model -> getBrands();
+
+      $data = array();
+
+      foreach ($brands as $item) {
+        $brand = json_encode(array(
+          'brand_id' => $item['brand_id'],
+          'brand_name' => $item['brand_name'],
+          'brand_logo' => $item['brand_logo']
+        ));
+
+        array_push($data, $brand);
+      }
+
+      $data_return = json_encode($data);
+
+      die($data_return);
+    }
+
+    function getProductsByBrand() {
+      $model = new MainModel();
+      $brand = $_GET['brand-id'];
+      $limit = $_GET['limit'];
+      $products = $model -> getProductsByBrand($brand, $limit);
+
+      $data = array();
+
+      foreach ($products as $item) {
+        $product = json_encode(array(
+          'uid' => $item['uid'],
+          'product_name' => $item['product_name'],
+          'featured_img' => $item['featured_img'],
+          'price' => $item['price'],
+          'discount' => $item['discount']
+        ));
+
+        array_push($data, $product);
       }
 
       $data_return = json_encode($data);

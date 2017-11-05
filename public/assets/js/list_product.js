@@ -405,7 +405,7 @@ function editProduct() {
   form_data.append('edetail', detail);
   form_data.append('ebrandId', brandId);
   form_data.append('ecategoryId', categoryId);
-  console.log(fileData);
+
   $.ajax({
     url: '?action=updateProductsAction',
     type: 'post',

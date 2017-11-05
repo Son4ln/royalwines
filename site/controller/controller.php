@@ -116,6 +116,16 @@
       $action = new MainController();
       $action -> searchNews();
       break;
+
+    case 'getBrands':
+      $action = new MainController();
+      $action -> getBrands();
+      break;
+
+    case 'getProductsByBrand':
+      $action = new MainController();
+      $action -> getProductsByBrand();
+      break;
     default:
       //include giao diện lỗi 404 không tìm thấy link website vào đây
       break;

@@ -75,15 +75,21 @@ class ProductsContents extends React.Component {
   getProduct(data) {
     $('#view-more-product').html('Xem thêm');
     $('#view-more-product').attr('disabled', false);
-    $('.ct-navigation-blog').addClass('hidden');
     let content = (
       <center><h2 className="ct-u-font2 text-uppercase animated  activate flipInY">Không tìm thấy sản phẩm</h2></center>
     );
 
     if (data.length > 0) {
+      if (data.length < this.state.limit) {
+        $('.ct-navigation-blog').addClass('hidden');
+      }
+
       if (data.length === 9) {
         $('.ct-navigation-blog').removeClass('hidden');
+      } else if(data.length < 9) {
+        $('.ct-navigation-blog').addClass('hidden');
       }
+
       let arr = [];
       for (let item of data) {
         let item_encode = JSON.parse(item);
@@ -93,6 +99,8 @@ class ProductsContents extends React.Component {
       content = (
         arr.map((e, i) => <ProductItems key={i} index={i} product={e} onAddCart={this.onAddCart} onAddWish={this.onAddWish}/>)
       );
+    } else {
+      $('.ct-navigation-blog').addClass('hidden');
     }
 
     this.setState({
