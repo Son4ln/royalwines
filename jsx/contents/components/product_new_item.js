@@ -11,6 +11,7 @@ class ProductNewItem extends React.Component {
 
     this.state = {
       img_url: '',
+      url: ''
     }
 
     this.addCartItem = this.addCartItem.bind(this);
@@ -21,7 +22,10 @@ class ProductNewItem extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({img_url: `/upload/products/${this.props.featured_img}`});
+    this.setState({
+      img_url: `/upload/products/${this.props.featured_img}`,
+      url: `/chi-tiet-san-pham/${this.props.uid}`
+    });
     this.changeButton();
   }
 
@@ -122,7 +126,7 @@ class ProductNewItem extends React.Component {
               <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">{formatCurrency(this.props.price)}vnđ</h4>
               {this.changeButton()}
               {this.changeLikeBtn()}
-              <a href="javascript:void(0)" className="btn btn-sm btn-default btn-item" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
+              <Link to={this.state.url} className="btn btn-sm btn-default btn-item" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></Link>
             </div>
             <div className="ct-u-item-info ct-u-marginHorizon10">
               <h4 className="text-uppercase ct-u-font2 ct-itemName">{this.props.product_name}</h4>
