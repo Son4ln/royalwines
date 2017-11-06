@@ -21,6 +21,7 @@ class ProductsContents extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.state.curent_props !== nextProps.match.params.cate_id) {
+      $("html, body").animate({ scrollTop: 0 }, 500);
       this.setState({
         limit: 9,
         curent_props: nextProps.match.params.cate_id

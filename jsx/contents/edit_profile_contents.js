@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMainScript } from '../utils';
+import { renderMainScript, isValidName, isValidPhone } from '../utils';
 import {connect} from 'react-redux';
 import * as actions from '../store/actions';
 
@@ -52,8 +52,20 @@ class EditProfileContents extends React.Component {
       return;
     }
 
+    if ($('#name').val() !== '' && !isValidName($('#name').val())) {
+      $('#alert-update').html('Vui lòng nhập đúng họ tên');
+      $('#alert-update').removeClass('hidden');
+      return;
+    }
+
     if ($('#phone').val() === '') {
       $('#alert-update').html('Vui lòng nhập số điện thoại');
+      $('#alert-update').removeClass('hidden');
+      return;
+    }
+
+    if ($('#phone').val() !== '' && !isValidPhone($('#phone').val())) {
+      $('#alert-update').html('Vui lòng nhập đúng số điện thoại');
       $('#alert-update').removeClass('hidden');
       return;
     }

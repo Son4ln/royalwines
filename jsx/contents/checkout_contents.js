@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-import { renderMainScript, formatCurrency } from '../utils';
+import { renderMainScript, formatCurrency, isValidName, isValidPhone } from '../utils';
 import * as actions from '../store/actions';
 import {isValidEmail} from '../utils';
 
@@ -93,9 +93,21 @@ class CheckoutContents extends React.Component {
       return;
     }
 
+    if ($('#full_name').val() !== '' && !isValidName($('#full_name').val())) {
+      $('#full_name').focus();
+      $('#checkout-alert').html('Vui lòng nhập đúng họ và tên');
+      return;
+    }
+
     if ($('#phone').val() === '') {
       $('#phone').focus();
       $('#checkout-alert').html('Vui lòng nhập số điện thoại');
+      return;
+    }
+
+    if ($('#phone').val() !== '' && !isValidPhone($('#phone').val())) {
+      $('#phone').focus();
+      $('#checkout-alert').html('Vui lòng nhập đúng số điện thoại');
       return;
     }
 
