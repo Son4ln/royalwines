@@ -140,6 +140,15 @@
     case 'getNewsById':
       $action = new MainController();
       $action -> getNewsById();
+
+    case 'contactInfo':
+      $action = new MainController();
+      $action -> contactInfo();
+      break;
+
+    case 'submitForm':
+      $action = new MainController();
+      $action -> submitForm();
       break;
     default:
       break;

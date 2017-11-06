@@ -481,8 +481,40 @@
       ));
 
       die($data);
+    }
 
+
+    function contactInfo() {
+      $model = new MainModel();
+      $contact = $model -> getContactInfo();
+
+      $data = json_encode(array(
+        'info_id' => $contact['info_id'],
+        'store_name' => $contact['store_name'],
+        'address' => $contact['address'],
+        'branch' => $contact['branch'],
+        'phone' => $contact['phone'],
+        'email' => $contact['email'],
+        'introduce' => $contact['introduce'],
+        'event' => $contact['event'],
+        'rules' => $contact['rules'],
+        'logo' => $contact['logo'],
+        'slogan' => $contact['slogan']
+      ));
+
+      die($data);
+    }
+
+    function submitForm() {
+      $data = json_decode(file_get_contents("php://input"), true);
+      $full_name = $data['full_name'];
+      $email = $data['email'];
+      $subject = $data['subject'];
+      $content = $data['content'];
+      $date = date("Y-m-d");
+      $model = new MainModel();
+      $model -> addContactForm($full_name, $email, $date, $subject, $content);
+      die('success');
     }
   }
-
 ?>

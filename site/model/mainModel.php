@@ -175,6 +175,17 @@
       $result = parent::getInstance($query);
       return $result;
     }
+
+    function getContactInfo() {
+      $query = "SELECT * FROM contact_info WHERE info_id = 1";
+      $result = parent::getInstance($query);
+      return $result;
+    }
+
+    function addContactForm($full_name, $email, $send, $subject, $content) {
+      $query = "INSERT INTO contact_form VALUES('', '$full_name', '$email', '$send', '$subject', '$content')";
+      parent::exec($query);
+    }
   }
 
   ?>
