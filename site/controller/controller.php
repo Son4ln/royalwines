@@ -136,6 +136,11 @@
       $action = new MainController();
       $action -> getProductDetail();
       break;
+
+    case 'getNewsById':
+      $action = new MainController();
+      $action -> getNewsById();
+      break;
     default:
       break;
   }

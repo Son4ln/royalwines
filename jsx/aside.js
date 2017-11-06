@@ -45,7 +45,7 @@ class Aside extends React.Component {
         <Route exact path='/san-pham/:cate_id' render={({match}) => <ProductsAside getSearch={this.getSearch}  match={match}/>}/>
         <Route exact path='/chi-tiet-san-pham/:id' render={({match}) => <ProductDetailAside match={match} />}/>
         <Route exact path='/bai-viet' render={() => <BlogsAside getSearchNews={this.getSearchNews} />}/>
-        <Route exact path='/chi-tiet-bai-viet' render={() => <BlogDetailAside />}/>
+        <Route exact path='/chi-tiet-bai-viet/:id' render={({match}) => <BlogDetailAside match={match} />}/>
         <Route exact path='/lien-he' render={() => <ContactAside />}/>
         <Route exact path='/dang-nhap' render={() => <LoginAside />}/>
         <Route exact path='/chinh-sua' render={() => <EditProfileAside />}/>

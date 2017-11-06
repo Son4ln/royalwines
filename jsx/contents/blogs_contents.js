@@ -99,6 +99,7 @@ class BlogsContents extends React.Component {
       for (let item of data) {
         let item_encode = JSON.parse(item);
         let img_url = `/upload/blog/${item_encode.news_image}`;
+        let blog_url = `/chi-tiet-bai-viet/${item_encode.news_id}`;
 
         let content = (
           <section className="ct-frame ct-frame--white">
@@ -110,9 +111,9 @@ class BlogsContents extends React.Component {
                  <div className="ct-blogItem ct-entryMeta">
                    <span className="ct-blogItem ct-entryDate">{item_encode.news_date}</span>
                  </div>
-                 <h3 className="ct-blogItem ct-entryTitle ct-u-font2"><Link to="/">{item_encode.news_title}</Link></h3>
+                 <h3 className="ct-blogItem ct-entryTitle ct-u-font2"><Link to={blog_url}>{item_encode.news_title}</Link></h3>
                  <p className="ct-blogItem ct-entryDescription">{item_encode.short_desc}</p>
-                 <div className="ct-u-paddingBottom10"><Link to="/" className="btn btn-lg btn-button--brown">Đọc bài viết</Link></div>
+                 <div className="ct-u-paddingBottom10"><Link to={blog_url} className="btn btn-lg btn-button--brown">Đọc bài viết</Link></div>
                </div>
              </article>
           </section>
@@ -125,7 +126,7 @@ class BlogsContents extends React.Component {
       $('#next').addClass('hidden');
       let content = (
         <center>
-          <h2 className="ct-u-font2 text-uppercase animated  activate flipInY">KHÔNG TÌM THẤY BÀI VIẾT!!!</h2>
+          <h2 className="ct-u-font2 text-uppercase animated activate" data-fx="pulse">KHÔNG TÌM THẤY BÀI VIẾT!!!</h2>
         </center>
       );
 

@@ -69,6 +69,7 @@
       $blog = $model -> getOneBlog();
 
       $data = json_encode(array(
+        'news_id' => $blog['news_id'],
         'news_date' => $blog['news_date'],
         'news_title' => $blog['news_title'],
         'short_desc' => $blog['short_desc'],
@@ -85,6 +86,7 @@
 
       foreach ($brands as $item) {
         $brand = json_encode(array(
+          'brand_id' => $item['brand_id'],
           'uid' => $item['uid'],
           'brand_logo' => $item['brand_logo']
         ));
@@ -464,6 +466,22 @@
         $model -> addOrderDetail($curOrder['order_id'], $product['product_id'], $quantity, $detail_total);
       }
       die('success');
+    }
+
+    function getNewsById() {
+      $id = $_GET['id'];
+      $model = new MainModel();
+      $news = $model -> getBlogById($id);
+
+      $data = json_encode(array(
+        'news_date' => $news['news_date'],
+        'news_title' => $news['news_title'],
+        'news_image' => $news['news_image'],
+        'news_detail' => $news['news_detail']
+      ));
+
+      die($data);
+
     }
   }
 
