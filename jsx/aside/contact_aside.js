@@ -15,6 +15,11 @@ class ContactAside extends React.Component {
     document.body.appendChild(script);
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("contact");
+  }
+
   render() {
     let style_img = {
       width: '40%'

@@ -14,8 +14,14 @@ class AsideHeader extends React.Component {
   }
 
   componentDidMount() {
-    $('.cart-popup, .wishlist-popup').click(function(e) {
-        e.stopPropagation();
+    $("#wishlist").on("click", function() {
+      $("#cart-popup").fadeOut("fast")
+      $("#wishlist-popup").fadeToggle("fast");
+    });
+
+    $("#cart").on("click", function() {
+      $("#wishlist-popup").fadeOut("fast")
+      $("#cart-popup").fadeToggle("fast");
     });
 
     $('#cart-items').click((e) => {
@@ -152,8 +158,8 @@ class AsideHeader extends React.Component {
       <div>
         <div className="ct-wishlist-title ct-u-marginTop10 ct-u-marginLeft10 ct-u-font2 ct-u-size18 text-uppercase list-inline">
           <li className="dropdown wishlist pull-left">
-            <a href="#" className="btn dropdown-toggle visible-lg hidden-md hidden-sm hidden-xs" type="button" data-toggle="dropdown">yêu thích</a>
-            <div className="dropdown-menu wishlist-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn">
+            <a href="#" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="wishlist">yêu thích</a>
+            <div className="dropdown-menu wishlist-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn" id="wishlist-popup">
               <div className="wishlist-border col-xs-8">
                 <div className="container-fluid" id="wish-item">
                   <h3 className="ct-u-margin0 ct-u-marginBottom10">Sản Phẩm Yêu Thích:</h3>
@@ -171,10 +177,10 @@ class AsideHeader extends React.Component {
           </li>
           
           <li className="visible-lg hidden-md hidden-sm hidden-xs pull-left">|</li>
-          <li className="dropdown wishlist pull-left">
-            <a href="#" className="btn dropdown-toggle visible-lg hidden-md hidden-sm hidden-xs" type="button" 
-            data-toggle="dropdown">giỏ hàng  <i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
-            <div className="dropdown-menu cart-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn">
+          <li className="wishlist pull-left">
+            <a href="#" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="cart">giỏ hàng  
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <div className="dropdown-menu cart-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn" id="cart-popup">
               <div className="row">
                 <div className="col-xs-7">
                   <div className="cart-item-border">

@@ -18,6 +18,9 @@ class LoginAside extends React.Component {
 
     document.body.appendChild(script);
     $('#form-login').submit(this.login);
+
+    let thisPage = this.props.getCurrentPage;
+    thisPage("login");
   }
 
   login(e) {

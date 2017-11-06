@@ -91,7 +91,7 @@ class HomeContents extends React.Component {
         <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
           <Link to={brand_url}>
             <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
-              <img src={img_url} />           
+              <img className="center-block" src={img_url} />           
             </section>
           </Link>
         </div>
@@ -149,11 +149,11 @@ class HomeContents extends React.Component {
   render() {
     return(
       <section className="ct-content">
-        <div className="row ct-js-masonry">
-          <div className="col-sm-6 ct-js-masonryItem">
+        <div className="row">
+          <div className="col-sm-6">
           </div>
 
-          <div className="col-sm-12 ct-js-masonryItem">
+          <div className="col-sm-12">
             <div className="ct-imageBox hidden-xs animated" data-fx="pulse">
               <a href="#">
                 <img src="/public/assets/site/images/content/promo1.png" alt="Breakfast menu" />
@@ -172,7 +172,7 @@ class HomeContents extends React.Component {
             </div>  
           </div>
 
-          <div className="col-sm-6 col-xs-12 ct-js-masonryItem ct-u-marginBottom30">
+          <div className="col-sm-6 col-xs-12 ct-u-marginBottom30">
             <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
               <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop50 text-center">sản phẩm giảm giá</h3>
               <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
@@ -189,7 +189,7 @@ class HomeContents extends React.Component {
 
           {this.renderBrands()}
 
-          <div className="col-xs-12 ct-js-masonryItem">
+          <div className="col-xs-12">
             <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box4 animated" data-fx="pulse" data-bg="/public/assets/site/images/content/header-index-bg.png">
               <div className="ct-u-absoluteCenter ct-box4-child">
                 <div className="row">
@@ -202,7 +202,7 @@ class HomeContents extends React.Component {
             </section>
           </div>
 
-          <div className="col-xs-12 ct-js-masonryItem ct-u-clearBoth animated" data-fx="pulse">
+          <div className="col-xs-12 ct-u-clearBoth animated" data-fx="pulse">
             <section className="ct-frame-nopadding ct-frame--motive ct-box4 ct-u-backgroundWhite ct-u-marginBottom30 animated" data-fx="pulse">
               <div className="ct-box4-child">
                 <div className="row">

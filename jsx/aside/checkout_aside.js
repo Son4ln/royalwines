@@ -15,6 +15,11 @@ class CheckoutAside extends React.Component {
     document.body.appendChild(script);
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("checkout");
+  }
+
   render() {
   
     return(

@@ -119,7 +119,7 @@ class ProductDiscount extends React.Component {
     return(
       <div className="item ct-u-padding10 ct-u-paddingHorizon50">
         <div className="ct-u-item-hover">
-          <div className="ct-u-hoverBox ct-item-border">
+          <div className="ct-u-hoverBoxDiscount ct-item-border">
             <img src={this.state.img_url} />
             <div className="ct-u-hoverItem">
               <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">{this.props.product_name}</h4>

@@ -43,7 +43,7 @@
 }
 .ct-mainNav-inner .dropdown-menu {
   left: 100%;
-  top: 0px;
+  top: -35px;
   text-align: center;
   background-color: #947b65;
   font-size: 18px;
@@ -76,7 +76,7 @@
   background: transparent;
   display: block;
   left: -11px;
-  top: 7px;
+  top: 40px;
   width: 0;
   height: 0;
   border-style: solid;
@@ -358,7 +358,7 @@
   min-width: 500px;
   height: 250px;
   min-height: 240px;
-  margin-left: -103.5px;
+/*  margin-left: -103.5px;*/
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -615,6 +615,7 @@
   color: #ab9178;
 }
 .ct-u-hoverBox {
+  height: 360px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -657,6 +658,49 @@
   visibility: visible;
   opacity: 1;
 }
+.ct-u-hoverBoxDiscount {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ct-u-hoverBoxDiscount img {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ct-u-hoverBoxDiscount .ct-u-hoverItem {
+  background: #ab9178;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding: 0 15px;
+  visibility: hidden;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ct-u-hoverBoxDiscount:hover img {
+  opacity: 0;
+  -webkit-transform: scale(5);
+  -moz-transform: scale(5);
+  -ms-transform: scale(5);
+  -o-transform: scale(5);
+  transform: scale(5);
+}
+.ct-u-hoverBoxDiscount:hover .ct-u-hoverItem {
+  visibility: visible;
+  opacity: 1;
+}
 .ct-u-hoverIcon {
   color: #ab9178;
   width: 30px;
@@ -687,6 +731,7 @@
 /* ============================================== Cart/Wishlist Content ========================================== */
 .overflow-x {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .ct-cart-table {
   border: solid 3px #ffffff;
@@ -1115,6 +1160,11 @@ article.ct-blogItem .ct-blogThumbnail img {
 @media (max-width: 991px) {
   .ct-brands-aside {
     max-height: 510px;
+  }
+}
+@media (max-width: 767px) {
+  .ct-brands-aside {
+    max-height: 200px;
   }
 }
 .ct-brands-item:first-child {

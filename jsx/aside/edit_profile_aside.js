@@ -15,6 +15,11 @@ class EditProfileAside extends React.Component {
     document.body.appendChild(script);
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("edit-profile");
+  }
+
   render() {
   
     return(
