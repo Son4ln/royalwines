@@ -7,6 +7,11 @@ class AboutAside extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("about");
+  }
+
   render() {
   
     return(

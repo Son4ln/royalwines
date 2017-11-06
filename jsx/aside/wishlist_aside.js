@@ -15,6 +15,11 @@ class WishlistAside extends React.Component {
     document.body.appendChild(script);
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("wishlist");
+  }
+
   render() {
     let style_img = {
       width: '40%'

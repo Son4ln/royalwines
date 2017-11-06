@@ -7,6 +7,11 @@ class CartAside extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("cart");
+  }
+
   render() {
   
     return(

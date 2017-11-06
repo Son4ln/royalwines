@@ -3,7 +3,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Pages - Admin Dashboard UI Kit - Lock Screen</title>
+    <link rel="shortcut icon" href="/public/assets/site/images/fav.ico" type="image/x-icon">
+    <title>Login - Royalwines</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <link href="../../public/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
     <link href="../../public/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,7 +31,7 @@
       <!-- START Login Background Pic Wrapper-->
       <div class="bg-pic">
         <!-- START Background Pic-->
-        <img src="../../public/assets/img/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" data-src="../../public/assets/img/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" data-src-retina="../../public/assets/img/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" alt="" class="lazy">
+        <img src="../../public/assets/img/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg" data-src="../../public/assets/img/wbg.jpg" data-src-retina="../../public/assets/img/wbg.jpg" alt="" class="lazy">
         <!-- END Background Pic-->
         <!-- START Background Caption-->
         <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -46,7 +47,7 @@
       <!-- START Login Right Container-->
       <div class="login-container bg-white">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
-          <img src="../../public/assets/img/logo.png" alt="logo" data-src="../../public/assets/img/logo.png" data-src-retina="../../public/assets/img/logo_2x.png" width="78" height="22">
+          <img src="../../public/assets/img/logo.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo_2x.png" width="150">
           <!-- START Login Form -->
           <form id="form-login" class="p-t-15" role="form" method="post" action="?action=login">
             <div class="login-alert alert alert-danger hidden"></div>

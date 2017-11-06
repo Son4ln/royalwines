@@ -27,6 +27,9 @@ class BlogsAside extends React.Component {
     $('#news_search').keyup((e) => {
       this.getKeySearch(e);
     });
+
+    let thisPage = this.props.getCurrentPage;
+    thisPage("blog");
   }
 
   getKeySearch(e) {
@@ -73,7 +76,7 @@ class BlogsAside extends React.Component {
             </div>
           </section>
 
-          <section className="widget text-left">
+          <section className="widget text-left animated" data-fx="fadeInDown">
             <h4 className="widget-title ct-u-font1 ct-u-paddingBottom5">bài viết ngẫu nhiên</h4>
             
             {this.state.randBlog}

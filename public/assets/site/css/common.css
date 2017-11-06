@@ -180,6 +180,9 @@ ul.ct-defaultColorList li {
 .ct-u-backgroundWhite {
   background: #ffffff;
 }
+.ct-u-autoHeight {
+  height: auto;
+}
 .ct-u-paddingHorizon0 {
   padding-left: 0;
   padding-right: 0;

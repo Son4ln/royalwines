@@ -16,6 +16,11 @@ class HomeAside extends React.Component {
     axios.get('/site/controller/controller.php?action=getBanner').then(res => this.getBanner(res.data));
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("home");
+  }
+
   getBanner(data) {
     let bannerArr = [];
     for(let item of data) {
@@ -70,6 +75,38 @@ class HomeAside extends React.Component {
       <section className="sidebar ct-sidebar ct-js-sidebar ct-js-background ct-u-displayNone ct-big-gallery" 
       data-bg="/public/assets/site/images/content/demo2.jpg" data-bgrepeat="no-repeat">
       <div className="ct-js-owl" data-animations="true" data-height="100%" data-snap-ignore="true">
+        <div className="item">
+          <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
+          data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">Chào mừng đến với<br />
+            <img src="/public/assets/site/images/content/logo2.png" style={style_img} />
+          </h2>
+
+          <p className="animated" data-fx="fadeIn">
+            Vivamus iaculis placerat diam, laoreet posuere
+            <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
+          </p>
+          
+          <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
+          data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+        </div>
+
+        <div className="item">
+          <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
+          data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">Chào mừng đến với<br />
+            <img src="/public/assets/site/images/content/logo2.png" style={style_img} />
+          </h2>
+
+          <p className="animated" data-fx="fadeIn">
+            Vivamus iaculis placerat diam, laoreet posuere
+            <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
+          </p>
+          
+          <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
+          data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+        </div>
+
         <div className="item">
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
           data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />

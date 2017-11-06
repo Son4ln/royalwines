@@ -155,7 +155,7 @@ class BrandsContents extends React.Component {
 
         <div className="ct-navigation-blog row hidden">
           <center>
-            <a href="javascript:void(0)" id="view-more-product" className="btn btn-lg btn-button--dark"></a>
+            <a href="javascript:void(0)" id="view-more-product" className="btn btn-lg btn-button--brown"></a>
           </center>
         </div>
 

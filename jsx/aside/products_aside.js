@@ -29,6 +29,9 @@ class ProductsAside extends React.Component {
     $('#search-products').keyup((e) => {
       this.submitSearch(e);
     });
+
+    let thisPage = this.props.getCurrentPage;
+    thisPage("products");
   }
 
   submitSearch(e) {
@@ -71,7 +74,7 @@ class ProductsAside extends React.Component {
           <hr className="hr-custom ct-js-background animated" data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
           <h2 className="ct-u-font2 text-uppercase animated " data-fx="flipInY">sản phẩm</h2>
           <section className="widget">
-            <div className="widget-inner">
+            <div className="widget-inner animated" data-fx="fadeInDown">
               <h4 className="widget-title ct-u-font1 ct-u-paddingBottom10">xuất xứ</h4>
               <ul className="ct-u-font2 text-center">
                 <li><Link to="/san-pham/0">TẤT CẢ SẢN PHẨM</Link></li>

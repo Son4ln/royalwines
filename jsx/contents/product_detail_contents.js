@@ -292,7 +292,7 @@ class ProductDetailContents extends React.Component {
               <div className="ct-box4-child">
                 <div className="row">
                   <div className="col-xs-12">
-                    <h2 class="ct-u-font1 text-uppercase text-center ct-u-size28 ct-u-paddingTop20">Sản phẩm liên quan</h2>
+                    <h2 className="ct-u-font1 text-uppercase text-center ct-u-size28 ct-u-paddingTop20">Sản phẩm liên quan</h2>
                     <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
                       <div className="item ct-u-padding10">
                         <div className="ct-u-item-hover">

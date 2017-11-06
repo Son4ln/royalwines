@@ -23,6 +23,9 @@ class BlogDetailAside extends React.Component {
     script.async = true;
 
     document.body.appendChild(script);
+
+    let thisPage = this.props.getCurrentPage;
+    thisPage("blog-detail");
   }
 
   getRandNews(data) {
@@ -50,7 +53,6 @@ class BlogDetailAside extends React.Component {
       randBlog: arr
     });
   }  
-
 
   render() {
   

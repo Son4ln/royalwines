@@ -22,6 +22,7 @@ class Aside extends React.Component {
 
     this.getSearch = this.getSearch.bind(this);
     this.getSearchNews = this.getSearchNews.bind(this);
+    this.getCurrentPage = this.getCurrentPage.bind(this);
   }
 
   getSearch(text) {
@@ -34,22 +35,27 @@ class Aside extends React.Component {
     search(text);
   }
 
+  getCurrentPage(page) {
+    let thisPage = this.props.getCurrentPage;
+    thisPage(page);
+  }
+
   render() {
     return(
       <Switch>
-        <Route exact path='/' render={() => <HomeAside />}/>
-        <Route exact path='/gio-hang' render={() => <CartAside />}/>
-        <Route exact path='/yeu-thich' render={() => <WishlistAside />}/>
-        <Route exact path='/thanh-toan' render={() => <CheckoutAside />}/>
-        <Route exact path='/nhan-hieu/:brand_id' render={({match}) => <BrandsAside match={match}/>}/>
-        <Route exact path='/san-pham/:cate_id' render={({match}) => <ProductsAside getSearch={this.getSearch}  match={match}/>}/>
-        <Route exact path='/chi-tiet-san-pham/:id' render={({match}) => <ProductDetailAside match={match} />}/>
-        <Route exact path='/bai-viet' render={() => <BlogsAside getSearchNews={this.getSearchNews} />}/>
-        <Route exact path='/chi-tiet-bai-viet/:id' render={({match}) => <BlogDetailAside match={match} />}/>
-        <Route exact path='/lien-he' render={() => <ContactAside />}/>
-        <Route exact path='/dang-nhap' render={() => <LoginAside />}/>
-        <Route exact path='/chinh-sua' render={() => <EditProfileAside />}/>
-        <Route exact path='/thong-tin' render={() => <AboutAside />}/>
+        <Route exact path='/' render={() => <HomeAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/gio-hang' render={() => <CartAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/yeu-thich' render={() => <WishlistAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/thanh-toan' render={() => <CheckoutAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/nhan-hieu/:brand_id' render={({match}) => <BrandsAside match={match} getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/san-pham/:cate_id' render={({match}) => <ProductsAside getSearch={this.getSearch} match={match} getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/chi-tiet-san-pham/:id' render={({match}) => <ProductDetailAside match={match} getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/bai-viet' render={() => <BlogsAside getSearchNews={this.getSearchNews} getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/chi-tiet-bai-viet/:id' render={({match}) => <BlogDetailAside match={match} getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/lien-he' render={() => <ContactAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/dang-nhap' render={() => <LoginAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/chinh-sua' render={() => <EditProfileAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route exact path='/thong-tin' render={() => <AboutAside getCurrentPage={this.getCurrentPage}/>}/>
       </Switch>
     );
   }

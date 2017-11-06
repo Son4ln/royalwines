@@ -22,6 +22,8 @@ class BrandsAside extends React.Component {
     script.async = true;
 
     document.body.appendChild(script);
+    let thisPage = this.props.getCurrentPage;
+    thisPage("brands");
   }
 
   getBrands(data) {

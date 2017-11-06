@@ -15,6 +15,11 @@ class ProductDetailAside extends React.Component {
     document.body.appendChild(script);
   }
 
+  componentDidMount() {
+    let thisPage = this.props.getCurrentPage;
+    thisPage("product-detail");
+  }
+
   render() {
     let style_img = {
       width: '40%'

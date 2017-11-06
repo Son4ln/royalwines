@@ -161,7 +161,7 @@ class ProductsContents extends React.Component {
 
         <div className="ct-navigation-blog row">
           <center>
-            <a href="javascript:void(0)" id="view-more-product" className="btn btn-lg btn-button--dark"></a>
+            <a href="javascript:void(0)" id="view-more-product" className="btn btn-lg btn-button--brown"></a>
           </center>
         </div>
 
