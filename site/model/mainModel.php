@@ -204,6 +204,17 @@
       $query = "UPDATE users SET full_name = '$name', address = '$addr', phone = '$phone', password = '$pass' WHERE user_id = '$user'";
       parent::exec($query);
     }
+
+    function addUser($name, $email, $address, $phone, $pass, $permission, $active) {
+      $query = "INSERT INTO users VALUES('', UUID(), '$name', '$email', '$address', '$phone', '$pass', '', '$permission', '$active')";
+      parent::exec($query);
+    }
+
+    function checkEmail($email) {
+      $query = "SELECT * FROM users WHERE email = '$email'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
   }
 
   ?>

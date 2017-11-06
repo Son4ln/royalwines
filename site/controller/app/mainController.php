@@ -507,13 +507,13 @@
 
     function submitForm() {
       $data = json_decode(file_get_contents("php://input"), true);
-      $full_name = $data['full_name'];
+      $fullname = $data['fullname'];
       $email = $data['email'];
       $subject = $data['subject'];
       $content = $data['content'];
       $date = date("Y-m-d");
       $model = new MainModel();
-      $model -> addContactForm($full_name, $email, $date, $subject, $content);
+      $model -> addContactForm($fullname, $email, $date, $subject, $content);
       die('success');
     }
 
@@ -562,5 +562,38 @@
       $_SESSION["royalwines_pass_login_ok"] = $pass;
       die('success');
     }
+
+    function signUp() {
+      if (!isset($_SESSION["royalwines_user_login_ok"]) && !isset($_SESSION["royalwines_pass_login_ok"])) {
+      $model = new MainModel();
+      $data = json_decode(file_get_contents("php://input"), true);
+
+      $name = $data['fullname'];
+      $address = $data['address'];
+      $phone = $data['phone'];
+      $email = $data['email'];
+      $pass = $data['pass'];
+      $rePass = $data['rePass'];
+      $result = $model -> checkEmail($email);
+
+      if ($name != '' && $address != '' && $phone != '' && $email != '' && $pass != '') {
+        if ($pass != $rePass) {
+          die('rePass_wrong');
+        } elseif ($result) {
+          die('email_exists');
+        } else {
+          $pass = md5($data['pass']);
+        }
+      } else {
+        die('empty_val');
+      }
+
+      $permission = 5;
+      $active = 2;
+
+      $model -> addUser($name, $email, $address, $phone, $pass, $permission, $active);
+      die('success');
+    }
   }
+}
 ?>

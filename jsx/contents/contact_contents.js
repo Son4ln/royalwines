@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderMainScript, isValidEmail } from '../utils';
+import { renderMainScript, isValidEmail, isValidName } from '../utils';
 
 class ContactContents extends React.Component {
   constructor() {
@@ -23,7 +23,7 @@ class ContactContents extends React.Component {
 
   checkUser(data) {
     if (data !== 'not_login') {
-      $('#full_name').val(data.full_name);
+      $('#full-name').val(data.full_name);
       $('#email').val(data.email);
     }
   }
@@ -43,40 +43,44 @@ class ContactContents extends React.Component {
 
   submitForm(e) {
   	e.preventDefault();
-    if ($('#full_name').val() === '') {
-      $('#full_name').focus();
-      $('#checkout-alert').html('Vui lòng nhập họ và tên');
+    if ($('#full-name').val() === '') {
+      $('#full-name').focus();
+      $('#checkout-alert').html('Vui lòng nhập họ và tên.');
+      return;
+    } else if (!isValidName($('#full-name').val())) {
+      $('#full-name').focus();
+      $('#checkout-alert').html('Họ và tên không đúng.');
       return;
     }
 
     if ($('#email').val() !== '' && !isValidEmail($('#email').val())) {
       $('#email').focus();
-      $('#checkout-alert').html('Vui lòng nhập đúng email');
+      $('#checkout-alert').html('Vui lòng nhập đúng email.');
       return;
     }
 
     if ($('#subject').val() === '') {
       $('#subject').focus();
-      $('#checkout-alert').html('Vui lòng nhập tiêu đề');
+      $('#checkout-alert').html('Vui lòng nhập tiêu đề.');
       return;
     }
 
     if ($('#content').val() === '') {
       $('#content').focus();
-      $('#checkout-alert').html('Vui lòng nhập nội dung');
+      $('#checkout-alert').html('Vui lòng nhập nội dung.');
       return;
     }
 
     $('#submit-btn').html('Đang gửi thư...');
     axios.post('/site/controller/controller.php?action=submitForm', {
-      full_name: $('#full_name').val(),
+      fullname: $('#full-name').val(),
       email: $('#email').val(),
       subject: $('#subject').val(),
       content: $('#content').val()
     })
     .then(res => {
       if (res.data === 'success') {
-      	$('#full_name').val('');
+      	$('#fullname').val('');
       	$('#email').val('');
       	$('#subject').val('');
       	$('#content').val('');
@@ -142,7 +146,7 @@ class ContactContents extends React.Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="form-group">
-                  <input id="full_name" placeholder="Họ và tên" required type="text" name="field[]" className="form-control input-lg"/>
+                  <input id="full-name" placeholder="Họ và tên" required type="text" name="field[]" className="form-control input-lg"/>
                 </div>
               </div>
             </div>
