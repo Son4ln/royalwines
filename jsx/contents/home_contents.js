@@ -172,17 +172,29 @@ class HomeContents extends React.Component {
             </div>  
           </div>
 
-          <div className="col-sm-6 col-xs-12 ct-u-marginBottom30">
-            <section className="ct-frame-nopadding ct-frame--motive ct-box2 animated" data-fx="pulse">
-              <h3 className="ct-u-colorMotive ct-u-font2 text-uppercase ct-u-margin0 ct-u-paddingTop50 text-center">sản phẩm giảm giá</h3>
-              <hr className="hr-custom ct-js-background text-center" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
-              <div className="ct-js-owl ct-owl-index ct-u-paddingBottom10" data-items="1" data-single="false" 
-              data-navigation="true" data-pagination="false" data-lgItems="1" data-mdItems="1" data-smItems="1" data-xsItems="1">
+          <div className="col-xs-12">
+            <section className="ct-frame-nopadding ct-frame--motive ct-js-background ct-box4 animated" data-fx="pulse" data-bg="/public/assets/site/images/content/header-index-bg.png">
+              <div className="ct-u-absoluteCenter ct-box4-child">
+                <div className="row">
+                  <div className="col-sm-12 text-center">
+                    <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
+                    <h3 className="ct-u-font2 text-uppercase ct-u-colorWhite">sản phẩm giảm giá</h3>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
 
-                {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart} onAddWish={this.onAddWish}
-                  uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
-                )}
-
+          <div className="col-xs-12 ct-u-clearBoth animated" data-fx="pulse">
+            <section className="ct-frame-nopadding ct-frame--motive ct-box4 ct-u-backgroundWhite ct-u-marginBottom30 animated" data-fx="pulse">
+              <div className="ct-box4-child">
+                <div className="row">
+                  <div className="col-xs-12">
+                    {this.state.products_discount.map((e, i) => <ProductDiscount key={i} onAddCart={this.onAddCart} onAddWish={this.onAddWish}
+                      uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} discount={e.discount}/>
+                    )}
+                  </div>
+                </div>
               </div>
             </section>
           </div>
@@ -207,14 +219,9 @@ class HomeContents extends React.Component {
               <div className="ct-box4-child">
                 <div className="row">
                   <div className="col-xs-12">
-                    <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" 
-                    data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
-
-                      {this.state.new_product.map((e, i) => <ProductNewItem key={i} onAddWish={this.onAddWish}
-                        uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} onAddCart={this.onAddCart}/>
-                      )}
-
-                    </div>
+                    {this.state.new_product.map((e, i) => <ProductNewItem key={i} onAddWish={this.onAddWish}
+                      uid={e.uid} product_name={e.product_name} featured_img={e.featured_img} price={e.price} onAddCart={this.onAddCart}/>
+                    )}
                   </div>
                 </div>
               </div>
