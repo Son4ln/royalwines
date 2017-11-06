@@ -218,7 +218,7 @@ class AsideHeader extends React.Component {
         </div>
 
         <div className="ct-navbarMobile ct-navbarMobile--inverse">
-          <a className="navbar-brand" href="index.html">
+          <a className="navbar-brand" href="/">
             <img className="ct-miniNav-logo" src="/public/assets/site/images/content/logo3.png" />
           </a>
           <button type="button" className="navbar-toggle">

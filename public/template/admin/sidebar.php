@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Admin Page = Royalwines</title>
+    <title>Admin Page - Royalwines</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <link rel="shortcut icon" href="/public/assets/site/images/fav.ico" type="image/x-icon">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,19 +15,14 @@
     <link href="../../public/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../../public/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="../../public/assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="../../public/assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../public/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../public/assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../public/assets/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css" />
-<!--     <link href="../../public/assets/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="../../public/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
     <link href="../../public/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="../../public/pages/css/pages.css" rel="stylesheet" type="text/css" />
     <link href="../../public/assets/plugins/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" type="text/css" media="screen" />
-    <!--[if lte IE 9]>
-	<link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
-	<![endif]-->
   </head>
   <body class="fixed-header dashboard">
     <!-- BEGIN SIDEBPANEL-->

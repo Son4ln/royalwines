@@ -34,6 +34,8 @@ class BlogDetailContents extends React.Component {
       news: data,
       img_url: `/upload/blog/${data.news_image}`
     });
+
+    $("html, body").animate({ scrollTop: 0 }, 500);
   }
 
   render() {

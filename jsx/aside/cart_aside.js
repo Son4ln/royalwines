@@ -20,7 +20,7 @@ class CartAside extends React.Component {
         <div className="item">
           <hr className="hr-custom ct-js-background animated" data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
           <h2 className="ct-u-font2 text-uppercase animated " data-fx="flipInY">giỏ hàng<br/>của bạn</h2>
-          <p className="animated" data-fx="fadeIn">Etiam vitae tempus lorem. Interdum et malesuada</p>
+          <p className="animated" data-fx="fadeIn">Xem trước, thao tác, đặt hàng</p>
           <hr className="hr-custom ct-js-background ct-u-paddingTop15 animated ct-u-paddingTop40" data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
         </div>
       </div>

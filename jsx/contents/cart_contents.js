@@ -104,7 +104,7 @@ class CartContents extends React.Component {
 
                 <tr className="ct-body-table ct-u-colorDark">
                   <td colspan="6">
-                    <Link to="/san-pham"><button className="ct-cart-body-btn">TIẾP TỤC MUA SẮM</button></Link>
+                    <Link to="/san-pham/0"><button className="ct-cart-body-btn">TIẾP TỤC MUA SẮM</button></Link>
                   </td>
                 </tr>
               </tbody>

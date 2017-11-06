@@ -16,7 +16,7 @@
           <div class="pull-center hidden-md hidden-lg">
             <div class="header-inner">
               <div class="brand inline">
-                <img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120">
+                <a href="/"><img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120"></a>
               </div>
             </div>
           </div>
@@ -35,8 +35,8 @@
         <div class=" pull-left sm-table hidden-xs hidden-sm">
           <div class="header-inner">
             <div class="brand inline">
-              <img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120">
-            </div>
+              <a href="/"><img src="../../public/assets/img/logo2.png" alt="logo" data-src="../../public/assets/img/logo2.png" data-src-retina="../../public/assets/img/logo2.png" width="120">
+            </div></a>
           </div>
         </div>
         <div class=" pull-right">

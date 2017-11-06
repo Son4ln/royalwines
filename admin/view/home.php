@@ -261,37 +261,6 @@
           <!-- END WIDGET -->
         </div>
 
-        <div class="col-md-4 m-b-10 m-t-20">
-          <!-- START WIDGET D3 widget_graphTileFlat-->
-          <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
-            <div class="container-xs-height full-height">
-              <div class="row-xs-height">
-                <div class="col-xs-height col-top">
-                  <div class="panel-heading top-left top-right">
-                    <div class="panel-title text-black hint-text">
-                      <span class="font-montserrat fs-11 all-caps">Sản phẩm sắp hết hàng
-                        <i class="fa fa-chevron-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row-xs-height">
-                <div class="col-xs-height col-top relative">
-                  <div class="row">
-
-                    <div class="col-sm-12 db-icon">
-                      <a href="?action="><i class="fa fa-battery-quarter" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END WIDGET -->
-        </div>
-
 
       <?php } ?>
 
@@ -330,14 +299,10 @@
           <!-- END WIDGET -->
         </div>
 
-        <?php } ?>
-      </div>
-
-      <?php 
+        <?php 
       if ($_SESSION["royalwines_permission_ok"] == 1) {
       ?>
 
-      <div class="row">
         <div class="col-md-4 m-b-10 m-t-20">
           <!-- START WIDGET D3 widget_graphTileFlat-->
           <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
@@ -368,8 +333,10 @@
           </div>
           <!-- END WIDGET -->
         </div>
-      </div>
       <?php } ?>
+
+        <?php } ?>
+      </div>
     </div>    
   </div>
 </div>

@@ -15,6 +15,7 @@ import ContactAside from './aside/contact_aside';
 import LoginAside from './aside/login_aside';
 import EditProfileAside from './aside/edit_profile_aside';
 import AboutAside from './aside/about_aside';
+import PageNotFound from './page_not_found';
 
 class Aside extends React.Component {
   constructor() {
@@ -56,6 +57,7 @@ class Aside extends React.Component {
         <Route exact path='/dang-nhap' render={() => <LoginAside getCurrentPage={this.getCurrentPage}/>}/>
         <Route exact path='/chinh-sua' render={() => <EditProfileAside getCurrentPage={this.getCurrentPage}/>}/>
         <Route exact path='/thong-tin' render={() => <AboutAside getCurrentPage={this.getCurrentPage}/>}/>
+        <Route component={PageNotFound}/>
       </Switch>
     );
   }
