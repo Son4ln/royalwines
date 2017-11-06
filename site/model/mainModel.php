@@ -3,7 +3,7 @@
 
     // dùng cho trang chủ
     function getNewProduct() {
-      $query = "SELECT * FROM products WHERE product_public = 2 AND discount = 0 ORDER BY product_id DESC LIMIT 8";
+      $query = "SELECT * FROM products WHERE product_public = 2 AND discount = 0 ORDER BY product_id DESC LIMIT 3";
       $result = parent::getList($query);
       return $result;
     }
@@ -27,7 +27,7 @@
     }
 
     function getRandomBrand() {
-      $query = "SELECT * FROM brands WHERE brand_public = 2 ORDER BY RAND() LIMIT 3";
+      $query = "SELECT * FROM brands WHERE brand_public = 2 ORDER BY RAND() LIMIT 4";
       $result = parent::getList($query);
       return $result;
     }

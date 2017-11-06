@@ -117,7 +117,7 @@ class ProductNewItem extends React.Component {
 
   render() {
     return(
-      <div className="item ct-u-padding10">
+      <div className="col-md-4 item ct-u-padding10 ct-z-index">
         <div className="ct-u-item-hover">
           <div className="ct-u-hoverBox ct-item-border">
             <img src={this.state.img_url} />

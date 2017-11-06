@@ -70,25 +70,25 @@ class ProductDetailContents extends React.Component {
       img_url: `/upload/products/${data.featured_img}`
     });
 
-    axios.get(`/site/controller/controller.php?action=getProductByCate&cate_id=${data.category_id}&limit=8`)
-    .then(res => this.getProductSameCate(res.data));
+    // axios.get(`/site/controller/controller.php?action=getProductByCate&cate_id=${data.category_id}&limit=8`)
+    // .then(res => this.getProductSameCate(res.data));
   }
 
-  getProductSameCate(data) {
-    let arr = [];
-    for (let item of data) {
-      let item_encode = JSON.parse(item);
-      arr.push(item_encode);
-    }
+  // getProductSameCate(data) {
+  //   let arr = [];
+  //   for (let item of data) {
+  //     let item_encode = JSON.parse(item);
+  //     arr.push(item_encode);
+  //   }
 
-    let content = (
-      arr.map((e, i) => <ProductItems key={i} index={i} product={e} onAddCart={this.onAddCart} onAddWish={this.onAddWish}/>)
-    );
+  //   let content = (
+  //     arr.map((e, i) => <ProductItems key={i} index={i} product={e} onAddCart={this.onAddCart} onAddWish={this.onAddWish}/>)
+  //   );
 
-    this.setState({
-      renderProduct: content
-    });
-  }
+  //   this.setState({
+  //     renderProduct: content
+  //   });
+  // }
 
   renderInit() {
     let scriptBlog = document.getElementById('productdetail-script-block');
@@ -284,40 +284,6 @@ class ProductDetailContents extends React.Component {
               </div>
             </div>
           </section>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12 ct-js-masonryItem ct-u-clearBoth animated ct-u-paddingHorizon0" data-fx="pulse">
-            <section className="ct-frame-nopadding ct-frame--motive ct-box4 ct-u-backgroundWhite ct-u-marginBottom30 animated" data-fx="pulse">
-              <div className="ct-box4-child">
-                <div className="row">
-                  <div className="col-xs-12">
-                    <h2 className="ct-u-font1 text-uppercase text-center ct-u-size28 ct-u-paddingTop20">Sản phẩm liên quan</h2>
-                    <div className="ct-js-owl ct-owl-index ct-u-marginBoth20" data-items="4" data-single="false" data-navigation="true" data-pagination="false" data-lgItems="4" data-mdItems="3" data-smItems="2" data-xsItems="2">
-                      <div className="item ct-u-padding10">
-                        <div className="ct-u-item-hover">
-                          <div className="ct-u-hoverBox ct-item-border ct-imgHeigh40per">
-                            <img className="img-responsive" src="/public/assets/site/images/content/chivas.png"/>
-                            <div className="ct-u-hoverItem">
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorWhite">hi</h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-u-colorBlack">1000vnđ</h4>
-                              <a href="#" className="ct-u-hoverIcon pull-left "><i className="fa fa-shopping-cart"></i></a>
-                              <a href="#" className="ct-u-hoverIcon ct-u-marginLeft40"><i className="fa fa-heart-o"></i></a>
-                              <a href="#" className="btn btn-sm btn-default btn-item ct-u-colorMotive" data-fx="fadeIn" data-hover="Chi Tiết"><span>Chi Tiết</span></a>
-                            </div>
-                            <div className="ct-u-item-info ct-u-marginHorizon10">
-                              <h4 className="text-uppercase ct-u-font2 ct-itemName">hi</h4>
-                              <h4 className="text-uppercase ct-u-font2 ct-itemPrice">1000vnđ</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
         </div>
 
         <div id="productdetail-script-block"></div>
