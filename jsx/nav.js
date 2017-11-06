@@ -10,13 +10,15 @@ class Menu extends React.Component {
 
     this.state = {
       login_btn: null,
-      currentPage: ''
+      currentPage: '',
+      pathLogo: '../upload/'
     }
   }
 
   componentWillMount() {
     axios.get('/site/controller/controller.php?action=checkLogin').then(res => this.checkUser(res.data));
     axios.get('/site/controller/controller.php?action=getWishList').then(res => this.getWish(res.data));
+    axios.get('/site/controller/controller.php?action=contactInfo').then(res => this.contactInfo(res.data));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,6 +38,11 @@ class Menu extends React.Component {
       this.setWish(arr);
       }
     }
+  }
+
+  contactInfo(data) {
+    let path = this.state.pathLogo + data.logo;
+    document.getElementById('logo-store').src = path;
   }
 
   setWish(arr) {
@@ -176,7 +183,7 @@ class Menu extends React.Component {
         <div className="ct-mainNav-inner">
           <nav>
             <a className="ct-mainNav-logo" href="/">
-              <img src="/public/assets/site/images/content/logo.png" style={logo_style} />
+              <img id="logo-store" style={logo_style} />
             </a>
             <hr className="hr-custom ct-js-background" data-bg="/public/assets/site/images/hr1.png" />
             <ul className="ct-mainNav-nav text-uppercase animated" data-fx="fadeIn">
