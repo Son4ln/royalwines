@@ -160,6 +160,11 @@
       $action = new MainController();
       $action -> updateUser();
       break;
+
+    case 'signUp':
+      $action = new MainController();
+      $action -> signUp();
+      break;
     default:
       break;
   }
