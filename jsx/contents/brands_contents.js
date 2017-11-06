@@ -168,7 +168,7 @@ class BrandsContents extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    rw_cart: state.rw_cart
+
   }
 }
 

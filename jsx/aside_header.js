@@ -158,7 +158,7 @@ class AsideHeader extends React.Component {
       <div>
         <div className="ct-wishlist-title ct-u-marginTop10 ct-u-marginLeft10 ct-u-font2 ct-u-size18 text-uppercase list-inline">
           <li className="dropdown wishlist pull-left">
-            <a href="#" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="wishlist">yêu thích</a>
+            <a href="javascript:void(0)" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="wishlist">yêu thích</a>
             <div className="dropdown-menu wishlist-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn" id="wishlist-popup">
               <div className="wishlist-border col-xs-8">
                 <div className="container-fluid" id="wish-item">
@@ -178,7 +178,7 @@ class AsideHeader extends React.Component {
           
           <li className="visible-lg hidden-md hidden-sm hidden-xs pull-left">|</li>
           <li className="wishlist pull-left">
-            <a href="#" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="cart">giỏ hàng  
+            <a href="javascript:void(0)" className="btn visible-lg hidden-md hidden-sm hidden-xs" type="button" id="cart">giỏ hàng  
               <i className="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <div className="dropdown-menu cart-popup ct-frame-custom hidden-md hidden-sm hidden-xs animated" data-fx="fadeIn" id="cart-popup">
               <div className="row">
