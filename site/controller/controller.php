@@ -150,6 +150,16 @@
       $action = new MainController();
       $action -> submitForm();
       break;
+
+    case 'updateAvatar':
+      $action = new MainController();
+      $action -> updateAvatar();
+      break;
+
+    case 'updateUser':
+      $action = new MainController();
+      $action -> updateUser();
+      break;
     default:
       break;
   }

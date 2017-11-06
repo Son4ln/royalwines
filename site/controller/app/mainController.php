@@ -516,5 +516,51 @@
       $model -> addContactForm($full_name, $email, $date, $subject, $content);
       die('success');
     }
+
+    function updateAvatar() {
+      $exploded = explode('.',$_FILES['avatar']['name']);
+      $file_ext=strtolower(end($exploded));
+      $expensions= array("jpeg","jpg","png");
+
+      if(in_array($file_ext,$expensions) === false || $_FILES['avatar']['error'] > 0){
+        die('file_error');
+      }
+
+      $avatar = time().'-'.$_FILES['avatar']['name'];
+      $model = new MainModel();
+      $model -> updateAvatar($avatar);
+
+      $source = $_FILES['avatar']['tmp_name'];
+      $path = $GLOBALS['UPLOADUSER'];
+      $target = $path.$avatar;
+      move_uploaded_file($source, $target);
+
+      $currImg = $_POST['old-avatar'];
+      BasicLibs::deleteFile($currImg,$path);
+
+      die('success');
+    }
+
+    function updateUser() {
+      $model = new MainModel();
+      $data = json_decode(file_get_contents("php://input"), true);
+
+      $name = $data['name'];
+      $addr = $data['addr'];
+      $phone = $data['phone'];
+      if ($data['pass'] != '') {
+        if ($data['pass'] == $data['retype']) {
+          $pass = md5($data['pass']);
+        } else {
+          die('retype_wrong');
+        }
+      } else {
+        $pass = $_SESSION["royalwines_pass_login_ok"];
+      }
+
+      $model -> updateUser($name, $addr, $phone, $pass);
+      $_SESSION["royalwines_pass_login_ok"] = $pass;
+      die('success');
+    }
   }
 ?>

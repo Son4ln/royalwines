@@ -186,6 +186,24 @@
       $query = "INSERT INTO contact_form VALUES('', '$full_name', '$email', '$send', '$subject', '$content')";
       parent::exec($query);
     }
+
+    function updateAvatar($avatar) {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $result = $this -> checkUser($email, $pass);
+      $user = $result['user_id'];
+      $query = "UPDATE users SET avatar = '$avatar' WHERE user_id = '$user'";
+      parent::exec($query);
+    }
+
+    function updateUser($name, $addr, $phone, $pass) {
+      $email = $_SESSION["royalwines_user_login_ok"];
+      $pass = $_SESSION["royalwines_pass_login_ok"];
+      $result = $this -> checkUser($email, $pass);
+      $user = $result['user_id'];
+      $query = "UPDATE users SET full_name = '$name', address = '$addr', phone = '$phone', password = '$pass' WHERE user_id = '$user'";
+      parent::exec($query);
+    }
   }
 
   ?>

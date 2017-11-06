@@ -26,6 +26,9 @@ class Menu extends React.Component {
       currentPage: nextProps.currentPage
     });
 
+    if (nextProps.rw_user.uid !== undefined) {
+       this.saveUserProps(nextProps.rw_user);
+    }
   }
 
   getWish(data) {
@@ -57,39 +60,48 @@ class Menu extends React.Component {
       </li>
     );
 
-    let admin_content = null;
+    this.setState({
+      login_btn: content
+    });
 
     if (data !== 'not_login') {
       let user = this.props.onSaveUser;
       user(data);
+    }
+  }
 
-      let img_url = `/upload/users/${data.avatar}`;
+  saveUserProps(data) {
+    let admin_content = null;
 
-      let full_name = data.full_name.split(' ');
-      let name = data.full_name;
+    let img_url = `/upload/users/profile2.png`;
+    if (data.avatar !== '') {
+      img_url = `/upload/users/${data.avatar}`
+    }
 
-      if (full_name.length > 3) {
-        name = full_name.shift() + ' ' + full_name.pop();
-      }
+    let full_name = data.full_name.split(' ');
+    let name = data.full_name;
 
-      if (data.permission != 5) {
-        admin_content = (
-          <li><a href="/admin">Trang quản lý</a></li>
-        );
-      }
+    if (full_name.length > 3) {
+      name = full_name.shift() + ' ' + full_name.pop();
+    }
 
-      content = (
-        <li className="dropdown ct-profile">
-          <img src={img_url} className="ct-profile-img"/>
-          <p className="ct-u-colorMotive">{name}</p>
-          <ul className="dropdown-menu">
-            {admin_content}
-            <li><a href="#">chỉnh sửa</a></li>
-            <li><a href="/site/controller/controller.php?action=logout">đăng xuất</a></li>
-          </ul>
-        </li>
+    if (data.permission != 5) {
+      admin_content = (
+        <li><a href="/admin">Trang quản lý</a></li>
       );
     }
+
+    let content = (
+      <li className="dropdown ct-profile">
+        <img src={img_url} className="ct-profile-img"/>
+        <p className="ct-u-colorMotive">{name}</p>
+        <ul className="dropdown-menu">
+          {admin_content}
+          <li><Link to="/chinh-sua">chỉnh sửa</Link></li>
+          <li><a href="/site/controller/controller.php?action=logout">đăng xuất</a></li>
+        </ul>
+      </li>
+    );
 
     this.setState({
       login_btn: content
@@ -176,8 +188,6 @@ class Menu extends React.Component {
       $('#nav-contact').removeClass('active');
       $('#nav-login').removeClass('active');
     }
-
-    
     return(
       <div className="ct-mainNav ct-js-background" data-bg="/public/assets/site/images/menu-pattern.jpg">
         <div className="ct-mainNav-inner">
