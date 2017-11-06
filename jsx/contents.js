@@ -33,7 +33,7 @@ class Contents extends React.Component {
         searchVal={this.props.searchVal} limit={9}/>}/>
         <Route exact path='/chi-tiet-san-pham/:id' render={({match}) => <ProductDetailContents match={match}/>}/>
         <Route exact path='/bai-viet' render={() => <BlogsContents searchNews={this.props.searchNewsVal}/>}/>
-        <Route exact path='/chi-tiet-bai-viet' render={() => <BlogDetailContents />}/>
+        <Route exact path='/chi-tiet-bai-viet/:id' render={({match}) => <BlogDetailContents match={match}/>}/>
         <Route exact path='/lien-he' render={() => <ContactContents />}/>
         <Route exact path='/dang-nhap' render={() => <LoginContents />}/>
         <Route exact path='/chinh-sua' render={() => <EditProfileContents />}/>

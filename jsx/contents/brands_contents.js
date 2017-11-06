@@ -75,7 +75,7 @@ class BrandsContents extends React.Component {
 
     let arr = [];
     let content = (
-      <center><h2 className="ct-u-font2 text-uppercase animated  activate pulse">Không tìm thấy sản phẩm</h2></center>
+      <center><h2 className="ct-u-font2 text-uppercase activate">Không tìm thấy sản phẩm</h2></center>
     );
 
     if (data.length > 0) {

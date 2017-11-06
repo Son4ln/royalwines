@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import ProductNewItem from './components/product_new_item';
 import ProductDiscount from './components/products_discount';
@@ -16,6 +17,7 @@ class HomeContents extends React.Component {
       blog: {},
       blogImg: '',
       brand: [],
+      blog_url: ''
     }
 
     this.onAddCart = this.onAddCart.bind(this);
@@ -61,7 +63,8 @@ class HomeContents extends React.Component {
   getOneBlog(data) {
     this.setState({
       blog: data,
-      blogImg: `/upload/blog/${data.news_image}`
+      blogImg: `/upload/blog/${data.news_image}`,
+      blog_url: `/chi-tiet-bai-viet/${data.news_id}`
     });
   }
 
@@ -82,14 +85,15 @@ class HomeContents extends React.Component {
     let brandArr = [];
     for (let item of data) {
       let img_url = `/upload/brands/${item.brand_logo}`;
+      let brand_url = `/nhan-hieu/${item.brand_id}`;
 
       let content = (
         <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
-          <a href="#">
+          <Link to={brand_url}>
             <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
               <img src={img_url} />           
             </section>
-          </a>
+          </Link>
         </div>
       );
 
@@ -227,7 +231,7 @@ class HomeContents extends React.Component {
                   <div className="ct-entryMeta">
                      <div className="ct-entryDateFirst">{this.state.blog.news_date}</div>
                   </div>
-                  <h3 className="ct-entryTitle ct-u-font2"><a href="blog-single.html">{this.state.blog.news_title}</a></h3>
+                  <h3 className="ct-entryTitle ct-u-font2"><Link to={this.state.blog_url}>{this.state.blog.news_title}</Link></h3>
                 <p className="ct-entryDescription">
                   {this.state.blog.short_desc}
                 </p>

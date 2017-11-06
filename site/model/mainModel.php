@@ -169,6 +169,12 @@
       $query = "INSERT INTO order_detail VALUES('', '$order_id', '$product_id', '$quantity', '$detail_total')";
       parent::exec($query);
     }
+
+    function getBlogById($id) {
+      $query = "SELECT * FROM news WHERE news_id = '$id'";
+      $result = parent::getInstance($query);
+      return $result;
+    }
   }
 
   ?>

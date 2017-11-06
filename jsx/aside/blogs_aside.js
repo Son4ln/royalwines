@@ -38,6 +38,7 @@ class BlogsAside extends React.Component {
     let arr = [];
     for (let item of data) {
       let item_encode = JSON.parse(item);
+      let blog_url = `/chi-tiet-bai-viet/${item_encode.news_id}`;
       let content = (
         <article className="ct-blogItem">
           <div className="ct-blogItem ct-innerMargin">
@@ -46,7 +47,7 @@ class BlogsAside extends React.Component {
             </div>
           </div>
           <h4 className="ct-entryPost ct-u-font2">
-            <Link to="/">{item_encode.news_title}</Link>
+            <Link to={blog_url}>{item_encode.news_title}</Link>
           </h4>
         </article>
       );
