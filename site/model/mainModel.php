@@ -9,7 +9,7 @@
     }
 
     function getProductsDiscountLimit() {
-      $query = "SELECT * FROM products WHERE product_public = 2 AND discount > 0 ORDER BY product_id DESC LIMIT 4";
+      $query = "SELECT * FROM products WHERE product_public = 2 AND discount > 0 ORDER BY product_id DESC LIMIT 3";
       $result = parent::getList($query);
       return $result;
     }

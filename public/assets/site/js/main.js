@@ -1,7 +1,3 @@
-/**
- * createIT main javascript file.
- */
-
 var $devicewidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var $deviceheight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 var $bodyel = jQuery("body");
@@ -49,18 +45,6 @@ $(window).on('load', function(){
 });
 
 (function ($) {
-    "use strict";
-
-    //////////////////////////////////////google maps ////////////////////////////////////////////////////
-
-    var $googleMap = $(".ct-googleMap");
-
-    // 100% Height -----------------------------------------------
-    if ($googleMap.attr("data-height") == "100%")
-    {
-        $googleMap.css("height", $deviceheight + "px");
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
        if(document.getElementById('ct-js-wrapper')){
         var snapper = new Snap({
             element: document.getElementById('ct-js-wrapper')
@@ -74,44 +58,6 @@ $(window).on('load', function(){
     }
 
     $(document).ready(function () {
-
-        //One page scroller////////////////////////////////////////////////////////////////////////////////
-
-        if ($().pageScroller) {
-
-            if($devicewidth < 1200){
-                $('body').pageScroller({
-                    navigation: '.ct-restaurantMenu .onepage', sectionClass: 'section', scrollOffset: -70
-                });
-            } else{
-                $('.ct-content').pageScroller({
-                    navigation: '.ct-restaurantMenu .onepage', sectionClass: 'section', scrollOffset: -70
-                });
-            }
-        }
-        
-//Magnific Popup///////////////////////////////////////////////////////////////////////////////////////////
-        if(jQuery().magnificPopup){
-            jQuery('.ct-js-popupGallery').each(function() { // the containers for all your galleries
-                jQuery(this).magnificPopup({
-                    disableOn: 700,
-                    type: 'image',
-                    mainClass: 'ct-magnificPopup--image',
-                    removalDelay: 160,
-                    preloader: true,
-                    delegate: '.ct-js-popup',
-                    closeBtnInside: true,
-                    closeOnContentClick: false,
-                    closeOnBgClick: true,
-                    gallery: {
-                        enabled: true
-                    }
-                });
-            });
-        }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-             $("ul.ct-restaurantMenu li:first-child").addClass('is-active');
         //Scroll to Top// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -129,12 +75,6 @@ $(window).on('load', function(){
                 $("#toTop").fadeOut(250);
             }
         });
-
-        // Add Color // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        $(".ct-js-color").each(function(){
-            $(this).css("color", '#' + $(this).attr("data-color"))
-        })
 
         // Add Background Image// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -204,32 +144,6 @@ $(window).on('load', function(){
             }
         }
 
-// Tooltips and Popovers // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        $("[data-toggle='tooltip']").tooltip();
-
-        $("[data-toggle='popover']").popover({trigger: "hover", html: true});
-
-        // Link Scroll to Section // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-        function goToByScroll(id) {
-            $('html,body').animate({scrollTop: $(id).offset().top - 50}, 'slow');
-        }
-
-        $(document).ready(function () {
-            $('body .ct-js-btnScroll').on("click",function () {
-                goToByScroll($(this).attr('href'));
-                return false;
-            });
-        });
-
-
-        // Placeholder Fallback // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        if ($().placeholder) {
-            $("input[placeholder],textarea[placeholder]").placeholder();
-        }
     })
 
     $(window).on('resize', function() {
