@@ -90,7 +90,7 @@ class HomeContents extends React.Component {
       let content = (
         <div className="col-sm-6 col-xs-12 ct-js-masonryItem">
           <Link to={brand_url}>
-            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated" data-fx="pulse" >
+            <section className="ct-frame ct-frame--motive ct-u-backgroundWhite ct-box3 animated ct-custom-height" data-fx="pulse" >
               <img className="center-block" src={img_url} />           
             </section>
           </Link>
@@ -155,7 +155,7 @@ class HomeContents extends React.Component {
 
           <div className="col-sm-12">
             <div className="ct-imageBox hidden-xs animated" data-fx="pulse">
-              <a href="#">
+              <Link to="/thong-tin">
                 <img src="/public/assets/site/images/content/promo1.png" alt="Breakfast menu" />
                 <article className="ct-imageBox-inner">
                   <div className="ct-imageBox-innerAlign">
@@ -168,7 +168,7 @@ class HomeContents extends React.Component {
                     </div>
                   </div>
                 </article>
-              </a>
+              </Link>
             </div>  
           </div>
 

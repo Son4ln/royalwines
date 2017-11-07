@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
 import {renderMainScript} from '../utils'
 
@@ -83,8 +84,8 @@ class HomeAside extends React.Component {
           </h2>
 
           <p className="animated" data-fx="fadeIn">
-            Vivamus iaculis placerat diam, laoreet posuere
-            <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
+            mang đến sự tiện nghi và thoải mái nhất, 
+            <br />bạn sẽ được phục vụ với cung cách hoàng gia <br />mà chỉ có Royalwines mới làm được.
           </p>
           
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
@@ -94,14 +95,16 @@ class HomeAside extends React.Component {
         <div className="item">
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
           data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
-          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">Chào mừng đến với<br />
-            <img src="/public/assets/site/images/content/logo2.png" style={style_img} />
+          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">THÚ THƯỞNG THỨC RƯỢU <br/>
+          VÀ NHỮNG ĐIỀU CẦN BIẾT
           </h2>
 
           <p className="animated" data-fx="fadeIn">
-            Vivamus iaculis placerat diam, laoreet posuere
-            <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
+            Để hiểu rõ hơn về cách thưởng thức rượu, những khái niệm cơ bản về hương thơm, mùi vị của rượu yếu tố ảnh 
+            hưởng trực tiếp đến các giác quan là điều vô cùng quan trọng.
           </p>
+
+          <Link to="/chi-tiet-bai-viet/16" className="btn btn-lg btn-default animated" data-fx="fadeIn" data-hover="Chi tiết!"><span>Chi tiết!</span></Link>
           
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
           data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
@@ -110,14 +113,14 @@ class HomeAside extends React.Component {
         <div className="item">
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated" data-fx="fadeInDown" 
           data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />
-          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">Chào mừng đến với<br />
-            <img src="/public/assets/site/images/content/logo2.png" style={style_img} />
+          <h2 className="ct-u-font2 text-uppercase animated" data-fx="flipInY">QUY TRÌNH SẢN XUẤT<br/>RƯỢU VANG
           </h2>
 
           <p className="animated" data-fx="fadeIn">
-            Vivamus iaculis placerat diam, laoreet posuere
-            <br />dui aliquet ut.Praesent lacinia eleifend<br />eros, ac venenatis orci.
+            Rượu vang được làm từ các loại nho nguyên chất và được lên men một cách tự nhiên, vì nho vốn có hai đặc tính tự nhiên là đường và men nên
           </p>
+
+          <Link to="/chi-tiet-bai-viet/7" className="btn btn-lg btn-default animated" data-fx="fadeIn" data-hover="Chi tiết!"><span>Chi tiết!</span></Link>
           
           <hr className="hr-custom ct-js-background hidden-md hidden-sm hidden-xs animated ct-u-paddingTop60" 
           data-fx="fadeInDown" data-bg="/public/assets/site/images/hr2.png" data-bgrepeat="no-repeat" />

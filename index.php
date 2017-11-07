@@ -19,8 +19,8 @@
   <script src="/public/assets/site/js/jquery.min.js"></script>
   <script src="/public/assets/site/bootstrap/js/bootstrap.min.js"></script>
   <script src="/public/assets/site/js/jquery-ui.min.js"></script>
-  <script src="/public/assets/site/js/jquery.placeholder.min.js"></script>
-  <script src="/public/assets/site/js/jquery.easing.1.3.js"></script>
+<!--   <script src="/public/assets/site/js/jquery.placeholder.min.js"></script>
+  <script src="/public/assets/site/js/jquery.easing.1.3.js"></script> -->
   <script src="/public/assets/site/js/device.min.js"></script>
   <script src="/public/assets/site/js/jquery.browser.min.js"></script>
   <script src="/public/assets/site/js/snap.min.js"></script>
@@ -31,8 +31,8 @@
   <!-- <script src="/public/assets/site/plugins/owl/init.js"></script> -->
   <script src="/public/assets/site/js/portfolio/imagesloaded.js"></script>
   <script src="/public/assets/site/js/image-box/init.js"></script>
-  <script src="/public/assets/site/js/retina.js"></script>
-  <script src="/public/assets/site/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!--   <script src="/public/assets/site/js/retina.js"></script>
+  <script src="/public/assets/site/plugins/magnific-popup/jquery.magnific-popup.min.js"></script> -->
   <script src="/public/assets/site/js/main.js"></script>
 
 </body>

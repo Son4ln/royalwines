@@ -41,6 +41,9 @@ h6,
 .h6 {
   font-size: 12px;
 }
+.ct-custom-height {
+  height: 300px;
+}
 .hr-custom {
   height: 9px;
   margin: 0 19px;
